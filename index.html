@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://Merl1ng.com"></form>
@@ -60,6 +60,48 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-局域网" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/30/局域网/" class="article-date">
+  <time datetime="2017-05-30T15:13:26.000Z" itemprop="datePublished">2017-05-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/30/局域网/">局域网</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、局域网断网攻击<br>虚拟机 kali linux<br>arpspoof -i 网卡 -t ip 网关<br>查别人的 ip fping-asg x.0/24<br>linux ifconfig windows ipcomfig</p>
+<p>二、arp 欺骗<br>先输入 ech0 1&gt;/proc/sys/net/ipv4/ip_forward 无回显<br>可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forward<br>再arpspoof …</p>
+<p>三、driffnet 获取本机网卡图片<br>driffnet -i 网卡<br>会弹一个小窗口<br>可在/tmp内找到图片</p>
+<p>四、http<br>ettercap dns欺骗 流量嗅探<br>先arp欺骗 再 ettercap-Tq-i eth0<br>(Tq 启动文本模式 q安静模式)</p>
+<p>五、https<br>sslstrip 将https链接还原为http （缺点：证书错误）<br>首先设置 使用 vim esc+:q!不保存退出 esc+:wq保存退出<br>vim/etc/ettercap/etter.conf<br>光标移动到 linux 删除下两个# 设置完成<br>sslstrip -a -f -k</p>
+<p>六、会话劫持<br>wireshark 抓包 ferret重新生成抓包后文件 hamster重放流量<br>way1 先arp欺骗<br>未完持续…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://Merl1ng.com/2017/05/30/局域网/" data-id="cj3bq6tr10000p4eul6xgec82" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-环境变量" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -88,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://Merl1ng.com/2017/04/23/环境变量/" data-id="cj1u8gndy00013keugyzyvbh4" class="article-share-link">Partager</a>
+      <a data-url="http://Merl1ng.com/2017/04/23/环境变量/" data-id="cj3bq6trl0002p4euyor0ycw0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://Merl1ng.com/2017/04/14/First/" data-id="cj1u8gndt00003keukfdlzs0e" class="article-share-link">Partager</a>
+      <a data-url="http://Merl1ng.com/2017/04/14/First/" data-id="cj3bq6trd0001p4euiwok62nf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://Merl1ng.com/2017/04/14/hello-world/" data-id="cj1u8gne100023keu3wbbxnn5" class="article-share-link">Partager</a>
+      <a data-url="http://Merl1ng.com/2017/04/14/hello-world/" data-id="cj3bq6trp0003p4eux19ihazk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +239,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
     </div>
   </div>
 
@@ -205,9 +247,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/05/30/局域网/">局域网</a>
+          </li>
         
           <li>
             <a href="/2017/04/23/环境变量/">环境变量</a>
@@ -234,7 +280,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Saber<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
