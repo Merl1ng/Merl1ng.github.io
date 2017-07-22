@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="waf,xss,sql," />
 
 
 
@@ -94,13 +94,13 @@
 
 
 <meta name="description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
-<meta name="keywords">
+<meta name="keywords" content="waf,xss,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bypass_waf">
 <meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
-<meta property="og:updated_time" content="2017-07-20T14:39:25.185Z">
+<meta property="og:updated_time" content="2017-07-22T09:59:22.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bypass_waf">
 <meta name="twitter:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
@@ -155,7 +155,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -203,7 +203,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -219,7 +229,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -283,7 +293,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-20T21:44:22+08:00">
                 2017-07-20
@@ -295,6 +305,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -358,6 +390,16 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/waf/" rel="tag"># waf</a>
+          
+            <a href="/tags/xss/" rel="tag"># xss</a>
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
       
 
       
@@ -432,7 +474,7 @@
                alt="Saber" />
           <p class="site-author-name" itemprop="name">Saber</p>
            
-              <p class="site-description motion-element" itemprop="description">Love programming , love gakki !</p>
+              <p class="site-description motion-element" itemprop="description">Love life , love gakki !</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -441,13 +483,31 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">articles</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -463,6 +523,15 @@
                     <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Merl1ng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
                 </a>
               </span>
             
@@ -510,7 +579,7 @@
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
