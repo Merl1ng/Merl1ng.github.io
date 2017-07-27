@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="###　文件包含  本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php12345&amp;lt;?php$file=@$_GET[&apos;file&apos;];if($file)&amp;#123;    echo &quot;&amp;lt;center&amp;gt;File:&quot;.$file">
+<meta name="description" content="文件包含本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php">
 <meta name="keywords" content="webshell,php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件包含和php伪协议">
 <meta property="og:url" content="http://Merl1ng.com/2017/07/27/文件包含和php伪协议/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="###　文件包含  本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php12345&amp;lt;?php$file=@$_GET[&apos;file&apos;];if($file)&amp;#123;    echo &quot;&amp;lt;center&amp;gt;File:&quot;.$file">
-<meta property="og:updated_time" content="2017-07-27T13:17:51.965Z">
+<meta property="og:description" content="文件包含本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php">
+<meta property="og:updated_time" content="2017-07-27T13:21:20.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件包含和php伪协议">
-<meta name="twitter:description" content="###　文件包含  本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php12345&amp;lt;?php$file=@$_GET[&apos;file&apos;];if($file)&amp;#123;    echo &quot;&amp;lt;center&amp;gt;File:&quot;.$file">
+<meta name="twitter:description" content="文件包含本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php">
 
 
 
@@ -352,8 +352,7 @@
       
 
       
-        <p>###　文件包含 </p>
-<h4 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h4><p>在test.txt内写入<code>&lt;?php phpinfo();?&gt;</code><br>仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察<br>然后在相同目录下放置一个fileinclude.php<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$file</span>=@<span class="variable">$_GET</span>[<span class="string">'file'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$file</span>)&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;center&gt;File:"</span>.<span class="variable">$file</span>.<span class="string">"&lt;br/&gt;Result:&lt;/center&gt;"</span>;</div><div class="line">    include <span class="variable">$file</span>;</div></pre></td></tr></table></figure></p>
+        <h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><h4 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h4><p>在test.txt内写入<code>&lt;?php phpinfo();?&gt;</code><br>仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察<br>然后在相同目录下放置一个fileinclude.php<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$file</span>=@<span class="variable">$_GET</span>[<span class="string">'file'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$file</span>)&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;center&gt;File:"</span>.<span class="variable">$file</span>.<span class="string">"&lt;br/&gt;Result:&lt;/center&gt;"</span>;</div><div class="line">    include <span class="variable">$file</span>;</div></pre></td></tr></table></figure></p>
 <p>第一行代码获取URL    参数file    的内容。2    ~4行首先判断$file    是否为空，若不为空，输出其内容，并将其作为文件名称包含<br>将其部署在 localhost下<br>然后访问     <a href="http://localhost/fileinclude.php?file=test.txt" target="_blank" rel="external">http://localhost/fileinclude.php?file=test.txt</a> 会看到phpinfo的输出<br>即test.txt里面的php代码被执行</p>
 <p>test文件的扩展名为txt而不是.php也能说明该漏洞无视扩展名 （jpg也同样有效）<br>但是如果被包含的文件里面没有php标签 那么就会当成html内容如实显示出来</p>
 <h4 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h4><p>需要 php配置文件中     allow_url_include 设置为 on</p>
@@ -375,7 +374,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$_GET</span>[<span class="string">'txt'</span>] = preg_replace(<span class="string">'|[^a-z0-9A-Z+/]|s'</span>, <span class="string">''</span>, <span class="variable">$_GET</span>[<span class="string">'txt'</span>]);</div><div class="line">base64_decode(<span class="variable">$_GET</span>[<span class="string">'txt'</span>]);</div></pre></td></tr></table></figure>
 <p>所以，当$content被加上了<code>&lt;?php exit; ?&gt;</code>以后，我们可以使用 <code>php://filter/write=convert.base64-decode</code>来首先对其解码<br>在解码的过程中，字符<code>&lt;、?、;、&gt;、</code>空格等一共有7个字符不符合base64编码的字符范围将被忽略，所以最终被解码的字符仅有“phpexit”和我们传入的其他字符。</p>
 <p>“phpexit”一共7个字符，因为base64算法解码时是4个byte一组，所以给他增加1个“a”一共8个字符<br>这样，”phpexita”被正常解码，而后面我们传入的webshell的base64内容也被正常解码 结果就是<code>&lt;?php exit; ?&gt;</code>没有了</p>
-<p>利用Burp 的Repeater<br>txt=a一句话的base64编码<br><code>filename=php://filter/write=convert.base64-decode/resource=shell.php</code></p>
+<p>利用Burp 的Repeater<br>txt=a一句话的base64编码<br>filename=php://filter/write=convert.base64-decode/resource=shell.php</p>
 
       
     </div>
@@ -578,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地包含"><span class="nav-number">1.</span> <span class="nav-text">本地包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程包含"><span class="nav-number">2.</span> <span class="nav-text">远程包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#截断技巧"><span class="nav-number">3.</span> <span class="nav-text">截断技巧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP伪协议"><span class="nav-number"></span> <span class="nav-text">PHP伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现文件包含"><span class="nav-number">1.</span> <span class="nav-text">实现文件包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对exit的绕过"><span class="nav-number">2.</span> <span class="nav-text">对exit的绕过</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件包含"><span class="nav-number">1.</span> <span class="nav-text">文件包含</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地包含"><span class="nav-number">1.1.</span> <span class="nav-text">本地包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程包含"><span class="nav-number">1.2.</span> <span class="nav-text">远程包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#截断技巧"><span class="nav-number">1.3.</span> <span class="nav-text">截断技巧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP伪协议"><span class="nav-number">2.</span> <span class="nav-text">PHP伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现文件包含"><span class="nav-number">2.1.</span> <span class="nav-text">实现文件包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对exit的绕过"><span class="nav-number">2.2.</span> <span class="nav-text">对exit的绕过</span></a></li></ol></li></ol></div>
             
 
           </div>
