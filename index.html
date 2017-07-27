@@ -308,6 +308,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -334,7 +356,31 @@
       
         
           
-            
+            <p>###　文件包含 </p>
+<h4 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h4><p>在test.txt内写入<code>&lt;?php phpinfo();?&gt;</code><br>仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察<br>然后在相同目录下放置一个fileinclude.php<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$file</span>=@<span class="variable">$_GET</span>[<span class="string">'file'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$file</span>)&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;center&gt;File:"</span>.<span class="variable">$file</span>.<span class="string">"&lt;br/&gt;Result:&lt;/center&gt;"</span>;</div><div class="line">    include <span class="variable">$file</span>;</div></pre></td></tr></table></figure></p>
+<p>第一行代码获取URL    参数file    的内容。2    ~4行首先判断$file    是否为空，若不为空，输出其内容，并将其作为文件名称包含<br>将其部署在 localhost下<br>然后访问     <a href="http://localhost/fileinclude.php?file=test.txt" target="_blank" rel="external">http://localhost/fileinclude.php?file=test.txt</a> 会看到phpinfo的输出<br>即test.txt里面的php代码被执行</p>
+<p>test文件的扩展名为txt而不是.php也能说明该漏洞无视扩展名 （jpg也同样有效）<br>但是如果被包含的文件里面没有php标签 那么就会当成html内容如实显示出来</p>
+<h4 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h4><p>需要 php配置文件中     allow_url_include 设置为 on</p>
+<p><a href="http://localhost/fileinclude.php?file=http://locahost/text.txt" target="_blank" rel="external">http://localhost/fileinclude.php?file=http://locahost/text.txt</a></p>
+<h4 id="截断技巧"><a href="#截断技巧" class="headerlink" title="截断技巧"></a>截断技巧</h4><p>有些程序会给被包含内容加一些后缀 比如如果fileinclude.php是这样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?php <span class="variable">$file</span>=@<span class="variable">$_GET</span>[<span class="string">'file'</span>]; </div><div class="line"><span class="keyword">if</span>(<span class="variable">$file</span>)&#123;</div><div class="line">     <span class="variable">$file</span> .= <span class="string">'.php'</span>;				</div><div class="line">     <span class="built_in">echo</span> <span class="string">"&lt;center&gt;File:"</span>.<span class="variable">$file</span>.<span class="string">"&lt;br/&gt;Result:&lt;/center&gt;"</span>;</div><div class="line">     include <span class="variable">$file</span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>它的后面加了个.php 所以如果传入 file=test.txt 就会变成text.txt.php 从而包含失败<br>如果php版本小于5.3并且 magic_quotes_gpc 已取消 可以使用 %00截断<br>传入file=text.txt%00</p>
+<h3 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h3><p>php中支持的伪协议</p>
+<p>file:// — 访问本地文件系统<br>http:// — 访问 HTTP(s) 网址<br>ftp:// — 访问 FTP(s) URLs<br>php:// — 访问各个输入/输出流（I/O streams）<br>zlib:// — 压缩流<br>data:// — 数据（RFC 2397）<br>glob:// — 查找匹配的文件路径模式<br>phar:// — PHP 归档<br>ssh2:// — Secure Shell 2<br>rar:// — RAR<br>ogg:// — 音频流<br>expect:// — 处理交互式的流</p>
+<p>对于php://filter<br>名称描述<br>resource=&lt;要过滤的数据流&gt;       这个参数是必须的。它指定了你要筛选过滤的数据流。<br>read=&lt;读链的筛选列表&gt;       该参数可选。可以设定一个或多个过滤器名称，以管道符（|）分隔。<br>write=&lt;写链的筛选列表&gt;       该参数可选。可以设定一个或多个过滤器名称，以管道符（|）分隔。<br>&lt;；两个链的筛选列表&gt;       任何没有以 read= 或 write= 作前缀 的筛选器列表会视情况应用于读或写链。</p>
+<h4 id="实现文件包含"><a href="#实现文件包含" class="headerlink" title="实现文件包含"></a>实现文件包含</h4><p>在允许远程包含的情况下 可以使用php://伪协议<br><code>比如php://filter/resource=test.txt</code>可以读取相同文件<br><code>http://localhost/fileinclude.php?file=php://filter/resource=test.txt</code></p>
+<p>进一步的任意文件读取 当要获取的文件里有不可打印的字符 或想获取的代码<br><code>php://filter/read=convert.base64-encode/resource=test.txt</code><br><code>http://localhost/fileinclude.php?file=php://filter/read=convert.base64-encode/resource=test.txt</code></p>
+<p>其中php://input代表可以访问请求的原始数据，简单来说POST请求的情况下 php://input可以获取到post的数据。<br>比较特殊的一点，<code>enctype=”multipart/form-data”</code> 的时候 php://input 是无效的</p>
+<p>其可以读取原始的HTTP正文内容 如果将file设置为php://input，并且在HTTP正文中传入PHP代码<br>（可用hackbar Post data写入正文）<br>比如<code>&lt;?phpphpinfo();?&gt;</code>即可以执行代码</p>
+<h4 id="对exit的绕过"><a href="#对exit的绕过" class="headerlink" title="对exit的绕过"></a>对exit的绕过</h4><p>某题目有如下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$content</span> = <span class="string">'&lt;?php exit; ?&gt;'</span>;</div><div class="line"><span class="variable">$content</span> .= <span class="variable">$_POST</span>[<span class="string">'txt'</span>];</div><div class="line">file_put_contents(<span class="variable">$_POST</span>[<span class="string">'filename'</span>], <span class="variable">$content</span>);</div></pre></td></tr></table></figure></p>
+<p>$content在开头增加了exit过程，导致即使我们成功写入一句话，也执行不了<br>（这个过程在实战中十分常见，通常出现在缓存、配置文件等等地方，不允许用户直接访问的文件，都会被加上if(!defined(xxx))exit;之类的限制）</p>
+<p>这里的<code>$_POST[&#39;filename&#39;]</code>是可以控制协议的 即可使用 php://filter协议<br>使用php://filter流的base64-decode方法，将$content解码，利用php base64_decode函数特性去除exit</p>
+<p>因为base64编码中只包含64个可打印字符，而PHP在解码base64时，遇到不在其中的字符时，将会跳过这些字符，仅将合法字符组成一个新的字符串进行解码</p>
+<p>所以，一个正常的base64_decode实际上可以理解为如下两个步骤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$_GET</span>[<span class="string">'txt'</span>] = preg_replace(<span class="string">'|[^a-z0-9A-Z+/]|s'</span>, <span class="string">''</span>, <span class="variable">$_GET</span>[<span class="string">'txt'</span>]);</div><div class="line">base64_decode(<span class="variable">$_GET</span>[<span class="string">'txt'</span>]);</div></pre></td></tr></table></figure>
+<p>所以，当$content被加上了<code>&lt;?php exit; ?&gt;</code>以后，我们可以使用 <code>php://filter/write=convert.base64-decode</code>来首先对其解码<br>在解码的过程中，字符<code>&lt;、?、;、&gt;、</code>空格等一共有7个字符不符合base64编码的字符范围将被忽略，所以最终被解码的字符仅有“phpexit”和我们传入的其他字符。</p>
+<p>“phpexit”一共7个字符，因为base64算法解码时是4个byte一组，所以给他增加1个“a”一共8个字符<br>这样，”phpexita”被正常解码，而后面我们传入的webshell的base64内容也被正常解码 结果就是<code>&lt;?php exit; ?&gt;</code>没有了</p>
+<p>利用Burp 的Repeater<br>txt=a一句话的base64编码<br><code>filename=php://filter/write=convert.base64-decode/resource=shell.php</code></p>
+
           
         
       
