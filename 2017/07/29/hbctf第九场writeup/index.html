@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="misc,crypto," />
 
 
 
@@ -94,7 +94,7 @@
 
 
 <meta name="description" content="第一次比赛拿到排名 有点小激动 整理一下完成这篇write up顺便膜一波出题大佬">
-<meta name="keywords">
+<meta name="keywords" content="misc,crypto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hbctf第九场writeup">
 <meta property="og:url" content="http://Merl1ng.com/2017/07/29/hbctf第九场writeup/index.html">
@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/pwn2.PNG?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/1.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/2.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
-<meta property="og:updated_time" content="2017-07-30T06:32:21.293Z">
+<meta property="og:updated_time" content="2017-07-30T06:36:53.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hbctf第九场writeup">
 <meta name="twitter:description" content="第一次比赛拿到排名 有点小激动 整理一下完成这篇write up顺便膜一波出题大佬">
@@ -330,6 +330,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/writeup/" itemprop="url" rel="index">
+                    <span itemprop="name">writeup</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -367,7 +389,7 @@
 <p>直接解压是看不到的。。<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc2.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>下载 图片历史纪录查看器 或者 Thumbs Viewer 查看得到flag</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/misc3.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
 <p>binwalk也可以 binwalk “-D=jpeg” Thumbs.db (ls命令是可以看到db文件的)<br><img src="http://otvzfr1o1.bkt.clouddn.com/db.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>得到<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc4.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/misc5.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
-<h3 id="web-misc-pwn"><a href="#web-misc-pwn" class="headerlink" title="web/misc+pwn"></a>web/misc+pwn</h3><p>再膜一波出题大佬</p>
+<h3 id="web-misc-crypto-pwn"><a href="#web-misc-crypto-pwn" class="headerlink" title="web/misc+crypto+pwn"></a>web/misc+crypto+pwn</h3><p>再膜一波出题大佬</p>
 <p>进入网站<br><img src="http://otvzfr1o1.bkt.clouddn.com/6.PNG?imageView2/2/w/800/h/800/q/75|imageslim" alt=""><br>一个登陆框 出题人提示不是sql或者xss</p>
 <p>弱口令猜测 admin green（就是试 有提示green）<br><img src="http://otvzfr1o1.bkt.clouddn.com/7.PNG" alt=""></p>
 <p>这时左边出现photo is the boss !!!<br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn11.png?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>右边代码里多出注释<code>&#39;***&#39;=&#39;3&#39;</code><br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn22.png?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
@@ -418,6 +440,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/misc/" rel="tag"># misc</a>
+          
+            <a href="/tags/crypto/" rel="tag"># crypto</a>
+          
+        </div>
       
 
       
@@ -520,7 +550,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -531,7 +561,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -586,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#签到题"><span class="nav-number">1.</span> <span class="nav-text">签到题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-misc-pwn"><span class="nav-number">3.</span> <span class="nav-text">web/misc+pwn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yafu"><span class="nav-number">4.</span> <span class="nav-text">yafu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一点其他的pwn"><span class="nav-number">5.</span> <span class="nav-text">一点其他的pwn</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#签到题"><span class="nav-number">1.</span> <span class="nav-text">签到题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-misc-crypto-pwn"><span class="nav-number">3.</span> <span class="nav-text">web/misc+crypto+pwn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yafu"><span class="nav-number">4.</span> <span class="nav-text">yafu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一点其他的pwn"><span class="nav-number">5.</span> <span class="nav-text">一点其他的pwn</span></a></li></ol></div>
             
 
           </div>
