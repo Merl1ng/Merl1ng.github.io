@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/07/27/突破文件上传中对文件的限制/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="之前记录过在文件上传中突破对一句话代码过滤的限制这次从文件的角度突破限制">
-<meta property="og:updated_time" content="2017-07-27T09:22:15.966Z">
+<meta property="og:updated_time" content="2017-07-30T10:23:13.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="突破文件上传中对文件的限制">
 <meta name="twitter:description" content="之前记录过在文件上传中突破对一句话代码过滤的限制这次从文件的角度突破限制">
@@ -361,7 +361,7 @@
 <p>同样使用Burp操作 点击Intercept is on 关闭拦截模式<br>点击Send to Repeater 在 Repeater 中找到<br>在1.php(上传的文件名)后添加.gif然后点击hex<br>.gif的十六进制是2e 67 69 66<br>在2e右键 insert byte<br>2e之前就会出现00 点击go发送请求</p>
 <h3 id="Nginx解析漏洞"><a href="#Nginx解析漏洞" class="headerlink" title="Nginx解析漏洞"></a>Nginx解析漏洞</h3><p><code>www.qaq.com</code>存在漏洞<br>假设该站点上有一张图片 url地址为<code>www.qaq,com/logo.jpg</code><br>当正常访问时 Nginx会把它当做非脚本 直接读取并传给客户端<br>但是如果这样访问 <code>www.qaq.com/logo.jpg/a.php</code><br>或者 <code>www.qaq.com/logo.jpg%00.php</code><br>它就会把logo.php当做PHP文件执行</p>
 <p>所以为了利用该漏洞<br>可以找一张图片 在里面插入一句话（图片用Notepad++打开写入代码）<br>上传该图片<br>然后 以<code>www.qaq.com/123.jpg/a.php</code>为url 连接菜刀</p>
-<h3 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h3><p>Apache从右到左解析扩展名 碰到不认识的扩展名继续解析<br>比如上传 123.php.owf.rar 它将按照 rar owf php 的顺序解析扩展名<br>但是其不认识 rar 和 owf 所以将其解析为 php 但是在程序中123文件的扩展名仍是rar</p>
+<h3 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h3><p>Apache的1.x和2.x版本中 会从右到左解析扩展名 碰到不认识的扩展名继续解析<br>比如上传 123.php.owf.rar 它将按照 rar owf php 的顺序解析扩展名<br>但是其不认识 rar 和 owf 所以将其解析为 php 但是在程序中123文件的扩展名仍是rar</p>
 
       
     </div>

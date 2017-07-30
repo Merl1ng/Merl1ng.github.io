@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/pwn2.PNG?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/1.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/2.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
-<meta property="og:updated_time" content="2017-07-30T06:36:53.247Z">
+<meta property="og:updated_time" content="2017-07-30T09:31:35.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hbctf第九场writeup">
 <meta name="twitter:description" content="第一次比赛拿到排名 有点小激动 整理一下完成这篇write up顺便膜一波出题大佬">
@@ -389,7 +389,7 @@
 <p>直接解压是看不到的。。<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc2.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>下载 图片历史纪录查看器 或者 Thumbs Viewer 查看得到flag</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/misc3.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
 <p>binwalk也可以 binwalk “-D=jpeg” Thumbs.db (ls命令是可以看到db文件的)<br><img src="http://otvzfr1o1.bkt.clouddn.com/db.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>得到<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc4.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/misc5.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
-<h3 id="web-misc-crypto-pwn"><a href="#web-misc-crypto-pwn" class="headerlink" title="web/misc+crypto+pwn"></a>web/misc+crypto+pwn</h3><p>再膜一波出题大佬</p>
+<h3 id="web-misc-crypto"><a href="#web-misc-crypto" class="headerlink" title="web/misc+crypto"></a>web/misc+crypto</h3><p>再膜一波出题大佬</p>
 <p>进入网站<br><img src="http://otvzfr1o1.bkt.clouddn.com/6.PNG?imageView2/2/w/800/h/800/q/75|imageslim" alt=""><br>一个登陆框 出题人提示不是sql或者xss</p>
 <p>弱口令猜测 admin green（就是试 有提示green）<br><img src="http://otvzfr1o1.bkt.clouddn.com/7.PNG" alt=""></p>
 <p>这时左边出现photo is the boss !!!<br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn11.png?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>右边代码里多出注释<code>&#39;***&#39;=&#39;3&#39;</code><br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn22.png?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
@@ -410,8 +410,8 @@
 <p>在直接分解n无望，不能利用公约数分解n之后，都应该使用yafu去试一下</p>
 <p>密码学的东西不太懂 直接贴网址  </p>
 <p><a href="http://www.tuicool.com/articles/iYBZBfy" target="_blank" rel="external">http://www.tuicool.com/articles/iYBZBfy</a></p>
-<h3 id="一点其他的pwn"><a href="#一点其他的pwn" class="headerlink" title="一点其他的pwn"></a>一点其他的pwn</h3><p>记录这个是因为比赛后看到了学长和一个大佬的交流中出现了 <code>print shellcraft.i386.linux.sh()</code><br>这个东东<br><img src="http://otvzfr1o1.bkt.clouddn.com/1.jpg?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/2.jpg?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>查了一下 shellcraft可以生成对应架构的shellcode代码<br>源于一个ctf常用库 pwntools</p>
+<h3 id="一点其他的pwn"><a href="#一点其他的pwn" class="headerlink" title="一点其他的pwn"></a>一点其他的pwn</h3><p>记录这个是因为比赛后看到了学长和一个大佬的交流中出现了 <code>print asm(shellcraft.i386.linux.sh())</code><br>这个东东<br><img src="http://otvzfr1o1.bkt.clouddn.com/1.jpg?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/2.jpg?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>查了一下 shellcraft可以生成对应架构的shellcode代码 asm用于汇编和 反汇编<br>源于一个ctf常用库 pwntools</p>
 <p><a href="http://m.blog.csdn.net/gyhgx/article/details/53439417" target="_blank" rel="external">http://m.blog.csdn.net/gyhgx/article/details/53439417</a></p>
 <p>顺便了解下 bpython</p>
 
@@ -616,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#签到题"><span class="nav-number">1.</span> <span class="nav-text">签到题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-misc-crypto-pwn"><span class="nav-number">3.</span> <span class="nav-text">web/misc+crypto+pwn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yafu"><span class="nav-number">4.</span> <span class="nav-text">yafu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一点其他的pwn"><span class="nav-number">5.</span> <span class="nav-text">一点其他的pwn</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#签到题"><span class="nav-number">1.</span> <span class="nav-text">签到题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-misc-crypto"><span class="nav-number">3.</span> <span class="nav-text">web/misc+crypto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yafu"><span class="nav-number">4.</span> <span class="nav-text">yafu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一点其他的pwn"><span class="nav-number">5.</span> <span class="nav-text">一点其他的pwn</span></a></li></ol></div>
             
 
           </div>
