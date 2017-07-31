@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/pwn2.PNG?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/1.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/2.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
-<meta property="og:updated_time" content="2017-07-30T09:31:35.026Z">
+<meta property="og:updated_time" content="2017-07-31T13:14:45.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hbctf第九场writeup">
 <meta name="twitter:description" content="第一次比赛拿到排名 有点小激动 整理一下完成这篇write up顺便膜一波出题大佬">
@@ -381,7 +381,7 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/1.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""></p>
 <p>点击按钮 页面跳转到 pact.cc/xxoo/1ndex.php<br>（刚开始我还以为浏览器不区分1和i…）</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/4.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""></p>
-<p>F12看看代码里没什么奇怪的东西file:<br>(就有一行这个比较在意 查了一下功能是禁止浏览器后退 javascript:window.history.forward(1);)<br><img src="http://otvzfr1o1.bkt.clouddn.com/3.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""><br>响应里也没有奇奇怪怪的地方 这题也无法提交数据<br><img src="http://otvzfr1o1.bkt.clouddn.com/2.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""><br>把post改成get试了试也没什么用</p>
+<p>F12看看代码里没什么奇怪的东西 控制台里也没有<br>(就有一行这个比较在意 查了一下功能是禁止浏览器后退 javascript:window.history.forward(1);)<br><img src="http://otvzfr1o1.bkt.clouddn.com/3.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""><br>响应里也没有奇奇怪怪的地方 这题也无法提交数据<br><img src="http://otvzfr1o1.bkt.clouddn.com/2.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""><br>把post改成get试了试也没什么用</p>
 <p>猜测只能Burp抓包分析 又因为是签到题<br><img src="http://otvzfr1o1.bkt.clouddn.com/11.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>直接 forward 就看到flag<br><img src="http://otvzfr1o1.bkt.clouddn.com/yeah22.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>放到Repeater里 go 也可以（不关拦截）</p>
 <p>这题其实点击按钮就有flag但是浏览器自动跳转到下一个页面看不到 所以要抓包</p>
 <h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><p>下载文件 文件名为 PwdIs4 解压密码为4<br>（一开始没看出密码提示winhex打开试了下伪加密）<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc1.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>解压出来只有个0.jpg全黑 文件名为白<br>ste试试没啥用 主要关注点都在 这个0.jpg上</p>
@@ -396,9 +396,9 @@
 <p>并且右边源代码里有 图片地址 goodhat.jpg 可知在同一目录下<br>访问pcat.cc/green/goodhat.jpg 下载图片</p>
 <p>直接winhex打开<br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn33.png?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>这时知道了提示的作用<br>替换掉</p>
 <p>然后decode(‘hex’) 就是<br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn44.png?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
-<p>用yafu来分解n，然后编写代码 (yafu是啥写在后面)</p>
+<p>用yafu来分解n factor() 然后编写代码 (yafu是啥写在后面)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*-  coding:utf8 -*-</span></div><div class="line">__author__=<span class="string">'pcat@chamd5.org'</span></div><div class="line">import libnum</div><div class="line">import gmpy2</div><div class="line"></div><div class="line">n=73069886771625642807435783661014062604264768481735145873508846925735521695159</div><div class="line">e=65537</div><div class="line">p = 386123125371923651191219869811293586459</div><div class="line">q = 189239861511125143212536989589123569301</div><div class="line">assert n==p*q</div><div class="line"></div><div class="line">c=15116717704501623028903918131505510580599561357387431295289012193980554012811</div><div class="line">d=gmpy2.invert(e,(p-1)*(q-1))</div><div class="line">m=pow(c,d,n)</div><div class="line"><span class="built_in">print</span> libnum.n2s(m)</div></pre></td></tr></table></figure>
-<p>需要先安装两个库</p>
+<p>需要先安装两个库 gmpy2库安装2.7对应版本时 64位 直接安exe whl文件安装会报错</p>
 <p>得到结果为 nc 119.28.15.34 8888</p>
 <p>浏览器访问下试了试<br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
 <p>去Kail 是一个 pwn<br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn1.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/pwn2.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>

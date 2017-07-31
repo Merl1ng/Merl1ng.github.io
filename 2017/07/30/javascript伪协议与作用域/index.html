@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/07/30/javascript伪协议与作用域/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="javascript 伪协议将javascript代码添加到客户端的方法是把它放置在伪协议说明符javascript:后的URL中 这个特殊的协议类型声明了URL的主体是任意的javascript代码，它由javascript的解释器运行">
-<meta property="og:updated_time" content="2017-07-30T10:29:56.617Z">
+<meta property="og:updated_time" content="2017-07-30T12:48:16.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript伪协议与作用域">
 <meta name="twitter:description" content="javascript 伪协议将javascript代码添加到客户端的方法是把它放置在伪协议说明符javascript:后的URL中 这个特殊的协议类型声明了URL的主体是任意的javascript代码，它由javascript的解释器运行">
@@ -368,8 +368,7 @@
 <p>比如<br>1.<code>&lt;a href=&quot;javascript：void(0)&quot; onclick=&quot;doSomething()&quot;&gt;test&lt;/a&gt;</code> </p>
 <p>2.<code>&lt;a href=&quot;#&quot; onclick=&quot;doSomething();return false;&quot;&gt;什么问题都解决了,包括浏览器不兼容问题&lt;/a&gt;</code> //或者直接使用href=””   </p>
 <p>3.<code>&lt;a href=&quot;#&quot; onclick=&quot;alert();event.returnValue=false;&quot;&gt;test&lt;/a&gt;</code></p>
-<p>####　其它与”javascript:void(0)”同作用的写法</p>
-<p><code>&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;</code> 点击这个链接后，会让页面跳到页面顶部，在location.href后面增加#号</p>
+<h4 id="其它与”javascript-void-0-”同作用的写法"><a href="#其它与”javascript-void-0-”同作用的写法" class="headerlink" title="其它与”javascript:void(0)”同作用的写法"></a>其它与”javascript:void(0)”同作用的写法</h4><p><code>&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;</code> 点击这个链接后，会让页面跳到页面顶部，在location.href后面增加#号</p>
 <p><code>&lt;a href=&quot;#none&quot;&gt;&lt;/a&gt;</code>点击这个链接后， 如果页面里面有id为none的元素，会执行锚点机制跳转到这个元素上缘</p>
 <p><code>&lt;a href=&quot;###&quot;&gt;&lt;/a&gt;</code> 不跳转，可以阻止默认的跳转行为，但是这个在后端代码中容易识别成注释，后面的代码不显示<br>——-下面用了伪协议——–</p>
 <p><code>&lt;a href=&quot;javascript:&quot;&gt;&lt;/a&gt;</code></p>
@@ -580,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-伪协议"><span class="nav-number">1.</span> <span class="nav-text">javascript 伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#“javascript-void-0-”"><span class="nav-number">1.1.</span> <span class="nav-text">“javascript:void(0)”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-作用域"><span class="nav-number">2.</span> <span class="nav-text">javascript 作用域</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-伪协议"><span class="nav-number">1.</span> <span class="nav-text">javascript 伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#“javascript-void-0-”"><span class="nav-number">1.1.</span> <span class="nav-text">“javascript:void(0)”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它与”javascript-void-0-”同作用的写法"><span class="nav-number">1.2.</span> <span class="nav-text">其它与”javascript:void(0)”同作用的写法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-作用域"><span class="nav-number">2.</span> <span class="nav-text">javascript 作用域</span></a></li></ol></div>
             
 
           </div>

@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="文件包含本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/fca81469385894.png?imageView2/2/w/800/h/800/q/75|imageslim">
-<meta property="og:updated_time" content="2017-07-30T09:36:28.014Z">
+<meta property="og:updated_time" content="2017-07-31T13:15:24.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件包含和php伪协议">
 <meta name="twitter:description" content="文件包含本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php">
@@ -364,7 +364,7 @@
 <h3 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h3><p>php中支持的伪协议</p>
 <p>file:// — 访问本地文件系统<br>http:// — 访问 HTTP(s) 网址<br>ftp:// — 访问 FTP(s) URLs<br>php:// — 访问各个输入/输出流（I/O streams）<br>zlib:// — 压缩流<br>data:// — 数据（RFC 2397）<br>glob:// — 查找匹配的文件路径模式<br>phar:// — PHP 归档<br>ssh2:// — Secure Shell 2<br>rar:// — RAR<br>ogg:// — 音频流<br>expect:// — 处理交互式的流</p>
 <p>对于php://filter<br>名称描述<br>resource=&lt;要过滤的数据流&gt;       这个参数是必须的。它指定了你要筛选过滤的数据流。<br>read=&lt;读链的筛选列表&gt;       该参数可选。可以设定一个或多个过滤器名称，以管道符（|）分隔。<br>write=&lt;写链的筛选列表&gt;       该参数可选。可以设定一个或多个过滤器名称，以管道符（|）分隔。<br>&lt;；两个链的筛选列表&gt;       任何没有以 read= 或 write= 作前缀 的筛选器列表会视情况应用于读或写链。</p>
-<h4 id="实现文件包含"><a href="#实现文件包含" class="headerlink" title="实现文件包含"></a>实现文件包含</h4><p>在允许远程包含的情况下 可以使用php://伪协议<br><code>比如php://filter/resource=test.txt</code>可以读取相同文件<br><code>http://localhost/fileinclude.php?file=php://filter/resource=test.txt</code></p>
+<h4 id="实现文件包含"><a href="#实现文件包含" class="headerlink" title="实现文件包含"></a>实现文件包含</h4><p>在允许远程包含的情况下(allow_url_include 设置为 on) 可以使用php://伪协议<br><code>比如php://filter/resource=test.txt</code>可以读取相同文件<br><code>http://localhost/fileinclude.php?file=php://filter/resource=test.txt</code></p>
 <p>进一步的任意文件读取 当要获取的文件里有不可打印的字符 或想获取的代码<br><code>php://filter/read=convert.base64-encode/resource=test.txt</code><br><code>http://localhost/fileinclude.php?file=php://filter/read=convert.base64-encode/resource=test.txt</code></p>
 <p>其中php://input代表可以访问请求的原始数据，简单来说POST请求的情况下 php://input可以获取到post的数据。<br>比较特殊的一点，<code>enctype=”multipart/form-data”</code> 的时候 php://input 是无效的</p>
 <p>其可以读取原始的HTTP正文内容 如果将file设置为php://input，并且在HTTP正文中传入PHP代码<br>（可用hackbar Post data写入正文）<br>比如<code>&lt;?phpphpinfo();?&gt;</code>即可以执行代码</p>
