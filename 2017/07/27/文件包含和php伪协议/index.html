@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Merl1ng">
 <meta property="og:description" content="文件包含本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/fca81469385894.png?imageView2/2/w/800/h/800/q/75|imageslim">
-<meta property="og:updated_time" content="2017-07-31T13:15:24.155Z">
+<meta property="og:updated_time" content="2017-08-06T14:43:41.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件包含和php伪协议">
 <meta name="twitter:description" content="文件包含本地包含在test.txt内写入&amp;lt;?php phpinfo();?&amp;gt;仅仅调用    phpinfo    来测试 会使页面显示php信息方便观察然后在相同目录下放置一个fileinclude.php">
@@ -377,7 +377,7 @@
 <p>所以，当$content被加上了<code>&lt;?php exit; ?&gt;</code>以后，我们可以使用 <code>php://filter/write=convert.base64-decode</code>来首先对其解码<br>在解码的过程中，字符<code>&lt;、?、;、&gt;、</code>空格等一共有7个字符不符合base64编码的字符范围将被忽略，所以最终被解码的字符仅有“phpexit”和我们传入的其他字符。</p>
 <p>“phpexit”一共7个字符，因为base64算法解码时是4个byte一组，所以给他增加1个“a”一共8个字符<br>这样，”phpexita”被正常解码，而后面我们传入的webshell的base64内容也被正常解码 结果就是<code>&lt;?php exit; ?&gt;</code>没有了</p>
 <p>利用Burp 的Repeater<br>txt=a一句话的base64编码<br>filename=php://filter/write=convert.base64-decode/resource=shell.php</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/fca81469385894.png?imageView2/2/w/800/h/800/q/75|imageslim" alt=""></p>
+<p>补一张大佬的效果图<br><img src="http://otvzfr1o1.bkt.clouddn.com/fca81469385894.png?imageView2/2/w/800/h/800/q/75|imageslim" alt=""></p>
 
       
     </div>
