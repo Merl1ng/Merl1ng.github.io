@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="hexo," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="一直就想给博客加个自己喜欢的首页  但是网上的攻略真的是不怎么好 就把自己踩坑的过程记录下来">
-<meta name="keywords">
+<meta name="description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了 ps网上的攻略真的烂">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo自定义主页">
 <meta property="og:url" content="http://Merl1ng.com/2017/08/10/hexo自定义主页/index.html">
 <meta property="og:site_name" content="Merl1ng">
-<meta property="og:description" content="一直就想给博客加个自己喜欢的首页  但是网上的攻略真的是不怎么好 就把自己踩坑的过程记录下来">
-<meta property="og:updated_time" content="2017-08-10T08:54:36.425Z">
+<meta property="og:description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了 ps网上的攻略真的烂">
+<meta property="og:updated_time" content="2017-08-10T12:18:20.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo自定义主页">
-<meta name="twitter:description" content="一直就想给博客加个自己喜欢的首页  但是网上的攻略真的是不怎么好 就把自己踩坑的过程记录下来">
+<meta name="twitter:description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了 ps网上的攻略真的烂">
 
 
 
@@ -306,6 +306,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/setting/" itemprop="url" rel="index">
+                    <span itemprop="name">setting</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -330,8 +352,17 @@
       
 
       
-        <p>一直就想给博客加个自己喜欢的首页 </p>
-<p>但是网上的攻略真的是不怎么好 就把自己踩坑的过程记录下来<br><a id="more"></a><br>其实如果有服务器就不用这么麻烦了 以下操作全是在github的博客</p>
+        <p>一直就想给博客加个自己的首页<br>看到了喜欢的特效就毫不犹豫的动手了</p>
+<p>ps网上的攻略真的烂<br><a id="more"></a><br>其实如果有云服务器就不用这么麻烦了 以下操作前提是在github的博客</p>
+<p>首先有一个自己的域名 并且解析到你已经搭建好的github博客地址 (yourname.github.io)</p>
+<p>新建一个repository 这里我命名为 Home-page<br>根据提示在git下复制代码进去</p>
+<p>到域名注册的地方新增一个二级域名解析 同样指向你的github博客地址<br>然后在Home-page新建文件CNAME 把你的二级域名写进去 </p>
+<p>Home-page里到setting 再到 github page 新建一个页面 此时将指向你的二级域名 </p>
+<p>把你喜欢的首页改名为index.html放到 Home-page 里面<br>index文件里引用的css jpg等等 直接放到云上比较方便 然后把herf改成外链</p>
+<p>到这里你的自定义首页就完成了<br>我这里首页是 blog.merl1ng.cc 博客是 merl1ng.cc</p>
+<p>但是问题又来了 因为是先绑的顶级域名 首页和博客的域名交换一下比较好</p>
+<p>这里域名的解析不用改 只用到github上把两个仓库根目录的CNAME文件里的域名交换一波<br>把index.html里的超链接改一下(不改一直指向自己)<br>最后把本地hexo文件夹的source里的CNAME域名也改一下就完成了</p>
+<p>最终的效果 首页为 merl1ng.cc 博客 blog.merl1ng.cc<br>这样看起来比较舒服(≧∇≦)ﾉ 将来如果再新建别的二级域名 这个格式也比较方便 </p>
 
       
     </div>
@@ -358,6 +389,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
       
 
       
@@ -462,7 +499,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
