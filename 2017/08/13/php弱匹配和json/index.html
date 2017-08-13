@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="php,json," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="其实很早就了解过php弱类型匹配 最近在看以前的writeup时又遇到了结合ctf总结一下">
+<meta name="keywords" content="php,json">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php弱匹配和json">
+<meta property="og:url" content="http://Merl1ng.com/2017/08/13/php弱匹配和json/index.html">
+<meta property="og:site_name" content="Merl1ng">
+<meta property="og:description" content="其实很早就了解过php弱类型匹配 最近在看以前的writeup时又遇到了结合ctf总结一下">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/php%E6%9D%BE%E6%95%A3%E6%AF%94%E8%BE%83.jpg">
+<meta property="og:updated_time" content="2017-08-13T09:58:11.279Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php弱匹配和json">
+<meta name="twitter:description" content="其实很早就了解过php弱类型匹配 最近在看以前的writeup时又遇到了结合ctf总结一下">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/php%E6%9D%BE%E6%95%A3%E6%AF%94%E8%BE%83.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Merl1ng.com/2017/08/13/php弱匹配和json/"/>
+
+
+
+
+
+  <title>php弱匹配和json | Merl1ng</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Merl1ng</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/13/php弱匹配和json/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Saber">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">php弱匹配和json</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-13T00:17:39+08:00">
+                2017-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>其实很早就了解过php弱类型匹配 最近在看以前的writeup时又遇到了<br>结合ctf总结一下<br><a id="more"></a></p>
+<p>在PHP中有两种比较方式 == 和  ===</p>
+<h3 id="在使用时会出现一些问题"><a href="#在使用时会出现一些问题" class="headerlink" title="== 在使用时会出现一些问题"></a>== 在使用时会出现一些问题</h3><p>如果比较一个数字和字符串或者比较涉及到数字内容的字符串，则字符串会被转换成数值并且比较按照数值来进行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var_dump(<span class="string">"admin"</span>==0);  </div><div class="line">var_dump(<span class="string">"1admin"</span>==1); </div><div class="line">var_dump(<span class="string">"admin1"</span>==0);</div><div class="line">var_dump(<span class="string">'some string'</span> == 0);</div><div class="line">var_dump(<span class="string">'123fg456'</span>==123);</div><div class="line">var_dump(123.0 == <span class="string">'123d456'</span>);</div><div class="line">var_dump(<span class="string">"1"</span> == <span class="string">"01"</span>);</div></pre></td></tr></table></figure>
+<p>进行hash比较的时候同样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var_dump(<span class="string">"0e123456"</span>==<span class="string">"0e4456789"</span>);</div><div class="line">var_dump(<span class="string">"1"</span> == <span class="string">"1e0"</span>);</div></pre></td></tr></table></figure></p>
+<p>还存在一种十六进制余字符串进行比较运算时的问题<br>当其中的一个字符串是0x开头的时候，PHP会将此字符串解析成为十进制然后再进行比较，0x1240解析成为十进制就是123456，所以与int类型和string类型的123456比较都是相等<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var_dump(<span class="string">"0x1e240"</span>==<span class="string">"123456"</span>);</div><div class="line">var_dump(<span class="string">"0x1e240"</span>==123456);</div></pre></td></tr></table></figure></p>
+<p>这些代码的输出结果全是bool(true)  (var_dump() 能打印出类型)</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/php%E6%9D%BE%E6%95%A3%E6%AF%94%E8%BE%83.jpg" alt=""></p>
+<p>ctf中的运用</p>
+<h3 id="md5绕过"><a href="#md5绕过" class="headerlink" title="md5绕过"></a>md5绕过</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'Username'</span>]) &amp;&amp; isset(<span class="variable">$_GET</span>[<span class="string">'password'</span>])) &#123;</div><div class="line">    <span class="variable">$logined</span> = <span class="literal">true</span>;</div><div class="line">    <span class="variable">$Username</span> = <span class="variable">$_GET</span>[<span class="string">'Username'</span>];</div><div class="line">    <span class="variable">$password</span> = <span class="variable">$_GET</span>[<span class="string">'password'</span>];</div><div class="line"></div><div class="line">     <span class="keyword">if</span> (!ctype_alpha(<span class="variable">$Username</span>)) &#123;<span class="variable">$logined</span> = <span class="literal">false</span>;&#125;</div><div class="line">     <span class="keyword">if</span> (!is_numeric(<span class="variable">$password</span>) ) &#123;<span class="variable">$logined</span> = <span class="literal">false</span>;&#125;</div><div class="line">     <span class="keyword">if</span> (md5(<span class="variable">$Username</span>) != md5(<span class="variable">$password</span>)) &#123;<span class="variable">$logined</span> = <span class="literal">false</span>;&#125;</div><div class="line">     <span class="keyword">if</span> (<span class="variable">$logined</span>)&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"successful"</span>;</div><div class="line">      &#125;<span class="keyword">else</span>&#123;</div><div class="line">           <span class="built_in">echo</span> <span class="string">"login failed!"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>题目大意是要输入一个字符串和数字类型，并且他们的md5值相等，就可以成功执行下一步语<br>0e在比较的时候会将其视作为科学计数法，所以无论0e后面是什么，0的多少次方还是0。md5(‘240610708’) == md5(‘QNKCDZO’)成功绕过</p>
+<h3 id="json绕过"><a href="#json绕过" class="headerlink" title="json绕过"></a>json绕过</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="keyword">if</span> (isset(<span class="variable">$_POST</span>[<span class="string">'message'</span>])) &#123;</div><div class="line">    <span class="variable">$message</span> = json_decode(<span class="variable">$_POST</span>[<span class="string">'message'</span>]);</div><div class="line">    <span class="variable">$key</span> =<span class="string">"*********"</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="variable">$message</span>-&gt;key == <span class="variable">$key</span>) &#123;</div><div class="line">        <span class="built_in">echo</span> <span class="string">"flag"</span>;</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">echo</span> <span class="string">"fail"</span>;</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">else</span>&#123;</div><div class="line">     <span class="built_in">echo</span> <span class="string">"~~~~"</span>;</div><div class="line"> &#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>输入一个json类型的字符串，json_decode函数解密，判断数组中key的值是否等于 $key的值，但是$key的值我们不知道，但是可以利用0==”admin”这种形式绕过</p>
+<p>最终payload message={“key”:0}</p>
+<h4 id="补充-json-decode"><a href="#补充-json-decode" class="headerlink" title="补充 json_decode"></a>补充 json_decode</h4><p>json_decode<br>(PHP 5 &gt;= 5.2.0, PECL json &gt;= 1.2.0) </p>
+<p>json_decode — 对 JSON 格式的字符串进行编码 </p>
+<p>说明<br>mixed json_decode ( string $json [, bool $assoc ] )<br>接受一个 JSON 格式的字符串并且把它转换为 PHP 变量<br>参数<br>json<br>待解码的 json string 格式的字符串。<br>assoc<br>当该参数为 TRUE 时，将返回 array 而非 object </p>
+<p>例子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line"><span class="variable">$json</span> = <span class="string">'&#123;"a":1,"b":2,"c":3,"d":4,"e":5&#125;'</span>; </div><div class="line">var_dump(json_decode(<span class="variable">$json</span>)); </div><div class="line">var_dump(json_decode(<span class="variable">$json</span>, <span class="literal">true</span>)); </div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>将输出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">object(stdClass)<span class="comment">#1 (5) &#123; </span></div><div class="line">[<span class="string">"a"</span>] =&gt; int(1) </div><div class="line">[<span class="string">"b"</span>] =&gt; int(2) </div><div class="line">[<span class="string">"c"</span>] =&gt; int(3) </div><div class="line">[<span class="string">"d"</span>] =&gt; int(4) </div><div class="line">[<span class="string">"e"</span>] =&gt; int(5) </div><div class="line">&#125; </div><div class="line"></div><div class="line">array(5) &#123; </div><div class="line">[<span class="string">"a"</span>] =&gt; int(1) </div><div class="line">[<span class="string">"b"</span>] =&gt; int(2) </div><div class="line">[<span class="string">"c"</span>] =&gt; int(3) </div><div class="line">[<span class="string">"d"</span>] =&gt; int(4) </div><div class="line">[<span class="string">"e"</span>] =&gt; int(5) </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="strcmp漏洞绕过-php-v-lt-5-3"><a href="#strcmp漏洞绕过-php-v-lt-5-3" class="headerlink" title="strcmp漏洞绕过 php -v &lt;5.3"></a>strcmp漏洞绕过 php -v &lt;5.3</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">    <span class="variable">$password</span>=<span class="string">"***************"</span></div><div class="line">     <span class="keyword">if</span>(isset(<span class="variable">$_POST</span>[<span class="string">'password'</span>]))&#123;</div><div class="line">        <span class="keyword">if</span> (strcmp(<span class="variable">$_POST</span>[<span class="string">'password'</span>], <span class="variable">$password</span>) == 0) &#123;</div><div class="line">            <span class="built_in">echo</span> <span class="string">"Right!!!login success"</span>;n</div><div class="line">            <span class="built_in">exit</span>();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">echo</span> <span class="string">"Wrong password.."</span>;</div><div class="line">        &#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>strcmp是比较两个字符串，如果str1<str2 则返回<0="" 如果str1大于str2返回="">0 如果两者相等 返回0</str2></p>
+<p>我们是不知道$password的值的，题目要求strcmp判断的接受的值和$password必需相等，strcmp传入的期望类型是字符串类型，如果传入的是个数组会怎么样呢</p>
+<p>我们传入 password[]=xxx 可以绕过 是因为函数接受到了不符合的类型，将发生错误，但是还是判断其相等</p>
+<p>$array=[1,2,3];<br>var_dump(strcmp($array,’123’)); //null,在某种意义上null也就是相当于false</p>
+<p>payload: password[]=xxx</p>
+<h3 id="array-search与in-array绕过"><a href="#array-search与in-array绕过" class="headerlink" title="array_search与in_array绕过"></a>array_search与in_array绕过</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="keyword">if</span>(!is_array(<span class="variable">$_GET</span>[<span class="string">'test'</span>]))&#123;<span class="built_in">exit</span>();&#125;</div><div class="line"><span class="variable">$test</span>=<span class="variable">$_GET</span>[<span class="string">'test'</span>];</div><div class="line"><span class="keyword">for</span>(<span class="variable">$i</span>=0;<span class="variable">$i</span>&lt;count(<span class="variable">$test</span>);<span class="variable">$i</span>++)&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="variable">$test</span>[<span class="variable">$i</span>]===<span class="string">"admin"</span>)&#123;</div><div class="line">        <span class="built_in">echo</span> <span class="string">"error"</span>;</div><div class="line">        <span class="built_in">exit</span>();</div><div class="line">    &#125;</div><div class="line">    <span class="variable">$test</span>[<span class="variable">$i</span>]=intval(<span class="variable">$test</span>[<span class="variable">$i</span>]);</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(array_search(<span class="string">"admin"</span>,<span class="variable">$test</span>)===0)&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"flag"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"false"</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>先判断传入的是不是数组，然后循环遍历数组中的每个值，并且数组中的每个值不能和admin相等，并且将每个值转化为int类型，再判断传入的数组是否有admin，有则返回flag</p>
+<p>payload test[]=0可以绕过</p>
+<p>下面是官方手册对array_search的介绍</p>
+<p>mixed array_search ( mixed $needle , array $haystack [, bool $strict = false ] )<br>$needle，$haystack必需，$strict可选  函数判断$haystack中的值是存在$needle，存在则返回该值的键值 第三个参数默认为false，如果设置为true则会进行严格过滤</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$a</span>=array(0,1);</div><div class="line">var_dump(array_search(<span class="string">"admin"</span>,<span class="variable">$a</span>)); // int(0) =&gt; 返回键值0</div><div class="line">var_dump(array_search(<span class="string">"1admin"</span>,<span class="variable">$a</span>));  // int(1) ==&gt;返回键值1</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>array_search函数 类似于== 也就是$a==”admin” 当然是$a=0  当然如果第三个参数为true则就不能绕过</p>
+<p>in_array函数十分类似<br>in_array()函数的解释是bool in_array ( mixed $needle , array $haystack [, bool $strict = FALSE ] ) ,如果strict参数没有提供，那么in_array就会使用松散比较来判断$needle是否在$haystack中。当strince的值为true时，in_array()会比较needls的类型和haystack中的类型是否相同<br>区别是 返回的是bool</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$array</span>=[0,1,2,<span class="string">'3'</span>];</div><div class="line">var_dump(in_array(<span class="string">'abc'</span>, <span class="variable">$array</span>)); //<span class="literal">true</span></div><div class="line">var_dump(in_array(<span class="string">'1bc'</span>, <span class="variable">$array</span>)); //<span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>这两个函数都是判断数组里是否有某个东西 但返回值不一样</p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>如果switch是数字类型的case的判断时，switch会将其中的参数转换为int类型。如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$i</span> =<span class="string">"2abc"</span>;</div><div class="line">switch (<span class="variable">$i</span>) &#123;</div><div class="line"><span class="keyword">case</span> 0:</div><div class="line"><span class="keyword">case</span> 1:</div><div class="line"><span class="keyword">case</span> 2:</div><div class="line"> <span class="built_in">echo</span> <span class="string">"i is less than 3 but not negative"</span>;</div><div class="line"> <span class="built_in">break</span>;</div><div class="line"><span class="keyword">case</span> 3:</div><div class="line"> <span class="built_in">echo</span> <span class="string">"i is 3"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个时候程序输出的是i is less than 3 but not negative，是由于switch()函数将$i进行了类型转换，转换结果为2。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/json/" rel="tag"># json</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/10/hexo自定义主页/" rel="prev" title="hexo自定义主页">
+                hexo自定义主页 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Saber" />
+          <p class="site-author-name" itemprop="name">Saber</p>
+           
+              <p class="site-description motion-element" itemprop="description">Love life , love gakki !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Merl1ng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Merl1ng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在使用时会出现一些问题"><span class="nav-number">1.</span> <span class="nav-text">== 在使用时会出现一些问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#md5绕过"><span class="nav-number">2.</span> <span class="nav-text">md5绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json绕过"><span class="nav-number">3.</span> <span class="nav-text">json绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补充-json-decode"><span class="nav-number">3.1.</span> <span class="nav-text">补充 json_decode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strcmp漏洞绕过-php-v-lt-5-3"><span class="nav-number">4.</span> <span class="nav-text">strcmp漏洞绕过 php -v <5.3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-search与in-array绕过"><span class="nav-number">5.</span> <span class="nav-text">array_search与in_array绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch"><span class="nav-number">6.</span> <span class="nav-text">switch</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Saber</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
