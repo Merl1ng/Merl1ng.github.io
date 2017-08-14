@@ -959,7 +959,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: url("http://otvzfr1o1.bkt.clouddn.com/headphoto2.png");
+  background: url("http://otvzfr1o1.bkt.clouddn.com/headerback.png");
 }
 .header-inner {
   position: relative;
@@ -1592,7 +1592,7 @@ pre .javascript .function {
 .site-author-image {
   display: block;
   margin: 0 auto;
-  max-width: 150px;
+  max-width: 110px;
   height: auto;
   border: 2px solid #333;
   padding: 2px;
@@ -1695,7 +1695,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff0bff;
+  background: #3018ff;
 }
 .links-of-blogroll {
   font-size: 13px;
