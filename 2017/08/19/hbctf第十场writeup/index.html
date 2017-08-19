@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup5.PNG?imageView2/2/w/600/h/400/q/75">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup6.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup7.PNG?imageView2/2/w/600/h/400/q/75">
-<meta property="og:updated_time" content="2017-08-19T11:04:23.521Z">
+<meta property="og:updated_time" content="2017-08-19T11:06:38.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hbctf第十场writeup">
 <meta name="twitter:description" content="misc:flag.png题目是一张png图片">
@@ -369,7 +369,7 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup3.png?imageView2/2/w/600/h/400/q/75|imageslim" alt=""><br>如果用的是winrar直接解压会报错 需要先点击修复选项 </p>
 <p>接下来寻找flag后半部分 利用后半部分的图片<br>尝试lsb 这次明显不是<br>再次binwalk (之后的图片也叫 flag.png)<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writrip4.PNG" alt=""><br>既然lsb不行 就试试压缩包吧<br>-e 不行<br>改用 binwalk “-D=png” flag.png<br>得到flag后半部分 </p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup5.PNG?imageView2/2/w/600/h/400/q/75" alt=""></p>
-<p>####　补充一道类似的 lsb隐写题目<br>拿到一张图 lsb隐写<br>同样 save bin 但是这次显示的是 pt头<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup6.PNG" alt=""></p>
+<h4 id="补充一道类似的-lsb隐写题目"><a href="#补充一道类似的-lsb隐写题目" class="headerlink" title="补充一道类似的 lsb隐写题目"></a>补充一道类似的 lsb隐写题目</h4><p>拿到一张图 lsb隐写<br>同样 save bin 但是这次显示的是 pt头<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup6.PNG" alt=""></p>
 <p>这时我们使用一个github上一个工具来处理-cloacked-pixe</p>
 <p>然后使用命令python lsb.py extract 1.png 1.txt 123456可以得到隐写的文件1.txt。<br>ps:extract指的是提取 1.png指的是导入文件名 （用原图）<br>1.txt指的是导出文件名 123456指的是密码（此处根据题目的提示弱密码猜测）</p>
 <p>具体参考 <a href="http://blog.csdn.net/fuzz_nancheng/article/details/53384353?locationNum=4&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/fuzz_nancheng/article/details/53384353?locationNum=4&amp;fps=1</a></p>
@@ -577,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-flag-png"><span class="nav-number">1.</span> <span class="nav-text">misc:flag.png</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forensics-listen"><span class="nav-number">2.</span> <span class="nav-text">forensics:listen</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-flag-png"><span class="nav-number">1.</span> <span class="nav-text">misc:flag.png</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补充一道类似的-lsb隐写题目"><span class="nav-number">1.1.</span> <span class="nav-text">补充一道类似的 lsb隐写题目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forensics-listen"><span class="nav-number">2.</span> <span class="nav-text">forensics:listen</span></a></li></ol></div>
             
 
           </div>
