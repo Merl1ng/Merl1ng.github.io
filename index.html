@@ -266,6 +266,163 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/21/两道隐写/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/21/两道隐写/" itemprop="url">两道隐写</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-21T09:42:36+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###　misc 1</p>
+<p>题目是两张看起来一模一样的图片</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%993.jpg" alt=""><br>首先都binwalk分析了下 没有什么异常</p>
+<p>这里也不是lsb隐写 但是还是要用到神器stegsolve</p>
+<p>在 stegsolve里打开第一张图片 选择Analyse–Image Combiner 第二张图 合成两个图片</p>
+<p>点左右箭头 当切换到 SUB 时发现二维码<br><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%994.jpg" alt=""></p>
+<p>save 保存<br>(这里注意默认保存格式是bmp 需要改为png不然之后的二维码色阶过低扫不出来)</p>
+<p>附bmp和png在后续操作后的对比图</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%991.PNG" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%992.PNG" alt=""></p>
+<p>观察二维码需要反色 在ps里 ctrl+i 反色</p>
+<p>保存后再用 stegsolve 打开<br><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%995.jpg" alt=""></p>
+<p>左右箭头切换通道 可以看到三张十分清晰的二维码 </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%996.jpg" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%997.jpg" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%998.jpg" alt=""></p>
+<p>分别扫描之 </p>
+<p>结果分别为<br>DES<br>6XaMMbM7<br>U2FsdGVkX18IBEATgMBe8NqjIqp65CxRjjMxXIIUxIjBnAODJQRkSLQ/+lHBsjpv1BwwEawMo1c=</p>
+<p>找一个解密网站解密 拿到 flag </p>
+<p>这题纯用ps也能扫出来 但是操作比较繁琐 </p>
+<h3 id="misc-2"><a href="#misc-2" class="headerlink" title="misc 2"></a>misc 2</h3><p>这道题比较容易一点 只记录重点的部分</p>
+<p>在经过一些操作之后得到了一个a.gif文件 但是用winhex打开发现没有gif文件头<br>导致文件打不开<br><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%999.PNG" alt=""></p>
+<p>在winhex增加文件头 查了一下是 47 49 46 38<br>(edit -&gt; paste zero bytes -&gt;4)<br>后来才知道直接notepad++ 打开 加上GIF8就行了</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%9910.PNG" alt=""></p>
+<p>现在就可以查看图片了 但是图片播放速度过快 </p>
+<p>还是使用stegsolve </p>
+<p>analyse–frame browser 一帧一帧查看 (图片播放速度设置过慢也可以用这种方法)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/19/hbctf第十场writeup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,144 +967,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/03/php结合sql注入/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Merl1ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Merl1ng's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/03/php结合sql注入/" itemprop="url">php结合sql注入</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T19:19:17+08:00">
-                2017-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>利用sql注入不仅能够查找数据库中指定数据 获取flag<br>在渗透网站时利用sql结合php语句注入拿到shell<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/03/php结合sql注入/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -998,7 +1017,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
