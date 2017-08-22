@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/pwn2.PNG?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/1.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/2.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
-<meta property="og:updated_time" content="2017-08-01T14:56:36.873Z">
+<meta property="og:updated_time" content="2017-08-21T11:11:26.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hbctf第九场writeup">
 <meta name="twitter:description" content="第一次比赛拿到排名 有点小激动 整理一下完成这篇write up顺便膜一波出题大佬">
@@ -390,7 +390,7 @@
 <p>但是这个压缩包直接打开会发现还有一个 Thumbs.db文件<br>这个以前常见的Thumbs.db 常保存图片文件的缩略图</p>
 <p>直接解压是看不到的。。<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc2.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>下载 图片历史纪录查看器 或者 Thumbs Viewer 查看得到flag</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/misc3.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
-<p>binwalk也可以 binwalk “-D=jpeg” Thumbs.db (ls命令是可以看到db文件的)<br>（jpeg是文件格式 需要具体更改 如果是bmp图则改为bitmap）<br><img src="http://otvzfr1o1.bkt.clouddn.com/db.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>得到<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc4.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/misc5.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
+<p>binwalk也可以 binwalk “-D=jpeg” Thumbs.db (ls命令是可以看到db文件的)(jpeg要小写)<br>（jpeg是文件格式 需要具体更改 如果是bmp图则改为bitmap）<br><img src="http://otvzfr1o1.bkt.clouddn.com/db.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>得到<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc4.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/misc5.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>
 <h3 id="web-misc-crypto"><a href="#web-misc-crypto" class="headerlink" title="web/misc+crypto"></a>web/misc+crypto</h3><p>再膜一波出题大佬</p>
 <p>进入网站<br><img src="http://otvzfr1o1.bkt.clouddn.com/6.PNG?imageView2/2/w/800/h/800/q/75|imageslim" alt=""><br>一个登陆框 出题人提示不是sql或者xss</p>
 <p>弱口令猜测 admin green（就是试 有提示green）<br><img src="http://otvzfr1o1.bkt.clouddn.com/7.PNG" alt=""></p>
@@ -543,7 +543,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
