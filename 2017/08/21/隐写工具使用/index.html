@@ -103,7 +103,8 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/757225225725.jpg">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/75757775.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7575522.PNG">
-<meta property="og:updated_time" content="2017-08-22T04:37:46.925Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/outguess.PNG">
+<meta property="og:updated_time" content="2017-08-22T11:32:46.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐写工具使用">
 <meta name="twitter:description" content="音频隐写 Mp3stego把所给图片扔binwalk">
@@ -322,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/misc/" itemprop="url" rel="index">
+                    <span itemprop="name">misc</span>
                   </a>
                 </span>
 
@@ -371,6 +372,15 @@
 <h3 id="wbstego"><a href="#wbstego" class="headerlink" title="wbstego"></a>wbstego</h3><p>同样用来处理lsb 加密过的文件</p>
 <p>在使用stegsolve不行时 利用wbstego 可以分离出 (图形界面)</p>
 <p>xxx._is 文件 </p>
+<h3 id="outguess"><a href="#outguess" class="headerlink" title="outguess"></a>outguess</h3><p>题目提示guess -&gt; outguess 隐写</p>
+<p>吐槽一下 这个有点冷门 网上的介绍少之又少 </p>
+<p>找到一个用法但是只能在 linux 下</p>
+<p>在linux里cd到outguess目录下<br>sudo ./configure &amp;&amp; make &amp;&amp; make install<br>(不加sudo 会提示权限不够 即使你是root)</p>
+<p>这样就可以使用outguess命令了</p>
+<p>自己输入个outguess就会显示其用法，看到这么一条<br>-r           retrieve message from data</p>
+<p>所以只需要在angrybird.jpg所在目录下运行下面语句即可(angrybird.jpg为所给图片)</p>
+<p>outguess -r angrybird.jpg outfile.txt</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/outguess.PNG" alt=""></p>
 
       
     </div>
@@ -505,7 +515,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -571,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#音频隐写-Mp3stego"><span class="nav-number">1.</span> <span class="nav-text">音频隐写 Mp3stego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brainfuck-和-Braintools"><span class="nav-number">2.</span> <span class="nav-text">Brainfuck 和 Braintools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wbstego"><span class="nav-number">3.</span> <span class="nav-text">wbstego</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#音频隐写-Mp3stego"><span class="nav-number">1.</span> <span class="nav-text">音频隐写 Mp3stego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brainfuck-和-Braintools"><span class="nav-number">2.</span> <span class="nav-text">Brainfuck 和 Braintools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wbstego"><span class="nav-number">3.</span> <span class="nav-text">wbstego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outguess"><span class="nav-number">4.</span> <span class="nav-text">outguess</span></a></li></ol></div>
             
 
           </div>
