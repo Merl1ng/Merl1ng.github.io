@@ -266,6 +266,170 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/23/winrar密码破解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/23/winrar密码破解/" itemprop="url">winrar密码破解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-23T22:38:01+08:00">
+                2017-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/misc/" itemprop="url" rel="index">
+                    <span itemprop="name">misc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目如下</p>
+<p>Tips winrar, password crack, 65h – 71h<br>以下是一段16进制字符串</p>
+<p>526172211A0700CF907300000D0000000000000056947424965E<br>00600000004900000002E3B1696DEE413D3B1D33310020000000<br>C3EBC6C6B2E2CAD44279CCECD2D76C6F76652E74787400796AD2<br>34784B6DD58B0A427929591366006C6F7665002E7478742E2E5B<br>7A2D7B7D2E2E39423843569449C8691BEC768E16663C5F9ED737<br>AE6CDDC6178C0837F6BB88DAA8356B02A700C776FC0F1091C1D1<br>6712FC075A011D5B5DEF7E46966E8B878B80DABCDF9683C49165<br>FFB993A77CDE8600A1262200F3D3D5315DF0FC4E2B3ACAA3943F<br>142EC43D7B00400700</p>
+<p>key是解压后的txt文件的sha1值(取前8位)</p>
+<p>首先复制16进制代码到winhex 发现是 rar 文件 保存</p>
+<p>这里只能用winrar解压 (修不修复都行)</p>
+<p>用好压等等会直接报错 </p>
+<p>解压会提示输入密码 </p>
+<p>结合题目 tips 65h–71h</p>
+<p>这里指的是winhex的偏移 (十六进制) </p>
+<p>注意这里我的winhex左侧是以十进制的表示的 故对我来说</p>
+<p>需要先把64和71转化为16进制 即101–113</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/winrar1.PNG" alt=""></p>
+<p>如果左侧以十六进制计数 则不需要转换</p>
+<p>选中101–113 复制 ascii值即为压缩包密码 </p>
+<p>剩下把文件拖进 MultiHasher 里就能看到 sha1值</p>
+<p>这里 输入65h–71h解压成功据说是破解了winrar的加密</p>
+<p>但是也可能是巧合 真实性还有待考证</p>
+<p><em>以下内容最初来自看雪</em></p>
+<p>实例1：</p>
+<p>第一步：用winhex将下面数据生成rar格式的文件。</p>
+<p>526172211A0700CF907300000D0000000000000056947424965E00600000004900000002E3B1696DEE413D3B1D33310020000000C3EBC6C6B2E2CAD44279CCECD2D76C6F76652E74787400796AD234784B6DD58B0A427929591366006C6F7665002E7478742E2E5B7A2D7B7D2E2E39423843569449C8691BEC768E16663C5F9ED737AE6CDDC6178C0837F6BB88DAA8356B02A700C776FC0F1091C1D16712FC075A011D5B5DEF7E46966E8B878B80DABCDF9683C49165FFB993A77CDE8600A1262200F3D3D5315DF0FC4E2B3ACAA3943F142EC43D7B00400700</p>
+<p>第二步：在winhex中取65h-71h一段数据ctrl+c后粘贴到密码输入框点确定完成秒破。（实例一）</p>
+<p>实例2：</p>
+<p>526172211A0700CE997380000D00000000000000395B7A2D7B7D2E2ED417190FDC99688612D2B31773CD93FE082F30D3229C8F77F51B936AD003E65AADF605471FA4ED0E3655748BCC8F5FA5BFDE4651275A2AA306CB7999C579C249C5AF56A0D3744BD7A695586FEF9FB1AB146CA80DED886936DE3AB003EC44215BA8497E4C1A974D45810C8F1277726881548FBAB842BCF9E17B815C116260ADFEB9151DF97C6F93A673629691B767F883950018B7DE7C0D86FFF04A10905E32BD1DB015B709A298DB8D2C42DF23A131F2AD999AA3BB2316F031C5115c179a2f877a41393761683939</p>
+<p>选中14h-1bh一段数据ctrl+c后粘贴到密码输入框中后面再加上dch-e3h处的ASCII字符，确定后即秒破了</p>
+<p>原理分析：</p>
+<p>RAR加密的原理，是将UNICODE格式的密码，与随机生成的一个8字节的SALT连在一起，根据它生成AES算法的密钥来进行加密。<br>而加密后的RAR中，除了加密后的原压缩内容之外，文件头结构还保存了这个SALT值用于解密。<br>原则上SALT的生成过程跟用户输入时的密码一点关系都没有，因此它本来不保存关于密码的显式信息，但是我们可以对WINRAR程序进行patch，使SALT跟密码发生直接联系，从而使这个SALT成为潜在的“后门”。<br>由于SALT只有8个字节，所以对于8个字节以内的密码，可以直接保存在SALT中（或者简单的XOR一下或其他，反正可以用很容易的可逆的算法处理）。<br>那么密码超出8字节怎么办？这里分为两种方式处理，分别是实例一和实例二。</p>
+<p>实例一应该是利用了把文件头的HEAD_SIZE字段改大，这样文件头多出来的地方（WINRAR读取文件头时是跳过这部分的）就可以保存密码8字节以后的内容。实例一中的65h-6ch内容就是SALT，而6dh-71h就属于把HEAD_SIZE改大之后多出来的部分了。</p>
+<p>但是实例一这种方法应用的前提是文件头没加密。如果文件头被加密（这时MAIN_HEAD的HEAD_FLAGS包含0x0080），那么 MAIN_HEAD后面紧跟着的就是SALT（实例二的14h-1bh内容），SALT后面则是被加密的所有内容（包括文件头）。那么怎么把密码8字节以 后部分搞进去？实例二的做法，我猜是因为加密过程是16字节为一组，加密后的内容也应该是16字节的倍数，所以解 密时也以16字节为单位读取，当文件内容最后跟着一段小于16字节的数据时，WINRAR解密时直接无视这段数据。于是就可以把密码的后半部分放在文件最 后（但是不能超过16字节），这样用这种方法可以保存不超过23字节的密码。</p>
+<p><a href="http://blog.renren.com/share/293299873/3434623501/0" target="_blank" rel="external">http://blog.renren.com/share/293299873/3434623501/0</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/21/隐写工具使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,149 +974,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/10/hexo自定义主页/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Merl1ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Merl1ng's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/10/hexo自定义主页/" itemprop="url">hexo自定义主页</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-10T16:34:10+08:00">
-                2017-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/setting/" itemprop="url" rel="index">
-                    <span itemprop="name">setting</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一直就想给博客加个自己的首页<br>看到了喜欢的特效就毫不犹豫的动手了</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/10/hexo自定义主页/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -998,7 +1024,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
