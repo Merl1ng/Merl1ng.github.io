@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="题目如下 Tips winrar, password crack, 65h – 71h以下是一段16进制字符串 526172211A0700CF907300000D0000000000000056947424965E00600000004900000002E3B1696DEE413D3B1D33310020000000C3EBC6C6B2E2CAD44279CCECD2D76C6F76652E74">
+<meta name="description" content="题目如下 Tips winrar, password crack, 65h – 71h以下是一段16进制字符串">
 <meta name="keywords" content="crypto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="winrar密码破解">
 <meta property="og:url" content="http://Merl1ng.com/2017/08/23/winrar密码破解/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="题目如下 Tips winrar, password crack, 65h – 71h以下是一段16进制字符串 526172211A0700CF907300000D0000000000000056947424965E00600000004900000002E3B1696DEE413D3B1D33310020000000C3EBC6C6B2E2CAD44279CCECD2D76C6F76652E74">
+<meta property="og:description" content="题目如下 Tips winrar, password crack, 65h – 71h以下是一段16进制字符串">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/winrar1.PNG">
-<meta property="og:updated_time" content="2017-08-23T15:06:47.036Z">
+<meta property="og:updated_time" content="2017-08-24T10:39:30.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="winrar密码破解">
-<meta name="twitter:description" content="题目如下 Tips winrar, password crack, 65h – 71h以下是一段16进制字符串 526172211A0700CF907300000D0000000000000056947424965E00600000004900000002E3B1696DEE413D3B1D33310020000000C3EBC6C6B2E2CAD44279CCECD2D76C6F76652E74">
+<meta name="twitter:description" content="题目如下 Tips winrar, password crack, 65h – 71h以下是一段16进制字符串">
 <meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/winrar1.PNG">
 
 
@@ -355,7 +355,7 @@
 
       
         <p>题目如下</p>
-<p>Tips winrar, password crack, 65h – 71h<br>以下是一段16进制字符串</p>
+<p>Tips winrar, password crack, 65h – 71h<br>以下是一段16进制字符串<br><a id="more"></a></p>
 <p>526172211A0700CF907300000D0000000000000056947424965E<br>00600000004900000002E3B1696DEE413D3B1D33310020000000<br>C3EBC6C6B2E2CAD44279CCECD2D76C6F76652E74787400796AD2<br>34784B6DD58B0A427929591366006C6F7665002E7478742E2E5B<br>7A2D7B7D2E2E39423843569449C8691BEC768E16663C5F9ED737<br>AE6CDDC6178C0837F6BB88DAA8356B02A700C776FC0F1091C1D1<br>6712FC075A011D5B5DEF7E46966E8B878B80DABCDF9683C49165<br>FFB993A77CDE8600A1262200F3D3D5315DF0FC4E2B3ACAA3943F<br>142EC43D7B00400700</p>
 <p>key是解压后的txt文件的sha1值(取前8位)</p>
 <p>首先复制16进制代码到winhex 发现是 rar 文件 保存</p>
@@ -383,8 +383,8 @@
 <p>原理分析：</p>
 <p>RAR加密的原理，是将UNICODE格式的密码，与随机生成的一个8字节的SALT连在一起，根据它生成AES算法的密钥来进行加密。<br>而加密后的RAR中，除了加密后的原压缩内容之外，文件头结构还保存了这个SALT值用于解密。<br>原则上SALT的生成过程跟用户输入时的密码一点关系都没有，因此它本来不保存关于密码的显式信息，但是我们可以对WINRAR程序进行patch，使SALT跟密码发生直接联系，从而使这个SALT成为潜在的“后门”。<br>由于SALT只有8个字节，所以对于8个字节以内的密码，可以直接保存在SALT中（或者简单的XOR一下或其他，反正可以用很容易的可逆的算法处理）。<br>那么密码超出8字节怎么办？这里分为两种方式处理，分别是实例一和实例二。</p>
 <p>实例一应该是利用了把文件头的HEAD_SIZE字段改大，这样文件头多出来的地方（WINRAR读取文件头时是跳过这部分的）就可以保存密码8字节以后的内容。实例一中的65h-6ch内容就是SALT，而6dh-71h就属于把HEAD_SIZE改大之后多出来的部分了。</p>
-<p>但是实例一这种方法应用的前提是文件头没加密。如果文件头被加密（这时MAIN_HEAD的HEAD_FLAGS包含0x0080），那么 MAIN_HEAD后面紧跟着的就是SALT（实例二的14h-1bh内容），SALT后面则是被加密的所有内容（包括文件头）。那么怎么把密码8字节以 后部分搞进去？实例二的做法，我猜是因为加密过程是16字节为一组，加密后的内容也应该是16字节的倍数，所以解 密时也以16字节为单位读取，当文件内容最后跟着一段小于16字节的数据时，WINRAR解密时直接无视这段数据。于是就可以把密码的后半部分放在文件最 后（但是不能超过16字节），这样用这种方法可以保存不超过23字节的密码。</p>
-<p><a href="http://blog.renren.com/share/293299873/3434623501/0" target="_blank" rel="external">http://blog.renren.com/share/293299873/3434623501/0</a></p>
+<p>但是实例一这种方法应用的前提是文件头没加密。如果文件头被加密（这时MAIN_HEAD的HEAD_FLAGS包含0x0080），那么 MAIN_HEAD后面紧跟着的就是SALT（实例二的14h-1bh内容），SALT后面则是被加密的所有内容（包括文件头）。那么怎么把密码8字节以 后部分搞进去？实例二的做法，我猜是因为加密过程是16字节为一组，加密后的内容也应该是16字节的倍数，所以解密时也以16字节为单位读取，当文件内容最后跟着一段小于16字节的数据时，WINRAR解密时直接无视这段数据。于是就可以把密码的后半部分放在文件最 后（但是不能超过16字节），这样用这种方法可以保存不超过23字节的密码。</p>
+<p>原文是好几年前的找不到了 贴一篇转载的<br><a href="http://blog.renren.com/share/293299873/3434623501/0" target="_blank" rel="external">http://blog.renren.com/share/293299873/3434623501/0</a></p>
 
       
     </div>

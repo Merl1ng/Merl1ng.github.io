@@ -104,7 +104,8 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/75757775.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7575522.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/outguess.PNG">
-<meta property="og:updated_time" content="2017-08-22T11:32:46.343Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/fireworks.PNG">
+<meta property="og:updated_time" content="2017-08-24T10:21:32.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐写工具使用">
 <meta name="twitter:description" content="音频隐写 Mp3stego把所给图片扔binwalk">
@@ -381,6 +382,17 @@
 <p>所以只需要在angrybird.jpg所在目录下运行下面语句即可(angrybird.jpg为所给图片)</p>
 <p>outguess -r angrybird.jpg outfile.txt</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/outguess.PNG" alt=""></p>
+<p>###　Steganography Software F5</p>
+<p>题目提示刷新　即F5</p>
+<p>git 下输入</p>
+<p>git clone <a href="https://github.com/matthewgao/F5-steganography" target="_blank" rel="external">https://github.com/matthewgao/F5-steganography</a><br>cd F5-steganography<br>java Extract ../123456.jpg -p 123456 (123456.jpg为所给图片)<br>后会生成output.txt文件，里面就有flag了</p>
+<h3 id="tweakpng-Adobe-Fireworks-CS5"><a href="#tweakpng-Adobe-Fireworks-CS5" class="headerlink" title="tweakpng + Adobe Fireworks CS5"></a>tweakpng + Adobe Fireworks CS5</h3><p>题目要对png文件格式有所了解 </p>
+<p>png格式主要由六大块组成：文件头、IHDR块、PLTE块、tRNS块、IDAT块、文件尾<br>文件头一般是 8950 4E47 0D0A 1A0A<br>而本题提示中的IHDR块是png中用来描述图片的基本信息，格式是4字节Chunk_Length、4字节Chunk_Type、13字节Chunk_Data、4字节Chunk_CRC</p>
+<p>Chunk_Length：内容一般是13，决定了Chunk_Data的大小<br>Chunk_Type：内容为49484452，代表”IHDR”<br>Chunk_Data：4字节Width,4字节Hegiht,1字节BitDepth,1字节ColorType,1字节CompressionMethod,1字节FilterMethod,1字节InterlaceMethod<br>Chunk_CRC：把Chunk_Type和Chunk_Data合起来进行CRC校验</p>
+<p>把图片扔到tweakpng里 会提示crc 错误 并且告诉你正确的 crc 这时进入winhex改掉就行了</p>
+<p>但是到这里还是看不到flag 如果放到ps里会提示 </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/fireworks.PNG" alt=""></p>
+<p>这就要下载 Adobe Fireworks CS5<br>打开图片 就可以找到flag</p>
 
       
     </div>
@@ -585,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#音频隐写-Mp3stego"><span class="nav-number">1.</span> <span class="nav-text">音频隐写 Mp3stego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brainfuck-和-Braintools"><span class="nav-number">2.</span> <span class="nav-text">Brainfuck 和 Braintools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wbstego"><span class="nav-number">3.</span> <span class="nav-text">wbstego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outguess"><span class="nav-number">4.</span> <span class="nav-text">outguess</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#音频隐写-Mp3stego"><span class="nav-number">1.</span> <span class="nav-text">音频隐写 Mp3stego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brainfuck-和-Braintools"><span class="nav-number">2.</span> <span class="nav-text">Brainfuck 和 Braintools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wbstego"><span class="nav-number">3.</span> <span class="nav-text">wbstego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outguess"><span class="nav-number">4.</span> <span class="nav-text">outguess</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tweakpng-Adobe-Fireworks-CS5"><span class="nav-number">5.</span> <span class="nav-text">tweakpng + Adobe Fireworks CS5</span></a></li></ol></div>
             
 
           </div>

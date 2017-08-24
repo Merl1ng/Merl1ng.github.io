@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径 后面发现其实很多地方都需要配置环境变量 这可以让对工具的使用更加方便不用再到每个工具的文件上 或者逐一cd 使用命令行而是可以在任何地方直接输入命令调用">
+<meta name="description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="环境变量">
-<meta property="og:url" content="http://Merl1ng.com/2017/04/30/环境变量/index.html">
+<meta property="og:title" content="环境变量和误删后的修复">
+<meta property="og:url" content="http://Merl1ng.com/2017/04/30/环境变量和误删后的修复/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径 后面发现其实很多地方都需要配置环境变量 这可以让对工具的使用更加方便不用再到每个工具的文件上 或者逐一cd 使用命令行而是可以在任何地方直接输入命令调用">
-<meta property="og:updated_time" content="2017-08-02T16:08:32.454Z">
+<meta property="og:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
+<meta property="og:updated_time" content="2017-08-24T10:38:40.048Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="环境变量">
-<meta name="twitter:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径 后面发现其实很多地方都需要配置环境变量 这可以让对工具的使用更加方便不用再到每个工具的文件上 或者逐一cd 使用命令行而是可以在任何地方直接输入命令调用">
+<meta name="twitter:title" content="环境变量和误删后的修复">
+<meta name="twitter:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/04/30/环境变量/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/04/30/环境变量和误删后的修复/"/>
 
 
 
 
 
-  <title>环境变量 | Merl1ng's blog</title>
+  <title>环境变量和误删后的修复 | Merl1ng's blog</title>
   
 
 
@@ -266,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/04/30/环境变量/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/04/30/环境变量和误删后的修复/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">环境变量</h1>
+          <h1 class="post-title" itemprop="name headline">环境变量和误删后的修复</h1>
         
 
         <div class="post-meta">
@@ -352,8 +352,21 @@
       
 
       
-        <p>在windows上配置cmder和binwalk时遇到<br>查看高级系统设置<br>环境变量 系统变量<br>选择Path后新建路径</p>
+        <p>在windows上配置cmder和binwalk时遇到<br>查看高级系统设置<br>环境变量 系统变量<br>选择Path后新建路径<br><a id="more"></a></p>
 <p>后面发现其实很多地方都需要配置环境变量 这可以让对工具的使用更加方便<br>不用再到每个工具的文件上 或者逐一cd 使用命令行<br>而是可以在任何地方直接输入命令调用 </p>
+<p>有次在增加环境变量是 点完确定 杀软提示给不给过 手贱点了 否</p>
+<p>结果狗日的杀软把我的环境变量都给删了 orz..</p>
+<p>导致一进系统设置有关的地方全部弹窗 %windir% \system32\systempropertiescomputername.exe</p>
+<p>先回去环境变量设置那里都不行</p>
+<p>查了一下可以利用注册表增加环境变量 又试了试结果注册表也打不开 ..</p>
+<p>当时差点重装了还在最后找到了方法</p>
+<p>win10在开机的欢迎页面摁住shift再点击重启 (可能要两回)</p>
+<p>会看到提示页面 点击疑难解决 高级 重启</p>
+<p>重启后 F4 进入安全模式 </p>
+<p>试了试cmd set 环境变量还是不行</p>
+<p>无意间找到了 C:\Windows\System32 下的 SystemPropertiesAdvanced 文件</p>
+<p>打开 成功添加 </p>
+<p>path 的数据可以再杀软的拦截日志里找回</p>
 
       
     </div>
