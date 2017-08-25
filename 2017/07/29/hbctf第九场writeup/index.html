@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/pwn2.PNG?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/1.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/2.jpg?imageView2/2/w/600/h/600/q/75|imageslim">
-<meta property="og:updated_time" content="2017-08-25T09:52:52.398Z">
+<meta property="og:updated_time" content="2017-08-25T12:32:40.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hbctf第九场writeup">
 <meta name="twitter:description" content="第一次比赛拿到排名 有点小激动 整理一下完成这篇write up顺便膜一波出题大佬">
@@ -386,7 +386,7 @@
 <p>F12看看代码里没什么奇怪的东西 控制台里也没有<br>(就有一行这个比较在意 查了一下功能是禁止浏览器后退 javascript:window.history.forward(1);)<br><img src="http://otvzfr1o1.bkt.clouddn.com/3.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""><br>响应里也没有奇奇怪怪的地方 这题也无法提交数据<br><img src="http://otvzfr1o1.bkt.clouddn.com/2.PNG?imageView2/2/w/500/h/500/q/75|imageslim" alt=""><br>把post改成get试了试也没什么用</p>
 <p>猜测只能Burp抓包分析 又因为是签到题<br><img src="http://otvzfr1o1.bkt.clouddn.com/11.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>直接 forward 就看到flag<br><img src="http://otvzfr1o1.bkt.clouddn.com/yeah22.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>放到Repeater里 go 也可以（不关拦截）</p>
 <p>这题其实点击按钮就有flag但是浏览器自动跳转到下一个页面看不到 所以要抓包</p>
-<h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><p>下载文件 文件名为 PwdIs4 解压密码为4<br>（一开始没看出密码提示winhex打开试了下伪加密）<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc1.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>解压出来只有个0.jpg全黑 文件名为白<br>ste试试没啥用 主要关注点都在 这个0.jpg上</p>
+<h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><p>下载文件 文件名为 PwdIs4 解压密码为4<br>（一开始没看出密码提示winhex打开试了下伪加密  ..后来才知道zip才有伪加密）<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc1.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>解压出来只有个0.jpg全黑 文件名为白<br>ste试试没啥用 主要关注点都在 这个0.jpg上</p>
 <p>但是这个压缩包直接打开会发现还有一个 Thumbs.db文件<br>这个以前常见的Thumbs.db 常保存图片文件的缩略图</p>
 <p>直接解压是看不到的。。<br><img src="http://otvzfr1o1.bkt.clouddn.com/misc2.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""><br>下载 图片历史纪录查看器 或者 Thumbs Viewer 查看得到flag</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/misc3.PNG?imageView2/2/w/600/h/600/q/75|imageslim" alt=""></p>

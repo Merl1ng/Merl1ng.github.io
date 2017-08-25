@@ -110,7 +110,10 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%998.jpg">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%999.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/%E9%9A%90%E5%86%9910.PNG">
-<meta property="og:updated_time" content="2017-08-24T12:24:21.976Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dabaib.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dabai1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dabai2.PNG">
+<meta property="og:updated_time" content="2017-08-25T14:08:16.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几道隐写">
 <meta name="twitter:description" content="misc 1题目是两张看起来一模一样的图片 首先都binwalk分析了下 没有什么异常">
@@ -387,6 +390,12 @@
 <p>analyse–frame browser 一帧一帧查看 (图片播放速度设置过慢也可以用这种方法)</p>
 <h3 id="misc-3"><a href="#misc-3" class="headerlink" title="misc 3"></a>misc 3</h3><p>当发现所给图片感觉被强行截断 没有显示完全</p>
 <p>考虑是否被修改了图片分辨率即尺寸被缩小了 导致没有完全显示</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/dabaib.PNG" alt=""></p>
+<p>明显感觉到该图片下面还有东西 </p>
+<p>放到winhex</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/dabai1.PNG" alt=""><br>图中红框内的分别代表图片的宽度和高度 </p>
+<p>将高度改大一点 比如改为05 00</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/dabai2.PNG" alt=""><br>看到了 flag</p>
 
       
     </div>
