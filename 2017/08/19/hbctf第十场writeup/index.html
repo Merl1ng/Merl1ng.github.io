@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup5.PNG?imageView2/2/w/600/h/400/q/75">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup6.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup7.PNG?imageView2/2/w/600/h/400/q/75">
-<meta property="og:updated_time" content="2017-08-25T03:25:27.831Z">
+<meta property="og:updated_time" content="2017-08-25T04:39:36.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hbctf第十场writeup">
 <meta name="twitter:description" content="misc:flag.png给了一张png图">
@@ -363,8 +363,10 @@
       
         <h3 id="misc-flag-png"><a href="#misc-flag-png" class="headerlink" title="misc:flag.png"></a>misc:flag.png</h3><p>给了一张png图<br><a id="more"></a><br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup0.png?imageView2/2/w/600/h/400/q/75|imageslim" alt=""></p>
 <p>winhex看看 png 头 </p>
-<p>再用 binwalk 也没看出来什么 虽然有zlib 但是由于png图片主体是由zlib压缩的 并不能直接确定<br>(大多数情况下zlib都没啥用)</p>
-<p>猜测 lsb隐写 放到stegslove 选择 analyse    Data extract<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup1.PNG" alt=""><br>按照图示选择save bin 再次放到winhex 显示 pk头<br><img src="http://otvzfr1o1.bkt.clouddn.com/10wrieup2.PNG" alt=""></p>
+<p>再用 binwalk 也没看出来什么 虽然有zlib 但是由于png图片主体是由zlib压缩的 并不能直接确定<br>(大多数情况下先忽略zlib)</p>
+<p><em>当然这玩意也偶尔有用… 这时用脚本解压</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">from PIL import Image</div><div class="line">from zlib import *</div><div class="line"> </div><div class="line">data = open(<span class="string">'xxx.PNG'</span>,<span class="string">'rb'</span>).read()[0x15AFFB:]</div><div class="line">data = decompress(data)</div><div class="line"> </div><div class="line">img = Image.new(<span class="string">'1'</span>, (25,25))</div><div class="line">d = img.load()</div><div class="line"> </div><div class="line"><span class="keyword">for</span> n,i <span class="keyword">in</span> enumerate(data):</div><div class="line">d[(n%25,n/25)] = int(i)*255</div><div class="line"> </div><div class="line">f = open(<span class="string">'1.png'</span>,<span class="string">'wb'</span>)</div><div class="line">img.save(f)</div></pre></td></tr></table></figure>
+<p>回到此题<br>猜测 lsb隐写 放到stegslove 选择 analyse    Data extract<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup1.PNG" alt=""><br>按照图示选择save bin 再次放到winhex 显示 pk头<br><img src="http://otvzfr1o1.bkt.clouddn.com/10wrieup2.PNG" alt=""></p>
 <p>改后缀好压可以直接解压 得到 flag的后半部分</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup3.png?imageView2/2/w/600/h/400/q/75|imageslim" alt=""><br>如果用的是winrar直接解压会报错 需要先点击修复选项 </p>
 <p>接下来寻找flag前半部分 利用后半部分的图片<br>尝试lsb 这次明显不是<br>再次binwalk (lsb得到的图片也叫 flag.png)<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writrip4.PNG" alt=""><br>发现其实有两个png图片<br>用 binwalk “-D=png” flag.png<br>得到flag前半部分 </p>
