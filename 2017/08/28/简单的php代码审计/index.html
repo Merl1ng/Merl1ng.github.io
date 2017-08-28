@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="php," />
 
 
 
@@ -93,15 +93,17 @@
 
 
 
-<meta name="description" content="Love life , love gakki !">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Merl1ng's blog">
-<meta property="og:url" content="http://Merl1ng.com/categories/writeup/index.html">
+<meta name="description" content="这题主要是双url编码绕过">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单的php代码审计">
+<meta property="og:url" content="http://Merl1ng.com/2017/08/28/简单的php代码审计/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="Love life , love gakki !">
+<meta property="og:description" content="这题主要是双url编码绕过">
+<meta property="og:updated_time" content="2017-08-28T14:28:20.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Merl1ng's blog">
-<meta name="twitter:description" content="Love life , love gakki !">
+<meta name="twitter:title" content="简单的php代码审计">
+<meta name="twitter:description" content="这题主要是双url编码绕过">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/categories/writeup/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/08/28/简单的php代码审计/"/>
 
 
 
 
 
-  <title>Category: writeup | Merl1ng's blog</title>
+  <title>简单的php代码审计 | Merl1ng's blog</title>
   
 
 
@@ -160,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,73 +256,195 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>writeup<small>Category</small>
-      </h1>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/19/hbctf第十场writeup/" itemprop="url">
-              
-                <span itemprop="name">hbctf第十场writeup</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-19T17:49:10+08:00"
-              content="2017-08-19" >
-          08-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/29/hbctf第九场writeup/" itemprop="url">
-              
-                <span itemprop="name">hbctf第九场writeup</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-29T21:25:26+08:00"
-              content="2017-07-29" >
-          07-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/28/简单的php代码审计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">简单的php代码审计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-28T22:00:48+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这题主要是双url编码绕过</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="keyword">if</span>(eregi(<span class="string">"hackerDJ"</span>,<span class="variable">$_GET</span>[id])) &#123;</div><div class="line">  <span class="built_in">echo</span>(<span class="string">"&lt;p&gt;not allowed!&lt;/p&gt;"</span>);</div><div class="line">  <span class="built_in">exit</span>();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$_GET</span>[id] = urldecode(<span class="variable">$_GET</span>[id]);</div><div class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[id] == <span class="string">"hackerDJ"</span>)</div><div class="line">&#123;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;Access granted!&lt;/p&gt;"</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;flag: *****************&#125; &lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;br&gt;&lt;br&gt;</div><div class="line">Can you authenticate to this website?</div></pre></td></tr></table></figure>
+<p>主要涉及两个php函数 eregi 和 urldecode</p>
+<p>查了一下 eregi()函数在一个字符串搜索指定的模式的字符串。搜索不区分大小写</p>
+<p>urlencode()函数原理就是首先把中文字符转换为十六进制，然后在每个字符前面加一个标识符%</p>
+<p>urldecode()函数与urlencode()函数原理相反，用于解码已编码的 URL 字符串，其原理就是把十六进制字符串转换为中文字符</p>
+<p>所以这段php代码的大意就是以GET方式获取id 在id里查找有没有hackerDJ 有则不通过</p>
+<p>并且要求urldecode解码后的id为hackerDJ</p>
+<p>这样直接看上去是矛盾的 但是可以用URL编码绕过</p>
+<p>hackerDJ转16进制后为 6861636b6572444a 加上%为 %68%61%63%6b%65%72%44%4a</p>
+<p>但是这样 在题目url后输入?id=%68%61%63%6b%65%72%44%4a 会被浏览器直接解码</p>
+<p>相当于还是输入了 ?id=hackerDJ 这显然是不行的</p>
+<p>又了解到%的16进制但是25 所以我每个前面加上了 %25试了试 结果还是不行</p>
+<p>当我输入?id=%25%68%25%61%25%63%25%6b%25%65%25%72%25%44%25%4a</p>
+<p>浏览器的回显是 %25h%25a%25c%25k%25e%25r%25D%25J</p>
+<p>这里比较奇怪 暂时还没有懂</p>
+<p>于是再尝试另外一种方式 看到了一个大佬发的这个</p>
+<p><em>双倍url编码</em></p>
+<p><em>就是说想打/，一般编码一次是%5c</em></p>
+<p><em>但攻击者怕这个会被认出来，所以用二次编码，把%本身编码成%25。再和后边拼成%255c。</em></p>
+<p><em>如果URL解码器有缺陷，只不断重复“从前边开始解析”这个步骤，就会把这个先变回%5c，再变成/，出现循环解析。当然这是错误的。正确的只应该解一步变成%5c</em></p>
+<p><em>抵抗父级目录回溯攻击，绝对不能依赖字符过滤，你过滤不完的。必须用“鸭子编程法”，先不论如何构造完整路径，再检验是否在有权的操作目录下</em></p>
+<p><em>要正确进行URL解码，谨记使用PHP等语言提供的内部函数，切勿重复发明轮子</em></p>
+<p>想到了 ?id=%2568%2561%2563%256b%2565%2572%2544%254a</p>
+<p>成功拿到flag</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/25/密码学之snake/" rel="prev" title="密码学之snake">
+                密码学之snake <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -328,6 +452,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -542,10 +670,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
