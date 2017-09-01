@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="其实很早就了解过php弱类型匹配 最近在看以前的writeup时又遇到了结合ctf总结一下">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/php%E6%9D%BE%E6%95%A3%E6%AF%94%E8%BE%83.jpg">
-<meta property="og:updated_time" content="2017-08-13T09:58:11.279Z">
+<meta property="og:updated_time" content="2017-09-01T05:11:37.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php弱匹配和json">
 <meta name="twitter:description" content="其实很早就了解过php弱类型匹配 最近在看以前的writeup时又遇到了结合ctf总结一下">
@@ -392,6 +392,9 @@
 <h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>如果switch是数字类型的case的判断时，switch会将其中的参数转换为int类型。如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$i</span> =<span class="string">"2abc"</span>;</div><div class="line">switch (<span class="variable">$i</span>) &#123;</div><div class="line"><span class="keyword">case</span> 0:</div><div class="line"><span class="keyword">case</span> 1:</div><div class="line"><span class="keyword">case</span> 2:</div><div class="line"> <span class="built_in">echo</span> <span class="string">"i is less than 3 but not negative"</span>;</div><div class="line"> <span class="built_in">break</span>;</div><div class="line"><span class="keyword">case</span> 3:</div><div class="line"> <span class="built_in">echo</span> <span class="string">"i is 3"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这个时候程序输出的是i is less than 3 but not negative，是由于switch()函数将$i进行了类型转换，转换结果为2。</p>
+<p>当没有break时 将会导致进一步利用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">error_reporting(0);</div><div class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'which'</span>]))</div><div class="line">&#123;</div><div class="line">    <span class="variable">$which</span> = <span class="variable">$_GET</span>[<span class="string">'which'</span>];</div><div class="line">    switch (<span class="variable">$which</span>)</div><div class="line">    &#123;</div><div class="line">    <span class="keyword">case</span> 0:</div><div class="line">    <span class="keyword">case</span> 1:</div><div class="line">    <span class="keyword">case</span> 2:</div><div class="line">        require_once <span class="variable">$which</span>.<span class="string">'.php'</span>;</div><div class="line">         <span class="built_in">echo</span> <span class="variable">$flag</span>;</div><div class="line">        <span class="built_in">break</span>;</div><div class="line">    default:</div><div class="line">        <span class="built_in">echo</span> GWF_HTML::error(<span class="string">'PHP-0817'</span>, <span class="string">'Hacker NoNoNo!'</span>, <span class="literal">false</span>);</div><div class="line">        <span class="built_in">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>这个代码是关于switch的小bug，比如让我们包含当前目录中的flag.php，给which为flag，这里会发现在case 0和case 1的时候，没有break，按照常规思维，应该是0比较不成功，进入比较1，然后比较2，再然后进入default，但是事实却不是这样，事实上，在 case 0的时候，字符串和0比较是相等的，进入了case 0的方法体，但是却没有break，这个时候，默认判断已经比较成功了，而如果匹配成功之后，会继续执行后面的语句，这个时候，是不会再继续进行任何判断的。也就是说，我们which传入flag的时候，case 0比较进入了方法体，但是没有break，默认已经匹配成功，往下执行不再判断，进入2的时候，执行了require_once flag.php</p>
 
       
     </div>
@@ -521,7 +524,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
