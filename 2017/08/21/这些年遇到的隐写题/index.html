@@ -113,13 +113,15 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dabaib.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dabai1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dabai2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/enxinyinxie0.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/enxinyinxie2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/backdoor1.png">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/backdoor2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/backdoor3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/backdoor4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/backdoor5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/Backdoor0.gif">
-<meta property="og:updated_time" content="2017-08-31T02:28:33.660Z">
+<meta property="og:updated_time" content="2017-09-03T03:27:55.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这些年遇到的隐写题">
 <meta name="twitter:description" content="misc 1题目是两张看起来一模一样的图片 首先都binwalk分析了下 没有什么异常">
@@ -394,7 +396,7 @@
 <p>现在就可以查看图片了 但是图片播放速度过快 </p>
 <p>还是使用stegsolve </p>
 <p>analyse–frame browser 一帧一帧查看 (图片播放速度设置过慢也可以用这种方法)</p>
-<h3 id="misc-3"><a href="#misc-3" class="headerlink" title="misc 3"></a>misc 3</h3><p>当发现所给图片感觉被强行截断 没有显示完全</p>
+<h3 id="misc-3"><a href="#misc-3" class="headerlink" title="misc 3"></a>misc 3</h3><p>当发现所给图片感觉被强行截断 没有显示完全 (感觉显示完全其他方法不行也试一试..别问我为啥)</p>
 <p>考虑是否被修改了图片分辨率即尺寸被缩小了 导致没有完全显示</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/dabaib.PNG" alt=""></p>
 <p>明显感觉到该图片下面还有东西 </p>
@@ -402,6 +404,12 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/dabai1.PNG" alt=""><br>图中红框内的分别代表图片的宽度和高度 </p>
 <p>将高度改大一点 比如改为05 00</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/dabai2.PNG" alt=""><br>看到了 flag</p>
+<p>这题还有一点 如果改完大小也没有 可能是因为与背景色重合了</p>
+<p>win10默认图片打开方式背景色是黑的 如果flag也是黑的就看不到</p>
+<p>所以还要试一试用画图打开 这时背景色是白色的 就能看到flag</p>
+<p>比如这道题…</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/enxinyinxie0.PNG" alt=""><br>漆黑一片</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/enxinyinxie2.PNG" alt=""></p>
 <h3 id="misc-4"><a href="#misc-4" class="headerlink" title="misc 4"></a>misc 4</h3><p>挺复杂的一道题目 也使我对stegsolov的用法也有了更加深入的了解</p>
 <p>原图是这个样子的</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/backdoor1.png" alt=""></p>
