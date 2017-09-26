@@ -123,7 +123,12 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/Backdoor0.gif">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lsbcolumn.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lsbcolumn2.PNG">
-<meta property="og:updated_time" content="2017-09-20T04:15:16.124Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/nowinhex0.jpg?imageView2/2/w/500/h/500/q/75|imageslim">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/nowinhex1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/noweinhex4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/nowinhex3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/nowinhex2.PNG">
+<meta property="og:updated_time" content="2017-09-26T15:24:35.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这些年遇到的隐写题">
 <meta name="twitter:description" content="misc 1题目是两张看起来一模一样的图片 首先都binwalk分析了下 没有什么异常">
@@ -445,6 +450,21 @@
 <p>应该勾选 colume</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/lsbcolumn2.PNG" alt=""></p>
 <p>看到了 key (原理真滴不清楚…s)</p>
+<h3 id="misc-7"><a href="#misc-7" class="headerlink" title="misc 7"></a>misc 7</h3><p>题目如图</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/nowinhex0.jpg?imageView2/2/w/500/h/500/q/75|imageslim" alt=""></p>
+<p>winhex打开发现以zip格式结尾 但此时binwalk不行</p>
+<p>直接将图片格式改为zip 解压发现需要密码(当然这一步在winhex里搜索504b0304找到末尾的Zip头，然后贴出来，保存为zip也可以)</p>
+<p>很显然图中信息就是密码 我这里直接根据图片内容猜测为8位纯数字或者四位字符(考虑ascii码)</p>
+<p>爆破1s就出来了</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/nowinhex1.PNG" alt=""></p>
+<p>当然试的话其实是把图片倒过来ascii码 但是YZ为啥互换不着…</p>
+<p>解压得到txt 里面写着 42433331 这尼玛是什么…</p>
+<p>后来才知道winhex做会误解 因为这其实是摩斯…</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/noweinhex4.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/nowinhex3.PNG" alt=""></p>
+<p>用010 editor 打开就很明显了</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/nowinhex2.PNG" alt=""></p>
+<p>而那串数字就是分割方式</p>
 
       
     </div>
@@ -649,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">1.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">2.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">3.</span> <span class="nav-text">misc 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">3.1.</span> <span class="nav-text">补充</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-4"><span class="nav-number">4.</span> <span class="nav-text">misc 4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一"><span class="nav-number">4.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二"><span class="nav-number">4.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后记"><span class="nav-number">4.3.</span> <span class="nav-text">后记</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-5"><span class="nav-number">5.</span> <span class="nav-text">misc 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-6"><span class="nav-number">6.</span> <span class="nav-text">misc 6</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">1.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">2.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">3.</span> <span class="nav-text">misc 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">3.1.</span> <span class="nav-text">补充</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-4"><span class="nav-number">4.</span> <span class="nav-text">misc 4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一"><span class="nav-number">4.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二"><span class="nav-number">4.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后记"><span class="nav-number">4.3.</span> <span class="nav-text">后记</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-5"><span class="nav-number">5.</span> <span class="nav-text">misc 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-6"><span class="nav-number">6.</span> <span class="nav-text">misc 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-7"><span class="nav-number">7.</span> <span class="nav-text">misc 7</span></a></li></ol></div>
             
 
           </div>
