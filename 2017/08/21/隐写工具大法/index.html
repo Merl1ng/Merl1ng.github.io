@@ -106,7 +106,13 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/outguess.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/fireworks.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mosimima.PNG">
-<meta property="og:updated_time" content="2017-09-26T14:57:14.877Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gunplot1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gunplot3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gunplot4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gunplot5.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gunplot6.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gunplot2.png">
+<meta property="og:updated_time" content="2017-10-02T13:32:40.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐写工具大法">
 <meta name="twitter:description" content="音频隐写 Mp3stego把所给图片扔binwalk">
@@ -401,6 +407,20 @@
 <p>发现文件头不对 查一下对应16进制文件头为 89 50 4E 47 0D 0A 1A 0A</p>
 <p>修改即可</p>
 <p>还可以使用 Comfy File Repair 自动修复</p>
+<h3 id="gnuplot-自动画图"><a href="#gnuplot-自动画图" class="headerlink" title="gnuplot 自动画图"></a>gnuplot 自动画图</h3><p>给出的图片 放入winhex后发现 FFD9后面还有很多东西 单独贴出来</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/gunplot1.PNG" alt=""></p>
+<p>扔到nodepad++ 选中plugins-&gt;converter-&gt;hex转asciii</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/gunplot3.PNG" alt=""></p>
+<p>看到是坐标值 -&gt; 画图</p>
+<p>但是这里注意虽然在notepad++下是一行一个的 但是默认记事本打开是挤在一起的</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/gunplot4.PNG" alt=""></p>
+<p>先把括号替换为无 逗号替换为空格 复制到 word文档再复制回来 就可以得到可利用文本</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/gunplot5.PNG" alt=""></p>
+<p>把这个xy.txt放到你安装gnuplot路径的demo文件夹内</p>
+<p>进入gnuplot 输入 plot “xy.txt”</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/gunplot6.PNG" alt=""></p>
+<p>把二维码剪出来用ps处理下大小和颜色 扫描即可</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/gunplot2.png" alt=""></p>
 
       
     </div>
@@ -605,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#音频隐写-Mp3stego"><span class="nav-number">1.</span> <span class="nav-text">音频隐写 Mp3stego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brainfuck-和-Braintools"><span class="nav-number">2.</span> <span class="nav-text">Brainfuck 和 Braintools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wbstego"><span class="nav-number">3.</span> <span class="nav-text">wbstego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outguess"><span class="nav-number">4.</span> <span class="nav-text">outguess</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steganography-Software-F5"><span class="nav-number">5.</span> <span class="nav-text">Steganography Software F5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tweakpng-Adobe-Fireworks-CS5"><span class="nav-number">6.</span> <span class="nav-text">tweakpng + Adobe Fireworks CS5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Audition结合摩斯密码"><span class="nav-number">7.</span> <span class="nav-text">Audition结合摩斯密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comfy-File-Repair-修复文件"><span class="nav-number">8.</span> <span class="nav-text">Comfy File Repair 修复文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#音频隐写-Mp3stego"><span class="nav-number">1.</span> <span class="nav-text">音频隐写 Mp3stego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brainfuck-和-Braintools"><span class="nav-number">2.</span> <span class="nav-text">Brainfuck 和 Braintools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wbstego"><span class="nav-number">3.</span> <span class="nav-text">wbstego</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outguess"><span class="nav-number">4.</span> <span class="nav-text">outguess</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steganography-Software-F5"><span class="nav-number">5.</span> <span class="nav-text">Steganography Software F5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tweakpng-Adobe-Fireworks-CS5"><span class="nav-number">6.</span> <span class="nav-text">tweakpng + Adobe Fireworks CS5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Audition结合摩斯密码"><span class="nav-number">7.</span> <span class="nav-text">Audition结合摩斯密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comfy-File-Repair-修复文件"><span class="nav-number">8.</span> <span class="nav-text">Comfy File Repair 修复文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gnuplot-自动画图"><span class="nav-number">9.</span> <span class="nav-text">gnuplot 自动画图</span></a></li></ol></div>
             
 
           </div>
