@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webvim5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG">
-<meta property="og:updated_time" content="2017-10-02T13:14:19.296Z">
+<meta property="og:updated_time" content="2017-10-03T03:03:56.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="少许基础web题目">
 <meta name="twitter:description" content="vim不正常退出">
@@ -394,7 +394,7 @@
 <p>ie浏览器 MSIE 8.0; (版本号无所谓)</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG" alt=""></p>
 <p>放包即可拿到flag</p>
-<h4 id="补一个相关知识点"><a href="#补一个相关知识点" class="headerlink" title="补一个相关知识点"></a>补一个相关知识点</h4><p>Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; SV1)<br>表示的含义为 </p>
+<h4 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h4><p>Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; SV1)<br>表示的含义为 </p>
 <p>Mozilla/5.0  一种浏览器的名称<br>compatible 适合的;兼用的<br>MSIE8.0 微软公司出品的IE浏览器8.0版本<br>Windows NT 5.1 微软公司出品的服务器操作系统(xp)<br>SV1=Security Version 1 安全版本1</p>
 <h4 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h4><p>为什么IE浏览器的UA也是“Mozilla/4.0”打头的呢？<br>第一轮浏览器大战最后以Netscape被收购，Internet Explorer独霸浏览器市场告终。而此时Mozilla的历史正是由这里开始。浏览器之战失利以后，Netscape并没有消失，为了挽回市场，1998年Netscape将浏览器的大部分代码开源，成立了一个组织，计划开发下一代的 Netscape浏览器，这个组织就是Mozilla.org，它的图标是一只恐龙。不久后，Netscape的源代码就差不多被全部抛弃， Mozilla社团开发出了在稳定性和功能上更出色的新一代浏览器。这个浏览器就是Mozilla Application Suite，简称Mozilla（Mozilla这个名字的来源是Mosaic和Godzilla（怪兽哥斯拉）两个词的结合，意为 “Mosaic终结者”。 起初，Mozilla是Netscape的吉祥物，也是Netscape Navigator浏览器使用的内部开发代号。由于Netscape早期的影响力，直到今天，所有浏览器包括IE，向Web服务器报告自己的浏览器标识的时候，都以 “Mozilla”开头，表明自己是Mozilla兼容的。</p>
 <h3 id="file-远程文件包含漏洞"><a href="#file-远程文件包含漏洞" class="headerlink" title="file 远程文件包含漏洞"></a>file 远程文件包含漏洞</h3><p>发现链接<a href="http://120.24.86.145:8005/post/index.php?file=show.php" target="_blank" rel="external">http://120.24.86.145:8005/post/index.php?file=show.php</a></p>
@@ -404,6 +404,34 @@
 <p>拿到base64加密的源码 再进行解密</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">    &lt;title&gt;Bugku-ctf&lt;/title&gt;</div><div class="line">    </div><div class="line">&lt;?php</div><div class="line">	error_reporting(0);</div><div class="line">	<span class="keyword">if</span>(!<span class="variable">$_GET</span>[file])&#123;<span class="built_in">echo</span> <span class="string">'&lt;a href="./index.php?file=show.php"&gt;click me? no&lt;/a&gt;'</span>;&#125;</div><div class="line">	<span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">'file'</span>];</div><div class="line">	<span class="keyword">if</span>(strstr(<span class="variable">$file</span>,<span class="string">"../"</span>)||stristr(<span class="variable">$file</span>, <span class="string">"tp"</span>)||stristr(<span class="variable">$file</span>,<span class="string">"input"</span>)||stristr(<span class="variable">$file</span>,<span class="string">"data"</span>))&#123;</div><div class="line">		<span class="built_in">echo</span> <span class="string">"Oh no!"</span>;</div><div class="line">		<span class="built_in">exit</span>();</div><div class="line">	&#125;</div><div class="line">	include(<span class="variable">$file</span>); </div><div class="line">//flag:flag&#123;edulcni_elif_lacol_si_siht&#125;</div><div class="line">?&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p>看到了flag</p>
+<h3 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h3><p>题目代码为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> &lt;?php</div><div class="line">    include <span class="string">"flag.php"</span>;</div><div class="line">    <span class="variable">$a</span> = @<span class="variable">$_REQUEST</span>[<span class="string">'hello'</span>];</div><div class="line">    <span class="built_in">eval</span>( <span class="string">"var_dump(<span class="variable">$a</span>);"</span>);</div><div class="line">    show_source(__FILE__);</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>由Request函数，可以想到文件包含，这里hello是可控的，那么，就可以构造包含语句</p>
+<p>分析<br>1.eval(php代码)</p>
+<p>2.php代码=var_dump($a)</p>
+<p>3.$a=@$_request[‘hello’]</p>
+<p>4.$_request[‘hello’]=?hello=此处是你的输入文本</p>
+<p>简单地说，你输入的所有内容最终会被包含在var_dump()里然后被eval解析。</p>
+<p>所以这里你可以使用php函数，你使用函数读flag.php文件到$a，然后var_dump()输出。</p>
+<p>或者从结构上做这道题，假如$a=);xxxxxx，那么eval这一行的内容就是：<br>eval(“var_dump();xxxxxxxxx);”);</p>
+<p>这里的xxxxxxx就可以是任意命令，比如是 );show_source(‘flag.php’);var_dump(</p>
+<p>然后eval这一行就如下：</p>
+<p>eval(“var_dump();show_source(‘flag.php’);var_dump($a);”);</p>
+<p>类似于一个字符串注入</p>
+<p>当然 可改进为 ?hello=);show_source(‘flag.php’);//</p>
+<p>即 eval(“var_dump();show_source(‘flag.php’);//);”);</p>
+<p><em>eval函数中，”” 内部为代码，//只在代码中起作用，相当于只注释了）；</em></p>
+<p>最后贴一篇文件包含的文章<br><a href="http://www.2cto.com/article/201304/204158.html" target="_blank" rel="external">http://www.2cto.com/article/201304/204158.html</a></p>
+<h3 id="本地包含2"><a href="#本地包含2" class="headerlink" title="本地包含2"></a>本地包含2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">flag In the variable</div><div class="line"> </div><div class="line">! &lt;?php  </div><div class="line">error_reporting(0);</div><div class="line">include <span class="string">"flag1.php"</span>; //包含flag1.php这个文件</div><div class="line">highlight_file(__file__);</div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'args'</span>]))&#123;</div><div class="line">    <span class="variable">$args</span> = <span class="variable">$_GET</span>[<span class="string">'args'</span>];</div><div class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,<span class="variable">$args</span>))&#123; //正则表达式，匹配字符串，\w表示字符+数字+下划线，+代表有若干个\w字符组成</div><div class="line">        die(<span class="string">"args error!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$args</span>);"</span>);</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>$$args   PHP中变量可以当作另一个变量的变量名</p>
+<p>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$a</span>=<span class="string">'b'</span>;</div><div class="line"><span class="variable">$b</span>=<span class="string">"Boogle"</span>;</div><div class="line"><span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$a</span>);"</span>);  //输出   Boogle</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>再看第一句提示：</p>
+<p>flag In the variable !<br>//flag 在变量中</p>
+<p>结合两者，可以想到一个很有意思的变量 $GLOBALS：一个包含了全部变量的全局组合数组 变量的名字就是数组的键</p>
+<p>$GLOBALS是由所有已定义全局变量自动形成的数组。变量名就是该数组的索引</p>
+<p>payload：?args=GLOBALS </p>
+<p>即可爆出所有变量，其中包含flag</p>
+<p><code>array(7) { [&quot;GLOBALS&quot;]=&gt; *RECURSION* [&quot;_POST&quot;]=&gt; array(0) { } [&quot;_GET&quot;]=&gt; array(1) { [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; } [&quot;_COOKIE&quot;]=&gt; array(0) { } [&quot;_FILES&quot;]=&gt; array(0) { } [&quot;ZFkwe3&quot;]=&gt; string(38) &quot;flag{92853051ab894a64f7865cf3c2128b34}&quot; [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; }</code></p>
 
       
     </div>
@@ -604,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim不正常退出"><span class="nav-number">1.</span> <span class="nav-text">vim不正常退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补一个相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">补一个相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-远程文件包含漏洞"><span class="nav-number">3.</span> <span class="nav-text">file 远程文件包含漏洞</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim不正常退出"><span class="nav-number">1.</span> <span class="nav-text">vim不正常退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-远程文件包含漏洞"><span class="nav-number">3.</span> <span class="nav-text">file 远程文件包含漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地包含"><span class="nav-number">4.</span> <span class="nav-text">本地包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地包含2"><span class="nav-number">5.</span> <span class="nav-text">本地包含2</span></a></li></ol></div>
             
 
           </div>
