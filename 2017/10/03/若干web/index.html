@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="php," />
+  <meta name="keywords" content="burp," />
 
 
 
@@ -93,17 +93,24 @@
 
 
 
-<meta name="description" content="这题主要是双url编码绕过">
-<meta name="keywords" content="php">
+<meta name="description" content="burp 爆破题目页面提示爆破 且为五位数密码  burp抓包 Send to Intruder 点击Positions 先点右侧 clear $ 清除所有变量  然后在你想爆破的位置点两个 Add $  再到Payloads 先试试纯数字  再到 Options下  Number of threads 代表线程数 Number of retries on network 代表如果出现连接错误或其">
+<meta name="keywords" content="burp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单的php代码审计">
-<meta property="og:url" content="http://Merl1ng.com/2017/08/28/简单的php代码审计/index.html">
+<meta property="og:title" content="若干web">
+<meta property="og:url" content="http://Merl1ng.com/2017/10/03/若干web/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="这题主要是双url编码绕过">
-<meta property="og:updated_time" content="2017-08-28T14:28:20.936Z">
+<meta property="og:description" content="burp 爆破题目页面提示爆破 且为五位数密码  burp抓包 Send to Intruder 点击Positions 先点右侧 clear $ 清除所有变量  然后在你想爆破的位置点两个 Add $  再到Payloads 先试试纯数字  再到 Options下  Number of threads 代表线程数 Number of retries on network 代表如果出现连接错误或其">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG">
+<meta property="og:updated_time" content="2017-10-03T08:38:29.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单的php代码审计">
-<meta name="twitter:description" content="这题主要是双url编码绕过">
+<meta name="twitter:title" content="若干web">
+<meta name="twitter:description" content="burp 爆破题目页面提示爆破 且为五位数密码  burp抓包 Send to Intruder 点击Positions 先点右侧 clear $ 清除所有变量  然后在你想爆破的位置点两个 Add $  再到Payloads 先试试纯数字  再到 Options下  Number of threads 代表线程数 Number of retries on network 代表如果出现连接错误或其">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo2.PNG">
 
 
 
@@ -131,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/08/28/简单的php代码审计/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/10/03/若干web/"/>
 
 
 
 
 
-  <title>简单的php代码审计 | Merl1ng's blog</title>
+  <title>若干web | Merl1ng's blog</title>
   
 
 
@@ -266,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/28/简单的php代码审计/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/10/03/若干web/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">简单的php代码审计</h1>
+          <h1 class="post-title" itemprop="name headline">若干web</h1>
         
 
         <div class="post-meta">
@@ -295,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-28T22:00:48+08:00">
-                2017-08-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-03T16:30:49+08:00">
+                2017-10-03
               </time>
             
 
@@ -352,32 +359,41 @@
       
 
       
-        <p>这题主要是双url编码绕过</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="keyword">if</span>(eregi(<span class="string">"hackerDJ"</span>,<span class="variable">$_GET</span>[id])) &#123;</div><div class="line">  <span class="built_in">echo</span>(<span class="string">"&lt;p&gt;not allowed!&lt;/p&gt;"</span>);</div><div class="line">  <span class="built_in">exit</span>();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$_GET</span>[id] = urldecode(<span class="variable">$_GET</span>[id]);</div><div class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[id] == <span class="string">"hackerDJ"</span>)</div><div class="line">&#123;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;Access granted!&lt;/p&gt;"</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;flag: *****************&#125; &lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;br&gt;&lt;br&gt;</div><div class="line">Can you authenticate to this website?</div></pre></td></tr></table></figure>
-<p>主要涉及两个php函数 eregi 和 urldecode</p>
-<p>查了一下 eregi()函数在一个字符串搜索指定的模式的字符串。搜索不区分大小写</p>
-<p>urlencode()函数原理就是首先把中文字符转换为十六进制，然后在每个字符前面加一个标识符%</p>
-<p>urldecode()函数与urlencode()函数原理相反，用于解码已编码的 URL 字符串，其原理就是把十六进制字符串转换为中文字符</p>
-<p>所以这段php代码的大意就是以GET方式获取id 在id里查找有没有hackerDJ 有则不通过</p>
-<p>并且要求urldecode解码后的id为hackerDJ</p>
-<p>这样直接看上去是矛盾的 但是可以用URL编码绕过</p>
-<p>hackerDJ转16进制后为 6861636b6572444a 加上%为 %68%61%63%6b%65%72%44%4a</p>
-<p>但是这样 在题目url后输入?id=%68%61%63%6b%65%72%44%4a 会被浏览器直接解码</p>
-<p>相当于还是输入了 ?id=hackerDJ 这显然是不行的</p>
-<p>又了解到%的16进制但是25 所以我每个前面加上了 %25试了试 结果还是不行</p>
-<p>当我输入?id=%25%68%25%61%25%63%25%6b%25%65%25%72%25%44%25%4a</p>
-<p>浏览器的回显是 %25h%25a%25c%25k%25e%25r%25D%25J</p>
-<p>这里比较奇怪 暂时还没有懂</p>
-<p>于是再尝试另外一种方式 看到了一个大佬发的这个</p>
-<p><em>双倍url编码</em></p>
-<p><em>就是说想打/，一般编码一次是%5c</em></p>
-<p><em>但攻击者怕这个会被认出来，所以用二次编码，把%本身编码成%25。再和后边拼成%255c。</em></p>
-<p><em>如果URL解码器有缺陷，只不断重复“从前边开始解析”这个步骤，就会把这个先变回%5c，再变成/，出现循环解析。当然这是错误的。正确的只应该解一步变成%5c</em></p>
-<p><em>抵抗父级目录回溯攻击，绝对不能依赖字符过滤，你过滤不完的。必须用“鸭子编程法”，先不论如何构造完整路径，再检验是否在有权的操作目录下</em></p>
-<p><em>要正确进行URL解码，谨记使用PHP等语言提供的内部函数，切勿重复发明轮子</em></p>
-<p>想到了 ?id=%2568%2561%2563%256b%2565%2572%2544%254a</p>
-<p>成功拿到flag</p>
+        <h3 id="burp-爆破"><a href="#burp-爆破" class="headerlink" title="burp 爆破"></a>burp 爆破</h3><p>题目页面提示爆破 且为五位数密码 </p>
+<p>burp抓包 Send to Intruder</p>
+<p>点击Positions 先点右侧 clear $ 清除所有变量 </p>
+<p>然后在你想爆破的位置点两个 Add $</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo2.PNG" alt=""></p>
+<p>再到Payloads 先试试纯数字</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo3.PNG" alt=""></p>
+<p>再到 Options下</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo4.PNG" alt=""></p>
+<p>Number of threads 代表线程数</p>
+<p>Number of retries on network 代表如果出现连接错误或其他网络问题,BurpSuite会放弃和移动之前重试的请求指定的次数</p>
+<p>设置完后点击 Start attack开始爆破  按长度排一下 </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo.PNG" alt=""></p>
+<h3 id="伪造登陆地址"><a href="#伪造登陆地址" class="headerlink" title="伪造登陆地址"></a>伪造登陆地址</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/webweizao1.PNG" alt=""><br>题目要求.NET FRAMEWORD 9.9框架 在英格兰地区 IE浏览器</p>
+<p>对于.NET FRAMEWORD 9.9框架 可以查到在安装了.NET Framework后 MSI会将.NET CLR和版本号添加到UserAgent字符串中 </p>
+<p>抓包</p>
+<p>所以要加上 .NET CLR 9.9</p>
+<p>英国的话将语言改为 en-gb</p>
+<p>ie浏览器 MSIE 8.0; (版本号无所谓)</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG" alt=""></p>
+<p>放包即可拿到flag</p>
+<h4 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h4><p>Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; SV1)<br>表示的含义为 </p>
+<p>Mozilla/5.0  一种浏览器的名称<br>compatible 适合的;兼用的<br>MSIE8.0 微软公司出品的IE浏览器8.0版本<br>Windows NT 5.1 微软公司出品的服务器操作系统(xp)<br>SV1=Security Version 1 安全版本1</p>
+<h4 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h4><p>为什么IE浏览器的UA也是“Mozilla/4.0”打头的呢？<br>第一轮浏览器大战最后以Netscape被收购，Internet Explorer独霸浏览器市场告终。而此时Mozilla的历史正是由这里开始。浏览器之战失利以后，Netscape并没有消失，为了挽回市场，1998年Netscape将浏览器的大部分代码开源，成立了一个组织，计划开发下一代的 Netscape浏览器，这个组织就是Mozilla.org，它的图标是一只恐龙。不久后，Netscape的源代码就差不多被全部抛弃， Mozilla社团开发出了在稳定性和功能上更出色的新一代浏览器。这个浏览器就是Mozilla Application Suite，简称Mozilla（Mozilla这个名字的来源是Mosaic和Godzilla（怪兽哥斯拉）两个词的结合，意为 “Mosaic终结者”。 起初，Mozilla是Netscape的吉祥物，也是Netscape Navigator浏览器使用的内部开发代号。由于Netscape早期的影响力，直到今天，所有浏览器包括IE，向Web服务器报告自己的浏览器标识的时候，都以 “Mozilla”开头，表明自己是Mozilla兼容的。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>(这个暂时没有完全理解)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">flag In the variable</div><div class="line"> </div><div class="line">! &lt;?php  </div><div class="line">error_reporting(0);</div><div class="line">include <span class="string">"flag1.php"</span>; //包含flag1.php这个文件</div><div class="line">highlight_file(__file__);</div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'args'</span>]))&#123;</div><div class="line">    <span class="variable">$args</span> = <span class="variable">$_GET</span>[<span class="string">'args'</span>];</div><div class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,<span class="variable">$args</span>))&#123; //正则表达式，匹配字符串，\w表示字符+数字+下划线，+代表有若干个\w字符组成</div><div class="line">        die(<span class="string">"args error!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$args</span>);"</span>);</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>$$args   PHP中变量可以当作另一个变量的变量名</p>
+<p>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$a</span>=<span class="string">'b'</span>;</div><div class="line"><span class="variable">$b</span>=<span class="string">"Boogle"</span>;</div><div class="line"><span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$a</span>);"</span>);  //输出   Boogle</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>再看第一句提示：</p>
+<p>flag In the variable !<br>//flag 在变量中</p>
+<p>结合两者，可以想到一个很有意思的变量 $GLOBALS：一个包含了全部变量的全局组合数组 变量的名字就是数组的键</p>
+<p>$GLOBALS是由所有已定义全局变量自动形成的数组。变量名就是该数组的索引</p>
+<p>payload：?args=GLOBALS </p>
+<p>即可爆出所有变量，其中包含flag</p>
+<p>`array(7) { [“GLOBALS”]=&gt; <em>RECURSION</em> [“_POST”]=&gt; array(0) { } [“_GET”]=&gt; array(1) { [“args”]=&gt; string(7) “GLOBALS” } [“_COOKIE”]=&gt; array(0) { } [“_FILES”]=&gt; array(0) { } [“ZFkwe3”]=&gt; string(38) “flag{92853051ab894a64f7865cf3c2128b34}” [“args”]=&gt; string(7) “GLOBALS” }</p>
 
       
     </div>
@@ -407,7 +423,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag"># php</a>
+            <a href="/tags/burp/" rel="tag"># burp</a>
           
         </div>
       
@@ -420,18 +436,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/01/php绕过补充/" rel="next" title="php绕过补充">
-                <i class="fa fa-chevron-left"></i> php绕过补充
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/25/密码学之snake/" rel="prev" title="密码学之snake">
-                密码学之snake <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/16/找源码的web题目/" rel="prev" title="找源码的web题目">
+                找源码的web题目 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,8 +492,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -563,6 +584,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#burp-爆破"><span class="nav-number">1.</span> <span class="nav-text">burp 爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
