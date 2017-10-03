@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vim," />
+  <meta name="keywords" content="vim,burp," />
 
 
 
@@ -94,7 +94,7 @@
 
 
 <meta name="description" content="vim不正常退出">
-<meta name="keywords" content="vim">
+<meta name="keywords" content="vim,burp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="少许基础web题目">
 <meta property="og:url" content="http://Merl1ng.com/2017/09/16/少许基础web题目/index.html">
@@ -107,7 +107,11 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webvim5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG">
-<meta property="og:updated_time" content="2017-10-03T03:03:56.917Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo.PNG">
+<meta property="og:updated_time" content="2017-10-03T05:37:01.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="少许基础web题目">
 <meta name="twitter:description" content="vim不正常退出">
@@ -432,6 +436,19 @@
 <p>payload：?args=GLOBALS </p>
 <p>即可爆出所有变量，其中包含flag</p>
 <p><code>array(7) { [&quot;GLOBALS&quot;]=&gt; *RECURSION* [&quot;_POST&quot;]=&gt; array(0) { } [&quot;_GET&quot;]=&gt; array(1) { [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; } [&quot;_COOKIE&quot;]=&gt; array(0) { } [&quot;_FILES&quot;]=&gt; array(0) { } [&quot;ZFkwe3&quot;]=&gt; string(38) &quot;flag{92853051ab894a64f7865cf3c2128b34}&quot; [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; }</code></p>
+<h3 id="burp-爆破"><a href="#burp-爆破" class="headerlink" title="burp 爆破"></a>burp 爆破</h3><p>题目页面提示爆破 且为五位数密码 </p>
+<p>burp抓包 Send to Intruder</p>
+<p>点击Positions 先点右侧 clear $ 清除所有变量 </p>
+<p>然后在你想爆破的位置点两个 Add $</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo2.PNG" alt=""></p>
+<p>再到Payloads 先试试纯数字</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo3.PNG" alt=""></p>
+<p>再到 Options下</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo4.PNG" alt=""></p>
+<p>Number of threads 代表线程数</p>
+<p>Number of retries on network 代表如果出现连接错误或其他网络问题,BurpSuite会放弃和移动之前重试的请求指定的次数</p>
+<p>设置完后点击 Start attack开始爆破  按长度排一下 </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo.PNG" alt=""></p>
 
       
     </div>
@@ -462,6 +479,8 @@
         <div class="post-tags">
           
             <a href="/tags/vim/" rel="tag"># vim</a>
+          
+            <a href="/tags/burp/" rel="tag"># burp</a>
           
         </div>
       
@@ -577,7 +596,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -632,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim不正常退出"><span class="nav-number">1.</span> <span class="nav-text">vim不正常退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-远程文件包含漏洞"><span class="nav-number">3.</span> <span class="nav-text">file 远程文件包含漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地包含"><span class="nav-number">4.</span> <span class="nav-text">本地包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地包含2"><span class="nav-number">5.</span> <span class="nav-text">本地包含2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim不正常退出"><span class="nav-number">1.</span> <span class="nav-text">vim不正常退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-远程文件包含漏洞"><span class="nav-number">3.</span> <span class="nav-text">file 远程文件包含漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地包含"><span class="nav-number">4.</span> <span class="nav-text">本地包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地包含2"><span class="nav-number">5.</span> <span class="nav-text">本地包含2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#burp-爆破"><span class="nav-number">6.</span> <span class="nav-text">burp 爆破</span></a></li></ol></div>
             
 
           </div>
