@@ -355,45 +355,14 @@
 
       
         
-          
-            <h3 id="burp-爆破"><a href="#burp-爆破" class="headerlink" title="burp 爆破"></a>burp 爆破</h3><!--moe-->
-<p>题目页面提示爆破 且为五位数密码 </p>
-<p>burp抓包 Send to Intruder</p>
-<p>点击Positions 先点右侧 clear $ 清除所有变量 </p>
-<p>然后在你想爆破的位置点两个 Add $</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo2.PNG" alt=""></p>
-<p>再到Payloads 先试试纯数字</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo3.PNG" alt=""></p>
-<p>再到 Options下</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo4.PNG" alt=""></p>
-<p>Number of threads 代表线程数</p>
-<p>Number of retries on network 代表如果出现连接错误或其他网络问题,BurpSuite会放弃和移动之前重试的请求指定的次数</p>
-<p>设置完后点击 Start attack开始爆破  按长度排一下 </p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/burpbaopo.PNG" alt=""></p>
-<h3 id="伪造登陆地址"><a href="#伪造登陆地址" class="headerlink" title="伪造登陆地址"></a>伪造登陆地址</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/webweizao1.PNG" alt=""><br>题目要求.NET FRAMEWORD 9.9框架 在英格兰地区 IE浏览器</p>
-<p>对于.NET FRAMEWORD 9.9框架 可以查到在安装了.NET Framework后 MSI会将.NET CLR和版本号添加到UserAgent字符串中 </p>
-<p>抓包</p>
-<p>所以要加上 .NET CLR 9.9</p>
-<p>英国的话将语言改为 en-gb</p>
-<p>ie浏览器 MSIE 8.0; (版本号无所谓)</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG" alt=""></p>
-<p>放包即可拿到flag</p>
-<h4 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h4><p>Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; SV1)<br>表示的含义为 </p>
-<p>Mozilla/5.0  一种浏览器的名称<br>compatible 适合的;兼用的<br>MSIE8.0 微软公司出品的IE浏览器8.0版本<br>Windows NT 5.1 微软公司出品的服务器操作系统(xp)<br>SV1=Security Version 1 安全版本1</p>
-<h4 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h4><p>为什么IE浏览器的UA也是“Mozilla/4.0”打头的呢？<br>第一轮浏览器大战最后以Netscape被收购，Internet Explorer独霸浏览器市场告终。而此时Mozilla的历史正是由这里开始。浏览器之战失利以后，Netscape并没有消失，为了挽回市场，1998年Netscape将浏览器的大部分代码开源，成立了一个组织，计划开发下一代的 Netscape浏览器，这个组织就是Mozilla.org，它的图标是一只恐龙。不久后，Netscape的源代码就差不多被全部抛弃， Mozilla社团开发出了在稳定性和功能上更出色的新一代浏览器。这个浏览器就是Mozilla Application Suite，简称Mozilla（Mozilla这个名字的来源是Mosaic和Godzilla（怪兽哥斯拉）两个词的结合，意为 “Mosaic终结者”。 起初，Mozilla是Netscape的吉祥物，也是Netscape Navigator浏览器使用的内部开发代号。由于Netscape早期的影响力，直到今天，所有浏览器包括IE，向Web服务器报告自己的浏览器标识的时候，都以 “Mozilla”开头，表明自己是Mozilla兼容的。</p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>(这个暂时没有完全理解)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">flag In the variable</div><div class="line"> </div><div class="line">! &lt;?php  </div><div class="line">error_reporting(0);</div><div class="line">include <span class="string">"flag1.php"</span>; //包含flag1.php这个文件</div><div class="line">highlight_file(__file__);</div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'args'</span>]))&#123;</div><div class="line">    <span class="variable">$args</span> = <span class="variable">$_GET</span>[<span class="string">'args'</span>];</div><div class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,<span class="variable">$args</span>))&#123; //正则表达式，匹配字符串，\w表示字符+数字+下划线，+代表有若干个\w字符组成</div><div class="line">        die(<span class="string">"args error!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$args</span>);"</span>);</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<p>$$args   PHP中变量可以当作另一个变量的变量名</p>
-<p>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$a</span>=<span class="string">'b'</span>;</div><div class="line"><span class="variable">$b</span>=<span class="string">"Boogle"</span>;</div><div class="line"><span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$a</span>);"</span>);  //输出   Boogle</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
-<p>再看第一句提示：</p>
-<p>flag In the variable !<br>//flag 在变量中</p>
-<p>结合两者，可以想到一个很有意思的变量 $GLOBALS：一个包含了全部变量的全局组合数组 变量的名字就是数组的键</p>
-<p>$GLOBALS是由所有已定义全局变量自动形成的数组。变量名就是该数组的索引</p>
-<p>payload：?args=GLOBALS </p>
-<p>即可爆出所有变量，其中包含flag</p>
-<p><code>array(7) { [&quot;GLOBALS&quot;]=&gt; *RECURSION* [&quot;_POST&quot;]=&gt; array(0) { } [&quot;_GET&quot;]=&gt; array(1) { [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; } [&quot;_COOKIE&quot;]=&gt; array(0) { } [&quot;_FILES&quot;]=&gt; array(0) { } [&quot;ZFkwe3&quot;]=&gt; string(38) &quot;flag{92853051ab894a64f7865cf3c2128b34}&quot; [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; }</code></p>
-
-          
+          <h3 id="burp-爆破"><a href="#burp-爆破" class="headerlink" title="burp 爆破"></a>burp 爆破</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/03/若干web/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
