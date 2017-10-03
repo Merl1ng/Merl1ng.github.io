@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="这题主要是双url编码绕过">
+<meta name="description" content="双url编码绕过">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单的php代码审计">
 <meta property="og:url" content="http://Merl1ng.com/2017/08/28/简单的php代码审计/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="这题主要是双url编码绕过">
-<meta property="og:updated_time" content="2017-08-28T14:28:20.936Z">
+<meta property="og:description" content="双url编码绕过">
+<meta property="og:updated_time" content="2017-10-03T09:20:21.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单的php代码审计">
-<meta name="twitter:description" content="这题主要是双url编码绕过">
+<meta name="twitter:description" content="双url编码绕过">
 
 
 
@@ -352,9 +352,8 @@
       
 
       
-        <p>这题主要是双url编码绕过</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="keyword">if</span>(eregi(<span class="string">"hackerDJ"</span>,<span class="variable">$_GET</span>[id])) &#123;</div><div class="line">  <span class="built_in">echo</span>(<span class="string">"&lt;p&gt;not allowed!&lt;/p&gt;"</span>);</div><div class="line">  <span class="built_in">exit</span>();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$_GET</span>[id] = urldecode(<span class="variable">$_GET</span>[id]);</div><div class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[id] == <span class="string">"hackerDJ"</span>)</div><div class="line">&#123;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;Access granted!&lt;/p&gt;"</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;flag: *****************&#125; &lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;br&gt;&lt;br&gt;</div><div class="line">Can you authenticate to this website?</div></pre></td></tr></table></figure>
+        <h3 id="双url编码绕过"><a href="#双url编码绕过" class="headerlink" title="双url编码绕过"></a>双url编码绕过</h3><a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="keyword">if</span>(eregi(<span class="string">"hackerDJ"</span>,<span class="variable">$_GET</span>[id])) &#123;</div><div class="line">  <span class="built_in">echo</span>(<span class="string">"&lt;p&gt;not allowed!&lt;/p&gt;"</span>);</div><div class="line">  <span class="built_in">exit</span>();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$_GET</span>[id] = urldecode(<span class="variable">$_GET</span>[id]);</div><div class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[id] == <span class="string">"hackerDJ"</span>)</div><div class="line">&#123;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;Access granted!&lt;/p&gt;"</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;p&gt;flag: *****************&#125; &lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line"></div><div class="line">&lt;br&gt;&lt;br&gt;</div><div class="line">Can you authenticate to this website?</div></pre></td></tr></table></figure>
 <p>主要涉及两个php函数 eregi 和 urldecode</p>
 <p>查了一下 eregi()函数在一个字符串搜索指定的模式的字符串。搜索不区分大小写</p>
 <p>urlencode()函数原理就是首先把中文字符转换为十六进制，然后在每个字符前面加一个标识符%</p>
@@ -378,6 +377,17 @@
 <p><em>要正确进行URL解码，谨记使用PHP等语言提供的内部函数，切勿重复发明轮子</em></p>
 <p>想到了 ?id=%2568%2561%2563%256b%2565%2572%2544%254a</p>
 <p>成功拿到flag</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>(这个暂时没有完全理解)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">flag In the variable</div><div class="line"> </div><div class="line">! &lt;?php  </div><div class="line">error_reporting(0);</div><div class="line">include <span class="string">"flag1.php"</span>; //包含flag1.php这个文件</div><div class="line">highlight_file(__file__);</div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'args'</span>]))&#123;</div><div class="line">    <span class="variable">$args</span> = <span class="variable">$_GET</span>[<span class="string">'args'</span>];</div><div class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,<span class="variable">$args</span>))&#123; //正则表达式，匹配字符串，\w表示字符+数字+下划线，+代表有若干个\w字符组成</div><div class="line">        die(<span class="string">"args error!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$args</span>);"</span>);</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>$$args   PHP中变量可以当作另一个变量的变量名</p>
+<p>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$a</span>=<span class="string">'b'</span>;</div><div class="line"><span class="variable">$b</span>=<span class="string">"Boogle"</span>;</div><div class="line"><span class="built_in">eval</span>(<span class="string">"var_dump($<span class="variable">$a</span>);"</span>);  //输出   Boogle</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>再看第一句提示：</p>
+<p>flag In the variable !<br>//flag 在变量中</p>
+<p>结合两者，可以想到一个很有意思的变量 $GLOBALS：一个包含了全部变量的全局组合数组 变量的名字就是数组的键</p>
+<p>$GLOBALS是由所有已定义全局变量自动形成的数组。变量名就是该数组的索引</p>
+<p>payload：?args=GLOBALS </p>
+<p>即可爆出所有变量，其中包含flag</p>
+<p><code>array(7) { [&quot;GLOBALS&quot;]=&gt; *RECURSION* [&quot;_POST&quot;]=&gt; array(0) { } [&quot;_GET&quot;]=&gt; array(1) { [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; } [&quot;_COOKIE&quot;]=&gt; array(0) { } [&quot;_FILES&quot;]=&gt; array(0) { } [&quot;ZFkwe3&quot;]=&gt; string(38) &quot;flag{92853051ab894a64f7865cf3c2128b34}&quot; [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; }</code></p>
 
       
     </div>
@@ -480,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -518,7 +537,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -563,6 +582,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#双url编码绕过"><span class="nav-number">1.</span> <span class="nav-text">双url编码绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
