@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/phpinput.PNG">
-<meta property="og:updated_time" content="2017-10-04T09:01:25.563Z">
+<meta property="og:updated_time" content="2017-10-04T11:12:21.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php代码审计Ⅱ">
 <meta name="twitter:description" content="写在一起看的时候不方便 所以又开了一篇">
@@ -361,14 +361,14 @@
 <p>所以要么burp抓包 要么先在别的页面查看源码 在源码页面里输入网址</p>
 <p>可看到加密过的代码</p>
 <p>先 base64再urldecode 得到源码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;window.location.href=<span class="string">'http://www.bugku.com'</span>;&lt;/script&gt; </div><div class="line">&lt;!--<span class="string">";if(!<span class="variable">$_GET</span>['id'])</span></div><div class="line">&#123;</div><div class="line">	header('Location: hello.php?id=1');</div><div class="line">	exit();</div><div class="line">&#125;</div><div class="line"><span class="variable">$id</span>=<span class="variable">$_GET</span>['id'];</div><div class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>['a'];</div><div class="line"><span class="variable">$b</span>=<span class="variable">$_GET</span>['b'];</div><div class="line">if(stripos(<span class="variable">$a</span>,'.'))</div><div class="line">&#123;</div><div class="line">	echo 'no no no no no no no';</div><div class="line">	return ;</div><div class="line">&#125;</div><div class="line"><span class="variable">$data</span> = @file_get_contents(<span class="variable">$a</span>,'r');</div><div class="line">if(<span class="variable">$data</span>=="bugku is a nice plateform!<span class="string">" and <span class="variable">$id</span>==0 and strlen(<span class="variable">$b</span>)&gt;5 and eregi("</span>111<span class="string">".substr(<span class="variable">$b</span>,0,1),"</span>1114<span class="string">") and substr(<span class="variable">$b</span>,0,1)!=4)</span></div><div class="line">&#123;</div><div class="line">	require("f4l2a3g.txt<span class="string">");</span></div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;</div><div class="line">	print "never never never give up !!!<span class="string">";</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">?&gt;==--&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;window.location.href=<span class="string">'http://www.bugku.com'</span>;&lt;/script&gt; </div><div class="line"><span class="keyword">if</span>(!<span class="variable">$_GET</span>[<span class="string">'id'</span>])</div><div class="line">&#123;</div><div class="line">	header(<span class="string">'Location: hello.php?id=1'</span>);</div><div class="line">	<span class="built_in">exit</span>();</div><div class="line">&#125;</div><div class="line"><span class="variable">$id</span>=<span class="variable">$_GET</span>[<span class="string">'id'</span>];</div><div class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">'a'</span>];</div><div class="line"><span class="variable">$b</span>=<span class="variable">$_GET</span>[<span class="string">'b'</span>];</div><div class="line"><span class="keyword">if</span>(stripos(<span class="variable">$a</span>,<span class="string">'.'</span>))</div><div class="line">&#123;</div><div class="line">	<span class="built_in">echo</span> <span class="string">'no no no no no no no'</span>;</div><div class="line">	<span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"><span class="variable">$data</span> = @file_get_contents(<span class="variable">$a</span>,<span class="string">'r'</span>);</div><div class="line"><span class="keyword">if</span>(<span class="variable">$data</span>==<span class="string">"bugku is a nice plateform!"</span> and <span class="variable">$id</span>==0 and strlen(<span class="variable">$b</span>)&gt;5 and eregi(<span class="string">"111"</span>.substr(<span class="variable">$b</span>,0,1),<span class="string">"1114"</span>) and substr(<span class="variable">$b</span>,0,1)!=4)</div><div class="line">&#123;</div><div class="line">	require(<span class="string">"f4l2a3g.txt"</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">print</span> <span class="string">"never never never give up !!!"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <p>分析<br>1.id==0  用0==字符串绕过 因为有(!$_GET[‘id’])不能直接输入0</p>
 <p>也可以用.绕过 即id=.</p>
 <p>2.$data = @file_get_contents($a,’r’);<br>$data==”bugku is a nice plateform!”</p>
 <p>这个利用了file_get_contents的特性，当用到php://input的时候，file_get_contents支持字节流输入，</p>
 <p>只要将a设为php://input,且post过去bugku is a nice plateform!即可</p>
 <p>3.strlen($b)&gt;5 and eregi(“111”.substr($b,0,1),”1114”) and substr($b,0,1)!=4</p>
-<p>strlen对%00不截断，而eregi对%00截断，只要构造b=%00+大于4位的串即可<br>(之所以要大于四位我感觉是因为在以get方式传参时%00被转义成了一个字符)</p>
+<p>strlen对%00不截断，而eregi对%00截断，只要构造b=%00+大于4位的串即可<br>(之所以要大于四位我感觉是因为在以get方式传参时%00被解码成了一个字符)</p>
 <p>用hackbar即可<br><img src="http://otvzfr1o1.bkt.clouddn.com/webzai.PNG" alt=""></p>
 <p>burp抓包改也是可以的 (记得把左上角的GET改成POST)</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/webzai2.PNG" alt=""></p>
@@ -456,6 +456,10 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/10/04/php代码审计Ⅲ/" rel="next" title="php代码审计Ⅲ">
+                <i class="fa fa-chevron-left"></i> php代码审计Ⅲ
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -537,7 +541,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
