@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/phpinput.PNG">
-<meta property="og:updated_time" content="2017-10-04T08:51:28.586Z">
+<meta property="og:updated_time" content="2017-10-04T08:54:27.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php代码审计Ⅱ">
 <meta name="twitter:description" content="写在一起看的时候不方便 所以又开了一篇">
@@ -386,7 +386,6 @@
 <p>目前遇到的是 file_get_contents</p>
 <h4 id="eregi"><a href="#eregi" class="headerlink" title="eregi"></a>eregi</h4><p>%00 截断绕过 (这点还不太懂 Orz.)</p>
 <h4 id="有关php黑魔法"><a href="#有关php黑魔法" class="headerlink" title="有关php黑魔法"></a>有关php黑魔法</h4><p>(这玩意真是总结不完) 暗羽表姐的博客里也有不少关于这道题的总结<br><a href="http://www.zjicmisa.org/index.php/archives/112/" target="_blank" rel="external">http://www.zjicmisa.org/index.php/archives/112/</a></p>
-<p>(这玩意真是总结不完) 暗羽表姐的博客里也有不少关于这道题的总结<br><a href="http://www.zjicmisa.org/index.php/archives/112/" target="_blank" rel="external">http://www.zjicmisa.org/index.php/archives/112/</a></p>
 <h3 id="file-get-contents-“php-input”-和extract"><a href="#file-get-contents-“php-input”-和extract" class="headerlink" title="file_get_contents(“php://input”)和extract()"></a>file_get_contents(“php://input”)和extract()</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">extract(<span class="variable">$_GET</span>);</div><div class="line"><span class="keyword">if</span> (!empty(<span class="variable">$ac</span>))</div><div class="line">&#123;</div><div class="line"><span class="variable">$f</span> = trim(file_get_contents(<span class="variable">$fn</span>));</div><div class="line"><span class="keyword">if</span> (<span class="variable">$ac</span> === <span class="variable">$f</span>)</div><div class="line">&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">"&lt;p&gt;This is flag:"</span> .<span class="string">" <span class="variable">$flag</span>&lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">"&lt;p&gt;sorry!&lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <h4 id="先从file-get-contents-“php-input”-说"><a href="#先从file-get-contents-“php-input”-说" class="headerlink" title="先从file_get_contents(“php://input”)说"></a>先从file_get_contents(“php://input”)说</h4><p>前面题目中有过php中file_get_contents的特性可以使用字节流</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/phpinput.PNG" alt=""></p>
