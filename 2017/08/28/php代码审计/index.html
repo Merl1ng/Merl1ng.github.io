@@ -100,15 +100,12 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/08/28/php代码审计/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="双url编码绕过">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai.PNG">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sha1raoguo.PNG">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/phpinput.PNG">
-<meta property="og:updated_time" content="2017-10-04T08:41:15.509Z">
+<meta property="og:updated_time" content="2017-10-04T08:49:23.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php代码审计">
 <meta name="twitter:description" content="双url编码绕过">
-<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai.PNG">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/sha1raoguo.PNG">
 
 
 
@@ -393,63 +390,10 @@
 <p>payload：?args=GLOBALS </p>
 <p>即可爆出所有变量，其中包含flag</p>
 <p><code>array(7) { [&quot;GLOBALS&quot;]=&gt; *RECURSION* [&quot;_POST&quot;]=&gt; array(0) { } [&quot;_GET&quot;]=&gt; array(1) { [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; } [&quot;_COOKIE&quot;]=&gt; array(0) { } [&quot;_FILES&quot;]=&gt; array(0) { } [&quot;ZFkwe3&quot;]=&gt; string(38) &quot;flag{92853051ab894a64f7865cf3c2128b34}&quot; [&quot;args&quot;]=&gt; string(7) &quot;GLOBALS&quot; }</code></p>
-<h3 id="挺杂的一道"><a href="#挺杂的一道" class="headerlink" title="挺杂的一道"></a>挺杂的一道</h3><p>右键源码 提示1p.html 但是输进去会跳转到别的网页 </p>
-<p>所以要么burp抓包 要么先在别的页面查看源码 在源码页面里输入网址</p>
-<p>可看到加密过的代码</p>
-<p>先 base64再urldecode 得到源码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;window.location.href=<span class="string">'http://www.bugku.com'</span>;&lt;/script&gt; </div><div class="line">&lt;!--<span class="string">";if(!<span class="variable">$_GET</span>['id'])</span></div><div class="line">&#123;</div><div class="line">	header('Location: hello.php?id=1');</div><div class="line">	exit();</div><div class="line">&#125;</div><div class="line"><span class="variable">$id</span>=<span class="variable">$_GET</span>['id'];</div><div class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>['a'];</div><div class="line"><span class="variable">$b</span>=<span class="variable">$_GET</span>['b'];</div><div class="line">if(stripos(<span class="variable">$a</span>,'.'))</div><div class="line">&#123;</div><div class="line">	echo 'no no no no no no no';</div><div class="line">	return ;</div><div class="line">&#125;</div><div class="line"><span class="variable">$data</span> = @file_get_contents(<span class="variable">$a</span>,'r');</div><div class="line">if(<span class="variable">$data</span>=="bugku is a nice plateform!<span class="string">" and <span class="variable">$id</span>==0 and strlen(<span class="variable">$b</span>)&gt;5 and eregi("</span>111<span class="string">".substr(<span class="variable">$b</span>,0,1),"</span>1114<span class="string">") and substr(<span class="variable">$b</span>,0,1)!=4)</span></div><div class="line">&#123;</div><div class="line">	require("f4l2a3g.txt<span class="string">");</span></div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;</div><div class="line">	print "never never never give up !!!<span class="string">";</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">?&gt;==--&gt;</div></pre></td></tr></table></figure>
-<p>分析<br>1.id==0  用0==字符串绕过 因为有(!$_GET[‘id’])不能直接输入0</p>
-<p>也可以用.绕过 即id=.</p>
-<p>2.$data = @file_get_contents($a,’r’);<br>$data==”bugku is a nice plateform!”</p>
-<p>这个利用了file_get_contents的特性，当用到php://input的时候，file_get_contents支持字节流输入，</p>
-<p>只要将a设为php://input,且post过去bugku is a nice plateform!即可</p>
-<p>3.strlen($b)&gt;5 and eregi(“111”.substr($b,0,1),”1114”) and substr($b,0,1)!=4</p>
-<p>strlen对%00不截断，而eregi对%00截断，只要构造b=%00+大于4位的串即可<br>(之所以要大于四位我感觉是因为在以get方式传参时%00被转义成了一个字符)</p>
-<p>用hackbar即可<br><img src="http://otvzfr1o1.bkt.clouddn.com/webzai.PNG" alt=""></p>
-<p>burp抓包改也是可以的 (记得把左上角的GET改成POST)</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/webzai2.PNG" alt=""></p>
-<p>(有时候burp会不成功 重新退出进下或许可以)</p>
-<p>后来知道这破题直接访问f4l2a3g.txt也行…</p>
-<p>120.24.86.145:8006/test/f4l2a3g.txt 也能看到flag</p>
-<p><em>以下是对代码中函数或技巧的单独分析</em></p>
-<h4 id="substr-id-0-1-substr-—-返回字符串的子串"><a href="#substr-id-0-1-substr-—-返回字符串的子串" class="headerlink" title="substr($id,0,-1) substr — 返回字符串的子串"></a>substr($id,0,-1) substr — 返回字符串的子串</h4><p>就是截取字符串$id，获取从第一位到倒数第二位</p>
-<p>0是第一位，-1是倒数第二位</p>
-<h4 id="stripos"><a href="#stripos" class="headerlink" title="stripos()"></a>stripos()</h4><p>查找字符串在另一字符串中第一次出现的位置（不区分大小写）</p>
-<p>相关函数：<br>strpos() - 查找字符串在另一字符串中第一次出现的位置（区分大小写）<br>strripos() - 查找字符串在另一字符串中最后一次出现的位置（不区分大小写）<br>strrpos() - 查找字符串在另一字符串中最后一次出现的位置（区分大小写）</p>
-<h4 id="绕过"><a href="#绕过" class="headerlink" title=".绕过"></a>.绕过</h4><p>接收参数 $a 得存在，并且 $a==0 可用. 绕过（非数字都可绕过）</p>
-<p>&lt;?php<br>$a = $_GET[‘a’];<br>if ($a == 0) {<br>    echo “1”;<br>}<br>if ($a) {<br>    echo “miao”;<br>}<br>?&gt;</p>
-<h4 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h4><p>接收参数中不能出现某一字符，但下面又必须使用可以 php:// 伪协议绕过</p>
-<p>目前遇到的是 file_get_contents</p>
-<h4 id="eregi"><a href="#eregi" class="headerlink" title="eregi"></a>eregi</h4><p>%00 截断绕过 (这点还不太懂 Orz.)</p>
-<h4 id="有关php黑魔法"><a href="#有关php黑魔法" class="headerlink" title="有关php黑魔法"></a>有关php黑魔法</h4><p>(这玩意真是总结不完) 暗羽表姐的博客里也有不少关于这道题的总结<br><a href="http://www.zjicmisa.org/index.php/archives/112/" target="_blank" rel="external">http://www.zjicmisa.org/index.php/archives/112/</a></p>
 <h3 id="sha1绕过"><a href="#sha1绕过" class="headerlink" title="sha1绕过"></a>sha1绕过</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">highlight_file(<span class="string">'flag.php'</span>);</div><div class="line"><span class="variable">$_GET</span>[<span class="string">'id'</span>] = urldecode(<span class="variable">$_GET</span>[<span class="string">'id'</span>]);</div><div class="line"><span class="variable">$flag</span> = <span class="string">'flag&#123;xxxxxxxxxxxxxxxxxx&#125;'</span>;</div><div class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'uname'</span>]) and isset(<span class="variable">$_POST</span>[<span class="string">'passwd'</span>])) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="variable">$_GET</span>[<span class="string">'uname'</span>] == <span class="variable">$_POST</span>[<span class="string">'passwd'</span>])</div><div class="line"></div><div class="line">        <span class="built_in">print</span> <span class="string">'passwd can not be uname.'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (sha1(<span class="variable">$_GET</span>[<span class="string">'uname'</span>]) === sha1(<span class="variable">$_POST</span>[<span class="string">'passwd'</span>])&amp;(<span class="variable">$_GET</span>[<span class="string">'id'</span>]==<span class="string">'margin'</span>))</div><div class="line"></div><div class="line">        die(<span class="string">'Flag: '</span>.<span class="variable">$flag</span>);</div><div class="line"></div><div class="line">    <span class="keyword">else</span></div><div class="line"></div><div class="line">        <span class="built_in">print</span> <span class="string">'sorry!'</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <p>以前在博客记录过 sha1函数不能比较数组 会报错都返回 false 导致相等<br><a href="http://blog.merl1ng.cc/2017/09/01/php绕过补充/" target="_blank" rel="external">http://blog.merl1ng.cc/2017/09/01/php绕过补充/</a></p>
 <p>所以利用这个漏洞 注意 get和post方式 </p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/sha1raoguo.PNG" alt=""></p>
-<h3 id="file-get-contents-“php-input”-和extract"><a href="#file-get-contents-“php-input”-和extract" class="headerlink" title="file_get_contents(“php://input”)和extract()"></a>file_get_contents(“php://input”)和extract()</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">extract(<span class="variable">$_GET</span>);</div><div class="line"><span class="keyword">if</span> (!empty(<span class="variable">$ac</span>))</div><div class="line">&#123;</div><div class="line"><span class="variable">$f</span> = trim(file_get_contents(<span class="variable">$fn</span>));</div><div class="line"><span class="keyword">if</span> (<span class="variable">$ac</span> === <span class="variable">$f</span>)</div><div class="line">&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">"&lt;p&gt;This is flag:"</span> .<span class="string">" <span class="variable">$flag</span>&lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line"><span class="built_in">echo</span> <span class="string">"&lt;p&gt;sorry!&lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<h4 id="先从file-get-contents-“php-input”-说"><a href="#先从file-get-contents-“php-input”-说" class="headerlink" title="先从file_get_contents(“php://input”)说"></a>先从file_get_contents(“php://input”)说</h4><p>前面题目中有过php中file_get_contents的特性可以使用字节流</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/phpinput.PNG" alt=""></p>
-<h4 id="再看另外一种方法"><a href="#再看另外一种方法" class="headerlink" title="再看另外一种方法"></a>再看另外一种方法</h4><p>extract()函数导致的变量覆盖漏洞 (但是这题不行 因为if (!empty($ac))这句)</p>
-<p>首先介绍一下extract()函数的作用</p>
-<p>extract() 函数从数组中将变量导入到当前的符号表</p>
-<p>该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量</p>
-<p>来看一道很相似的题目 但是没有非空判断</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$filename</span>=<span class="string">'test.txt'</span>;</div><div class="line">extract(<span class="variable">$_GET</span>);</div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$attempt</span>))&#123;</div><div class="line">  <span class="variable">$combination</span>=trim(file_get_contents(<span class="variable">$filename</span>));</div><div class="line">  <span class="keyword">if</span>(<span class="variable">$attempt</span>===<span class="variable">$combination</span>)&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;p&gt;How did you know the secret combination was"</span> . <span class="string">"<span class="variable">$combinnation</span> !?&lt;p&gt;"</span> ;</div><div class="line">     <span class="variable">$next</span> = file_get_contents(<span class="string">'password.txt'</span>);</div><div class="line">     <span class="built_in">echo</span> <span class="string">"&lt;p&gt;You've earned the password."</span> . <span class="string">"<span class="variable">$next</span>&lt;/p&gt;"</span>;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">       <span class="built_in">echo</span> <span class="string">"&lt;p&gt;Incorrect! The secret combiantion is not <span class="variable">$attempt</span>&lt;/p&gt;"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<p>首先注意 这里用的是 isset而不是empty </p>
-<p>isset()函数 一般用来检测变量是否设置 </p>
-<p>若变量不存在则返回 FALSE<br>若变量存在且其值为NULL，也返回 FALSE<br>若变量存在且值不为NULL，则返回 TURE<br>同时检查多个变量时，每个单项都符合上一条要求时才返回 TRUE，否则结果为 FALSE </p>
-<p>empty()函数 判断值为否为空 </p>
-<p>若变量不存在则返回 TRUE<br>若变量存在且其值为””、0、”0”、NULL、、FALSE、array()、var $var; 以及没有任何属性的对象，则返回 TURE<br>若变量存在且值不为””、0、”0”、NULL、、FALSE、array()、var $var; 以及没有任何属性的对象，则返回 FALSE </p>
-<p>在第三行, 运用了extract()函数, 将GET方式获得的变量导入到当前的符号表中</p>
-<p>然后判断$attempt与$combination两个变量的内容是否相等.</p>
-<p>$combination变量储存的是test.txt的内容. 但是我们并不能查看test.txt, 所以并不知道该怎么去设</p>
-<p>置$attempt的值.</p>
-<p>但是, 由于extract()函数的不足之处, 导致这段代码存在一个变量覆盖漏洞</p>
-<p>只要我们这样构造url<br>/?attempt=&amp;filename=</p>
-<p>那么, 我们可以发现, $attempt变量和$combination变量的内容都会被设置成空字符串</p>
-<p>这样, Line 6 的判断就成立了, 我们就能成功地拿到password.txt的内容</p>
-<h4 id="话说变量覆盖漏洞还见过一种解法-有文件情况下直接读文件文件"><a href="#话说变量覆盖漏洞还见过一种解法-有文件情况下直接读文件文件" class="headerlink" title="话说变量覆盖漏洞还见过一种解法 有文件情况下直接读文件文件"></a>话说变量覆盖漏洞还见过一种解法 有文件情况下直接读文件文件</h4><p><a href="http://bobao.360.cn/news/detail/796.html" target="_blank" rel="external">http://bobao.360.cn/news/detail/796.html</a></p>
-<p><em>由此我想 file_get_contents是不是本身只能读文件 但是加上php://input 就可以 读post的数据？</em></p>
 
       
     </div>
@@ -577,7 +521,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -654,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#双url编码绕过"><span class="nav-number">1.</span> <span class="nav-text">双url编码绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挺杂的一道"><span class="nav-number">3.</span> <span class="nav-text">挺杂的一道</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#substr-id-0-1-substr-—-返回字符串的子串"><span class="nav-number">3.1.</span> <span class="nav-text">substr($id,0,-1) substr — 返回字符串的子串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stripos"><span class="nav-number">3.2.</span> <span class="nav-text">stripos()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过"><span class="nav-number">3.3.</span> <span class="nav-text">.绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php-input"><span class="nav-number">3.4.</span> <span class="nav-text">php://input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eregi"><span class="nav-number">3.5.</span> <span class="nav-text">eregi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有关php黑魔法"><span class="nav-number">3.6.</span> <span class="nav-text">有关php黑魔法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sha1绕过"><span class="nav-number">4.</span> <span class="nav-text">sha1绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file-get-contents-“php-input”-和extract"><span class="nav-number">5.</span> <span class="nav-text">file_get_contents(“php://input”)和extract()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先从file-get-contents-“php-input”-说"><span class="nav-number">5.1.</span> <span class="nav-text">先从file_get_contents(“php://input”)说</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再看另外一种方法"><span class="nav-number">5.2.</span> <span class="nav-text">再看另外一种方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#话说变量覆盖漏洞还见过一种解法-有文件情况下直接读文件文件"><span class="nav-number">5.3.</span> <span class="nav-text">话说变量覆盖漏洞还见过一种解法 有文件情况下直接读文件文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#双url编码绕过"><span class="nav-number">1.</span> <span class="nav-text">双url编码绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sha1绕过"><span class="nav-number">3.</span> <span class="nav-text">sha1绕过</span></a></li></ol></div>
             
 
           </div>
