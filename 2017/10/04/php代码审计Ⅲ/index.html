@@ -103,7 +103,8 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/phpzonghe.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/phpzonghe2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/phpzonghe3.PNG">
-<meta property="og:updated_time" content="2017-10-04T14:35:15.082Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/zhengzepipei.PNG">
+<meta property="og:updated_time" content="2017-10-05T05:27:51.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php代码审计Ⅲ">
 <meta name="twitter:description" content="如何学习php? 打ctf…">
@@ -373,6 +374,11 @@
 <p>查看源码拿到flag</p>
 <p>php反序列化漏洞<br><a href="http://blog.csdn.net/qq_32400847/article/details/53873275" target="_blank" rel="external">http://blog.csdn.net/qq_32400847/article/details/53873275</a></p>
 <p>__toString<br><a href="http://www.jb51.net/article/99351.htm" target="_blank" rel="external">http://www.jb51.net/article/99351.htm</a></p>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> &lt;?php </div><div class="line">highlight_file(<span class="string">'2.php'</span>);</div><div class="line"><span class="variable">$key</span>=<span class="string">'KEY&#123;********************************&#125;'</span>;</div><div class="line"><span class="variable">$IM</span>= preg_match(<span class="string">"/key.*key.&#123;4,7&#125;key:\/.\/(.*key)[a-z][[:punct:]]/i"</span>, trim(<span class="variable">$_GET</span>[<span class="string">"id"</span>]), <span class="variable">$match</span>);</div><div class="line"><span class="keyword">if</span>( <span class="variable">$IM</span> )&#123; </div><div class="line">  die(<span class="string">'key is: '</span>.<span class="variable">$key</span>);</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">1./是正则表达式分界符，两个/里面的内容是正则表达式 表达式直接写出来的字符串直接利用，如key</div><div class="line"></div><div class="line">2.<span class="string">"."</span>匹配除换行符 \n 之外的任何单字符</div><div class="line"></div><div class="line">3.<span class="string">"*"</span>匹配前面的子表达式零次或多次。例如，zo* 能匹配 <span class="string">"z"</span> 以及 <span class="string">"zoo"</span>。* 等价于&#123;0,&#125;</div><div class="line"></div><div class="line">合起来.*代表贪婪匹配 如下面的表达式匹配从开始小于符号 (&lt;) 到关闭 H1 标记的大于符号 (&gt;) 之间的所有内容。</div><div class="line"></div><div class="line">/&lt;.*&gt;/</div><div class="line"></div><div class="line">4.<span class="string">"\/"</span>代表<span class="string">"/"</span> 表示将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， <span class="string">'n'</span> </div><div class="line"></div><div class="line">匹配字符 <span class="string">'n'</span>。<span class="string">'\n'</span> 匹配换行符。序列 <span class="string">'\\'</span> 匹配 <span class="string">"\"，而 '\(' 则匹配 "</span>(<span class="string">"</span></div><div class="line"></div><div class="line">5.[a-z]代表a-z中的任意一个字符</div><div class="line"></div><div class="line">6.[[:punct:]]代表任意一个字符，包括各种符号</div><div class="line"></div><div class="line">7./i代表大小写不敏感</div><div class="line"></div><div class="line">叫做修正符 更多看这篇</div><div class="line">http://www.cnblogs.com/kevin-yuan/archive/2012/09/25/2702167.html</div><div class="line"></div><div class="line">8.&#123;4-7&#125;代表[0-9]中数字连续出现的个数是4-7个</div></pre></td></tr></table></figure>
+<p>顺带一提<br>与 * 区别的是 + 匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}</p>
+<p>构造方式有很多<br>?id=keyakey1236key:/a/keya$</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/zhengzepipei.PNG" alt=""></p>
 
       
     </div>
@@ -573,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#综合题目"><span class="nav-number">1.</span> <span class="nav-text">综合题目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#综合题目"><span class="nav-number">1.</span> <span class="nav-text">综合题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式"><span class="nav-number">2.</span> <span class="nav-text">正则表达式</span></a></li></ol></div>
             
 
           </div>
