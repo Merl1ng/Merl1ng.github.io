@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="express,mongodb," />
 
 
 
@@ -93,17 +93,19 @@
 
 
 
-<meta name="description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了">
-<meta name="keywords" content="hexo">
+<meta name="description" content="###　安装 mongodb  并加入环境变量方便cmder启动  启动数据库需要以管理员身份运行 配置好后直接 net start MongoDB 首先新建数据表 cmder下 依次输入 mongouse blog //创建名为blog的数据库db.users.insert({“name”:”petr”,”age”:”26”,”level”:”master”});//创建名为users的数据表d">
+<meta name="keywords" content="express,mongodb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo自定义主页">
-<meta property="og:url" content="http://Merl1ng.com/2017/08/10/hexo自定义主页/index.html">
+<meta property="og:title" content="express+mongodb极简入门">
+<meta property="og:url" content="http://Merl1ng.com/2017/10/13/express-mongodb极简入门/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了">
-<meta property="og:updated_time" content="2017-08-19T09:50:10.669Z">
+<meta property="og:description" content="###　安装 mongodb  并加入环境变量方便cmder启动  启动数据库需要以管理员身份运行 配置好后直接 net start MongoDB 首先新建数据表 cmder下 依次输入 mongouse blog //创建名为blog的数据库db.users.insert({“name”:”petr”,”age”:”26”,”level”:”master”});//创建名为users的数据表d">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/express1.PNG">
+<meta property="og:updated_time" content="2017-10-13T15:18:53.761Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo自定义主页">
-<meta name="twitter:description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了">
+<meta name="twitter:title" content="express+mongodb极简入门">
+<meta name="twitter:description" content="###　安装 mongodb  并加入环境变量方便cmder启动  启动数据库需要以管理员身份运行 配置好后直接 net start MongoDB 首先新建数据表 cmder下 依次输入 mongouse blog //创建名为blog的数据库db.users.insert({“name”:”petr”,”age”:”26”,”level”:”master”});//创建名为users的数据表d">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/express1.PNG">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/08/10/hexo自定义主页/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/10/13/express-mongodb极简入门/"/>
 
 
 
 
 
-  <title>hexo自定义主页 | Merl1ng's blog</title>
+  <title>express+mongodb极简入门 | Merl1ng's blog</title>
   
 
 
@@ -266,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/10/hexo自定义主页/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/10/13/express-mongodb极简入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo自定义主页</h1>
+          <h1 class="post-title" itemprop="name headline">express+mongodb极简入门</h1>
         
 
         <div class="post-meta">
@@ -295,8 +297,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-10T16:34:10+08:00">
-                2017-08-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-13T22:53:42+08:00">
+                2017-10-13
               </time>
             
 
@@ -318,8 +320,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/setting/" itemprop="url" rel="index">
-                    <span itemprop="name">setting</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -352,18 +354,32 @@
       
 
       
-        <p>一直就想给博客加个自己的首页<br>看到了喜欢的特效就毫不犹豫的动手了</p>
-<a id="more"></a>
-<p>其实如果有云服务器就不用这么麻烦了 以下操作前提是在github的博客</p>
-<p>首先有一个自己的域名 并且解析到你已经搭建好的github博客地址 (yourname.github.io)</p>
-<p>新建一个repository 这里我命名为 Home-page<br>根据提示在git下复制代码进去</p>
-<p>到域名注册的地方新增一个二级域名解析 同样指向你的github博客地址<br>然后在Home-page新建文件CNAME 把你的二级域名写进去 </p>
-<p>Home-page里到setting 再到 github page 新建一个页面 此时将指向你的二级域名 </p>
-<p>把你喜欢的首页改名为index.html放到 Home-page 里面 (首页里超链接指向博客 <em>废话</em>)<br>index文件里引用的css jpg等等 直接放到云上比较方便 然后把herf改成外链</p>
-<p>到这里你的自定义首页就完成了<br>我这里首页是 blog.merl1ng.cc 博客是 merl1ng.cc</p>
-<p>但是问题又来了 因为是先绑的顶级域名 首页和博客的域名交换一下比较好</p>
-<p>这里域名的解析不用改 只用到github上把两个仓库根目录的CNAME文件里的域名交换一波<br>把index.html里的超链接改一下(不改一直指向自己)<br>最后把本地hexo文件夹的source里的CNAME域名也改一下就完成了</p>
-<p>最终的效果 首页为 merl1ng.cc 博客 blog.merl1ng.cc<br>这样看起来比较舒服(≧∇≦)ﾉ 将来如果再新建别的二级域名 这个格式也比较方便 </p>
+        <p>###　安装 mongodb </p>
+<p>并加入环境变量方便cmder启动 </p>
+<p>启动数据库需要以管理员身份运行 配置好后直接 net start MongoDB</p>
+<p>首先新建数据表 cmder下 依次输入</p>
+<p>mongo<br>use blog //创建名为blog的数据库<br>db.users.insert({“name”:”petr”,”age”:”26”,”level”:”master”});//创建名为users的数据表<br>db.users.find();//查看数据</p>
+<p>还有db.users.drop();//删除当前数据表</p>
+<h3 id="安装-express-Mongoose"><a href="#安装-express-Mongoose" class="headerlink" title="安装 express+Mongoose"></a>安装 express+Mongoose</h3><p>//全局安装express<br>npm install express -g</p>
+<p>//安装express全局生成器，可以自动生成项目文件<br>npm install express-generator -g</p>
+<p>下面在当前工作目录生成一个叫做blog的项目，并采用ejs模版</p>
+<p>// 默认是jade模版， -e就是采用ejs模版 express帮我们创建了一个完整的项目级目录<br>express -e blog </p>
+<p>//进入项目文件夹<br>cd blog</p>
+<p>//安装所有依赖<br>npm install</p>
+<p>npm start//启动</p>
+<p>//安装Mongoose,   –save把Mongoose模块加入到项目依赖<br>npm install mongoose –save</p>
+<p>可以看到生成项目的目录</p>
+<p>www文件就是启动文件</p>
+<p>node_modules 存放所有项目的依赖</p>
+<p>public为静态资源存放目录，可以修改</p>
+<p>routes为路由文件</p>
+<p>views就是视图了（页面文件，ejs模板）</p>
+<h3 id="express操作mongodb"><a href="#express操作mongodb" class="headerlink" title="express操作mongodb"></a>express操作mongodb</h3><p>修改routes/index.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);//node语法，意思是引用依赖Express。我们将其保存成变量，以备之后的需要</div><div class="line">var router = express.Router();</div><div class="line"></div><div class="line">//mongodb</div><div class="line">var mongoose = require(<span class="string">'mongoose'</span>);</div><div class="line">mongoose.Promise = global.Promise;</div><div class="line">        </div><div class="line">var conn = mongoose.connect(<span class="string">'mongodb://127.0.0.1:27017/blog'</span>);</div><div class="line">var User = new mongoose.Schema(&#123;//使用mongoose</div><div class="line">    name: String,</div><div class="line">    age: String,</div><div class="line">	level: String</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var myModel = conn.model(<span class="string">'user'</span>, User);</div><div class="line"></div><div class="line">/* GET index listing. */</div><div class="line">router.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req, res, next) &#123;</div><div class="line">    myModel.findOne(&#123;name:<span class="string">"petr"</span>&#125;, <span class="keyword">function</span> (err, user) &#123;</div><div class="line">        console.log(user);</div><div class="line">        res.render(<span class="string">'index'</span>, &#123;title: <span class="string">'Express'</span>, user: user &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">module.exports = router;</div></pre></td></tr></table></figure>
+<p>修改wiew/index.ejs</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</div><div class="line">    &lt;link rel=<span class="string">'stylesheet'</span> href=<span class="string">'/stylesheets/style.css'</span> /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</div><div class="line">    &lt;p&gt;姓名：&lt;%= user.name %&gt;&lt;/p&gt;</div><div class="line">    &lt;p&gt;年龄：&lt;%= user.age %&gt;&lt;/p&gt;</div><div class="line">    &lt;p&gt;等级：&lt;%= user.level %&gt;&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>启动服务器即可看到效果</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/express1.PNG" alt=""></p>
 
       
     </div>
@@ -393,7 +409,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/express/" rel="tag"># express</a>
+          
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
           
         </div>
       
@@ -406,18 +424,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/13/php弱匹配和json/" rel="next" title="php弱匹配和json">
-                <i class="fa fa-chevron-left"></i> php弱匹配和json
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/07/wifi破解/" rel="prev" title="wifi破解">
-                wifi破解 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/08/世安杯writeup/" rel="prev" title="世安杯writeup">
+                世安杯writeup <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -549,6 +572,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-express-Mongoose"><span class="nav-number">1.</span> <span class="nav-text">安装 express+Mongoose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#express操作mongodb"><span class="nav-number">2.</span> <span class="nav-text">express操作mongodb</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
