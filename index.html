@@ -355,35 +355,14 @@
 
       
         
-          
-            <p>###　安装 mongodb </p>
-<p>并加入环境变量方便cmder启动 </p>
-<p>启动数据库需要以管理员身份运行 配置好后直接 net start MongoDB</p>
-<p>首先新建数据表 cmder下 依次输入</p>
-<p>mongo<br>use blog //创建名为blog的数据库<br>db.users.insert({“name”:”petr”,”age”:”26”,”level”:”master”});//创建名为users的数据表<br>db.users.find();//查看数据</p>
-<p>还有db.users.drop();//删除当前数据表</p>
-<h3 id="安装-express-Mongoose"><a href="#安装-express-Mongoose" class="headerlink" title="安装 express+Mongoose"></a>安装 express+Mongoose</h3><p>//全局安装express<br>npm install express -g</p>
-<p>//安装express全局生成器，可以自动生成项目文件<br>npm install express-generator -g</p>
-<p>下面在当前工作目录生成一个叫做blog的项目，并采用ejs模版</p>
-<p>// 默认是jade模版， -e就是采用ejs模版 express帮我们创建了一个完整的项目级目录<br>express -e blog </p>
-<p>//进入项目文件夹<br>cd blog</p>
-<p>//安装所有依赖<br>npm install</p>
-<p>npm start//启动</p>
-<p>//安装Mongoose,   –save把Mongoose模块加入到项目依赖<br>npm install mongoose –save</p>
-<p>可以看到生成项目的目录</p>
-<p>www文件就是启动文件</p>
-<p>node_modules 存放所有项目的依赖</p>
-<p>public为静态资源存放目录，可以修改</p>
-<p>routes为路由文件</p>
-<p>views就是视图了（页面文件，ejs模板）</p>
-<h3 id="express操作mongodb"><a href="#express操作mongodb" class="headerlink" title="express操作mongodb"></a>express操作mongodb</h3><p>修改routes/index.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);//node语法，意思是引用依赖Express。我们将其保存成变量，以备之后的需要</div><div class="line">var router = express.Router();</div><div class="line"></div><div class="line">//mongodb</div><div class="line">var mongoose = require(<span class="string">'mongoose'</span>);</div><div class="line">mongoose.Promise = global.Promise;</div><div class="line">        </div><div class="line">var conn = mongoose.connect(<span class="string">'mongodb://127.0.0.1:27017/blog'</span>);</div><div class="line">var User = new mongoose.Schema(&#123;//使用mongoose</div><div class="line">    name: String,</div><div class="line">    age: String,</div><div class="line">	level: String</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var myModel = conn.model(<span class="string">'user'</span>, User);</div><div class="line"></div><div class="line">/* GET index listing. */</div><div class="line">router.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req, res, next) &#123;</div><div class="line">    myModel.findOne(&#123;name:<span class="string">"petr"</span>&#125;, <span class="keyword">function</span> (err, user) &#123;</div><div class="line">        console.log(user);</div><div class="line">        res.render(<span class="string">'index'</span>, &#123;title: <span class="string">'Express'</span>, user: user &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">module.exports = router;</div></pre></td></tr></table></figure>
-<p>修改wiew/index.ejs</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</div><div class="line">    &lt;link rel=<span class="string">'stylesheet'</span> href=<span class="string">'/stylesheets/style.css'</span> /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</div><div class="line">    &lt;p&gt;姓名：&lt;%= user.name %&gt;&lt;/p&gt;</div><div class="line">    &lt;p&gt;年龄：&lt;%= user.age %&gt;&lt;/p&gt;</div><div class="line">    &lt;p&gt;等级：&lt;%= user.level %&gt;&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>启动服务器即可看到效果</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/express1.PNG" alt=""></p>
-
-          
+          <h3 id="安装-mongodb"><a href="#安装-mongodb" class="headerlink" title="安装 mongodb"></a>安装 mongodb</h3><p>安装后加入环境变量方便启动<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/13/express-mongodb极简入门/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
