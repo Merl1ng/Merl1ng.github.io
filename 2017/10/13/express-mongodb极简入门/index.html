@@ -101,7 +101,8 @@
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="安装 mongodb安装后加入环境变量方便启动">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/express1.PNG">
-<meta property="og:updated_time" content="2017-10-14T15:45:28.696Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/express2.PNG">
+<meta property="og:updated_time" content="2017-10-15T10:00:14.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="express+mongodb极简入门">
 <meta name="twitter:description" content="安装 mongodb安装后加入环境变量方便启动">
@@ -379,6 +380,28 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</div><div class="line">    &lt;link rel=<span class="string">'stylesheet'</span> href=<span class="string">'/stylesheets/style.css'</span> /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</div><div class="line">    &lt;p&gt;姓名：&lt;%= user.name %&gt;&lt;/p&gt;</div><div class="line">    &lt;p&gt;年龄：&lt;%= user.age %&gt;&lt;/p&gt;</div><div class="line">    &lt;p&gt;等级：&lt;%= user.level %&gt;&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p>启动服务器即可看到效果</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/express1.PNG" alt=""></p>
+<h3 id="另外一个入门项目"><a href="#另外一个入门项目" class="headerlink" title="另外一个入门项目"></a>另外一个入门项目</h3><p>本来是想单独整理出来的 但是原作者真的写得很细致了 看原版就很舒服~</p>
+<p>这个项目没有用express自动生成项目目录 而是手工完成 可以更好地理解每个部分的原理</p>
+<p><a href="http://www.jianshu.com/p/b4256fb0847a" target="_blank" rel="external">http://www.jianshu.com/p/b4256fb0847a</a> </p>
+<p>作者的地址 不但写得很细致 并且告诉了各个部分的原理</p>
+<p>不过有些地方代码有些小错误 需要自己改正或补全</p>
+<p>通过一些案例也理解了一些使用文档型数据库mongodb搭配node的优点和它对JavaScript和Json的原生支持</p>
+<p>这个小项目完成后效果是这个样子的 </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/express2.PNG" alt=""></p>
+<p>数据库里刚开始放的是 { “_id” : ObjectId(“59e230943339db05b4c01d74”), “clicks” : 0 }</p>
+<p>注意如果手动insert  0不要带”” 一开始就因为这里报错了没成功</p>
+<p>这个项目的目标是</p>
+<p>记录按钮被按下的次数</p>
+<p>在数据库中储存</p>
+<p>重新设置计数为0</p>
+<p>在程序的内容中，我们要做到以下：</p>
+<p>Node/Express网站服务用来响应HTTP要求，以及传文件给浏览器</p>
+<p>MongoDB数据库用来存储点击的次数</p>
+<p>服务端controller(控制器)可以添加，可以重设，可以接受来自数据库的记录</p>
+<p>数据将会传给API</p>
+<p>客户端控制器使用暴露的API能够根据用户的输入响应不同的内容</p>
+<p>客户端能都给用户显示界面</p>
+<p>HTML页面要包含一个logo以及用户交互的按钮</p>
 
       
     </div>
@@ -422,10 +445,6 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/14/express-mongodb极简入门Ⅱ/" rel="next" title="express+mongodb极简入门Ⅱ">
-                <i class="fa fa-chevron-left"></i> express+mongodb极简入门Ⅱ
-              </a>
             
           </div>
 
@@ -508,7 +527,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -585,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-mongodb"><span class="nav-number">1.</span> <span class="nav-text">安装 mongodb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-express-Mongoose"><span class="nav-number">2.</span> <span class="nav-text">安装 express+Mongoose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#express操作mongodb"><span class="nav-number">3.</span> <span class="nav-text">express操作mongodb</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-mongodb"><span class="nav-number">1.</span> <span class="nav-text">安装 mongodb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-express-Mongoose"><span class="nav-number">2.</span> <span class="nav-text">安装 express+Mongoose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#express操作mongodb"><span class="nav-number">3.</span> <span class="nav-text">express操作mongodb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另外一个入门项目"><span class="nav-number">4.</span> <span class="nav-text">另外一个入门项目</span></a></li></ol></div>
             
 
           </div>
