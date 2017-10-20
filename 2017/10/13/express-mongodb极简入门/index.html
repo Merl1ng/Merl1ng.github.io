@@ -102,7 +102,7 @@
 <meta property="og:description" content="安装 mongodb安装后加入环境变量方便启动">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/express1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/express2.PNG">
-<meta property="og:updated_time" content="2017-10-15T10:00:14.816Z">
+<meta property="og:updated_time" content="2017-10-20T14:05:22.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="express+mongodb极简入门">
 <meta name="twitter:description" content="安装 mongodb安装后加入环境变量方便启动">
@@ -360,6 +360,22 @@
 <p>首先新建数据表 cmder下 依次输入</p>
 <p>mongo<br>use blog //创建名为blog的数据库<br>db.users.insert({“name”:”petr”,”age”:”26”,”level”:”master”});//创建名为users的集合(数据表)<br>db.users.find();//查看数据</p>
 <p>还有db.users.drop();//删除当前数据表<br>若想以数字形式操作 数字不加””  如 “number”:0 </p>
+<h4 id="mongodb基础操作"><a href="#mongodb基础操作" class="headerlink" title="mongodb基础操作"></a>mongodb基础操作</h4><p>使用BSON储存数据 即二进制的JSON</p>
+<p>无模式 支持索引</p>
+<p>mongo 或指定服务器和端口 mongo 127.0.0.1:27017</p>
+<p>show dbs 查看数据库</p>
+<p>use 某一数据库后</p>
+<p>可以 show collections 查看集合</p>
+<p>db.users.find().count(); 查看数量</p>
+<p>db.users.find({“_id” : ObjectId(“55bdxxxxxxxxxxxxxxx”)}); 通过_id条件查询</p>
+<p>db.users.update() 更新数据 三个参数 条件 更新的内容 (配置)</p>
+<p>db.users.update({“username” : “Zoe”},{$set: {“group”: “writer”}});<br>此时只改满足条件的第一个</p>
+<p>db.users.update({“username” : “Zoe”},{$set: {“group”: “writer”}}，{multi: true});<br>此时全改</p>
+<p>db.users.save({_id: ObjectId(“5xxxxxxxxxxxxxxxxxxx”),”group” : “programmer”});<br>必须有_id参数才能使用 但此时其他未指定的参数全部默认删除</p>
+<p>db.users.remove({“group”: “reporter”}); 把所有符合条件的全删了</p>
+<p>db.users.remove({“group”: “reporter”},true); 只删满足条件的第一个</p>
+<p>db.users.remove({});只删文档 不删索引</p>
+<p>db.users.drop();删所有</p>
 <h3 id="安装-express-Mongoose"><a href="#安装-express-Mongoose" class="headerlink" title="安装 express+Mongoose"></a>安装 express+Mongoose</h3><p>//全局安装express<br>npm install express -g</p>
 <p>//安装express全局生成器，可以自动生成项目文件<br>npm install express-generator -g</p>
 <p>下面在当前工作目录生成一个叫做blog的项目，并采用ejs模版</p>
@@ -446,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/15/mongodb-mongoose基础笔记/" rel="next" title="mongodb-mongoose基础笔记">
-                <i class="fa fa-chevron-left"></i> mongodb-mongoose基础笔记
+              <a href="/2017/10/15/mongoose基础及cms后端/" rel="next" title="mongoose基础及简单的cms后端">
+                <i class="fa fa-chevron-left"></i> mongoose基础及简单的cms后端
               </a>
             
           </div>
@@ -608,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-mongodb"><span class="nav-number">1.</span> <span class="nav-text">安装 mongodb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-express-Mongoose"><span class="nav-number">2.</span> <span class="nav-text">安装 express+Mongoose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#express操作mongodb"><span class="nav-number">3.</span> <span class="nav-text">express操作mongodb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另外一个入门项目"><span class="nav-number">4.</span> <span class="nav-text">另外一个入门项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-mongodb"><span class="nav-number">1.</span> <span class="nav-text">安装 mongodb</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mongodb基础操作"><span class="nav-number">1.1.</span> <span class="nav-text">mongodb基础操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-express-Mongoose"><span class="nav-number">2.</span> <span class="nav-text">安装 express+Mongoose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#express操作mongodb"><span class="nav-number">3.</span> <span class="nav-text">express操作mongodb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另外一个入门项目"><span class="nav-number">4.</span> <span class="nav-text">另外一个入门项目</span></a></li></ol></div>
             
 
           </div>
