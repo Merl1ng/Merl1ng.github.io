@@ -105,7 +105,9 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/%E6%96%91%E9%A9%AC%E6%96%91%E9%A9%AC.png">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/%E6%9D%A1%E5%BD%A2%E7%A0%81.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/pyc.PNG">
-<meta property="og:updated_time" content="2017-10-10T14:09:39.368Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/CreateByWho.jpg">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/createbywho2.PNG">
+<meta property="og:updated_time" content="2017-10-21T03:09:27.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="世安杯writeup">
 <meta name="twitter:description" content="原题蛮多的 web和misc做了点 然后就滚去写物理报告了..">
@@ -362,6 +364,7 @@
 <h3 id="web-1"><a href="#web-1" class="headerlink" title="web 1"></a>web 1</h3><p>找到源码 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$flag</span> = <span class="string">'*********'</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (isset (<span class="variable">$_GET</span>[<span class="string">'password'</span>])) &#123;</div><div class="line">    <span class="keyword">if</span> (ereg (<span class="string">"^[a-zA-Z0-9]+$"</span>, <span class="variable">$_GET</span>[<span class="string">'password'</span>]) === FALSE)</div><div class="line">        <span class="built_in">echo</span> <span class="string">'&lt;p class="alert"&gt;You password must be alphanumeric&lt;/p&gt;'</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (strpos (<span class="variable">$_GET</span>[<span class="string">'password'</span>], <span class="string">'--'</span>) !== FALSE)</div><div class="line">        die(<span class="variable">$flag</span>);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">echo</span> <span class="string">'&lt;p class="alert"&gt;Invalid password&lt;/p&gt;'</span>;</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line"></div><div class="line">&lt;section class=<span class="string">"login"</span>&gt;</div><div class="line">        &lt;div class=<span class="string">"title"</span>&gt;</div><div class="line">                &lt;a href=<span class="string">"./index.phps"</span>&gt;View Source&lt;/a&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &lt;form method=<span class="string">"POST"</span>&gt;</div><div class="line">                &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> required name=<span class="string">"password"</span> placeholder=<span class="string">"Password"</span> /&gt;&lt;br/&gt;</div><div class="line">                &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span>/&gt;</div><div class="line">        &lt;/form&gt;</div><div class="line">&lt;/section&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p>直接?password[]=就能绕过</p>
+<p>也可以利用%00截断ereg，构造?password=1%00—</p>
 <h3 id="web-2"><a href="#web-2" class="headerlink" title="web 2"></a>web 2</h3><p>cookie </p>
 <p>两句关键代码<br>if(isset($_COOKIE[‘key’]) &amp;&amp; $_COOKIE[‘key’]==’li_lr_480’){</p>
 <p>thisis_flag.php</p>
@@ -391,6 +394,10 @@
 <p>珍妮换了一个新的QQ号码，原来的号码和新的号码都是5位靓号哦；其次，新的号码是原来号码的4倍，并且原来的号码倒着写正好是新的号码，请问，新号码是多少，新号码即为key   </p>
 <p>掏出c语言打一发</p>
 <p>87912 </p>
+<h3 id="misc6"><a href="#misc6" class="headerlink" title="misc6"></a>misc6</h3><p>拼接二维码 这题是别人的writeup</p>
+<p>我本来以为是图片大小被修改没显示 后来才发现 少的地方刚好是三块回型的块23333 </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/CreateByWho.jpg" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/createbywho2.PNG" alt=""></p>
 
       
     </div>
@@ -597,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-1"><span class="nav-number">1.</span> <span class="nav-text">web 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-2"><span class="nav-number">2.</span> <span class="nav-text">web 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-3"><span class="nav-number">3.</span> <span class="nav-text">web 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">4.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">5.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">6.</span> <span class="nav-text">misc 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-4"><span class="nav-number">7.</span> <span class="nav-text">misc 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-5"><span class="nav-number">8.</span> <span class="nav-text">misc 5</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-1"><span class="nav-number">1.</span> <span class="nav-text">web 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-2"><span class="nav-number">2.</span> <span class="nav-text">web 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-3"><span class="nav-number">3.</span> <span class="nav-text">web 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">4.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">5.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">6.</span> <span class="nav-text">misc 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-4"><span class="nav-number">7.</span> <span class="nav-text">misc 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-5"><span class="nav-number">8.</span> <span class="nav-text">misc 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc6"><span class="nav-number">9.</span> <span class="nav-text">misc6</span></a></li></ol></div>
             
 
           </div>
