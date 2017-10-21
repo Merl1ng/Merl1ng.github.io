@@ -93,19 +93,19 @@
 
 
 
-<meta name="description" content="所给图片是一只蛇的照片  格式为jpg">
+<meta name="description" content="snake所给图片是一只蛇的照片  格式为jpg">
 <meta name="keywords" content="crypto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="密码学之snake">
-<meta property="og:url" content="http://Merl1ng.com/2017/08/25/密码学之snake/index.html">
+<meta property="og:title" content="密码学基础题目">
+<meta property="og:url" content="http://Merl1ng.com/2017/08/25/密码学基础题目/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="所给图片是一只蛇的照片  格式为jpg">
+<meta property="og:description" content="snake所给图片是一只蛇的照片  格式为jpg">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sankecrypto.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/shiyanbarbank.PNG">
-<meta property="og:updated_time" content="2017-08-25T03:59:09.417Z">
+<meta property="og:updated_time" content="2017-10-21T04:59:04.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="密码学之snake">
-<meta name="twitter:description" content="所给图片是一只蛇的照片  格式为jpg">
+<meta name="twitter:title" content="密码学基础题目">
+<meta name="twitter:description" content="snake所给图片是一只蛇的照片  格式为jpg">
 <meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/sankecrypto.PNG">
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/08/25/密码学之snake/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/08/25/密码学基础题目/"/>
 
 
 
 
 
-  <title>密码学之snake | Merl1ng's blog</title>
+  <title>密码学基础题目 | Merl1ng's blog</title>
   
 
 
@@ -269,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/25/密码学之snake/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/25/密码学基础题目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">密码学之snake</h1>
+          <h1 class="post-title" itemprop="name headline">密码学基础题目</h1>
         
 
         <div class="post-meta">
@@ -355,7 +355,7 @@
       
 
       
-        <p>所给图片是一只蛇的照片  格式为jpg</p>
+        <h3 id="snake"><a href="#snake" class="headerlink" title="snake"></a>snake</h3><p>所给图片是一只蛇的照片  格式为jpg</p>
 <a id="more"></a>
 <p>binwalk 发现 rar -e拿到压缩包</p>
 <p>这里补一个不用binwalk 分析的方法</p>
@@ -375,6 +375,17 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/sankecrypto.PNG" alt=""></p>
 <p>最后贴一张昨天打到周榜第一的截图 haha</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/shiyanbarbank.PNG" alt=""></p>
+<h3 id="希尔密码"><a href="#希尔密码" class="headerlink" title="希尔密码"></a>希尔密码</h3><p>在线代的课本上出现了一堆神秘字母 </p>
+<p>dloguszijluswogany </p>
+<p>而旁边的矩阵是 </p>
+<p>1 2<br>0 1 </p>
+<p>根据字典序将字母转化为数字(0-25)</p>
+<p>设定密钥矩阵(n<em>n)，将明文转化为r </em> n的矩阵</p>
+<p>将明文矩阵与密钥矩阵相乘即可得到密文矩阵(结果模26)，再将其转化为字母即可</p>
+<p>原理及代码实现可以看这篇 <a href="http://xmwen1.blog.51cto.com/10730069/1751672" target="_blank" rel="external">http://xmwen1.blog.51cto.com/10730069/1751672</a></p>
+<p>d l o g u s z i j   3  11 14 6  20 18 25 8  9<br>l u s w o g a n y   11 20 18 22 14 6  0  13 14</p>
+<p>1 2 的逆矩阵为 -1 -2<br>0 1           0  1</p>
+<p>相乘 </p>
 
       
     </div>
@@ -477,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -560,6 +580,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#snake"><span class="nav-number">1.</span> <span class="nav-text">snake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔密码"><span class="nav-number">2.</span> <span class="nav-text">希尔密码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
