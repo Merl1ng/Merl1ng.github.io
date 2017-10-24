@@ -102,7 +102,7 @@
 <meta property="og:description" content="snake所给图片是一只蛇的照片  格式为jpg">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sankecrypto.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/shiyanbarbank.PNG">
-<meta property="og:updated_time" content="2017-10-22T14:22:27.995Z">
+<meta property="og:updated_time" content="2017-10-24T16:18:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码学基础题目">
 <meta name="twitter:description" content="snake所给图片是一只蛇的照片  格式为jpg">
@@ -386,6 +386,18 @@
 <p>d l o g u s z i j   3  11 14 6  20 18 25 8  9<br>l u s w o g a n y   11 20 18 22 14 6  0  13 14</p>
 <p>1 2 的逆矩阵为 -1 -2<br>0 1           0  1</p>
 <p>相乘 取模 再转换成字母</p>
+<h3 id="ansi解码"><a href="#ansi解码" class="headerlink" title="ansi解码"></a>ansi解码</h3><p>有一道web题经过一些步骤来到了一个页面 但是显示404 </p>
+<p>这里查看源码就能看到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">      &lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">      &lt;title&gt;404&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body bgcolor=<span class="string">"white"</span>&gt;</div><div class="line">&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;</div><div class="line">&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;</div><div class="line">&lt;!-- ┼攠數畣整爠煥敵瑳∨灯捲≤┩&gt; --&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>┼攠數畣整爠煥敵瑳∨灯捲≤┩&gt;<br>有一句注释，熟悉的人就知道是一句话木马</p>
+<p>这是ANSI转Unicode而得到的</p>
+<p>解密方法</p>
+<p>复制到记事本里另存为 编码选上 Unicode</p>
+<p>用WinHex等可以查看16进制的软件，直接打开即可</p>
+<p>如果想显示正常，把开头的FF FE两个字节删了，再用记事本打开就看到了<br>原理是：Windows平台下默认的Unicode编码为Little Endian的UTF-16，UTF-16就需要通过在文件开头以名为BOM（Byte Order Mark）的字符来表明文件是Big Endian还是Little Endian。BOM为U+FEFF这个字符</p>
+<h4 id="ANSI转Unicode"><a href="#ANSI转Unicode" class="headerlink" title="ANSI转Unicode"></a>ANSI转Unicode</h4><p>工具 a2u4hack.exe</p>
+<p>它常用来对一句话木马进行变形</p>
+<p>比如这里 <a href="http://www.91ri.org/1126.html" target="_blank" rel="external">http://www.91ri.org/1126.html</a></p>
 <h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>有关密码学加密总结可以看这篇 <a href="http://www.360doc.com/content/16/0906/21/27425026_588911412.shtml" target="_blank" rel="external">http://www.360doc.com/content/16/0906/21/27425026_588911412.shtml</a><br>很多偏门的也涉及到了</p>
 <p>U2FsdGVkX1 开头的密文是对称加密 AES / DES</p>
 <p>ascii码的二进制表示是7位</p>
@@ -593,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#snake"><span class="nav-number">1.</span> <span class="nav-text">snake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔密码"><span class="nav-number">2.</span> <span class="nav-text">希尔密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tips"><span class="nav-number">3.</span> <span class="nav-text">tips</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#snake"><span class="nav-number">1.</span> <span class="nav-text">snake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔密码"><span class="nav-number">2.</span> <span class="nav-text">希尔密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ansi解码"><span class="nav-number">3.</span> <span class="nav-text">ansi解码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ANSI转Unicode"><span class="nav-number">3.1.</span> <span class="nav-text">ANSI转Unicode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tips"><span class="nav-number">4.</span> <span class="nav-text">tips</span></a></li></ol></div>
             
 
           </div>

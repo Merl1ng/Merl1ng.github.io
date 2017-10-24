@@ -110,7 +110,8 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/shangchuan01.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/yijuhua1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/yijuhua2.PNG">
-<meta property="og:updated_time" content="2017-10-07T15:43:25.220Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/nctfres.PNG">
+<meta property="og:updated_time" content="2017-10-24T16:08:57.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杂七杂八的web">
 <meta name="twitter:description" content="burp 爆破">
@@ -413,6 +414,11 @@
 <p>?s=print_r(file(flag.txt)) 不行</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/yijuhua2.PNG" alt=""></p>
 <p>?s=show_source(“flag.txt”) 成功 看到了flags</p>
+<h3 id="302重定向"><a href="#302重定向" class="headerlink" title="302重定向"></a>302重定向</h3><p>flag藏在302界面的响应头里</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/nctfres.PNG" alt=""></p>
+<p>有关302可以看这篇 <a href="http://blog.sina.com.cn/s/blog_4550f3ca0101czu9.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4550f3ca0101czu9.html</a></p>
+<h3 id="php浮点数"><a href="#php浮点数" class="headerlink" title="php浮点数"></a>php浮点数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$usera</span> = (<span class="variable">$_POST</span>[<span class="string">'userid'</span>]);</div><div class="line">  <span class="keyword">if</span>(isset(<span class="variable">$usera</span>))&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="variable">$usera</span> == <span class="string">"1"</span>)&#123;</div><div class="line">          <span class="variable">$usera</span> = (int)(<span class="variable">$usera</span>);</div><div class="line">          <span class="keyword">if</span>(<span class="variable">$usera</span> == <span class="string">"0"</span>)&#123;</div><div class="line">              header(<span class="string">'Location: ./bhjskdfiffeswdwe.php'</span>);</div><div class="line">          &#125;</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<p>hackbar里post  userid=0.99999999999999999（小数点后至少有17位）即可满足代码跳转</p>
 
       
     </div>
@@ -617,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#burp-爆破"><span class="nav-number">1.</span> <span class="nav-text">burp 爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件上传绕过"><span class="nav-number">3.</span> <span class="nav-text">文件上传绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#robots-txt"><span class="nav-number">4.</span> <span class="nav-text">robots.txt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一句话利用"><span class="nav-number">5.</span> <span class="nav-text">一句话利用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#burp-爆破"><span class="nav-number">1.</span> <span class="nav-text">burp 爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造登陆地址"><span class="nav-number">2.</span> <span class="nav-text">伪造登陆地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关知识点"><span class="nav-number">2.1.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">2.2.</span> <span class="nav-text">题外话</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件上传绕过"><span class="nav-number">3.</span> <span class="nav-text">文件上传绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#robots-txt"><span class="nav-number">4.</span> <span class="nav-text">robots.txt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一句话利用"><span class="nav-number">5.</span> <span class="nav-text">一句话利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#302重定向"><span class="nav-number">6.</span> <span class="nav-text">302重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php浮点数"><span class="nav-number">7.</span> <span class="nav-text">php浮点数</span></a></li></ol></div>
             
 
           </div>
