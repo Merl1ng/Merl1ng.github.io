@@ -958,6 +958,9 @@ pre .javascript .function {
 .back-to-top.back-to-top-on {
   bottom: 19px;
 }
+.header {
+  background: url("http://otvzfr1o1.bkt.clouddn.com/testblog.png");
+}
 .header-inner {
   position: relative;
 }
@@ -1692,7 +1695,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #291f7a;
+  background: #ff79b6;
 }
 .links-of-blogroll {
   font-size: 13px;
