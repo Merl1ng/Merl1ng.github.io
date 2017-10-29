@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2017/10/28/java基础/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="正在看java但是和目前在用的c有些相似 怕记混开坑记录一下java和c的一点区别 但是在此之前我Cao 必须吐槽下今早的数学竞赛">
-<meta property="og:updated_time" content="2017-10-28T15:54:18.045Z">
+<meta property="og:updated_time" content="2017-10-29T03:18:52.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础">
 <meta name="twitter:description" content="正在看java但是和目前在用的c有些相似 怕记混开坑记录一下java和c的一点区别 但是在此之前我Cao 必须吐槽下今早的数学竞赛">
@@ -362,14 +362,19 @@
 <p>有些dalao复习了好久就因为这 总共200多号人连卷子都没看到 还有一些大三的学长最后一次机会却没能去成</p>
 <p>真是亏我昨天复习了一天(好吧我本来是想混个三等的) Orz…</p>
 <p>—————————————————————————————–<em>正文部分</em>—————————————————————————————–</p>
-<p>0x01 java里的数组名字只是个管理者 不同于c中的首地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int[] a = new int[10];</div><div class="line">a[0]=5;</div><div class="line">int[] b = a;</div><div class="line">b[0] = 16;</div><div class="line">System.out.println(a[0]);</div></pre></td></tr></table></figure>
+<h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><p>0x01 java里的数组名字只是个管理者 不同于c中的首地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int[] a = new int[10];</div><div class="line">a[0]=5;</div><div class="line">int[] b = a;</div><div class="line">b[0] = 16;</div><div class="line">System.out.println(a[0]);//println输出自带换行</div></pre></td></tr></table></figure>
 <p>这时a[0]也是16</p>
 <p>因为此时a与b管理同一个数组 改变任意一个另一个也会变</p>
 <p>0x02 遍历数组可用 for-each循环 int k : data 对数组data中每一个元素 按顺序每次拿一个作为k 不能修改数组</p>
 <p>0x03 int[] data = new int [10]不但生成了数组并且每个元素被初始化为0 </p>
 <p>0x04 数组长度 data.length 若是二维数组 data.length表示行数 data[i].length 表示每行有几个(列数)</p>
-<p>0x05 Math.sqrt(x) 算立方根</p>
+<p>0x05 Math类提供基本数学操作 Math.sqrt(x) 算立方根 Math.round 对小数进行四舍五入</p>
+<p>Math.random 0-1 之间的一个随机数</p>
+<p>0x06 包裹类型 bollean Bollean  char Character  int Integer  double Double</p>
+<p>有一些特殊功能 Integer.MAX_VALUE Interger.MIX_VALUE 获取该类型的最大最小值</p>
+<p>Character有更多</p>
+<p>0x07 String 字符串变量 首字母大写 如同包裹类型一样 他是一个类 String a  a只是管理者</p>
 <h3 id="一些在学java中了解到的其它方面"><a href="#一些在学java中了解到的其它方面" class="headerlink" title="一些在学java中了解到的其它方面"></a>一些在学java中了解到的其它方面</h3><h4 id="b"><a href="#b" class="headerlink" title="\b"></a>\b</h4><p>\t\b  \t是一个制表符，\b是代表一个退格，但一个制表符会被识别为一个字符，因此一个\b会消除一个制表符，虽然它实际上是很多空格</p>
 <p>\b表示将输出位置左移一位。<br>printf(“abc\bd”);    这个将输出：abd<br>原因是先输出abc，这时输出位置在c后面，接着输出\b，将输出位置移到c上，再输出d时，d将c覆盖了，因此输出：abd</p>
 <p>printf(“abc\b”);     这个将输出：abc 本身没有删除作用</p>
@@ -377,7 +382,8 @@
 <p>阮一峰大大这篇写的通俗易懂</p>
 <p>里面再次提到了之前密码学里面记录过的 Little endian 和 Big endian 小头大头存储方式</p>
 <p>这两个古怪的名称来自英国作家斯威夫特的《格列佛游记》。在该书中，小人国里爆发了内战，战争起因是人们争论，吃鸡蛋时究竟是从大头(Big-endian)敲开还是从小头(Little-endian)敲开。为了这件事情，前后爆发了六次战争，一个皇帝送了命，另一个皇帝丢了王位  hhh</p>
-<p>打开”记事本”程序notepad.exe，新建一个文本文件，内容就是一个严字，依次采用ANSI，Unicode，Unicode big endian和UTF-8编码方式保存。<br>然后，用文本编辑软件UltraEdit 中的”十六进制功能”，观察该文件的内部编码方式</p>
+<p>打开”记事本”程序notepad.exe，新建一个文本文件，内容就是一个严字，依次采用ANSI，Unicode，Unicode big endian和UTF-8编码方式保存</p>
+<p>然后，用文本编辑软件UltraEdit 中的”十六进制功能”，观察该文件的内部编码方式</p>
 <p>1）ANSI：文件的编码就是两个字节D1 CF，这正是严的 GB2312 编码，这也暗示 GB2312 是采用大头方式存储的</p>
 <p>2）Unicode：编码是四个字节FF FE 25 4E，其中FF FE表明是小头方式存储，真正的编码是4E25</p>
 <p>3）Unicode big endian：编码是四个字节FE FF 4E 25，其中FE FF表明是大头方式存储</p>
@@ -585,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些在学java中了解到的其它方面"><span class="nav-number">1.</span> <span class="nav-text">一些在学java中了解到的其它方面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#b"><span class="nav-number">1.1.</span> <span class="nav-text">\b</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ASCII，Unicode-和-UTF-8"><span class="nav-number">1.2.</span> <span class="nav-text">ASCII，Unicode 和 UTF-8</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java"><span class="nav-number">1.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些在学java中了解到的其它方面"><span class="nav-number">2.</span> <span class="nav-text">一些在学java中了解到的其它方面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#b"><span class="nav-number">2.1.</span> <span class="nav-text">\b</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ASCII，Unicode-和-UTF-8"><span class="nav-number">2.2.</span> <span class="nav-text">ASCII，Unicode 和 UTF-8</span></a></li></ol></li></ol></div>
             
 
           </div>
