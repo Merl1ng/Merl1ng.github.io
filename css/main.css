@@ -958,9 +958,6 @@ pre .javascript .function {
 .back-to-top.back-to-top-on {
   bottom: 19px;
 }
-.header {
-  background: url("http://otvzfr1o1.bkt.clouddn.com/testblog.png");
-}
 .header-inner {
   position: relative;
 }
@@ -1695,7 +1692,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b69ed5;
+  background: #ff87ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2540,4 +2537,15 @@ embed {
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+@media screen and (min-width: 1200px) {
+  body {
+    background-image: url("http://otvzfr1o1.bkt.clouddn.com/testblog2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+  }
+  #footer a {
+    color: #eee;
+  }
 }
