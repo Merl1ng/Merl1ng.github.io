@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="misc,web," />
 
 
 
@@ -93,17 +93,21 @@
 
 
 
-<meta name="description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
-<meta name="keywords">
+<meta name="description" content="最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
+<meta name="keywords" content="misc,web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="环境变量和误删后的修复">
-<meta property="og:url" content="http://Merl1ng.com/2017/04/30/环境变量和误删后的修复/index.html">
+<meta property="og:title" content="swpu2017writeup">
+<meta property="og:url" content="http://Merl1ng.com/2017/11/12/swpu2017writeup/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
-<meta property="og:updated_time" content="2017-09-24T02:57:53.635Z">
+<meta property="og:description" content="最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu3.PNG">
+<meta property="og:updated_time" content="2017-11-12T15:28:01.784Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="环境变量和误删后的修复">
-<meta name="twitter:description" content="在windows上配置cmder和binwalk时遇到查看高级系统设置环境变量 系统变量选择Path后新建路径">
+<meta name="twitter:title" content="swpu2017writeup">
+<meta name="twitter:description" content="最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu1.PNG">
 
 
 
@@ -131,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/04/30/环境变量和误删后的修复/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/11/12/swpu2017writeup/"/>
 
 
 
 
 
-  <title>环境变量和误删后的修复 | Merl1ng's blog</title>
+  <title>swpu2017writeup | Merl1ng's blog</title>
   
 
 
@@ -266,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/04/30/环境变量和误删后的修复/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/11/12/swpu2017writeup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">环境变量和误删后的修复</h1>
+          <h1 class="post-title" itemprop="name headline">swpu2017writeup</h1>
         
 
         <div class="post-meta">
@@ -295,8 +299,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-30T23:10:52+08:00">
-                2017-04-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-12T22:29:16+08:00">
+                2017-11-12
               </time>
             
 
@@ -318,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/setting/" itemprop="url" rel="index">
-                    <span itemprop="name">setting</span>
+                  <a href="/categories/writeup/" itemprop="url" rel="index">
+                    <span itemprop="name">writeup</span>
                   </a>
                 </span>
 
@@ -352,21 +356,30 @@
       
 
       
-        <p>在windows上配置cmder和binwalk时遇到<br>查看高级系统设置<br>环境变量 系统变量<br>选择Path后新建路径<br><a id="more"></a></p>
-<p>后面发现其实很多地方都需要配置环境变量 这可以让对工具的使用更加方便<br>不用再到每个工具的文件上 或者逐一cd 使用命令行<br>而是可以在任何地方直接输入命令调用 </p>
-<p>有次在增加环境变量是 点完确定 杀软提示给不给过 手贱点了 否</p>
-<p>结果狗日的杀软把我的环境变量都给删了 orz..</p>
-<p>导致一进系统设置有关的地方全部弹窗 %windir% \system32\systempropertiescomputername.exe</p>
-<p>先回去环境变量设置那里都不行</p>
-<p>查了一下可以利用注册表增加环境变量 又试了试结果注册表也打不开 ..</p>
-<p>当时差点重装了还在最后找到了方法</p>
-<p>win10在开机的欢迎页面摁住shift再点击重启 (可能要两回)</p>
-<p>会看到提示页面 点击疑难解决 高级 重启</p>
-<p>重启后 F4 进入安全模式 </p>
-<p>试了试cmd set 环境变量还是不行</p>
-<p>无意间找到了 C:\Windows\System32 下的 SystemPropertiesAdvanced 文件</p>
-<p>打开 成功添加 </p>
-<p>path 的数据可以在杀软的拦截日志里找回</p>
+        <p>最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的</p>
+<p>在赛后学习一波<br><a id="more"></a></p>
+<h3 id="misc-1"><a href="#misc-1" class="headerlink" title="misc 1"></a>misc 1</h3><p>java的小游戏 说是坚持60s秒不被打中就可以</p>
+<p>可以直接走到地图外面(方向键控制) 等60s拿到flag</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/swpu1.PNG" alt=""></p>
+<p>我是直接binwalk 然后把得到的文件用 notepad++打开搜索flag</p>
+<p>好像也可以反编译看源码</p>
+<h3 id="misc-2"><a href="#misc-2" class="headerlink" title="misc 2"></a>misc 2</h3><p>给了一张图片 发现藏有zip包</p>
+<p>提取并解压后得到</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/swpu2.PNG" alt=""></p>
+<p>题目有提示 <code>???_???_???</code> 可知flag需要三个字符串</p>
+<p>这些打开是一张张图片 对应gif的每一帧</p>
+<p>emmm虽然gif提示排序但是把gif分解后会发现从小到大顺序都是排好的</p>
+<p>所以要对每个文件逐个分析</p>
+<p>在文件8的末尾找到第一个字符串flag 应该不是flag本身</p>
+<p>文件88中直接有一个二维码，扫码得第二个字符串bilibili</p>
+<p>文件888加上jpg的后缀 在属性 备注中发现一串base64，解码得第三个字符串silisili</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/swpu3.PNG" alt=""></p>
+<p>文件8888用binwalk跑一下发现里面有一个zip，解压获得一个二维码，扫码得第四个字符串panama</p>
+<p>按提示中的格式拼接即得flag</p>
+<h3 id="misc-3"><a href="#misc-3" class="headerlink" title="misc 3"></a>misc 3</h3><p>mp3隐写 想到是使用mp3stego进行隐写，所以寻找key</p>
+<p>题目提示 fl?g??? 又根据题目叙述搜索程序员的情人劫</p>
+<p>搜索到522 (16进制的1314)</p>
+<p>结合为 flag1314 当然也可以写脚本爆破</p>
 
       
     </div>
@@ -394,6 +407,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/misc/" rel="tag"><i class="fa fa-tag"></i> misc</a>
+          
+            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+          
+        </div>
+      
 
       
       
@@ -403,18 +424,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/30/lan attack/" rel="next" title="lan attack">
-                <i class="fa fa-chevron-left"></i> lan attack
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/12/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/28/java基础/" rel="prev" title="java基础">
+                java基础 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -463,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -546,6 +572,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">1.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">2.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">3.</span> <span class="nav-text">misc 3</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
