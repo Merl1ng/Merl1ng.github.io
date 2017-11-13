@@ -93,20 +93,24 @@
 
 
 
-<meta name="description" content="最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
+<meta name="description" content="最近考试比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
 <meta name="keywords" content="misc,web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="swpu2017writeup">
 <meta property="og:url" content="http://Merl1ng.com/2017/11/12/swpu2017writeup/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
+<meta property="og:description" content="最近考试比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu3.PNG">
-<meta property="og:updated_time" content="2017-11-12T15:28:01.784Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu5.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu6.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu7.PNG">
+<meta property="og:updated_time" content="2017-11-13T14:21:49.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swpu2017writeup">
-<meta name="twitter:description" content="最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
+<meta name="twitter:description" content="最近考试比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
 <meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu1.PNG">
 
 
@@ -356,7 +360,7 @@
       
 
       
-        <p>最近考试也比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的</p>
+        <p>最近考试比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的</p>
 <p>在赛后学习一波<br><a id="more"></a></p>
 <h3 id="misc-1"><a href="#misc-1" class="headerlink" title="misc 1"></a>misc 1</h3><p>java的小游戏 说是坚持60s秒不被打中就可以</p>
 <p>可以直接走到地图外面(方向键控制) 等60s拿到flag</p>
@@ -377,9 +381,41 @@
 <p>文件8888用binwalk跑一下发现里面有一个zip，解压获得一个二维码，扫码得第四个字符串panama</p>
 <p>按提示中的格式拼接即得flag</p>
 <h3 id="misc-3"><a href="#misc-3" class="headerlink" title="misc 3"></a>misc 3</h3><p>mp3隐写 想到是使用mp3stego进行隐写，所以寻找key</p>
-<p>题目提示 fl?g??? 又根据题目叙述搜索程序员的情人劫</p>
-<p>搜索到522 (16进制的1314)</p>
+<p>题目提示 fl?g??? 又根据题目叙述搜索程序员的情人节</p>
+<p>搜索到522 (16进制的1314) (那个脱口秀上也提过这个2333)</p>
 <p>结合为 flag1314 当然也可以写脚本爆破</p>
+<h3 id="web-1"><a href="#web-1" class="headerlink" title="web 1"></a>web 1</h3><p>点进链接是一个登录界面，右键查看源码有两条隐藏信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!--The <span class="comment">#define is xxooaa and LEN is 6--&gt;</span></div><div class="line">&lt;!--The crypt key is &#123;11132, 468, 392, 1281, 62&#125;--&gt;</div></pre></td></tr></table></figure>
+<p>然后扫目录扫到了一个index.php.bak，下载下来打开后是乱码  也不是ph和chu师傅在小密圈里的phpjiami</p>
+<p>主办方放出提示php-screw 这两篇文章</p>
+<p><a href="http://blog.csdn.net/water_cow/article/details/41872091" target="_blank" rel="external">http://blog.csdn.net/water_cow/article/details/41872091</a></p>
+<p><a href="http://wutongyu.info/about-php-screw-decode/" target="_blank" rel="external">http://wutongyu.info/about-php-screw-decode/</a></p>
+<p>关于php-screw 解密</p>
+<p>按照这两篇文章里的内容配置好php_screw的加密和解密工具之后，可以解密之前下载的index.php.bak，然后内容是md5加密后的sql注入，解法可以参考这篇文章</p>
+<p>关键的一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$str</span>=<span class="string">"select password from users where password='"</span>.md5(<span class="variable">$password</span>,<span class="literal">true</span>).<span class="string">"'"</span>;</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.joychou.org/web/SQL-injection-with-raw-MD5-hashes.html" target="_blank" rel="external">http://www.joychou.org/web/SQL-injection-with-raw-MD5-hashes.html</a></p>
+<p>dalao博客的其中一段</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/swpu4.PNG" alt=""></p>
+<h3 id="web-2"><a href="#web-2" class="headerlink" title="web 2"></a>web 2</h3><p>看到源码里js文件夹是/XXE/，然后尝试发现是Blind XXE</p>
+<p>需要一个自己的平台</p>
+<p>这题没有做 贴两位师傅的payload</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/swpu5.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/swpu6.PNG" alt=""></p>
+<p>作者的出题思路</p>
+<p>很多厂商在修xxe的时候经常直接过滤&lt;!ENTITY就认为安全了，其实不然</p>
+<p>解题思路：这道题就是在过滤了&lt;!ENTITY的情况下实现xxe 构造payload，xxe.dtd<br>文件内容： &lt;!ENTITY xxe SYSTEM “file:///flag”&gt; </p>
+<h3 id="web-3"><a href="#web-3" class="headerlink" title="web 3"></a>web 3</h3><p>社工题目</p>
+<p>首先是个黑页，留了个QQ号 直接放QQ里搜索，可以查到一个 sonic monkey 账户空间没有设权限，进入空间从一堆</p>
+<p>动态中找到一条base64编码的说说</p>
+<p>解码后My Page : <a href="http://47.93.205.124:8001/" target="_blank" rel="external">http://47.93.205.124:8001/</a></p>
+<p>是一个个人主页的地址，访问是猴子的小金库，御剑扫一扫，发现后台</p>
+<p><a href="http://47.93.205.124:8001/manage_login.php" target="_blank" rel="external">http://47.93.205.124:8001/manage_login.php</a><br>首页文章发表者就是用户名 sonic2011</p>
+<p>右键查看源代码，发现页脚处留有邮箱 sonic@163.com 联想163用户密码泄露事件</p>
+<p>社工库</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/swpu7.PNG" alt=""></p>
+<p>帐号密码到手 用户：sonic2011 密码：019157f2299755ad90a3bb8473f8<em>**</em> </p>
+<p>md5最后四位填充0-f任意即 可，eg:019157f2299755ad90a3bb8473f81111</p>
+<p>再md5解密一波得密码 2010sonic 登陆得到flag</p>
 
       
     </div>
@@ -423,6 +459,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/13/MCTFwriteup/" rel="next" title="MCTFwriteup">
+                <i class="fa fa-chevron-left"></i> MCTFwriteup
+              </a>
             
           </div>
 
@@ -505,7 +545,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -582,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">1.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">2.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">3.</span> <span class="nav-text">misc 3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">1.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">2.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">3.</span> <span class="nav-text">misc 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-1"><span class="nav-number">4.</span> <span class="nav-text">web 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-2"><span class="nav-number">5.</span> <span class="nav-text">web 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-3"><span class="nav-number">6.</span> <span class="nav-text">web 3</span></a></li></ol></div>
             
 
           </div>

