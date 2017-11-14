@@ -93,23 +93,23 @@
 
 
 
-<meta name="description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好的">
+<meta name="description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好">
 <meta name="keywords" content="misc,web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MCTFwriteup">
 <meta property="og:url" content="http://Merl1ng.com/2017/11/13/MCTFwriteup/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好的">
+<meta property="og:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wctf2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf6.PNG">
-<meta property="og:updated_time" content="2017-11-13T15:38:35.815Z">
+<meta property="og:updated_time" content="2017-11-14T04:05:34.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MCTFwriteup">
-<meta name="twitter:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好的">
+<meta name="twitter:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好">
 <meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf1.PNG">
 
 
@@ -359,7 +359,7 @@
       
 
       
-        <p>浙警的ctf 有很多基础套路的题 拿来复习蛮好的</p>
+        <p>浙警的ctf 有很多基础套路的题 拿来复习蛮好</p>
 <a id="more"></a>
 <h3 id="crypto-1"><a href="#crypto-1" class="headerlink" title="crypto 1"></a>crypto 1</h3><p>一共四道密码的 就一道学到了一点</p>
 <p>一串字符凯撒解密后</p>
@@ -396,6 +396,9 @@
 <h3 id="web-4-PHP加密"><a href="#web-4-PHP加密" class="headerlink" title="web 4 PHP加密"></a>web 4 PHP加密</h3><p>网页里<br>fTdydHtWOV9gaG5VXDJqPHcxPFxhbHRVfDdpPUV5TlxdQ2hpVWA= </p>
 <p>明显base64，但解密后发现没规律</p>
 <p>发现是源码泄露</p>
+<p>在 index.php~ 里看到源码</p>
+<p>解密脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">st=<span class="string">"&#125;7rt&#123;V9_`hnU\\2j&lt;w1&lt;\\altU|7i=EyN\]ChiU`"</span></div><div class="line">stt=<span class="string">''</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(19):</div><div class="line">    stt+=st[i]</div><div class="line">    stt+=st[19+i]</div><div class="line"></div><div class="line">flag=<span class="string">''</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(38):</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(33,127):</div><div class="line">        s=j+ord(<span class="string">"*"</span>)*i</div><div class="line">        <span class="keyword">while</span> s &gt; 125:</div><div class="line">            s=s-78</div><div class="line">        <span class="keyword">if</span> s==ord(stt[i]):</div><div class="line">            flag+=chr(j)</div><div class="line">            <span class="built_in">break</span></div><div class="line"><span class="built_in">print</span> flag[::-1]</div></pre></td></tr></table></figure>
 
       
     </div>
