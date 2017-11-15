@@ -102,6 +102,8 @@
 <meta property="og:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wctf2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf10.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf11.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf5.PNG">
@@ -109,7 +111,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf9.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf8.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctf7.PNG">
-<meta property="og:updated_time" content="2017-11-14T10:17:18.363Z">
+<meta property="og:updated_time" content="2017-11-15T02:57:27.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MCTFwriteup">
 <meta name="twitter:description" content="浙警的ctf 有很多基础套路的题 拿来复习蛮好">
@@ -385,7 +387,13 @@
 <p><strong>顺带一提遇到过压缩包里三个文件全是伪加密的 则三个都要改</strong></p>
 <p>解压后拿到图片 但是盲水印需要原图</p>
 <p>猜测给的图里还有东西 binwalk拿到原图</p>
-<p>运行这个需要cv2库</p>
+<p>运行这个需要cv2库 </p>
+<p>下载 openvc</p>
+<p>将opencv\build\python\2.7\x86中的cv2.pyd (我是64位的)复制到python安装目录Lib\site-packages下</p>
+<p>但是尼玛还不行</p>
+<p>根据提示再安装两个库 我是直接 pip install 的</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf10.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf11.PNG" alt=""></p>
 <h3 id="web-1"><a href="#web-1" class="headerlink" title="web 1"></a>web 1</h3><p>基础复习</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf3.PNG" alt=""></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/mctf4.PNG" alt=""></p>
