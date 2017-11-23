@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="web,misc," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="被虐地泣不成声 伏地膜大佬">
+<meta name="keywords" content="web,misc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lctf整理">
+<meta property="og:url" content="http://Merl1ng.com/2017/11/20/Lctf整理/index.html">
+<meta property="og:site_name" content="Merl1ng's blog">
+<meta property="og:description" content="被虐地泣不成声 伏地膜大佬">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf5.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf6.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf7.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctfwaa.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctfhhh.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctfoo.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctfbaoming.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf8.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf9.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf12.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf10.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf13.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf14.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf15.PNG">
+<meta property="og:updated_time" content="2017-11-23T10:26:05.995Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lctf整理">
+<meta name="twitter:description" content="被虐地泣不成声 伏地膜大佬">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf3.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Merl1ng.com/2017/11/20/Lctf整理/"/>
+
+
+
+
+
+  <title>Lctf整理 | Merl1ng's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Merl1ng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/11/20/Lctf整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lctf整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-20T22:51:59+08:00">
+                2017-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>被虐地泣不成声 伏地膜大佬</p>
+<a id="more"></a>
+<p>没有一道完全做完了 只敢贴dalao们的题解 补充一下要学习的地方</p>
+<h3 id="web-1-Simple-blog"><a href="#web-1-Simple-blog" class="headerlink" title="web 1 Simple blog"></a>web 1 Simple blog</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf3.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf4.PNG" alt=""></p>
+<p>出题人writeup <a href="https://github.com/LCTF/LCTF2017/blob/master/src/web/simple-blog/web-f1sh-writeup.md" target="_blank" rel="external">https://github.com/LCTF/LCTF2017/blob/master/src/web/simple-blog/web-f1sh-writeup.md</a></p>
+<p>进入题目后可以知道这是一个博客系统，那猜测应该会有后台，扫一下目录或者猜一下可以知道存在login.php,</p>
+<p> admin.php两个文件，访问admin.php可以发现有权限控制，访问login.php是一个登录界面。</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf5.PNG" alt=""></p>
+<p>通过尝试可以发现如果随便输入账号密码的话页面返回是Login failed.，但是账号密码都输入admin的话会跳转</p>
+<p>到admin.php，猜测这里应该是弱口令，只是除了密码以外还有其他的验证方式。</p>
+<p>如果扫描字典够强大的话可以扫到login.php, admin.php都存在备份文件：.login.php.swp, .admin.php.swp</p>
+<h4 id="这里需要不断完善字典-之前加了个index-php-还有-bak的泄露"><a href="#这里需要不断完善字典-之前加了个index-php-还有-bak的泄露" class="headerlink" title="这里需要不断完善字典 之前加了个index.php~  还有 bak的泄露"></a>这里需要不断完善字典 之前加了个index.php~  还有 bak的泄露</h4><p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf1.PNG" alt=""></p>
+<h4 id="CBC翻转字节攻击"><a href="#CBC翻转字节攻击" class="headerlink" title="CBC翻转字节攻击"></a>CBC翻转字节攻击</h4><p><a href="http://f1sh.site/2017/08/04/%E5%88%9D%E5%AD%A6padding-oracle-attack/" target="_blank" rel="external">http://f1sh.site/2017/08/04/%E5%88%9D%E5%AD%A6padding-oracle-attack/</a></p>
+<p>这个之前见了好多次了 一直没去看 </p>
+<h4 id="sql注入-PHP格式化字符串的漏洞-sql和php依然是基础"><a href="#sql注入-PHP格式化字符串的漏洞-sql和php依然是基础" class="headerlink" title="sql注入 PHP格式化字符串的漏洞 sql和php依然是基础"></a>sql注入 PHP格式化字符串的漏洞 sql和php依然是基础</h4><p><a href="https://paper.seebug.org/386/" target="_blank" rel="external">https://paper.seebug.org/386/</a></p>
+<p>注入时也有一个小坑，key这个表名是MYSQL保留字，我们把它当做表名带入查询时必须用反引号包起来，不然就会报语法错误而返回不了我们想要的结果。</p>
+<h3 id="web-2-萌萌哒报名系统"><a href="#web-2-萌萌哒报名系统" class="headerlink" title="web 2 萌萌哒报名系统"></a>web 2 萌萌哒报名系统</h3><p>目前理解思路 常见编辑器特点找源码 pre_match绕过登陆  登陆后php伪协议base64读源码</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf6.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf7.PNG" alt=""></p>
+<p>出题人writeup <a href="https://github.com/LCTF/LCTF2017/tree/master/src/web/%E8%90%8C%E8%90%8C%E5%93%92%E7%9A%84%E6%8A%A5%E5%90%8D%E7%B3%BB%E7%BB%9F" target="_blank" rel="external">https://github.com/LCTF/LCTF2017/tree/master/src/web/%E8%90%8C%E8%90%8C%E5%93%92%E7%9A%84%E6%8A%A5%E5%90%8D%E7%B3%BB%E7%BB%9F</a></p>
+<h4 id="idea-php编辑器找源码"><a href="#idea-php编辑器找源码" class="headerlink" title=".idea php编辑器找源码"></a>.idea php编辑器找源码</h4><p>这题提示给了IDE，那么我们可以想到PHP有款强大的IDE叫做PHPSTORM，他新建项目的时候会生成一个.idea文</p>
+<p>件夹，访问发现有一个workspace.xml文件，访问里面发现了一个xdcms2333.zip。 下载可得到整站源码 </p>
+<p>register.php</p>
+<h4 id="pre-match函数的资源消耗"><a href="#pre-match函数的资源消耗" class="headerlink" title="pre_match函数的资源消耗"></a>pre_match函数的资源消耗</h4><p>pre_match在匹配的时候会消耗较大的资源，并且默认存在贪婪匹配，所以通过喂一个超长的字符串去给pre_match</p>
+<p>吃，导致pre_match消耗大量资源从而导致php超时，后面的php语句就不会执行。</p>
+<p>目前理解思路 扫目录拿源码 弱口令+cbc攻击绕过后台登陆 进入后台sql注入</p>
+<p>复现了一下 </p>
+<p>注册窗口代理抓包 输入一堆贼长的 使其没有返回 (一开始抓的是登陆窗口gg了好久)</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctfwaa.PNG" alt=""></p>
+<p>同时关掉代理 在另外一个窗口用注册的账号登陆 成功进入 member.php</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctfhhh.PNG" alt=""></p>
+<p>然后利用伪协议在member.php下读取config.php源码 base64解密</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctfoo.PNG" alt=""><br><img src="http://otvzfr1o1.bkt.clouddn.com/lctfbaoming.PNG" alt=""></p>
+<h3 id="web-3"><a href="#web-3" class="headerlink" title="web 3"></a>web 3</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf8.PNG" alt=""></p>
+<p>假的签到题…签不了555</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf9.PNG" alt=""></p>
+<p>出题人writeup <a href="https://github.com/LCTF/LCTF2017/blob/master/src/web/%E7%AD%BE%E5%88%B0%E9%A2%98/web%E7%AD%BE%E5%88%B0%E9%A2%98.md" target="_blank" rel="external">https://github.com/LCTF/LCTF2017/blob/master/src/web/%E7%AD%BE%E5%88%B0%E9%A2%98/web%E7%AD%BE%E5%88%B0%E9%A2%98.md</a></p>
+<p>提示读取本地文件</p>
+<h4 id="用file协议读取本地文件"><a href="#用file协议读取本地文件" class="headerlink" title="用file协议读取本地文件"></a>用file协议读取本地文件</h4><h4 id="绕过逻辑中对host的检查-curl是支持file-host-path"><a href="#绕过逻辑中对host的检查-curl是支持file-host-path" class="headerlink" title="绕过逻辑中对host的检查, curl是支持file://host/path,"></a>绕过逻辑中对host的检查, curl是支持file://host/path,</h4><p>file://path这两种形式, 但是即使有host, curl仍然会访问到本地的文件</p>
+<h4 id="截断url后面拼接的-GET请求-用-都可以"><a href="#截断url后面拼接的-GET请求-用-都可以" class="headerlink" title="截断url后面拼接的/, GET请求, 用?#都可以"></a>截断url后面拼接的/, GET请求, 用?#都可以</h4><p>payload : file://www.baidu.com/etc/flag? 一脸懵逼</p>
+<h3 id="web-4-L-PLAYGROUND"><a href="#web-4-L-PLAYGROUND" class="headerlink" title="web 4 L PLAYGROUND"></a>web 4 L PLAYGROUND</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf12.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf10.PNG" alt=""></p>
+<p>出题人的writeup <a href="https://github.com/LCTF/LCTF2017/blob/master/src/web/l-plarground/writeup.md" target="_blank" rel="external">https://github.com/LCTF/LCTF2017/blob/master/src/web/l-plarground/writeup.md</a></p>
+<h4 id="ssrf"><a href="#ssrf" class="headerlink" title="ssrf"></a>ssrf</h4><h3 id="web-5-“他们”有什么秘密呢"><a href="#web-5-“他们”有什么秘密呢" class="headerlink" title="web 5 “他们”有什么秘密呢?"></a>web 5 “他们”有什么秘密呢?</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf13.PNG" alt=""></p>
+<h3 id="web-6-wanna-hack-him"><a href="#web-6-wanna-hack-him" class="headerlink" title="web 6 wanna hack him?"></a>web 6 wanna hack him?</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf14.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf15.PNG" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+          
+            <a href="/tags/misc/" rel="tag"><i class="fa fa-tag"></i> misc</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/13/MCTFwriteup/" rel="prev" title="MCTFwriteup">
+                MCTFwriteup <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Merl1ng" />
+          <p class="site-author-name" itemprop="name">Merl1ng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Love life , love gakki !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Merl1ng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Merl1ng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-1-Simple-blog"><span class="nav-number">1.</span> <span class="nav-text">web 1 Simple blog</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这里需要不断完善字典-之前加了个index-php-还有-bak的泄露"><span class="nav-number">1.1.</span> <span class="nav-text">这里需要不断完善字典 之前加了个index.php~  还有 bak的泄露</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBC翻转字节攻击"><span class="nav-number">1.2.</span> <span class="nav-text">CBC翻转字节攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sql注入-PHP格式化字符串的漏洞-sql和php依然是基础"><span class="nav-number">1.3.</span> <span class="nav-text">sql注入 PHP格式化字符串的漏洞 sql和php依然是基础</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-2-萌萌哒报名系统"><span class="nav-number">2.</span> <span class="nav-text">web 2 萌萌哒报名系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#idea-php编辑器找源码"><span class="nav-number">2.1.</span> <span class="nav-text">.idea php编辑器找源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pre-match函数的资源消耗"><span class="nav-number">2.2.</span> <span class="nav-text">pre_match函数的资源消耗</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-3"><span class="nav-number">3.</span> <span class="nav-text">web 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用file协议读取本地文件"><span class="nav-number">3.1.</span> <span class="nav-text">用file协议读取本地文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过逻辑中对host的检查-curl是支持file-host-path"><span class="nav-number">3.2.</span> <span class="nav-text">绕过逻辑中对host的检查, curl是支持file://host/path,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#截断url后面拼接的-GET请求-用-都可以"><span class="nav-number">3.3.</span> <span class="nav-text">截断url后面拼接的/, GET请求, 用?#都可以</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-4-L-PLAYGROUND"><span class="nav-number">4.</span> <span class="nav-text">web 4 L PLAYGROUND</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssrf"><span class="nav-number">4.1.</span> <span class="nav-text">ssrf</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-5-“他们”有什么秘密呢"><span class="nav-number">5.</span> <span class="nav-text">web 5 “他们”有什么秘密呢?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-6-wanna-hack-him"><span class="nav-number">6.</span> <span class="nav-text">web 6 wanna hack him?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Merl1ng</span>
+</div>
+
+
+<div class="powered-by">
+   Love life 
+</div>
+
+<div class="theme-info">
+  Love gakki 
+  
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
