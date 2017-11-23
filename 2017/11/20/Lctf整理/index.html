@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf13.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf14.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/lctf15.PNG">
-<meta property="og:updated_time" content="2017-11-23T10:26:05.995Z">
+<meta property="og:updated_time" content="2017-11-23T10:30:04.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lctf整理">
 <meta name="twitter:description" content="被虐地泣不成声 伏地膜大佬">
@@ -351,7 +351,8 @@
         <p>被虐地泣不成声 伏地膜大佬</p>
 <a id="more"></a>
 <p>没有一道完全做完了 只敢贴dalao们的题解 补充一下要学习的地方</p>
-<h3 id="web-1-Simple-blog"><a href="#web-1-Simple-blog" class="headerlink" title="web 1 Simple blog"></a>web 1 Simple blog</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf3.PNG" alt=""></p>
+<h3 id="web-1-Simple-blog"><a href="#web-1-Simple-blog" class="headerlink" title="web 1 Simple blog"></a>web 1 Simple blog</h3><p>目前理解思路 扫目录拿源码 弱口令+cbc攻击绕过后台登陆 进入后台sql注入</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf3.PNG" alt=""></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/lctf4.PNG" alt=""></p>
 <p>出题人writeup <a href="https://github.com/LCTF/LCTF2017/blob/master/src/web/simple-blog/web-f1sh-writeup.md" target="_blank" rel="external">https://github.com/LCTF/LCTF2017/blob/master/src/web/simple-blog/web-f1sh-writeup.md</a></p>
 <p>进入题目后可以知道这是一个博客系统，那猜测应该会有后台，扫一下目录或者猜一下可以知道存在login.php,</p>
@@ -374,7 +375,6 @@
 <p>register.php</p>
 <h4 id="pre-match函数的资源消耗"><a href="#pre-match函数的资源消耗" class="headerlink" title="pre_match函数的资源消耗"></a>pre_match函数的资源消耗</h4><p>pre_match在匹配的时候会消耗较大的资源，并且默认存在贪婪匹配，所以通过喂一个超长的字符串去给pre_match</p>
 <p>吃，导致pre_match消耗大量资源从而导致php超时，后面的php语句就不会执行。</p>
-<p>目前理解思路 扫目录拿源码 弱口令+cbc攻击绕过后台登陆 进入后台sql注入</p>
 <p>复现了一下 </p>
 <p>注册窗口代理抓包 输入一堆贼长的 使其没有返回 (一开始抓的是登陆窗口gg了好久)</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/lctfwaa.PNG" alt=""></p>
