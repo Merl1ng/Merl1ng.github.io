@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctff9.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctff6.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mctff10.PNG">
-<meta property="og:updated_time" content="2017-12-21T15:50:53.660Z">
+<meta property="og:updated_time" content="2017-12-22T14:00:27.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MCTF后两期writeup">
 <meta name="twitter:description" content="MCTF一共三期 后两期的题目还是比较有趣的">
@@ -383,11 +383,12 @@
 <p>会发现都没有过滤 一直是username error</p>
 <p>意味着用户表没有数据。。</p>
 <p>容易想到其后台语句:</p>
-<p><code>select * from users where username=&#39;$username&#39; and password=&#39;$password&#39;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from users <span class="built_in">where</span> username=<span class="string">'$username'</span> and password=<span class="string">'$password'</span></div></pre></td></tr></table></figure>
 <p>既然没有数据 可以用union select填充</p>
 <p>例如:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">username = admin<span class="string">' union select 1,2</span></div><div class="line">password = 1</div></pre></td></tr></table></figure>
-<p>这样原来的语句变成 <code>select * from users where username=&#39;admin&#39; union select 1,2</code></p>
+<p>这样原来的语句变成 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from users <span class="built_in">where</span> username=<span class="string">'admin'</span> union select 1,2`</div></pre></td></tr></table></figure>
 <p>但是这个时候出现了password error</p>
 <p>代表这个后台sql应该不是这样写的，当这样的时候就没有回显</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">username = admin<span class="string">' union select 1,2</span></div><div class="line">password = 2</div></pre></td></tr></table></figure>
