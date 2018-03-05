@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/webzai2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/phpinput.PNG">
-<meta property="og:updated_time" content="2017-10-04T11:12:21.995Z">
+<meta property="og:updated_time" content="2018-03-04T15:09:44.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php代码审计Ⅱ">
 <meta name="twitter:description" content="写在一起看的时候不方便 所以又开了一篇">
@@ -364,7 +364,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;window.location.href=<span class="string">'http://www.bugku.com'</span>;&lt;/script&gt; </div><div class="line"><span class="keyword">if</span>(!<span class="variable">$_GET</span>[<span class="string">'id'</span>])</div><div class="line">&#123;</div><div class="line">	header(<span class="string">'Location: hello.php?id=1'</span>);</div><div class="line">	<span class="built_in">exit</span>();</div><div class="line">&#125;</div><div class="line"><span class="variable">$id</span>=<span class="variable">$_GET</span>[<span class="string">'id'</span>];</div><div class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">'a'</span>];</div><div class="line"><span class="variable">$b</span>=<span class="variable">$_GET</span>[<span class="string">'b'</span>];</div><div class="line"><span class="keyword">if</span>(stripos(<span class="variable">$a</span>,<span class="string">'.'</span>))</div><div class="line">&#123;</div><div class="line">	<span class="built_in">echo</span> <span class="string">'no no no no no no no'</span>;</div><div class="line">	<span class="built_in">return</span> ;</div><div class="line">&#125;</div><div class="line"><span class="variable">$data</span> = @file_get_contents(<span class="variable">$a</span>,<span class="string">'r'</span>);</div><div class="line"><span class="keyword">if</span>(<span class="variable">$data</span>==<span class="string">"bugku is a nice plateform!"</span> and <span class="variable">$id</span>==0 and strlen(<span class="variable">$b</span>)&gt;5 and eregi(<span class="string">"111"</span>.substr(<span class="variable">$b</span>,0,1),<span class="string">"1114"</span>) and substr(<span class="variable">$b</span>,0,1)!=4)</div><div class="line">&#123;</div><div class="line">	require(<span class="string">"f4l2a3g.txt"</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">print</span> <span class="string">"never never never give up !!!"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <p>分析<br>1.id==0  用0==字符串绕过 因为有(!$_GET[‘id’])不能直接输入0</p>
 <p>也可以用.绕过 即id=.</p>
-<p>2.$data = @file_get_contents($a,’r’);<br>$data==”bugku is a nice plateform!”</p>
+<p>2.stripos过滤了’.’，估计是不能用文件包含的，所以我们要用php伪协议post一个Data</p>
+<p>$data = @file_get_contents($a,’r’);<br>$data==”bugku is a nice plateform!”</p>
 <p>这个利用了file_get_contents的特性，当用到php://input的时候，file_get_contents支持字节流输入，</p>
 <p>只要将a设为php://input,且post过去bugku is a nice plateform!即可</p>
 <p>3.strlen($b)&gt;5 and eregi(“111”.substr($b,0,1),”1114”) and substr($b,0,1)!=4</p>
@@ -541,7 +542,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -563,7 +564,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
