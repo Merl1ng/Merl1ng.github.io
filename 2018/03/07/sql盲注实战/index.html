@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql21.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql20.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql22.PNG">
-<meta property="og:updated_time" content="2018-03-07T13:34:22.961Z">
+<meta property="og:updated_time" content="2018-03-07T13:35:31.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql盲注实战">
 <meta name="twitter:description" content="这站其实有回显的 但还是选择练习下盲注">
@@ -390,7 +390,7 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql6.PNG" alt=""><br>……</p>
 <p>最后一个<br><code>payload=&quot;ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 21,1),%s,1))&gt;%s --+&quot;%(i,j)</code></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql8.PNG" alt=""></p>
-<p>然后类似跑字段 再跑出 用户 密码 等等 表太多了费时间就不跑了</p>
+<p>然后类似跑字段 再跑出 用户 密码 等等 表太多了费时间就没跑 但是可以直接回显出来</p>
 <h3 id="dnslog"><a href="#dnslog" class="headerlink" title="dnslog"></a>dnslog</h3><p>既然可以盲注 借助dnslog回显应该也是可以的 还没试</p>
 <h3 id="直接注入"><a href="#直接注入" class="headerlink" title="直接注入"></a>直接注入</h3><p>这题直接注入还是炒鸡简单的 啥都没过滤</p>
 <p>看下列数<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql1.PNG" alt=""></p>
