@@ -101,7 +101,13 @@
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="正在学习sql注入 差不多完整理解了一些注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqlxss1.PNG">
-<meta property="og:updated_time" content="2017-10-06T08:02:41.776Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kuanzijie1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kuanzijie2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kuanzijie3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kuanzijie4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dsstore1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dsstore2.PNG">
+<meta property="og:updated_time" content="2018-03-07T08:17:29.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="若干sql注入">
 <meta name="twitter:description" content="正在学习sql注入 差不多完整理解了一些注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
@@ -382,10 +388,24 @@
 <p>这步也可以这样<br><a href="http://103.238.227.13:10087/?id=1" target="_blank" rel="external">http://103.238.227.13:10087/?id=1</a> un&lt;&gt;ion se&lt;&gt;lect 1,2%23</p>
 <p><a href="http://103.238.227.13:10087/?id=1" target="_blank" rel="external">http://103.238.227.13:10087/?id=1</a> un&lt;&gt;ion se&lt;&gt;lect database(),2%23<br>拿到数据库名 sql3</p>
 <p><a href="http://103.238.227.13:10087/index.php?id=1" target="_blank" rel="external">http://103.238.227.13:10087/index.php?id=1</a> un&lt;&gt;ion se&lt;&gt;lect hash,1 fro&lt;&gt;m sql3.key%23</p>
+<p>这里se&lt;&gt;lect * from 也阔以</p>
 <p>或者 <code>key</code><br><a href="http://103.238.227.13:10087/index.php?id=1" target="_blank" rel="external">http://103.238.227.13:10087/index.php?id=1</a> un&lt;&gt;ion se&lt;&gt;lect hash,1 fro&lt;&gt;m <code>key</code>%23</p>
 <p>`` 解释 假设第一个from是字段名，最后的table也是字段名，但是同时也是mysql关键字，这样执行的时候就会报错，所以应该使用</p>
 <p>select <code>from</code> from <code>table</code></p>
 <p>还有把&lt;&gt;改成%00也能绕过</p>
+<h3 id="sql-宽字节注入"><a href="#sql-宽字节注入" class="headerlink" title="sql 宽字节注入"></a>sql 宽字节注入</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/kuanzijie1.PNG" alt=""></p>
+<p>有一个十分关键的点</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/kuanzijie2.PNG" alt=""></p>
+<p>查表的过程中会遇到问题，key既是字段名又是表明会产生冲突，我们要用<code> </code>来包含住</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/kuanzijie3.PNG" alt=""></p>
+<p>或者也可以用 库名.表名 形式</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/kuanzijie4.PNG" alt=""></p>
+<h3 id="DS-Store-泄露"><a href="#DS-Store-泄露" class="headerlink" title=".DS_Store 泄露"></a>.DS_Store 泄露</h3><p>emmmm为啥把这玩意放在sql注入这里呢 </p>
+<p>因为这破题题目就叫sql注入 结果却是 .DS_Store 泄露 </p>
+<p>这个故事告诉我们 不管什么web题 先扫一遍目录总没错………..</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/dsstore1.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/dsstore2.PNG" alt=""></p>
+<p>答案就躺在 flag 文件里</p>
 
       
     </div>
@@ -513,7 +533,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -590,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-1"><span class="nav-number">1.</span> <span class="nav-text">Sql 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-2-空格过滤"><span class="nav-number">2.</span> <span class="nav-text">Sql 2 空格过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-3-xss过滤"><span class="nav-number">3.</span> <span class="nav-text">Sql 3 xss过滤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-1"><span class="nav-number">1.</span> <span class="nav-text">Sql 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-2-空格过滤"><span class="nav-number">2.</span> <span class="nav-text">Sql 2 空格过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-3-xss过滤"><span class="nav-number">3.</span> <span class="nav-text">Sql 3 xss过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-宽字节注入"><span class="nav-number">4.</span> <span class="nav-text">sql 宽字节注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DS-Store-泄露"><span class="nav-number">5.</span> <span class="nav-text">.DS_Store 泄露</span></a></li></ol></div>
             
 
           </div>
