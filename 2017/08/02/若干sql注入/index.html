@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/kuanzijie4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dsstore1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/dsstore2.PNG">
-<meta property="og:updated_time" content="2018-03-07T08:17:29.868Z">
+<meta property="og:updated_time" content="2018-03-08T14:10:48.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="若干sql注入">
 <meta name="twitter:description" content="正在学习sql注入 差不多完整理解了一些注入题把方法和思路记录下来(&amp;gt;ω&amp;lt;)">
@@ -406,6 +406,11 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/dsstore1.PNG" alt=""></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/dsstore2.PNG" alt=""></p>
 <p>答案就躺在 flag 文件里</p>
+<h3 id="sql约束攻击"><a href="#sql约束攻击" class="headerlink" title="sql约束攻击"></a>sql约束攻击</h3><p>细节可看这篇文章<br><a href="http://www.freebuf.com/articles/web/124537.html" target="_blank" rel="external">http://www.freebuf.com/articles/web/124537.html</a></p>
+<p>我的理解是 数据库里本来有个admin的用户 你不知道它的密码</p>
+<p>但是你去注册一个 admin                                             1</p>
+<p>中间空好长的用户 设置一个密码</p>
+<p>你就可以用你这个密码去登陆admin的账户</p>
 
       
     </div>
@@ -610,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-1"><span class="nav-number">1.</span> <span class="nav-text">Sql 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-2-空格过滤"><span class="nav-number">2.</span> <span class="nav-text">Sql 2 空格过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-3-xss过滤"><span class="nav-number">3.</span> <span class="nav-text">Sql 3 xss过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-宽字节注入"><span class="nav-number">4.</span> <span class="nav-text">sql 宽字节注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DS-Store-泄露"><span class="nav-number">5.</span> <span class="nav-text">.DS_Store 泄露</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-1"><span class="nav-number">1.</span> <span class="nav-text">Sql 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-2-空格过滤"><span class="nav-number">2.</span> <span class="nav-text">Sql 2 空格过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sql-3-xss过滤"><span class="nav-number">3.</span> <span class="nav-text">Sql 3 xss过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-宽字节注入"><span class="nav-number">4.</span> <span class="nav-text">sql 宽字节注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DS-Store-泄露"><span class="nav-number">5.</span> <span class="nav-text">.DS_Store 泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql约束攻击"><span class="nav-number">6.</span> <span class="nav-text">sql约束攻击</span></a></li></ol></div>
             
 
           </div>

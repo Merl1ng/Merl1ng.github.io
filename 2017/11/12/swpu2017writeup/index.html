@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="web,misc," />
+  <meta name="keywords" content="misc,web," />
 
 
 
@@ -94,7 +94,7 @@
 
 
 <meta name="description" content="最近考试比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
-<meta name="keywords" content="web,misc">
+<meta name="keywords" content="misc,web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="swpu2017writeup">
 <meta property="og:url" content="http://Merl1ng.com/2017/11/12/swpu2017writeup/index.html">
@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu6.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/swpu7.PNG">
-<meta property="og:updated_time" content="2017-11-17T03:59:50.499Z">
+<meta property="og:updated_time" content="2018-03-09T05:58:30.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swpu2017writeup">
 <meta name="twitter:description" content="最近考试比较多 swpu的这个没怎么做 但是听dalao们说题目质量还是很不错的 在赛后学习一波">
@@ -426,6 +426,9 @@
 <p>数上。下面那个函数是用parse_url()来取请求中的参数，于是猜测这个函数会不会有漏洞</p>
 <p>chu师傅的博客上有 parse_url()的漏洞 <a href="http://sh3ll.me/archives/201611031132.txt" target="_blank" rel="external">http://sh3ll.me/archives/201611031132.txt</a></p>
 <p><a href="http://mxny.org/post/ctf/2016-11-10" target="_blank" rel="external">http://mxny.org/post/ctf/2016-11-10</a>  麦香师傅放入博客也有讲 parse_url这个函数可以用////绕过</p>
+<p>关于parse_url这个函数更多的技巧可以看这</p>
+<p><a href="http://skysec.top/2017/12/15/parse-url%E5%87%BD%E6%95%B0%E5%B0%8F%E8%AE%B0/" target="_blank" rel="external">http://skysec.top/2017/12/15/parse-url%E5%87%BD%E6%95%B0%E5%B0%8F%E8%AE%B0/</a></p>
+<p><a href="http://pupiles.com/%E8%B0%88%E8%B0%88parse_url.html" target="_blank" rel="external">http://pupiles.com/%E8%B0%88%E8%B0%88parse_url.html</a></p>
 <p>union被上面的函数过滤掉了，所以这里不能用联合查询。但我们还是可以利用a_id=1和a_id=0的返回值不同来进行</p>
 <p>bool注入</p>
 <p>盲注脚本</p>
@@ -459,9 +462,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
-          
             <a href="/tags/misc/" rel="tag"><i class="fa fa-tag"></i> misc</a>
+          
+            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
           
         </div>
       
