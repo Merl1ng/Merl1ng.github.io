@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab4.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab5.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqllab6.PNG">
-<meta property="og:updated_time" content="2018-03-09T06:28:19.873Z">
+<meta property="og:updated_time" content="2018-03-13T14:25:15.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs学习">
 <meta name="twitter:description" content="借助sqli-labs 系统学习下注入">
@@ -421,6 +421,10 @@
 <p>最后<br>payload=”ascii(substr((select group_concat(username) from users),%s,1))&gt;%s –+”%(i,j)</p>
 <p>payload=”ascii(substr((select group_concat(password) from users),%s,1))&gt;%s –+”%(i,j)</p>
 <p>跑出username 和 password</p>
+<p>还有 有些题目可能直接给你了字段名 这时可以直接</p>
+<p>“ascii(substr(username ,%s,1))&gt;%s%%23”%(i,j) 不过这样加上group_concat会报错 好像只能查出一个</p>
+<p>还有如果查询的东西不会混的话 可以省略 from xxx</p>
+<p>“ascii(substr((select group_concat(password)),%s,1))&gt;%s –+”%(i,j)</p>
 
       
     </div>
@@ -548,7 +552,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
