@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/03/12/n1ctfwriteup/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="比赛时只做出来两道 其他都是后来复现的">
-<meta property="og:updated_time" content="2018-03-17T09:26:47.684Z">
+<meta property="og:updated_time" content="2018-03-28T15:15:22.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="n1ctfwriteup">
 <meta name="twitter:description" content="比赛时只做出来两道 其他都是后来复现的">
@@ -366,9 +366,11 @@
 <h3 id="web3-cms"><a href="#web3-cms" class="headerlink" title="web3-cms"></a>web3-cms</h3><p>文件包含读源码 注意不要带后缀 如index</p>
 <p>parse_url绕过</p>
 <p>命令注入</p>
+<p><a href="https://fireshellsecurity.team/n1ctf-funning-eating-cms/" target="_blank" rel="external">https://fireshellsecurity.team/n1ctf-funning-eating-cms/</a></p>
 <h3 id="web4-easy-amp-amp-hard-php"><a href="#web4-easy-amp-amp-hard-php" class="headerlink" title="web4-easy&amp;&amp;hard php"></a>web4-easy&amp;&amp;hard php</h3><p>看了bendawang的blog才知道 easy php被非预期了 导致上了hard php 预期解一样的</p>
 <h4 id="什么导致了非预期"><a href="#什么导致了非预期" class="headerlink" title="什么导致了非预期"></a>什么导致了非预期</h4><p>给的docker文件中写到 FROM andreisamuilik/php5.5.9-apache2.4-mysql5.5</p>
 <p>pull下来这个docker 发现其中默认目录/var/www/phpinfo/index.php有个phpinfo存在</p>
+<p>还有他放了hard.php 里面的run.sh为了修补easy里的漏洞 反而暴露了漏洞的内容</p>
 <h4 id="非预期1-session-upload"><a href="#非预期1-session-upload" class="headerlink" title="非预期1-session.upload"></a>非预期1-session.upload</h4><p>session.upload_progress.enabled这个参数在php.ini 默认开启，需要手动置为Off</p>
 <p>如果不是Off，就会在上传的过程中生成上传进度文件，它的存储路径可以在phpinfo获取到</p>
 <p>/var/lib/php5/sess_{your_php_session_id}</p>
@@ -378,10 +380,12 @@
 <p>/var/lib/php5/sess_5uu8r952rejihbg033m5mckb17<br>不断刷新生成包含恶意php代码的文件</p>
 <p>然后通过LFI包含这个文件</p>
 <p>action=../../../../../var/lib/php5/sess_5uu8r952rejihbg033m5mckb17<br>即可getshell</p>
+<p><a href="http://dann.com.br/php-winning-the-race-condition-vs-temporary-file-upload-alternative-way-to-easy_php-n1ctf2018/" target="_blank" rel="external">http://dann.com.br/php-winning-the-race-condition-vs-temporary-file-upload-alternative-way-to-easy_php-n1ctf2018/</a></p>
 <h3 id="非预期2-xdebug"><a href="#非预期2-xdebug" class="headerlink" title="非预期2-xdebug"></a>非预期2-xdebug</h3><p>在phpinfo中看到remote_connect_back = Off,但是那个是php-cli的，而实际下载下来的镜像跑起来看到的是开着的，即php-fpm实际是开着的，所以能够直接getshel</p>
 <p>fpm与cli区别看 <a href="https://segmentfault.com/q/1010000004664671" target="_blank" rel="external">https://segmentfault.com/q/1010000004664671</a></p>
 <p>然后就是rr大佬的方法 在whctf上出过 <a href="https://www.xctf.org.cn/library/details/whctf-writeup/" target="_blank" rel="external">https://www.xctf.org.cn/library/details/whctf-writeup/</a></p>
 <p><a href="https://ricterz.me/posts/Xdebug%3A%20A%20Tiny%20Attack%20Surface" target="_blank" rel="external">https://ricterz.me/posts/Xdebug%3A%20A%20Tiny%20Attack%20Surface</a></p>
+<h3 id="非预期3"><a href="#非预期3" class="headerlink" title="非预期3"></a>非预期3</h3><p><a href="http://dann.com.br/php-winning-the-race-condition-vs-temporary-file-upload-alternative-way-to-easy_php-n1ctf2018/" target="_blank" rel="external">http://dann.com.br/php-winning-the-race-condition-vs-temporary-file-upload-alternative-way-to-easy_php-n1ctf2018/</a></p>
 
       
     </div>
@@ -417,6 +421,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/27/强网杯wp/" rel="next" title="强网杯wp">
+                <i class="fa fa-chevron-left"></i> 强网杯wp
+              </a>
             
           </div>
 
@@ -499,7 +507,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -576,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-77777"><span class="nav-number">1.</span> <span class="nav-text">web-77777</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#way1"><span class="nav-number">1.1.</span> <span class="nav-text">way1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way2"><span class="nav-number">1.2.</span> <span class="nav-text">way2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way3"><span class="nav-number">1.3.</span> <span class="nav-text">way3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way4"><span class="nav-number">1.4.</span> <span class="nav-text">way4</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web2-777772"><span class="nav-number">2.</span> <span class="nav-text">web2-777772</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#way1-1"><span class="nav-number">2.1.</span> <span class="nav-text">way1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way2-1"><span class="nav-number">2.2.</span> <span class="nav-text">way2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web3-cms"><span class="nav-number">3.</span> <span class="nav-text">web3-cms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web4-easy-amp-amp-hard-php"><span class="nav-number">4.</span> <span class="nav-text">web4-easy&&hard php</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么导致了非预期"><span class="nav-number">4.1.</span> <span class="nav-text">什么导致了非预期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非预期1-session-upload"><span class="nav-number">4.2.</span> <span class="nav-text">非预期1-session.upload</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非预期2-xdebug"><span class="nav-number">5.</span> <span class="nav-text">非预期2-xdebug</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-77777"><span class="nav-number">1.</span> <span class="nav-text">web-77777</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#way1"><span class="nav-number">1.1.</span> <span class="nav-text">way1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way2"><span class="nav-number">1.2.</span> <span class="nav-text">way2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way3"><span class="nav-number">1.3.</span> <span class="nav-text">way3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way4"><span class="nav-number">1.4.</span> <span class="nav-text">way4</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web2-777772"><span class="nav-number">2.</span> <span class="nav-text">web2-777772</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#way1-1"><span class="nav-number">2.1.</span> <span class="nav-text">way1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#way2-1"><span class="nav-number">2.2.</span> <span class="nav-text">way2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web3-cms"><span class="nav-number">3.</span> <span class="nav-text">web3-cms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web4-easy-amp-amp-hard-php"><span class="nav-number">4.</span> <span class="nav-text">web4-easy&&hard php</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么导致了非预期"><span class="nav-number">4.1.</span> <span class="nav-text">什么导致了非预期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非预期1-session-upload"><span class="nav-number">4.2.</span> <span class="nav-text">非预期1-session.upload</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非预期2-xdebug"><span class="nav-number">5.</span> <span class="nav-text">非预期2-xdebug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非预期3"><span class="nav-number">6.</span> <span class="nav-text">非预期3</span></a></li></ol></div>
             
 
           </div>
