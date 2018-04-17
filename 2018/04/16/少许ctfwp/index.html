@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="xss," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,26 @@
 
 
 
-<meta name="description" content="实验吧遇到的一道题 input输入框内存在xss 但是限制了输入长度 则可以通过注释符打通两个注释框之间的部分">
-<meta name="keywords" content="xss">
+<meta name="description" content="这周的cfttime上的一些比赛">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xss长度限制绕过">
-<meta property="og:url" content="http://Merl1ng.com/2017/07/26/xss长度限制绕过/index.html">
+<meta property="og:title" content="少许ctfwp">
+<meta property="og:url" content="http://Merl1ng.com/2018/04/16/少许ctfwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="实验吧遇到的一道题 input输入框内存在xss 但是限制了输入长度 则可以通过注释符打通两个注释框之间的部分">
-<meta property="og:updated_time" content="2017-07-27T06:05:19.598Z">
+<meta property="og:description" content="这周的cfttime上的一些比赛">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictf302.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictf303.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql1.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql2.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql4.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql3.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql6.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql5.PNG">
+<meta property="og:updated_time" content="2018-04-17T15:19:59.159Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xss长度限制绕过">
-<meta name="twitter:description" content="实验吧遇到的一道题 input输入框内存在xss 但是限制了输入长度 则可以通过注释符打通两个注释框之间的部分">
+<meta name="twitter:title" content="少许ctfwp">
+<meta name="twitter:description" content="这周的cfttime上的一些比赛">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictf302.PNG">
 
 
 
@@ -131,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/07/26/xss长度限制绕过/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2018/04/16/少许ctfwp/"/>
 
 
 
 
 
-  <title>xss长度限制绕过 | Merl1ng's blog</title>
+  <title>少许ctfwp | Merl1ng's blog</title>
   
 
 
@@ -266,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/07/26/xss长度限制绕过/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/04/16/少许ctfwp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">xss长度限制绕过</h1>
+          <h1 class="post-title" itemprop="name headline">少许ctfwp</h1>
         
 
         <div class="post-meta">
@@ -295,8 +304,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-26T17:40:34+08:00">
-                2017-07-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T22:01:31+08:00">
+                2018-04-16
               </time>
             
 
@@ -305,28 +314,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -352,14 +339,47 @@
       
 
       
-        <p>实验吧遇到的一道题</p>
-<p>input输入框内存在xss 但是限制了输入长度</p>
-<p>则可以通过注释符打通两个注释框之间的部分<br><a id="more"></a><br>比如某网站留言板分别有留言标题 和 留言内容两个输入框</p>
-<p>在第一个输入框内输入<code>&lt;script&gt;&lt;!--</code><br> 第二个输入框内输入<code>--&gt;alert(/xss/)&lt;script/&gt;</code><br>成功弹窗</p>
-<p>还有一种情况在留言处虽然有多处输入框 但是只有一处存在xss<br>但是此处存在长度限制</p>
-<p>比如在第一个输入框内 则可以通过两次连续留言用注释打通</p>
-<p>第一次留言时在第一个输入框内写下<code>*/&lt;/script&gt;</code><br>（先留的言在后面）<br>其他的输入框内容随便写<br>先提交留言</p>
-<p>然后进行第二次留言<br>在第一个输入框内写下<code>&lt;script&gt;alert(&#39;xss&#39;)/*</code><br>其他的输入框内容随便写<br>（当时的题即使用不同的用户进行留言仍然可以弹窗）</p>
+        <p>这周的cfttime上的一些比赛</p>
+<a id="more"></a>
+<h2 id="WPICTF"><a href="#WPICTF" class="headerlink" title="WPICTF"></a>WPICTF</h2><h3 id="web150"><a href="#web150" class="headerlink" title="web150"></a>web150</h3><p>给了个连接 一点就会跳到YouTube的一个视频 </p>
+<p>话说这个视频老外好像很喜欢啊。。。最近的ctf老是见到2333</p>
+<p>这显然就是重定向了 抓包看看</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictf302.PNG" alt=""></p>
+<p>发现有两个cookie</p>
+<p>第一个好像是base64但拿去解密下是乱码 后一个显示的是 </p>
+<p>Julius C.=”got good dance moves.”</p>
+<p>搜了下 Julius </p>
+<p>提示词 Julius Caesar</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictf303.PNG" alt=""></p>
+<p>就是凯撒 那么自然想到了 移位即rot加密</p>
+<p>后来发现是 rot17 把第一个cookie rot17 再base64解密即可</p>
+<h3 id="web200"><a href="#web200" class="headerlink" title="web200"></a>web200</h3><p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictfsql1.PNG" alt=""></p>
+<p>稍微试了下很显然是个sql 注册是不能用的</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictfsql2.PNG" alt=""></p>
+<p>做的时候看到注释里的hash和salt跑偏了</p>
+<p>以为是要注出来hash和salt 再跑字典。。。</p>
+<p>而且还当盲注做把hash和salt跑出来了 但好像有点问题。。出现了:和{字符。。</p>
+<p>还有这个用hackbar时要在login页面下否则报错</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictfsql4.PNG" alt=""></p>
+<p>clientname =’ password=1 试了下 发现报错</p>
+<p>而且页面回显了十分详细的错误信息</p>
+<p>这点当时没有注意看 点击报错信息是可以展开看到相应源码的..</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictfsql3.PNG" alt=""></p>
+<p>这样便可以拿到部分关键源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">search = <span class="string">""</span><span class="string">"SELECT id, hash, salt FROM clients</span></div><div class="line">           WHERE clientname = '&#123;0&#125;' LIMIT 1"<span class="string">""</span>.format(clientname)</div><div class="line">pointer.execute(search)</div><div class="line"></div><div class="line">res = pointer.fetchone()</div><div class="line"><span class="keyword">if</span> not res:</div><div class="line">    <span class="built_in">return</span> <span class="string">"No such user in the database &#123;0&#125;!\n"</span>.format(clientname)</div><div class="line">userID, <span class="built_in">hash</span>, salt = res</div></pre></td></tr></table></figure>
+<p>就是说注入的顺序是 id hash salt (这里要hash和salt用字符串就是””否则提示报错 </p>
+<p>那么思路就是随便输一个一直密码 猜测加密方式为sha256</p>
+<p>把密码加密后作为salt输入 hash输入空字符串””</p>
+<p>当然你也可以随便写个盐 一起sha256</p>
+<p>但是这里id不同得到的回显不一样 只有在id为2是才会显示flag 这个倒是可以试出来</p>
+<p>如果id不对会给一个视频连接 估计又是那个视频2333</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictfsql6.PNG" alt=""></p>
+<p>但是dalao给出了限制方法 就是 直接输 id 在后面加上 FROM clients WHERE clientname = ‘Goutham’</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictfsql5.PNG" alt=""></p>
+<p>至于这里为啥是Goutham因为首页上他的话里提到了密码。。</p>
+<h2 id="Midnight-Sun-CTF-Quals"><a href="#Midnight-Sun-CTF-Quals" class="headerlink" title="Midnight Sun CTF Quals"></a>Midnight Sun CTF Quals</h2><h3 id="web200-1"><a href="#web200-1" class="headerlink" title="web200"></a>web200</h3><p>insert sql注入</p>
+<p>这个思路挺奇特的 利用sql重置了root的密码 话说我insert的注入还不是很熟。。。</p>
+<p><a href="https://ctftime.org/writeup/9712" target="_blank" rel="external">https://ctftime.org/writeup/9712</a></p>
 
       
     </div>
@@ -387,12 +407,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/xss/" rel="tag"><i class="fa fa-tag"></i> xss</a>
-          
-        </div>
-      
 
       
       
@@ -402,18 +416,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/27/突破文件上传中对文件的限制/" rel="next" title="突破文件上传中对文件的限制">
-                <i class="fa fa-chevron-left"></i> 突破文件上传中对文件的限制
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/24/xss所加载的脚本/" rel="prev" title="xss所加载的脚本">
-                xss所加载的脚本 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/14/hitbwp/" rel="prev" title="hitbwp">
+                hitbwp <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -462,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -545,6 +564,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WPICTF"><span class="nav-number">1.</span> <span class="nav-text">WPICTF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web150"><span class="nav-number">1.1.</span> <span class="nav-text">web150</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web200"><span class="nav-number">1.2.</span> <span class="nav-text">web200</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Midnight-Sun-CTF-Quals"><span class="nav-number">2.</span> <span class="nav-text">Midnight Sun CTF Quals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web200-1"><span class="nav-number">2.1.</span> <span class="nav-text">web200</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
