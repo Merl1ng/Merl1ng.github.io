@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/06/22/sctfwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="web真是越出越难了orz">
-<meta property="og:updated_time" content="2018-06-23T05:11:53.712Z">
+<meta property="og:updated_time" content="2018-06-23T05:21:09.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sctfwp">
 <meta name="twitter:description" content="web真是越出越难了orz">
@@ -362,7 +362,10 @@
 <p>用Saleae logic打开数据包</p>
 <p>看图找序列 图片懒得放外链贴了 </p>
 <h4 id="交易识破后的报复"><a href="#交易识破后的报复" class="headerlink" title="交易识破后的报复"></a>交易识破后的报复</h4><p>略复杂 还没看</p>
-<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="phpmyadmin"><a href="#phpmyadmin" class="headerlink" title="phpmyadmin"></a>phpmyadmin</h4><p>最简单的一道web sql执行四行代码</p>
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="phpmyadmin"><a href="#phpmyadmin" class="headerlink" title="phpmyadmin"></a>phpmyadmin</h4><p>首先尝试直接 outfile写一句话不行</p>
+<p><code>select &#39;&lt;&gt;&#39; into outfile &#39;D:/phpstudy/www/merl1n.php&#39;</code></p>
+<p>最简单的一道web 默认 root root进去</p>
+<p>sql执行四行代码</p>
 <p>3开日志 改日志路径 写一句话+1路径显示</p>
 <p>然后连接菜刀 flag在c盘根目录 这里试了试蚁剑连不上</p>
 <h4 id="新的建议版"><a href="#新的建议版" class="headerlink" title="新的建议版"></a>新的建议版</h4><p>很明显的xss 然鹅并不会做。。。</p>
