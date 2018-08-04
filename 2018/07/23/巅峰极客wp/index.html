@@ -115,7 +115,9 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/9696.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7373.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7886786k.PNG">
-<meta property="og:updated_time" content="2018-07-29T14:36:24.594Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/fdfxxoorr.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gwrgrwgwr.PNG">
+<meta property="og:updated_time" content="2018-08-04T10:10:52.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="巅峰极客wp">
 <meta name="twitter:description" content="大师傅们下手太重了orz">
@@ -426,6 +428,28 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/7373.PNG" alt=""></p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/7886786k.PNG" alt=""></p>
 <p>也就一个队做出来 </p>
+<h3 id="misc-1"><a href="#misc-1" class="headerlink" title="misc 1"></a>misc 1</h3><p>使用Stegsolve打开图片，分别提取红、绿、蓝三个通道的最低位</p>
+<p>发现是Ook!和brainfuck，使用在线解密：<br><a href="https://www.splitbrain.org/services/ook" target="_blank" rel="external">https://www.splitbrain.org/services/ook</a></p>
+<h3 id="misc-2"><a href="#misc-2" class="headerlink" title="misc 2"></a>misc 2</h3><p>题目提示 0xff</p>
+<p>想到使用0xFF异或整个文件</p>
+<p>winhex可以直接异或</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/fdfxxoorr.PNG" alt=""></p>
+<p>得到新的png文件</p>
+<p>使用二进制编辑器观察尾部，看到提示“black and white”，以及“IEND”标识，这是png的文件尾部，暗示该文件中隐藏了一个png文件。</p>
+<p>直接手扣一个png</p>
+<p>观察png文件，可以看到色块分为11列，每列隔行的色块永远是黑色，这说明应该横向读取图片，而列中的横长条由8个小色块组成，显然其代表的是一个字节的数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">from PIL import Image </div><div class="line">im = Image.open(<span class="string">"2.PNG"</span>) </div><div class="line">width = im.slize[0] </div><div class="line">height = im.size[1] </div><div class="line"><span class="built_in">print</span>(<span class="string">"width:%d"</span>%(width)) </div><div class="line"><span class="built_in">print</span>(<span class="string">"height:%d"</span>%(height)) </div><div class="line">count = 0 </div><div class="line">ans = <span class="string">""</span> </div><div class="line"><span class="keyword">for</span> h <span class="keyword">in</span> range(0, height): </div><div class="line">	<span class="keyword">for</span> w <span class="keyword">in</span> range(0, width-1): </div><div class="line">		pixel = im.getpixel((w, h)) color = (pixel[0]*256*256+pixel[1]*256+pixel[2])//Oxffffff </div><div class="line">		<span class="keyword">if</span> color == 1: </div><div class="line">			color = 0 </div><div class="line">		<span class="keyword">else</span>: </div><div class="line">			color = 1 </div><div class="line">		<span class="built_in">print</span>(<span class="string">"%x"</span>%(color), end=<span class="string">","</span>) </div><div class="line">		count += i </div><div class="line">		ans += str(color) </div><div class="line">		<span class="keyword">if</span> count == 9: </div><div class="line">			<span class="built_in">print</span>(<span class="string">"%c"</span>%int(ans,2)) </div><div class="line">			<span class="keyword">if</span> ans != <span class="string">"011111111"</span>: </div><div class="line">				<span class="built_in">print</span>(<span class="string">"%c"</span>%int(ans,2)) </div><div class="line">			count = 0 </div><div class="line">			ans = <span class="string">""</span></div></pre></td></tr></table></figure>
+<h3 id="misc-3"><a href="#misc-3" class="headerlink" title="misc 3"></a>misc 3</h3><p>usb协议分析 </p>
+<p><a href="https://www.anquanke.com/post/id/85218" target="_blank" rel="external">https://www.anquanke.com/post/id/85218</a></p>
+<p>按length排下序</p>
+<p>依次点击 显示分组字节 原始数据 保存</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/gwrgrwgwr.PNG" alt=""></p>
+<p>95那个里面有 tips   out的总共也就十几个 可以全存下载遍历</p>
+<p>将两个最大的数据导出为1.pcap和2.pcap</p>
+<p>在kali里 <strong>tshark命令</strong></p>
+<pre><code>tshark -r 1.pcap -T fields -e usb.capdata &gt; 1.txt
+tshark -r 2.pcap -T fields -e usb.capdata &gt; 2.txt
+</code></pre><p>然后参考 <a href="http://www.lovei.org/archives/2018cdgcrace.html" target="_blank" rel="external">http://www.lovei.org/archives/2018cdgcrace.html</a> 不想写了。。</p>
 
       
     </div>
@@ -547,7 +571,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -624,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-simple-cms"><span class="nav-number">1.</span> <span class="nav-text">a simple cms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-online"><span class="nav-number">2.</span> <span class="nav-text">mysql online</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pentest"><span class="nav-number">3.</span> <span class="nav-text">pentest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dedefun"><span class="nav-number">4.</span> <span class="nav-text">dedefun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babyweb"><span class="nav-number">5.</span> <span class="nav-text">babyweb</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-simple-cms"><span class="nav-number">1.</span> <span class="nav-text">a simple cms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-online"><span class="nav-number">2.</span> <span class="nav-text">mysql online</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pentest"><span class="nav-number">3.</span> <span class="nav-text">pentest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dedefun"><span class="nav-number">4.</span> <span class="nav-text">dedefun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babyweb"><span class="nav-number">5.</span> <span class="nav-text">babyweb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">6.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">7.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">8.</span> <span class="nav-text">misc 3</span></a></li></ol></div>
             
 
           </div>

