@@ -93,21 +93,21 @@
 
 
 
-<meta name="description" content="web 1直接有源码 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;?php include &quot;config.php&quot;; $number1 = rand(1,100000000000000); $number2 = rand(1,100000000000); $number3 = rand(1,100">
+<meta name="description" content="越南一个大学办的比赛">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="isitdtuwp">
 <meta property="og:url" content="http://Merl1ng.com/2018/07/31/isitdtuwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="web 1直接有源码 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;?php include &quot;config.php&quot;; $number1 = rand(1,100000000000000); $number2 = rand(1,100000000000); $number3 = rand(1,100">
+<meta property="og:description" content="越南一个大学办的比赛">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/78578676.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7678xml.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xpath1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xpath2.PNG">
-<meta property="og:updated_time" content="2018-08-04T12:50:46.266Z">
+<meta property="og:updated_time" content="2018-08-04T13:54:22.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="isitdtuwp">
-<meta name="twitter:description" content="web 1直接有源码 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;?php include &quot;config.php&quot;; $number1 = rand(1,100000000000000); $number2 = rand(1,100000000000); $number3 = rand(1,100">
+<meta name="twitter:description" content="越南一个大学办的比赛">
 <meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/78578676.PNG">
 
 
@@ -335,7 +335,8 @@
       
 
       
-        <a id="more"></a>
+        <p>越南一个大学办的比赛</p>
+<a id="more"></a>
 <h3 id="web-1"><a href="#web-1" class="headerlink" title="web 1"></a>web 1</h3><p>直接有源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line">include <span class="string">"config.php"</span>; </div><div class="line"><span class="variable">$number1</span> = rand(1,100000000000000); </div><div class="line"><span class="variable">$number2</span> = rand(1,100000000000); </div><div class="line"><span class="variable">$number3</span> = rand(1,100000000); </div><div class="line"><span class="variable">$url</span> = urldecode(<span class="variable">$_SERVER</span>[<span class="string">'REQUEST_URI'</span>]); </div><div class="line"><span class="variable">$url</span> = parse_url(<span class="variable">$url</span>, PHP_URL_QUERY); </div><div class="line"><span class="keyword">if</span> (preg_match(<span class="string">"/_/i"</span>, <span class="variable">$url</span>))  </div><div class="line">&#123; </div><div class="line">    die(<span class="string">"..."</span>); </div><div class="line">&#125; </div><div class="line"><span class="keyword">if</span> (preg_match(<span class="string">"/0/i"</span>, <span class="variable">$url</span>))  </div><div class="line">&#123; </div><div class="line">    die(<span class="string">"..."</span>); </div><div class="line">&#125; </div><div class="line"><span class="keyword">if</span> (preg_match(<span class="string">"/\w+/i"</span>, <span class="variable">$url</span>))  </div><div class="line">&#123; </div><div class="line">    die(<span class="string">"..."</span>); </div><div class="line">&#125;     </div><div class="line"><span class="keyword">if</span>(isset(<span class="variable">$_GET</span>[<span class="string">'_'</span>]) &amp;&amp; !empty(<span class="variable">$_GET</span>[<span class="string">'_'</span>])) </div><div class="line">&#123; </div><div class="line">    <span class="variable">$control</span> = <span class="variable">$_GET</span>[<span class="string">'_'</span>];         </div><div class="line">    <span class="keyword">if</span>(!in_array(<span class="variable">$control</span>, array(0,<span class="variable">$number1</span>))) </div><div class="line">    &#123; </div><div class="line">        die(<span class="string">"fail1"</span>); </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">if</span>(!in_array(<span class="variable">$control</span>, array(0,<span class="variable">$number2</span>))) </div><div class="line">    &#123; </div><div class="line">        die(<span class="string">"fail2"</span>); </div><div class="line">    &#125; </div><div class="line">    <span class="keyword">if</span>(!in_array(<span class="variable">$control</span>, array(0,<span class="variable">$number3</span>))) </div><div class="line">    &#123; </div><div class="line">        die(<span class="string">"fail3"</span>); </div><div class="line">    &#125; </div><div class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>; </div><div class="line">&#125; </div><div class="line">show_source(__FILE__); </div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <p>php的漏洞 parse_url 和 in_array()</p>
