@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/mirror888.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/rykrykrykkrrkrhbrs.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/uiguegheuqeughequo.PNG">
-<meta property="og:updated_time" content="2018-08-15T04:51:37.570Z">
+<meta property="og:updated_time" content="2018-08-16T13:46:49.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tjctfwp">
 <meta name="twitter:description" content="挺好的比赛 做了快一周">
@@ -375,12 +375,27 @@
 <p>但这个由于payload是参数名 所以要写成 payload : ‘’(后面留空)的形式 不过留不留空应该也无所谓 它好像只匹配到参数名</p>
 <p>这题做了蛮久的 但也学到了很多</p>
 <h3 id="request-me"><a href="#request-me" class="headerlink" title="request me"></a>request me</h3><p>感觉有点玄学的一道 也是做了好久</p>
-<p>首先让 post 200</p>
+<p>有一个 HTTP Basic auth认证<br><a href="https://www.cnblogs.com/rinack/p/7595232.html" target="_blank" rel="external">https://www.cnblogs.com/rinack/p/7595232.html</a><br><a href="https://code.csdn.net/ZhuTH/zthblog/tree/master/views/admin.py" target="_blank" rel="external">https://code.csdn.net/ZhuTH/zthblog/tree/master/views/admin.py</a></p>
+<p>一开始github搜了个爆破脚本跑了好久 当然gg</p>
+<p>后来试了好久 结束前一晚做出来的</p>
+<p>根据题目提示改请求方法为options</p>
+<p>提示 put delete get post options 和参数 username password </p>
+<p>并说有些方法需要验证 (basic auth)</p>
+<p>不带username password put会说你的凭证在哪 我没偷</p>
+<p>那肯定要带 带就会说 我偷了你的凭证</p>
+<p>然后再用delete 我想凭证吗 就它显示的那个cen什么的单词 也带上请求 </p>
+<p>结果就拿到了flag..</p>
+<p>首先让 post 200(咋让200也挺玄学 多试几次或许可以。。)</p>
 <p>然后 </p>
 <p>put 不带参数</p>
 <p>put 带参数</p>
 <p>delete 增加参数</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/requestfhweuoghewio.PNG" alt=""></p>
+<p>当你成功后想再试一遍 可能又不行了。。 真的玄学</p>
+<p>我看了其他师傅的一个视频题解 用的curl解的 –data 指定参数</p>
+<p>-u指定验证的数据 格式 xx:xx</p>
+<p>看起来curl挺方便的</p>
+<p>不过他也是这种玄学问题 同样方法再来一遍就gg 而且视频中也有些地方感觉说错了 </p>
 <h3 id="Moar-Horses"><a href="#Moar-Horses" class="headerlink" title="Moar Horses"></a>Moar Horses</h3><p>贼奇葩的一道题 hint写了不是真正的web</p>
 <p>好吧真的不是。。</p>
 <p>提示向下滚动 但你拉拉鼠标咋看都没有尽头</p>
@@ -401,7 +416,9 @@
 <p>还有个地方可以保存文本 有个按钮可以提交给admin 这里估计就是xss点</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/1255737387affwf.PNG" alt=""></p>
 <p>xss的题目我是不怎么熟悉的 看起来很吃力</p>
-<p>这个有csp的限制 需要绕过</p>
+<p>这个有csp的限制 </p>
+<p>随便xss一下会有csp的报错</p>
+<p>需要绕过 content-security-policy: default-src ‘self’ 就是所有的外部资源，都只能从当前域名加载</p>
 <p>先了解下 csp<br><a href="http://www.ruanyifeng.com/blog/2016/09/csp.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2016/09/csp.html</a></p>
 <p>题目还有个上传头像的地方应该不是随便给的 </p>
 <p>所以考虑通过上传图片绕过csp</p>
@@ -423,6 +440,9 @@
 <p>GET 后面就是 admin页面的所有内容 flag也在里面 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/y%3C!DOCTYPE%20html%3E%3Chtml%20lang=%22en%22%3E%3Chead%3E%20%20%20%20%3Ctitle%3Eadmin%3C/title%3E%3Cmeta%20charset=%22UTF-8%22%3E%3Cmeta%20name=%22viewport%22%20content=%22width=device-width,%20initial-scale=1%22%3E%3C!--===============================================================================================--%3E%3Clink%20rel=%22icon%22%20<span class="built_in">type</span>=%22image/png%22%20href=%22/images/icons/favicon.ico%22/%3E%3C!--===============================================================================================--%3E%3Clink%20rel=%22stylesheet%22%20<span class="built_in">type</span>=%22text/css%22%20href=%22/vendor/bootstrap/css/bootstrap.min.css%22%3E%3C!--===============================================================================================--%3E%3Clink%20rel=%22stylesheet%22%20<span class="built_in">type</span>=%22text/css%22%20href=%22/fonts/font-awesome-4.7.0/css/font-awesome.min.css%22%3E%3C!--===============================================================================================--%3E%3Clink%20rel=%22stylesheet%22%20<span class="built_in">type</span>=%22text/css%22%20href=%22/vendor/animate/animate.css%22%3E%3C!--===============================================================================================--%3E%3Clink%20rel=%22stylesheet%22%20<span class="built_in">type</span>=%22text/css%22%20href=%22/vendor/css-hamburgers/hamburgers.min.css%22%3E%3C!--===============================================================================================--%3E%3Clink%20rel=%22stylesheet%22%20<span class="built_in">type</span>=%22text/css%22%20href=%22/vendor/select2/select2.min.css%22%3E%3C!--===============================================================================================--%3E%3Clink%20rel=%22stylesheet%22%20<span class="built_in">type</span>=%22text/css%22%20href=%22/css/util.css%22%3E%3Clink%20rel=%22stylesheet%22%20<span class="built_in">type</span>=%22text/css%22%20href=%22/css/main.css%22%3E%3C!--===============================================================================================--%3E%3C/head%3E%3Cbody%3E%20%20%3Cdiv%20class=%22limiter%22%3E%3Cdiv%20class=%22container-login100%22%3E%3Cdiv%20class=%22wrap-login100%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class=%22login100-pic%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20class=%22login100-form-btn%22%20href=%22/report%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Report%20a%20User%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/a%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class=%22login100-pic%20js-tilt%22%20data-tilt%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20src=%22/admin/pfp%22%20alt=%22IMG%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C/div%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cform%20class=%22login100-form%22%20method=%22POST%22%20action=%22/edit_pfp%22%20enctype=%22multipart/form-data%22%3E%3Cspan%20class=%22login100-form-title%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Update%20Profile%20Picture%20(png,%20jpg)%3C/span%3E%3Cdiv%20class=%22wrap-input100%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cinput%20class=%22input100%20fileinput%22%20<span class="built_in">type</span>=%22file%22%20name=%22pfp%22%3E%3Cspan%20class=%22focus-input100%22%3E%3C/span%3E%3Cspan%20class=%22symbol-input100%22%3E%3Ci%20class=%22fa%20fa-image%22%20aria-hidden=%22<span class="literal">true</span>%22%3E%3C/i%3E%3C/span%3E%3C/div%3E%3Cdiv%20class=%22container-login100-form-btn%22%3E%3Cbutton%20class=%22login100-form-btn%22%3ESave%3C/button%3E%3C/div%3E%3C/form%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cform%20class=%22login100-form%20validate-form%22%20method=%22POST%22%20action=%22/edit/admin%22%3E%3Cspan%20class=%22login100-form-title%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20admin<span class="string">'s%20Posts%20-%20%3Ca%20href=%22/logout%22%3ELogout%3C/a%3E%3C/span%3E%3Cdiv%20class=%22wrap-input100%20validate-input%22%20data-validate%20=%20%22Content%20is%20required%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cinput%20class=%22input100%22%20type=%22text%22%20name=%22content%22%20value=%22tjctf%7B1m4g3_p0lygl0t_1s_w3ird%7D%22%3E%3Cspan%20class=%22focus-input100%22%3E%3C/span%3E%3Cspan%20class=%22symbol-input100%22%3E%3Ci%20class=%22fa%20fa-user%22%20aria-hidden=%22true%22%3E%3C/i%3E%3C/span%3E%3C/div%3E%3Cdiv%20class=%22container-login100-form-btn%22%3E%3Cbutton%20class=%22login100-form-btn%22%3ESave%3C/button%3E%3C/div%3E%3Cdiv%20class=%22text-center%20p-t-136%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tjctf%7B1m4g3_p0lygl0t_1s_w3ird%7D%3C/div%3E%3C/form%3E%3C/div%3E%3C/div%3E%3C/div%3E%3Cscript%20src=%22/vendor/jquery/jquery-3.2.1.min.js%22%3E%3C/script%3E%3Cscript%20src=%22/vendor/bootstrap/js/popper.js%22%3E%3C/script%3E%3Cscript%20src=%22/vendor/bootstrap/js/bootstrap.min.js%22%3E%3C/script%3E%3Cscript%20src=%22/vendor/select2/select2.min.js%22%3E%3C/script%3E%3Cscript%20src=%22/vendor/tilt/tilt.jquery.min.js%22%3E%3C/script%3E%3Cscript%20src=%22/js/main.js%22%3E%3C/script%3E%20%20%20%20tjctf%7B1m4g3_p0lygl0t_1s_w3ird%7D%3C/body%3E%3C/html%3E</span></div></pre></td></tr></table></figure>
 <p>话说 beeceptor.com 这网站还挺好用的 而且不用注册</p>
+<h3 id="Central-Savings-Account"><a href="#Central-Savings-Account" class="headerlink" title="Central Savings Account"></a>Central Savings Account</h3><p>有个表单 但测试一下根本没交互</p>
+<p>那估计是js了 </p>
+<p>看下本地的js 果然</p>
 <h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="Ssleepy"><a href="#Ssleepy" class="headerlink" title="Ssleepy"></a>Ssleepy</h3><p>流量包分析 </p>
 <p>随手一个追踪流 可以看到 key.zip</p>
 <p>这里还给了ftp协议的账号密码 我连了下试试 gg</p>
@@ -484,6 +504,9 @@
 <p>结果v2 stegsolve过一遍就有。。。。。当时智障了</p>
 <p>v2大小比v1大 但像素大小一模一样 很明显终点应该在v2上</p>
 <p>当时还ps试了下之前见过的差值。。</p>
+<h3 id="The-Abyss"><a href="#The-Abyss" class="headerlink" title="The Abyss"></a>The Abyss</h3><p>分最高的题 还是py的沙盒 应该要拿到shell</p>
+<p>难点在于过滤了 _ </p>
+<p><a href="https://kmh.zone/writeups/tjctf-2018/theabyss.html" target="_blank" rel="external">https://kmh.zone/writeups/tjctf-2018/theabyss.html</a><br><a href="http://blog.seekintoo.com/the-abyss-writeup.html" target="_blank" rel="external">http://blog.seekintoo.com/the-abyss-writeup.html</a></p>
 <h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><h3 id="Caesar’s-Complication"><a href="#Caesar’s-Complication" class="headerlink" title="Caesar’s Complication"></a>Caesar’s Complication</h3><p>这题我要吹一年 如果是动态分数制这道就是做出来中分最高的一题</p>
 <p>给的东西结合题目肯定就是rot加密 0-13共14种</p>
 <p>查找关键字 首先ctrl f 就可以横向查找 tjctf 或者倒过来 ftcjt</p>
@@ -555,6 +578,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/python沙盒逃逸/" rel="next" title="python沙盒逃逸">
+                <i class="fa fa-chevron-left"></i> python沙盒逃逸
+              </a>
             
           </div>
 
@@ -637,7 +664,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -714,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ess-Kyoo-Ell"><span class="nav-number">1.1.</span> <span class="nav-text">Ess Kyoo Ell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#request-me"><span class="nav-number">1.2.</span> <span class="nav-text">request me</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Moar-Horses"><span class="nav-number">1.3.</span> <span class="nav-text">Moar Horses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Programmable-Hyperlinked-Pasta"><span class="nav-number">1.4.</span> <span class="nav-text">Programmable Hyperlinked Pasta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stupid-Blog"><span class="nav-number">1.5.</span> <span class="nav-text">Stupid Blog</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ssleepy"><span class="nav-number">2.1.</span> <span class="nav-text">Ssleepy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#We-Will-Rock-You"><span class="nav-number">2.2.</span> <span class="nav-text">We Will Rock You</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Huuuuuge"><span class="nav-number">2.3.</span> <span class="nav-text">Huuuuuge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learn-My-Flag"><span class="nav-number">2.4.</span> <span class="nav-text">Learn_My_Flag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nothing-but-Everything"><span class="nav-number">2.5.</span> <span class="nav-text">Nothing but Everything</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mirror-Mirror"><span class="nav-number">2.6.</span> <span class="nav-text">Mirror Mirror</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重置黑名单"><span class="nav-number">2.6.1.</span> <span class="nav-text">重置黑名单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取-os-system-函数"><span class="nav-number">2.6.2.</span> <span class="nav-text">获取 os.system 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仅使用特殊字符生成字符串"><span class="nav-number">2.6.3.</span> <span class="nav-text">仅使用特殊字符生成字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反弹-shell"><span class="nav-number">2.6.4.</span> <span class="nav-text">反弹 shell</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lexington-State-Bank"><span class="nav-number">2.7.</span> <span class="nav-text">Lexington State Bank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interference"><span class="nav-number">2.8.</span> <span class="nav-text">Interference</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crypto"><span class="nav-number">3.</span> <span class="nav-text">crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Caesar’s-Complication"><span class="nav-number">3.1.</span> <span class="nav-text">Caesar’s Complication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vinegar"><span class="nav-number">3.2.</span> <span class="nav-text">Vinegar</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse"><span class="nav-number">4.</span> <span class="nav-text">reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-reverse"><span class="nav-number">4.1.</span> <span class="nav-text">python reverse</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终结果"><span class="nav-number">5.</span> <span class="nav-text">最终结果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ess-Kyoo-Ell"><span class="nav-number">1.1.</span> <span class="nav-text">Ess Kyoo Ell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#request-me"><span class="nav-number">1.2.</span> <span class="nav-text">request me</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Moar-Horses"><span class="nav-number">1.3.</span> <span class="nav-text">Moar Horses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Programmable-Hyperlinked-Pasta"><span class="nav-number">1.4.</span> <span class="nav-text">Programmable Hyperlinked Pasta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stupid-Blog"><span class="nav-number">1.5.</span> <span class="nav-text">Stupid Blog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Central-Savings-Account"><span class="nav-number">1.6.</span> <span class="nav-text">Central Savings Account</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ssleepy"><span class="nav-number">2.1.</span> <span class="nav-text">Ssleepy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#We-Will-Rock-You"><span class="nav-number">2.2.</span> <span class="nav-text">We Will Rock You</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Huuuuuge"><span class="nav-number">2.3.</span> <span class="nav-text">Huuuuuge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learn-My-Flag"><span class="nav-number">2.4.</span> <span class="nav-text">Learn_My_Flag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nothing-but-Everything"><span class="nav-number">2.5.</span> <span class="nav-text">Nothing but Everything</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mirror-Mirror"><span class="nav-number">2.6.</span> <span class="nav-text">Mirror Mirror</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重置黑名单"><span class="nav-number">2.6.1.</span> <span class="nav-text">重置黑名单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取-os-system-函数"><span class="nav-number">2.6.2.</span> <span class="nav-text">获取 os.system 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仅使用特殊字符生成字符串"><span class="nav-number">2.6.3.</span> <span class="nav-text">仅使用特殊字符生成字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反弹-shell"><span class="nav-number">2.6.4.</span> <span class="nav-text">反弹 shell</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lexington-State-Bank"><span class="nav-number">2.7.</span> <span class="nav-text">Lexington State Bank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interference"><span class="nav-number">2.8.</span> <span class="nav-text">Interference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Abyss"><span class="nav-number">2.9.</span> <span class="nav-text">The Abyss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crypto"><span class="nav-number">3.</span> <span class="nav-text">crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Caesar’s-Complication"><span class="nav-number">3.1.</span> <span class="nav-text">Caesar’s Complication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vinegar"><span class="nav-number">3.2.</span> <span class="nav-text">Vinegar</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse"><span class="nav-number">4.</span> <span class="nav-text">reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-reverse"><span class="nav-number">4.1.</span> <span class="nav-text">python reverse</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终结果"><span class="nav-number">5.</span> <span class="nav-text">最终结果</span></a></li></ol></div>
             
 
           </div>

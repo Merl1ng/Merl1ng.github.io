@@ -93,15 +93,17 @@
 
 
 
-<meta name="description" content="Love life , love gakki !">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Merl1ng's blog">
-<meta property="og:url" content="http://Merl1ng.com/tags/dnslog/index.html">
+<meta name="description" content="tjctf上遇到了好几道py沙盒逃逸的题目">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python沙盒逃逸">
+<meta property="og:url" content="http://Merl1ng.com/2018/08/16/python沙盒逃逸/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="Love life , love gakki !">
+<meta property="og:description" content="tjctf上遇到了好几道py沙盒逃逸的题目">
+<meta property="og:updated_time" content="2018-08-16T14:16:22.878Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Merl1ng's blog">
-<meta name="twitter:description" content="Love life , love gakki !">
+<meta name="twitter:title" content="python沙盒逃逸">
+<meta name="twitter:description" content="tjctf上遇到了好几道py沙盒逃逸的题目">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/tags/dnslog/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2018/08/16/python沙盒逃逸/"/>
 
 
 
 
 
-  <title>Tag: dnslog | Merl1ng's blog</title>
+  <title>python沙盒逃逸 | Merl1ng's blog</title>
   
 
 
@@ -160,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,44 +256,150 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>dnslog<small>Tag</small>
-      </h1>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/08/16/python沙盒逃逸/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python沙盒逃逸</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T17:53:35+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>tjctf上遇到了好几道py沙盒逃逸的题目<br><a id="more"></a></p>
+<p>参考<br><a href="https://blog.csdn.net/qq_35078631/article/details/78504415" target="_blank" rel="external">https://blog.csdn.net/qq_35078631/article/details/78504415</a><br><a href="https://bestwing.me/awesome-python-sandbox-in-ciscn.html" target="_blank" rel="external">https://bestwing.me/awesome-python-sandbox-in-ciscn.html</a><br><a href="https://xz.aliyun.com/t/52#toc-5" target="_blank" rel="external">https://xz.aliyun.com/t/52#toc-5</a><br><a href="https://www.anquanke.com/post/id/85571" target="_blank" rel="external">https://www.anquanke.com/post/id/85571</a><br><a href="https://blog.csdn.net/wy_97/article/details/80393854" target="_blank" rel="external">https://blog.csdn.net/wy_97/article/details/80393854</a></p>
+<p>这几篇文章都挺好的 读了好几遍</p>
+<p>在python中 不用引入直接使用的内置函数称为 builtin 函数,随着<strong>builtin</strong>这一个module 自动被引入到环境中</p>
+<p>而它十分强大 可以 dir(‘builtins’)</p>
 
-      <h2 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2018/03/02/dnslog利用/" itemprop="url">
-              
-                <span itemprop="name">dnslog利用</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-02T22:28:21+08:00"
-              content="2018-03-02" >
-          03-02
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/xss和Redis总结/" rel="next" title="xss和Redis总结">
+                <i class="fa fa-chevron-left"></i> xss和Redis总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/13/tjctfwp/" rel="prev" title="tjctfwp">
+                tjctfwp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -299,6 +407,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -513,10 +625,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
