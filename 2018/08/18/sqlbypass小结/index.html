@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/08/18/sqlbypass小结/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="总结下sql常见的bypass方式">
-<meta property="og:updated_time" content="2018-08-18T13:03:56.344Z">
+<meta property="og:updated_time" content="2018-08-24T05:25:46.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqlbypass小结">
 <meta name="twitter:description" content="总结下sql常见的bypass方式">
@@ -380,7 +380,12 @@
 <p>1 and (selecr <em> from (select </em> from user as ajoin user as b using(id，username)) as c)</p>
 <p>…</p>
 <p>原理就是在使用别名的时候，表中不能出现相同的字段名，否则就会报错，从而爆出字段名，在使用using函数依次爆出其他字段名</p>
-<p>参考<br><a href="https://mp.weixin.qq.com/s/fSBZPkO0-HNYfLgmYWJKCg" target="_blank" rel="external">https://mp.weixin.qq.com/s/fSBZPkO0-HNYfLgmYWJKCg</a></p>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p>lctf2017 他们有什么秘密呢？ </p>
+<p>涉及 用一个不存在的自定义函数，就可以爆出数据库名</p>
+<p>polygon函数 及类似的</p>
+<p>multiPolygon(id)<br>multilinestring(id)<br>linestring(id)<br>GeometryCollection(id)<br>MultiPoint(id)<br>polugon(id)</p>
+<p>using+join</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://mp.weixin.qq.com/s/fSBZPkO0-HNYfLgmYWJKCg" target="_blank" rel="external">https://mp.weixin.qq.com/s/fSBZPkO0-HNYfLgmYWJKCg</a></p>
 
       
     </div>
@@ -502,7 +507,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -579,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最普通"><span class="nav-number">1.</span> <span class="nav-text">最普通</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在’’内"><span class="nav-number">2.</span> <span class="nav-text">在’’内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤了-–"><span class="nav-number">3.</span> <span class="nav-text">过滤了 # – =</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-select-from-users-where-username-’-username’-and-password-‘-password’"><span class="nav-number">4.</span> <span class="nav-text">$sql = select * from users where username=’$username’ and password = ‘$password’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合"><span class="nav-number">5.</span> <span class="nav-text">联合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#空格被过滤"><span class="nav-number">5.1.</span> <span class="nav-text">空格被过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释符"><span class="nav-number">5.2.</span> <span class="nav-text">注释符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#and-1-1-测不出"><span class="nav-number">5.3.</span> <span class="nav-text">and 1=1 测不出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有"><span class="nav-number">5.4.</span> <span class="nav-text">有 -</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#看见了这个-1’-lt-0e0union-select-1-2-3"><span class="nav-number">5.5.</span> <span class="nav-text">看见了这个 1’<0e0union select 1,2,3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤-substr"><span class="nav-number">5.6.</span> <span class="nav-text">过滤 substr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤-逗号"><span class="nav-number">5.7.</span> <span class="nav-text">过滤 逗号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已知表名但不知道字段名且过滤information-schema或者直接过滤了字段名"><span class="nav-number">5.8.</span> <span class="nav-text">已知表名但不知道字段名且过滤information_schema或者直接过滤了字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">5.9.</span> <span class="nav-text">过滤()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤information-schema，SCHEMATA，TABLES，COLUMNS"><span class="nav-number">5.10.</span> <span class="nav-text">过滤information_schema，SCHEMATA，TABLES，COLUMNS</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最普通"><span class="nav-number">1.</span> <span class="nav-text">最普通</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在’’内"><span class="nav-number">2.</span> <span class="nav-text">在’’内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤了-–"><span class="nav-number">3.</span> <span class="nav-text">过滤了 # – =</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql-select-from-users-where-username-’-username’-and-password-‘-password’"><span class="nav-number">4.</span> <span class="nav-text">$sql = select * from users where username=’$username’ and password = ‘$password’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合"><span class="nav-number">5.</span> <span class="nav-text">联合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#空格被过滤"><span class="nav-number">5.1.</span> <span class="nav-text">空格被过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释符"><span class="nav-number">5.2.</span> <span class="nav-text">注释符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#and-1-1-测不出"><span class="nav-number">5.3.</span> <span class="nav-text">and 1=1 测不出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有"><span class="nav-number">5.4.</span> <span class="nav-text">有 -</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#看见了这个-1’-lt-0e0union-select-1-2-3"><span class="nav-number">5.5.</span> <span class="nav-text">看见了这个 1’<0e0union select 1,2,3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤-substr"><span class="nav-number">5.6.</span> <span class="nav-text">过滤 substr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤-逗号"><span class="nav-number">5.7.</span> <span class="nav-text">过滤 逗号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已知表名但不知道字段名且过滤information-schema或者直接过滤了字段名"><span class="nav-number">5.8.</span> <span class="nav-text">已知表名但不知道字段名且过滤information_schema或者直接过滤了字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">5.9.</span> <span class="nav-text">过滤()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤information-schema，SCHEMATA，TABLES，COLUMNS"><span class="nav-number">5.10.</span> <span class="nav-text">过滤information_schema，SCHEMATA，TABLES，COLUMNS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">5.11.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">5.12.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/08/18/琐碎知识点记录/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="记录些小的知识盲区">
-<meta property="og:updated_time" content="2018-08-21T14:15:18.543Z">
+<meta property="og:updated_time" content="2018-08-28T09:43:39.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="琐碎知识点记录">
 <meta name="twitter:description" content="记录些小的知识盲区">
@@ -385,6 +385,7 @@
 <p>(4)、由于已经绕过验证，所以服务器端返回访问内网资源的结果。</p>
 <p>这方法看的不太懂但那个ttl很感兴趣hhh 刚刚记录过</p>
 <h3 id="python和django的目录遍历漏洞"><a href="#python和django的目录遍历漏洞" class="headerlink" title="python和django的目录遍历漏洞"></a>python和django的目录遍历漏洞</h3><p><a href="http://www.lijiejie.com/python-django-directory-traversal/" target="_blank" rel="external">http://www.lijiejie.com/python-django-directory-traversal/</a></p>
+<h3 id="A-A-可以用-A-A绕过"><a href="#A-A-可以用-A-A绕过" class="headerlink" title="A_A 可以用 A.A绕过"></a>A_A 可以用 A.A绕过</h3><p>安恒月赛的一道题</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>见到了就来写点 写着写着发现很多知识点之间是有关联的 web真是有趣啊orz</p>
 
       
@@ -507,7 +508,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">70</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -584,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#py3的base85"><span class="nav-number">1.</span> <span class="nav-text">py3的base85</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#curl可以访问ftp"><span class="nav-number">2.</span> <span class="nav-text">curl可以访问ftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping中ttl"><span class="nav-number">3.</span> <span class="nav-text">ping中ttl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ldap注入会报错-Bad-searvh-filter"><span class="nav-number">4.</span> <span class="nav-text">ldap注入会报错 Bad searvh filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#py-http服务的任意URL跳转漏洞"><span class="nav-number">5.</span> <span class="nav-text">py http服务的任意URL跳转漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssrf-bypass"><span class="nav-number">6.</span> <span class="nav-text">ssrf bypass</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更改IP地址写法"><span class="nav-number">6.1.</span> <span class="nav-text">更改IP地址写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用解析URL所出现的问题"><span class="nav-number">6.2.</span> <span class="nav-text">利用解析URL所出现的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用302跳转"><span class="nav-number">6.3.</span> <span class="nav-text">利用302跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过各种非HTTP协议："><span class="nav-number">6.4.</span> <span class="nav-text">通过各种非HTTP协议：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-Rebinding"><span class="nav-number">6.5.</span> <span class="nav-text">DNS Rebinding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python和django的目录遍历漏洞"><span class="nav-number">7.</span> <span class="nav-text">python和django的目录遍历漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#py3的base85"><span class="nav-number">1.</span> <span class="nav-text">py3的base85</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#curl可以访问ftp"><span class="nav-number">2.</span> <span class="nav-text">curl可以访问ftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping中ttl"><span class="nav-number">3.</span> <span class="nav-text">ping中ttl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ldap注入会报错-Bad-searvh-filter"><span class="nav-number">4.</span> <span class="nav-text">ldap注入会报错 Bad searvh filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#py-http服务的任意URL跳转漏洞"><span class="nav-number">5.</span> <span class="nav-text">py http服务的任意URL跳转漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssrf-bypass"><span class="nav-number">6.</span> <span class="nav-text">ssrf bypass</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更改IP地址写法"><span class="nav-number">6.1.</span> <span class="nav-text">更改IP地址写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用解析URL所出现的问题"><span class="nav-number">6.2.</span> <span class="nav-text">利用解析URL所出现的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用302跳转"><span class="nav-number">6.3.</span> <span class="nav-text">利用302跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过各种非HTTP协议："><span class="nav-number">6.4.</span> <span class="nav-text">通过各种非HTTP协议：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-Rebinding"><span class="nav-number">6.5.</span> <span class="nav-text">DNS Rebinding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python和django的目录遍历漏洞"><span class="nav-number">7.</span> <span class="nav-text">python和django的目录遍历漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-A-可以用-A-A绕过"><span class="nav-number">8.</span> <span class="nav-text">A_A 可以用 A.A绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">9.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>
