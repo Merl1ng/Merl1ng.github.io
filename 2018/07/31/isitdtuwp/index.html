@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/7678xml.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xpath1.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xpath2.PNG">
-<meta property="og:updated_time" content="2018-08-18T10:30:44.105Z">
+<meta property="og:updated_time" content="2018-09-17T04:23:13.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="isitdtuwp">
 <meta name="twitter:description" content="越南一个大学办的比赛">
@@ -371,8 +371,11 @@
 <p>file 500<br>500: Zip archive data</p>
 <p>unzip 500<br>Archive:  500<br>error [500]:  missing 4 bytes in zipfile<br>  (attempting to process anyway)<br>error [500]:  attempt to seek before beginning of zipfile<br>  (please check that you have transferred or created the zipfile in the<br>  appropriate BINARY mode and that you have compiled UnZip properly)<br>  (attempting to re-compensate)<br>file #1:  bad zipfile offset (local header sig):  0<br>  (attempting to re-compensate)<br>error [500]:  attempt to seek before beginning of zipfile<br>  (please check that you have transferred or created the zipfile in the<br>  appropriate BINARY mode and that you have compiled UnZip properly)</p>
 <p>在前面加上 \x50\x4B\x03\x04</p>
+<p>printf “\x50\x4B\x03\x04” | cat - 500 &gt; 500.zip</p>
+<p>这个printf方法 网鼎第四场git恢复又看到了</p>
 <p>然后成功解压 但还是个压缩包 这次带有密码</p>
 <p>暴力破解</p>
+<p>然后拿到图片 zsteg 看到摩斯密码 最后解密<br><a href="https://fireshellsecurity.team/isitdtu-drill/" target="_blank" rel="external">https://fireshellsecurity.team/isitdtu-drill/</a><br><a href="https://github.com/kuqadk3/CTF-and-Learning/tree/master/ISITDTU%20CTF/Drill" target="_blank" rel="external">https://github.com/kuqadk3/CTF-and-Learning/tree/master/ISITDTU%20CTF/Drill</a></p>
 <h3 id="misc-2"><a href="#misc-2" class="headerlink" title="misc 2"></a>misc 2</h3><p>file 一下 看起来像  SAM 或者 SYSTEM file</p>
 <p>samdump2 -o test.txt 2 1</p>
 <p>得到 windows password</p>
@@ -388,6 +391,12 @@
 <p>镜像（左右颠倒） ocr提出来 用base32解密</p>
 <p><a href="https://geocaching.dennistreysa.de/multisolver/index.html" target="_blank" rel="external">https://geocaching.dennistreysa.de/multisolver/index.html</a></p>
 <p>这个解密网站贼牛逼。。</p>
+<h3 id="crypto1-xor"><a href="#crypto1-xor" class="headerlink" title="crypto1 xor"></a>crypto1 xor</h3><p><a href="https://github.com/likcoras/writeups/tree/master/2018-isitdtu/XOR" target="_blank" rel="external">https://github.com/likcoras/writeups/tree/master/2018-isitdtu/XOR</a></p>
+<p>思路很简单</p>
+<p>已知密钥长度为10  ISITDTU{就能反推前8位</p>
+<p>然后解密<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ISITDTU&#123;<span class="comment">####ome_to_ISITDTUCT####ntest!_Hav3_a_g0####ay._Hope_y0u_w1l ####j0y_and_hav3_a_h####rank_1n_0ur_F1rs####f_C0nt3st._Thank##</span></div></pre></td></tr></table></figure></p>
+<p>welcome 再反推剩下密钥 再解密</p>
+<p>不过它有个混淆函数 算法方面的东西看的不是很懂。。</p>
 
       
     </div>
@@ -586,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-1"><span class="nav-number">1.</span> <span class="nav-text">web 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-2"><span class="nav-number">2.</span> <span class="nav-text">web 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-3"><span class="nav-number">3.</span> <span class="nav-text">web 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">4.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">5.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">6.</span> <span class="nav-text">misc 3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-1"><span class="nav-number">1.</span> <span class="nav-text">web 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-2"><span class="nav-number">2.</span> <span class="nav-text">web 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-3"><span class="nav-number">3.</span> <span class="nav-text">web 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-1"><span class="nav-number">4.</span> <span class="nav-text">misc 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-2"><span class="nav-number">5.</span> <span class="nav-text">misc 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-3"><span class="nav-number">6.</span> <span class="nav-text">misc 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#crypto1-xor"><span class="nav-number">7.</span> <span class="nav-text">crypto1 xor</span></a></li></ol></div>
             
 
           </div>
