@@ -93,20 +93,20 @@
 
 
 
-<meta name="description" content="web 100zip协议突破文件上传 首先有个任意文件读取 结合base64 index.php 12345678910111213141516&amp;lt;?php @$file = $_GET[&quot;file&quot;];    if(isset($file))    &amp;#123;        if (preg_match(&apos;/http|data|ftp|input|phar|%00/i&apos;, $file)">
+<meta name="description" content="新疆师范的师傅们办的比赛">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xjnuwp">
 <meta property="og:url" content="http://Merl1ng.com/2018/09/21/xjnuwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="web 100zip协议突破文件上传 首先有个任意文件读取 结合base64 index.php 12345678910111213141516&amp;lt;?php @$file = $_GET[&quot;file&quot;];    if(isset($file))    &amp;#123;        if (preg_match(&apos;/http|data|ftp|input|phar|%00/i&apos;, $file)">
+<meta property="og:description" content="新疆师范的师傅们办的比赛">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/uploadwwwwwww.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xinjiangctfsqlwaf.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xjnuwhiwuehgguhwg.PNG">
-<meta property="og:updated_time" content="2018-09-23T04:50:16.462Z">
+<meta property="og:updated_time" content="2018-09-23T04:55:53.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xjnuwp">
-<meta name="twitter:description" content="web 100zip协议突破文件上传 首先有个任意文件读取 结合base64 index.php 12345678910111213141516&amp;lt;?php @$file = $_GET[&quot;file&quot;];    if(isset($file))    &amp;#123;        if (preg_match(&apos;/http|data|ftp|input|phar|%00/i&apos;, $file)">
+<meta name="twitter:description" content="新疆师范的师傅们办的比赛">
 <meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/uploadwwwwwww.PNG">
 
 
@@ -334,7 +334,8 @@
       
 
       
-        <h3 id="web-100"><a href="#web-100" class="headerlink" title="web 100"></a>web 100</h3><p>zip协议突破文件上传</p>
+        <p>新疆师范的师傅们办的比赛<br><a id="more"></a></p>
+<h3 id="web-100"><a href="#web-100" class="headerlink" title="web 100"></a>web 100</h3><p>zip协议突破文件上传</p>
 <p>首先有个任意文件读取 结合base64</p>
 <p>index.php</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"> @<span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">"file"</span>];</div><div class="line">    <span class="keyword">if</span>(isset(<span class="variable">$file</span>))</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (preg_match(<span class="string">'/http|data|ftp|input|phar|%00/i'</span>, <span class="variable">$file</span>)  || strlen(<span class="variable">$file</span>)&gt;=70)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">echo</span> <span class="string">"&lt;p&gt; error! &lt;/p&gt;"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            include(<span class="variable">$file</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        header(<span class="string">"location:index.php?file=upload.php"</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
