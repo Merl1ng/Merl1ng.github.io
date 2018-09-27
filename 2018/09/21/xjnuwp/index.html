@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/uploadwwwwwww.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xinjiangctfsqlwaf.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/xjnuwhiwuehgguhwg.PNG">
-<meta property="og:updated_time" content="2018-09-26T14:27:29.990Z">
+<meta property="og:updated_time" content="2018-09-26T15:28:33.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xjnuwp">
 <meta name="twitter:description" content="新疆师范的师傅们办的比赛">
@@ -367,9 +367,11 @@
 <h3 id="web-80"><a href="#web-80" class="headerlink" title="web 80"></a>web 80</h3><p>一开始有个脑洞 url端口号是2017 页面上有个什么卷土重来 和一个url url查了下没被注册应该没用</p>
 <p>那么意思就是改端口号为 2018 。。这点卡了一会</p>
 <p>edu的域名 不能 whois ping出ip就可以</p>
+<p><a href="https://www.whois.com/whois/218.195.132.22" target="_blank" rel="external">https://www.whois.com/whois/218.195.132.22</a></p>
 <p>然后ssrf+file</p>
 <p>file过滤 <strong>FILE大写</strong>可以绕过</p>
 <p>/etc/password gg burp fuzz了下 <strong>etc/passwd</strong> 居然可以的</p>
+<p>不加FILE 直接 ../../../../../../../../../../etc/passwd 也可以</p>
 <p>/var/www/html/index.php 咋都不行 问了下师傅估计路径错了</p>
 <p>师傅给了个payload 不需要绝对路径 tql 膜</p>
 <p><strong>phar://index.php</strong></p>
